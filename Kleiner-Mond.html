@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kleiner Mond!">
+    <meta name="keywords" content="Kleiner Mond">
+<title>Kleiner Mond - Segredos sob a pequena lua</title>
+<style>
+:root {
+  --primary: #1a1a2e;
+  --secondary: #30475e;
+  --accent: #7c83fd;
+  --text: #f0f0f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--primary);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moon-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 0;
+  background: rgba(26,26,46,0.9);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Social Links */
+.social-links {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: var(--text);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* About Section */
+.about {
+  padding: 6rem 0;
+  background: var(--secondary);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text {
+  padding: 2rem;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Gallery Section */
+.gallery {
+  padding: 6rem 0;
+  background: var(--primary);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  aspect-ratio: 1;
+  background: var(--secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(124, 131, 253, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover:before {
+  opacity: 1;
+}
+
+.gallery-item-content {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: rgba(26, 26, 46, 0.9);
+  transition: bottom 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-content {
+  bottom: 0;
+}
+
+/* Blog Section */
+.blog {
+  padding: 6rem 0;
+  background: var(--secondary);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.blog-card {
+  background: var(--primary);
+  border-radius: 10px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+}
+
+.blog-card-date {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.blog-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-card-excerpt {
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+/* Contact Section */
+.contact {
+  padding: 6rem 0;
+  background: var(--primary);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  background: var(--secondary);
+  border: none;
+  border-radius: 5px;
+  color: var(--text);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: 2px solid var(--accent);
+  background: var(--primary);
+}
+
+.form-group textarea {
+  min-height: 150px;
+}
+
+.form-status {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  display: none;
+}
+
+.form-status.success {
+  background: rgba(46, 213, 115, 0.2);
+  color: #2ed573;
+  display: block;
+}
+
+.form-status.error {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+  display: block;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/your-code.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">Sobre Nós</a>
+    <a href="#gallery">Galeria</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contato</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <svg class="moon-bg" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="30" fill="url(#moon-gradient)"/>
+    <defs>
+      <radialGradient id="moon-gradient">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="100%" stop-color="#7c83fd"/>
+      </radialGradient>
+    </defs>
+  </svg>
+  
+  <div class="hero-content">
+    <h1>Kleiner Mond</h1>
+    <p>Segredos sob a pequena lua</p>
+    <a href="https://onlyfans.com/kleinermondoficial" class="btn">Descubra Mais</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-content fade-in">
+      <div class="about-text">
+        <h2>Sobre Nós</h2>
+        <p>Kleiner Mond é um projeto único criado por Luanny e Luana, explorando temas de performance, roleplay e BDSM com segurança e estilo.</p>
+        <p>Inspiradas pela mística da lua e dedicadas à criação de experiências únicas, oferecemos conteúdo exclusivo através de diversas plataformas.</p>
+      </div>
+      <div class="about-image">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <mask id="mask">
+              <rect width="100%" height="100%" fill="white"/>
+              <circle cx="100" cy="100" r="70" fill="black"/>
+            </mask>
+          </defs>
+          <rect width="100%" height="100%" fill="var(--accent)" mask="url(#mask)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <h2>Nossa Galeria</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-item-content">
+          <h3>Performance Artística</h3>
+          <p>Explorando os limites da expressão corporal</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-item-content">
+          <h3>Roleplay Temático</h3>
+          <p>Fantasias e personagens únicos</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-item-content">
+          <h3>BDSM Artístico</h3>
+          <p>Sensualidade com segurança e estilo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog" id="blog">
+  <div class="container">
+    <h2>Blog</h2>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-card-date">12 Maio 2024</div>
+        <h3 class="blog-card-title">A Arte do BDSM Seguro</h3>
+        <p class="blog-card-excerpt">Explorando práticas seguras e consensuais no universo BDSM.</p>
+        <a href="https://example.com/blog/1" class="btn">Ler mais</a>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card-date">10 Maio 2024</div>
+        <h3 class="blog-card-title">Máscaras e Mistério</h3>
+        <p class="blog-card-excerpt">Como o anonimato alimenta a fantasia e protege a privacidade.</p>
+        <a href="https://example.com/blog/2" class="btn">Ler mais</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>Entre em Contato</h2>
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Seu Nome" required>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Seu Email" required>
+      </div>
+      <div class="form-group">
+        <textarea name="message" placeholder="Sua Mensagem" required></textarea>
+      </div>
+      <button type="submit" class="btn">Enviar Mensagem</button>
+      <div class="form-status"></div>
+    </form>
+  </div>
+</section>
+
+<div class="social-links">
+  <a href="https://twitter.com/kleinermondoficial"><i class="fab fa-twitter"></i></a>
+  <a href="https://instagram.com/kleinermondoficial"><i class="fab fa-instagram"></i></a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  const moon = document.querySelector('.moon-bg');
+  if (moon) {
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      moon.style.transform = `translateY(${scrolled * 0.5}px)`;
+    });
+  }
+
+  const nav = document.querySelector('.nav');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 100) {
+        nav.style.background = 'rgba(26,26,46,0.9)';
+      } else {
+        nav.style.background = 'rgba(26,26,46,0.5)';
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.fade-in').forEach((el) => {
+    if (el) {
+      observer.observe(el);
+    }
+  });
+
+  // Form handling
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.querySelector('.form-status');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simulate form submission
+      formStatus.innerHTML = 'Mensagem enviada com sucesso!';
+      formStatus.classList.add('success');
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Clear status after 3 seconds
+      setTimeout(() => {
+        formStatus.innerHTML = '';
+        formStatus.classList.remove('success');
+      }, 3000);
+    });
+  }
+
+  // Gallery item hover effect
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+    });
+  });
+});
+</script>
+
+</body>
+</html>
