@@ -223,6 +223,45 @@ body {
     width: 100%;
   }
 }
+
+.scene-details {
+  padding: 1rem;
+  background: rgba(74, 0, 72, 0.3);
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.scene-details h4 {
+  color: var(--accent);
+  margin: 0.5rem 0;
+}
+
+.scene-details ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.scene-details li {
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.scene-details li:before {
+  content: '•';
+  color: var(--accent);
+  position: absolute;
+  left: -1rem;
+}
+
+.scene-duration {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -270,9 +309,15 @@ body {
 
   <section class="scenes-section">
     <h2 class="section-title">Cenas Planejadas</h2>
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span style="background: var(--accent); color: var(--bg); padding: 0.5rem 1rem; border-radius: 20px;">
+        <i class="fas fa-clock"></i> Duração Total: 5 minutos
+      </span>
+    </div>
     <div class="scene-grid">
       <div class="scene-card">
         <h3 class="scene-title">Cena 01: Ritual de Iniciação</h3>
+        <span class="scene-duration">1:30 minutos</span>
         <svg class="scene-illustration" viewBox="0 0 200 150">
           <defs>
             <linearGradient id="candleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -286,11 +331,23 @@ body {
           </circle>
           <path d="M90,50 Q100,20 110,50" stroke="var(--accent)" fill="none" stroke-width="2"/>
         </svg>
-        <p>Uma jornada sensual de descoberta onde Kleiner Mond é guiada por Bergsee Mond através de um ritual de submissão e confiança. Envolve vendas, amarras suaves e técnicas de privação sensorial.</p>
+        <p>Uma jornada sensual de descoberta onde Kleiner Mond é guiada por Bergsee Mond através de um ritual de submissão e confiança.</p>
+        <div class="scene-details">
+          <h4>Ambiente</h4>
+          <p>Luz suave e íntima, velas e música ambiente criando atmosfera de mistério e calma.</p>
+          <h4>Elementos</h4>
+          <ul>
+            <li>Iluminação amena com velas</li>
+            <li>Incenso perfumado</li>
+            <li>Fitas de seda e cordas macias</li>
+            <li>Música com notas suaves e místicas</li>
+          </ul>
+        </div>
       </div>
       
       <div class="scene-card">
         <h3 class="scene-title">Cena 02: Adestramento</h3>
+        <span class="scene-duration">2:00 minutos</span>
         <svg class="scene-illustration" viewBox="0 0 200 150">
           <rect width="200" height="150" fill="var(--secondary)"/>
           <path d="M60,75 Q100,30 140,75" stroke="var(--accent)" fill="none" stroke-width="3"/>
@@ -298,11 +355,23 @@ body {
             <animate attributeName="stroke-dasharray" values="0,157;157,0" dur="3s" repeatCount="indefinite"/>
           </circle>
         </svg>
-        <p>Uma experiência intensa focada em disciplina e obediência. Bergsee Mond guia Kleiner Mond através de práticas de dominação, incluindo coleiras, comandos e recompensas por bom comportamento.</p>
+        <p>Uma experiência focada em disciplina e obediência, com práticas de dominação em um contexto de respeito e consentimento mútuo.</p>
+        <div class="scene-details">
+          <h4>Ambiente</h4>
+          <p>Luz mais intensa com tons de vermelho suave ou laranja, simbolizando intensidade e disciplina.</p>
+          <h4>Elementos</h4>
+          <ul>
+            <li>Coleira personalizada</li>
+            <li>Comandos gentis e coreografados</li>
+            <li>Sistema de recompensa</li>
+            <li>Movimentos fluidos e controlados</li>
+          </ul>
+        </div>
       </div>
       
       <div class="scene-card">
-        <h3 class="scene-title">Cena 03: Ato I</h3>
+        <h3 class="scene-title">Cena 03: Ato I - O Ápice da Conexão</h3>
+        <span class="scene-duration">1:30 minutos</span>
         <svg class="scene-illustration" viewBox="0 0 200 150">
           <rect width="200" height="150" fill="var(--secondary)"/>
           <path d="M70,75 L130,75" stroke="var(--accent)" stroke-width="3">
@@ -311,7 +380,18 @@ body {
           <circle cx="70" cy="75" r="10" fill="var(--primary)"/>
           <circle cx="130" cy="75" r="10" fill="var(--accent)"/>
         </svg>
-        <p>O ápice da conexão entre Kleiner Mond e Bergsee Mond, explorando os limites da confiança e entrega. Uma performance artística que combina elementos de shibari, dominação psicológica e jogos de poder.</p>
+        <p>Performance artística de shibari que representa a fusão de confiança, entrega e conexão emocional e física.</p>
+        <div class="scene-details">
+          <h4>Ambiente</h4>
+          <p>Luzes azuis e roxas suaves criando ambiente onírico e sereno.</p>
+          <h4>Elementos</h4>
+          <ul>
+            <li>Cordas especiais para shibari</li>
+            <li>Música etérea e relaxante</li>
+            <li>Sussurros de encorajamento</li>
+            <li>Ambiente de apoio e aceitação</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -440,5 +520,4 @@ function updateProgress() {
   progressFill.setAttribute('aria-valuenow', percentage);
 }
 </script>
-</body>
-</html>
+</body></html>
