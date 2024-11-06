@@ -128,9 +128,9 @@ body {
 
 .scene-card {
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-rows: auto auto 1fr;
   gap: 1rem;
-  align-items: center;
+  min-height: 300px;
   background: var(--secondary);
   padding: 1.5rem;
   border-radius: 10px;
@@ -161,12 +161,13 @@ body {
   transform: scaleX(1);
 }
 
-.scene-svg {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--primary);
-  padding: 10px;
+.scene-illustration {
+  width: 100%;
+  height: 150px;
+  margin: 1rem 0;
+  background: var(--secondary);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .scene-title {
@@ -273,40 +274,46 @@ body {
     <h2 class="section-title">Cenas Planejadas</h2>
     <div class="scene-grid">
       <div class="scene-card">
-        <svg class="scene-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#ff69b4" stroke-width="4"/>
-          <path d="M30 50a20 20 0 0 1 40 0" fill="none" stroke="#ff69b4" stroke-width="4"/>
-          <circle cx="50" cy="50" r="5" fill="#ff69b4"/>
+        <h3 class="scene-title">Cena 01: Ritual de Iniciação</h3>
+        <svg class="scene-illustration" viewBox="0 0 200 150">
+          <defs>
+            <linearGradient id="candleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:var(--accent);stop-opacity:0.3" />
+              <stop offset="100%" style="stop-color:var(--secondary);stop-opacity:0" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="150" fill="var(--secondary)"/>
+          <circle cx="100" cy="75" r="40" fill="url(#candleGlow)">
+            <animate attributeName="r" values="35;40;35" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <path d="M90,50 Q100,20 110,50" stroke="var(--accent)" fill="none" stroke-width="2"/>
         </svg>
-        <div>
-          <h3 class="scene-title">Cena 01: Ritual de Iniciação</h3>
-          <p>Uma jornada sensual de descoberta onde Bergsee Mond guia Kleiner Mond através dos primeiros passos no universo BDSM. Com velas, vendas e toques suaves, estabelecemos os fundamentos de confiança e entrega.</p>
-        </div>
+        <p>Uma jornada sensual de descoberta onde Kleiner Mond é guiada por Bergsee Mond através de um ritual de submissão e confiança. Envolve vendas, amarras suaves e técnicas de privação sensorial.</p>
       </div>
-
+      
       <div class="scene-card">
-        <svg class="scene-svg" viewBox="0 0 100 100">
-          <rect x="20" y="40" width="60" height="20" fill="#ff69b4"/>
-          <circle cx="50" cy="50" r="25" fill="none" stroke="#ff69b4" stroke-width="4"/>
-          <path d="M35 50h30" stroke="#4a0048" stroke-width="4"/>
+        <h3 class="scene-title">Cena 02: Adestramento</h3>
+        <svg class="scene-illustration" viewBox="0 0 200 150">
+          <rect width="200" height="150" fill="var(--secondary)"/>
+          <path d="M60,75 Q100,30 140,75" stroke="var(--accent)" fill="none" stroke-width="3"/>
+          <circle cx="100" cy="75" r="25" fill="none" stroke="var(--accent)" stroke-width="2">
+            <animate attributeName="stroke-dasharray" values="0,157;157,0" dur="3s" repeatCount="indefinite"/>
+          </circle>
         </svg>
-        <div>
-          <h3 class="scene-title">Cena 02: Adestramento</h3>
-          <p>Uma experiência intensa onde Kleiner Mond aprende obediência e submissão através de práticas de bondage, disciplina e jogos de poder. A coleira simboliza o compromisso e entrega total à sua Dominadora.</p>
-        </div>
+        <p>Uma experiência intensa focada em disciplina e obediência. Bergsee Mond guia Kleiner Mond através de práticas de dominação, incluindo coleiras, comandos e recompensas por bom comportamento.</p>
       </div>
-
+      
       <div class="scene-card">
-        <svg class="scene-svg" viewBox="0 0 100 100">
-          <path d="M20 50c0-20 60-20 60 0s-60 20-60 0z" fill="#ff69b4"/>
-          <circle cx="35" cy="45" r="5" fill="#4a0048"/>
-          <circle cx="65" cy="45" r="5" fill="#4a0048"/>
-          <path d="M40 60q10 10 20 0" fill="none" stroke="#4a0048" stroke-width="3"/>
+        <h3 class="scene-title">Cena 03: Ato I</h3>
+        <svg class="scene-illustration" viewBox="0 0 200 150">
+          <rect width="200" height="150" fill="var(--secondary)"/>
+          <path d="M70,75 L130,75" stroke="var(--accent)" stroke-width="3">
+            <animate attributeName="d" values="M70,75 L130,75;M70,65 L130,85;M70,75 L130,75" dur="4s" repeatCount="indefinite"/>
+          </path>
+          <circle cx="70" cy="75" r="10" fill="var(--primary)"/>
+          <circle cx="130" cy="75" r="10" fill="var(--accent)"/>
         </svg>
-        <div>
-          <h3 class="scene-title">Cena 03: Ato I</h3>
-          <p>O ápice da conexão entre Dominadora e submissa, explorando os limites do prazer e da dor. Uma dança de poder onde máscaras de látex, cordas e acessórios criam uma sinfonia de sensações.</p>
-        </div>
+        <p>O ápice da conexão entre Kleiner Mond e Bergsee Mond, explorando os limites da confiança e entrega. Uma performance artística que combina elementos de shibari, dominação psicológica e jogos de poder.</p>
       </div>
     </div>
   </section>
