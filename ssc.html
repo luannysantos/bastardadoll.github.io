@@ -1,0 +1,503 @@
+<html lang="pt-br"><head><base href="https://bastardadoll.github.io" /><title>Questionário SSC BDSM</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* { box-sizing: border-box; }
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #1a1a1a;
+    color: #fff;
+}
+.container {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+h1, h2 {
+    color: #ff69b4;
+    text-align: center;
+}
+.section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #333;
+    border-radius: 5px;
+}
+.question {
+    margin: 15px 0;
+}
+label {
+    display: block;
+    margin: 10px 0;
+}
+input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    background: #444;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 4px;
+}
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    background: #444;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 4px;
+}
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    background: #444;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 4px;
+}
+button {
+    background: #ff69b4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+}
+button:hover {
+    background: #ff1493;
+}
+.intensity {
+    color: #ff69b4;
+    font-size: 0.9em;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    color: #ff69b4;
+    cursor: help;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: #444;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -125px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.technique-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+}
+.technique-box {
+    background: #333;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.technique-title {
+    color: #ff69b4;
+    font-size: 1.2em;
+    margin: 0;
+}
+.technique-animation {
+    width: 100%;
+    height: 200px;
+    background: #444;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.technique-description {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+.vote-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.vote-options label {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    background: #444;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0;
+}
+.vote-options input[type="radio"] {
+    display: none;
+}
+.vote-options input[type="radio"]:checked + label {
+    background: #ff69b4;
+}
+#password-screen {
+    text-align: center;
+}
+#password-screen input[type="password"] {
+    width: 200px;
+    margin: 20px auto;
+    display: block;
+}
+#password-screen button {
+    width: 200px;
+    margin: 20px auto;
+}
+</style><script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script></head><body>
+<div id="password-screen" class="container">
+    <h1>Questionário SSC BDSM</h1>
+    <h2>Bergsee Mond & Kleiner Mond</h2>
+    <div class="section">
+        <label>Senha de Acesso:</label>
+        <input type="password" id="password-input">
+        <button onclick="checkPassword()">Acessar</button>
+    </div>
+</div>
+
+<div id="main-content" class="container" style="display: none;">
+    <h1>Questionário SSC BDSM</h1>
+    <h2>Bergsee Mond & Kleiner Mond</h2>
+    
+    <form id="bdsm-form">
+        <div class="section">
+            <h3>Informações Básicas</h3>
+            <div class="question">
+                <label>Nome/Apelido para a cena:</label>
+                <input type="text" name="scene_name" placeholder="Nome/Apelido para a cena" required>
+            </div>
+            <div class="question">
+                <label>Palavras de Segurança:</label>
+                <input type="text" name="safeword" placeholder="Ex: Vermelho (parar), Amarelo (diminuir)" required>
+            </div>
+            <div class="question">
+                <label>Experiência com BDSM:</label>
+                <select name="experience" required>
+                    <option value="">Selecione...</option>
+                    <option value="novice">Iniciante - Primeira experiência</option>
+                    <option value="beginner">Básico - Algumas experiências</option>
+                    <option value="intermediate">Intermediário - Experiência moderada</option>
+                    <option value="experienced">Experiente - Prática regular</option>
+                </select>
+            </div>
+            <div class="question">
+                <label>Experiências anteriores com submissão:</label>
+                <textarea name="past_experiences" placeholder="Descreva suas experiências anteriores como submissa, se houver..."></textarea>
+            </div>
+            <div class="question">
+                <label>O que te atrai na submissão?</label>
+                <textarea name="submission_attraction" placeholder="Descreva o que te motiva a explorar o lado submissivo..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Práticas de Dominação Física</h3>
+            <div class="question">
+                <label><input type="checkbox" name="bondage"> Bondage/Amarrações <span class="intensity">(Leve/Médio/Intenso)</span>
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Técnica de amarração com cordas, fitas ou outros materiais. Pode incluir imobilização parcial ou total, suspensão, e padrões decorativos.</span></span>
+                </label>
+                <label><input type="checkbox" name="spanking"> Spanking <span class="intensity">(Leve/Médio/Intenso)</span>
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Palmadas eróticas em diferentes intensidades, podem ser aplicadas em várias partes do corpo, principalmente nádegas.</span></span>
+                </label>
+                <label><input type="checkbox" name="hair_pulling"> Puxar Cabelo
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Manipulação dos cabelos para controle e estímulo. Deve ser feito com cuidado para evitar lesões no pescoço.</span></span>
+                </label>
+                <label><input type="checkbox" name="choking"> Asfixia Erótica
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Restrição controlada da respiração. Requer extremo cuidado e conhecimento técnico. Deve ser praticada com segurança e consenso.</span></span>
+                </label>
+                <label><input type="checkbox" name="wax_play"> Wax Play
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Uso de velas especiais para gotejamento de cera. Diferentes temperaturas proporcionam sensações variadas.</span></span>
+                </label>
+                <label><input type="checkbox" name="ice_play"> Ice Play
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Uso de gelo para estimulação sensorial, criando contrastes de temperatura no corpo.</span></span>
+                </label>
+                <label><input type="checkbox" name="nipple_play"> Estimulação de Mamilos
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Uso de grampos, pinças ou outros instrumentos para estimulação dos mamilos.</span></span>
+                </label>
+                <textarea name="physical_details" placeholder="Especifique limites e preferências para práticas físicas..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Práticas de Dominação Psicológica</h3>
+            <div class="question">
+                <label><input type="checkbox" name="humiliation"> Humilhação Verbal
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Uso de palavras e expressões para criar uma dinâmica de submissão. Deve respeitar limites previamente estabelecidos.</span></span>
+                </label>
+                <label><input type="checkbox" name="pet_play"> Pet Play
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Role-play onde o submisso assume papel de animal de estimação. Pode incluir acessórios específicos.</span></span>
+                </label>
+                <label><input type="checkbox" name="ordering"> Ordens e Comandos
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Instruções diretas e controle comportamental. Estabelece dinâmica de poder e obediência.</span></span>
+                </label>
+                <label><input type="checkbox" name="denial"> Controle/Negação
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Controle de prazer e orgasmo. Pode incluir edging e negação temporária ou prolongada.</span></span>
+                </label>
+                <label><input type="checkbox" name="roleplay"> Role-play Específico
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Interpretação de papéis específicos como professor/aluno, médico/paciente, etc.</span></span>
+                </label>
+                <textarea name="psychological_details" placeholder="Especifique limites e preferências para dominação psicológica..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Equipamentos e Acessórios</h3>
+            <div class="question">
+                <label><input type="checkbox" name="collar"> Coleira</label>
+                <label><input type="checkbox" name="blindfold"> Venda</label>
+                <label><input type="checkbox" name="cuffs"> Algemas</label>
+                <label><input type="checkbox" name="toys"> Brinquedos Eróticos</label>
+                <textarea name="equipment_details" placeholder="Liste equipamentos específicos e preferências..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Limites Absolutos</h3>
+            <div class="question">
+                <textarea name="hard_limits" placeholder="Liste aqui seus limites absolutos - práticas que não devem ser realizadas em nenhuma circunstância..." required></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Práticas Sexuais e Interações</h3>
+            <div class="question">
+                <label><input type="checkbox" name="oral_giving"> Praticar Sexo Oral
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Estimulação oral dos genitais da dominadora.</span></span>
+                </label>
+                <label><input type="checkbox" name="oral_receiving"> Receber Sexo Oral
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Receber estimulação oral em seus genitais.</span></span>
+                </label>
+                <label><input type="checkbox" name="penetration_giving"> Penetração Ativa
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Penetração realizada pela dominadora.</span></span>
+                </label>
+                <label><input type="checkbox" name="penetration_receiving"> Penetração Receptiva
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Receber penetração vaginal.</span></span>
+                </label>
+                <label><input type="checkbox" name="mutual_masturbation"> Masturbação Mútua
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Estimulação manual recíproca.</span></span>
+                </label>
+                <label><input type="checkbox" name="tribbing"> Tribadismo
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Estimulação através do contato genital mútuo.</span></span>
+                </label>
+                <label><input type="checkbox" name="fingering"> Penetração Digital
+                    <span class="tooltip">ℹ️<span class="tooltiptext">Estimulação e penetração com dedos.</span></span>
+                </label>
+                <textarea name="sexual_details" placeholder="Especifique preferências, limites ou detalhes sobre práticas sexuais..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Expectativas e Objetivos</h3>
+            <div class="question">
+                <label>O que você espera alcançar com essas experiências?</label>
+                <textarea name="goals" placeholder="Descreva seus objetivos e expectativas..."></textarea>
+            </div>
+            <div class="question">
+                <label>Medos ou preocupações específicas:</label>
+                <textarea name="concerns" placeholder="Liste quaisquer medos ou preocupações que gostaria de compartilhar..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Avaliação de Técnicas</h3>
+            <div class="technique-grid">
+                <div class="technique-box">
+                    <h4 class="technique-title">Bondage</h4>
+                    <div class="technique-animation">
+                        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1d82efa3-6630-4bf0-beef-33870ea96686/dfyjij6-09635446-ab9c-4d19-b423-cb2c0add5578.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzFkODJlZmEzLTY2MzAtNGJmMC1iZWVmLTMzODcwZWE5NjY4NlwvZGZ5amlqNi0wOTYzNTQ0Ni1hYjljLTRkMTktYjQyMy1jYjJjMGFkZDU1NzguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.iYQTG-3YTZdaEpNWzObvx8verovDONHGCEfZIDH4f94" alt="Animated demonstration of BDSM technique" width="100%" height="200">
+                    </div>
+                    <p class="technique-description">Técnica de amarração com cordas, podendo incluir imobilização parcial ou total.</p>
+                    <div class="vote-options">
+                        <input type="radio" name="bondage_vote" id="bondage_yes" value="yes" required>
+                        <label for="bondage_yes">Sim</label>
+                        <input type="radio" name="bondage_vote" id="bondage_no" value="no">
+                        <label for="bondage_no">Não</label>
+                        <input type="radio" name="bondage_vote" id="bondage_neutral" value="neutral">
+                        <label for="bondage_neutral">N/A</label>
+                    </div>
+                </div>
+
+                <div class="technique-box">
+                    <h4 class="technique-title">Spanking</h4>
+                    <div class="technique-animation">
+                        <img src="https://bestsexgif.com/wp-content/uploads/2015/02/Taylor-May-gets-spanking-because-she-was-bad-girl-Mick-Blue-spanks-light-BDSM.gif" alt="Animated demonstration of spanking BDSM technique" width="100%" height="200">
+                    </div>
+                    <p class="technique-description">Palmadas eróticas em diferentes intensidades e locais do corpo.</p>
+                    <div class="vote-options">
+                        <input type="radio" name="spanking_vote" id="spanking_yes" value="yes" required>
+                        <label for="spanking_yes">Sim</label>
+                        <input type="radio" name="spanking_vote" id="spanking_no" value="no">
+                        <label for="spanking_no">Não</label>
+                        <input type="radio" name="spanking_vote" id="spanking_neutral" value="neutral">
+                        <label for="spanking_neutral">N/A</label>
+                    </div>
+                </div>
+
+                <div class="technique-box">
+                    <h4 class="technique-title">Wax Play</h4>
+                    <div class="technique-animation">
+                        <img src="https://64.media.tumblr.com/b72887aa9b988d84cb0c11d6276e273a/tumblr_owp8yglaav1veo2l1o2_500.gif" alt="Animated demonstration of wax play BDSM technique" width="100%" height="200">
+                    </div>
+                    <p class="technique-description">Uso de velas especiais para gotejamento de cera, criando sensações térmicas.</p>
+                    <div class="vote-options">
+                        <input type="radio" name="wax_vote" id="wax_yes" value="yes" required>
+                        <label for="wax_yes">Sim</label>
+                        <input type="radio" name="wax_vote" id="wax_no" value="no">
+                        <label for="wax_no">Não</label>
+                        <input type="radio" name="wax_vote" id="wax_neutral" value="neutral">
+                        <label for="wax_neutral">N/A</label>
+                    </div>
+                </div>
+
+                <div class="technique-box">
+                    <h4 class="technique-title">Ice Play</h4>
+                    <div class="technique-animation">
+                        <img src="https://cdn.thekinkykingdom.com/2021/08/Food-Play-Fun.gif" alt="Animated demonstration of ice play BDSM technique" width="100%" height="200">
+                    </div>
+                    <p class="technique-description">Uso de gelo para estimulação sensorial e contraste de temperatura.</p>
+                    <div class="vote-options">
+                        <input type="radio" name="ice_vote" id="ice_yes" value="yes" required>
+                        <label for="ice_yes">Sim</label>
+                        <input type="radio" name="ice_vote" id="ice_no" value="no">
+                        <label for="ice_no">Não</label>
+                        <input type="radio" name="ice_vote" id="ice_neutral" value="neutral">
+                        <label for="ice_neutral">N/A</label>
+                    </div>
+                </div>
+
+                <div class="technique-box">
+                    <h4 class="technique-title">Pet Play</h4>
+                    <div class="technique-animation">
+                        <img src="https://64.media.tumblr.com/a135edb82c9f86627310adf930ed9157/tumblr_onwlp67GbD1w842wyo1_250.gifv" alt="Animated demonstration of pet play BDSM technique" width="100%" height="200">
+                    </div>
+                    <p class="technique-description">Pet play é um jogo de encenação em que uma pessoa é um animal e a outra interpreta o dono.</p>
+                    <div class="vote-options">
+                        <input type="radio" name="petplay_vote" id="petplay_yes" value="yes" required>
+                        <label for="petplay_yes">Sim</label>
+                        <input type="radio" name="petplay_vote" id="petplay_no" value="no">
+                        <label for="petplay_no">Não</label>
+                        <input type="radio" name="petplay_vote" id="petplay_neutral" value="neutral">
+                        <label for="petplay_neutral">N/A</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Enviar para WhatsApp</button>
+    </form>
+</div>
+
+<script>
+function checkPassword() {
+    const correctHash = '$2y$10$O9fO4QqAgx68IvOFPQW4TuMTDYOrmFHV3XrC9CLLq3p6CSuh54NEu';
+    const input = document.getElementById('password-input').value;
+
+    if (input === '123456') {
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+    } else {
+        alert('Senha incorreta!');
+    }
+}
+document.getElementById('bdsm-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    let formData = new FormData(this);
+    let message = "🖤 Questionário BDSM - Bergsee Mond & Kleiner Mond 🖤\n\n";
+    
+    message += "👤 Nome de Cena: " + formData.get('scene_name') + "\n";
+    message += "🔐 Palavras de Segurança: " + formData.get('safeword') + "\n\n";
+    
+    message += "📚 Experiência:\n";
+    message += "- Nível: " + formData.get('experience') + "\n";
+    message += "- Experiências anteriores: " + formData.get('past_experiences') + "\n";
+    message += "- Motivação para submissão: " + formData.get('submission_attraction') + "\n\n";
+    
+    message += "🌸 Práticas Sexuais Selecionadas:\n";
+    if(formData.get('oral_giving')) message += "- Praticar Sexo Oral\n";
+    if(formData.get('oral_receiving')) message += "- Receber Sexo Oral\n";
+    if(formData.get('penetration_giving')) message += "- Penetração Ativa\n";
+    if(formData.get('penetration_receiving')) message += "- Penetração Receptiva\n";
+    if(formData.get('mutual_masturbation')) message += "- Masturbação Mútua\n";
+    if(formData.get('tribbing')) message += "- Tribadismo\n";
+    if(formData.get('fingering')) message += "- Penetração Digital\n";
+    message += "Detalhes: " + formData.get('sexual_details') + "\n\n";
+    
+    message += "🎯 Expectativas:\n";
+    message += "- Objetivos: " + formData.get('goals') + "\n";
+    message += "- Preocupações: " + formData.get('concerns') + "\n\n";
+    
+    message += "📍 Práticas Físicas Selecionadas:\n";
+    if(formData.get('bondage')) message += "- Bondage\n";
+    if(formData.get('spanking')) message += "- Spanking\n";
+    if(formData.get('hair_pulling')) message += "- Puxar Cabelo\n";
+    if(formData.get('choking')) message += "- Asfixia Erótica\n";
+    if(formData.get('wax_play')) message += "- Wax Play\n";
+    if(formData.get('ice_play')) message += "- Ice Play\n";
+    if(formData.get('nipple_play')) message += "- Estimulação de Mamilos\n";
+    message += "Detalhes: " + formData.get('physical_details') + "\n\n";
+    
+    message += "🎭 Práticas Psicológicas Selecionadas:\n";
+    if(formData.get('humiliation')) message += "- Humilhação Verbal\n";
+    if(formData.get('pet_play')) message += "- Pet Play\n";
+    if(formData.get('ordering')) message += "- Ordens e Comandos\n";
+    if(formData.get('denial')) message += "- Controle/Negação\n";
+    if(formData.get('roleplay')) message += "- Role-play Específico\n";
+    message += "Detalhes: " + formData.get('psychological_details') + "\n\n";
+    
+    message += "🎀 Equipamentos Selecionados:\n";
+    if(formData.get('collar')) message += "- Coleira\n";
+    if(formData.get('blindfold')) message += "- Venda\n";
+    if(formData.get('cuffs')) message += "- Algemas\n";
+    if(formData.get('toys')) message += "- Brinquedos Eróticos\n";
+    message += "Detalhes: " + formData.get('equipment_details') + "\n\n";
+    
+    message += "⛔ Limites Absolutos:\n" + formData.get('hard_limits') + "\n\n";
+    
+    message += "📊 Votação de Técnicas:\n";
+    message += "- Bondage: " + formData.get('bondage_vote') + "\n";
+    message += "- Spanking: " + formData.get('spanking_vote') + "\n";
+    message += "- Pet Play: " + formData.get('petplay_vote') + "\n";
+    message += "- Wax Play: " + formData.get('wax_vote') + "\n";
+    message += "- Ice Play: " + formData.get('ice_vote') + "\n";
+
+    let encodedMessage = encodeURIComponent(message);
+    
+    window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
+});
+</script></body></html>
