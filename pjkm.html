@@ -186,9 +186,16 @@ body {
   background: var(--secondary);
   padding: 1rem;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   gap: 1rem;
+}
+
+.item-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .shopee-link {
@@ -204,11 +211,6 @@ body {
 
 .shopee-link:hover {
   background: #ff6b3d;
-}
-
-.item-card img {
-  border-radius: 5px;
-  object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -550,56 +552,56 @@ const items = [
     name: "Suíte Privativa",
     value: 500,
     description: "Ambiente reservado para gravações, garantindo segurança e privacidade",
-    icon: "fas fa-hotel",
+    image: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-ljdv0t5qk1qm42" 
   },
   {
-    name: "2 coleiras personalizadas",
+    name: "2 coleiras personalizadas", 
     value: 150,
     description: "Coleiras em couro com detalhes em metal",
-    icon: "fas fa-ring",
+    image: "https://down-br.img.susercontent.com/file/sg-11134201-7qvdr-lf6zj1qzl66u4d",
     shopeeLink: "https://shopee.com.br/Coleira-Choker-G%C3%B3tica-Couro-Sint%C3%A9tico-BDSM-i.314650428.20448944733"
   },
   {
     name: "2 fantasias látex",
-    value: 400,
+    value: 400, 
     description: "Trajes especiais para performances",
-    icon: "fas fa-user-tie",
+    image: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-lhf7l8yrw9ck6f",
     shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857"
   },
   {
     name: "2 máscaras",
     value: 60,
     description: "Máscaras decorativas para preservar identidade",
-    icon: "fas fa-mask",
-    shopeeLink: "https://shopee.com.br/"
+    image: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-lh7e3ga4benp8g",
+    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857"
   },
   {
     name: "Acessórios adicionais",
     value: 100,
     description: "Complementos para as cenas",
-    icon: "fas fa-gift",
-    shopeeLink: "https://shopee.com.br/"
+    image: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-lj9mxq4low7wf8",
+    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857"
   },
   {
     name: "Plugs",
     value: 70,
     description: "Acessórios específicos para as cenas",
-    icon: "fas fa-plug",
-    shopeeLink: "https://shopee.com.br/"
+    image: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-ljdctdg4py8562",
+    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857"
   },
   {
     name: "Algemas",
     value: 40,
     description: "Algemas acolchoadas de qualidade",
-    icon: "fas fa-link",
-    shopeeLink: "https://shopee.com.br/"
+    image: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-ljdchj7p63sll0",
+    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857"
   },
   {
     name: "Chicote",
     value: 30,
     description: "Chicote profissional para práticas BDSM",
-    icon: "fas fa-wind",
-    shopeeLink: "https://shopee.com.br/"
+    image: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-ljdjg41dehgwjt",
+    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857"
   }
 ];
 
@@ -620,8 +622,13 @@ function renderItems() {
     const div = document.createElement('div');
     div.className = 'item-card';
     div.innerHTML = `
+      <img 
+        src="${item.image}" 
+        alt="${item.name}"
+        width="200"
+        height="200"
+      />
       <div>
-        <i class="${item.icon}"></i>
         <strong>${item.name}</strong>
         <p>${item.description}</p>
         ${item.shopeeLink ? `<a href="${item.shopeeLink}" target="_blank" rel="noopener noreferrer" class="shopee-link">Ver na Shopee</a>` : ''}
