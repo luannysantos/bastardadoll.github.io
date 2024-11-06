@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  
+<head>
+  <base href="https://bastardadoll.github.io" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kleiner Mond - Uma experiência única de BDSM e roleplay">
+<meta name="keywords" content="BDSM, roleplay, arte, performance">
+<meta name="author" content="Bergsee Mond & Kleiner Mond">
+<meta property="og:title" content="Kleiner Mond">
+<meta property="og:description" content="Uma experiência única de BDSM e roleplay">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🌙</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+:root {
+  --primary: #8b008b;
+  --secondary: #4a0048;
+  --accent: #ff69b4;
+  --text: #f0f0f0;
+  --bg: #1a1a1a;
+}
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.age-verification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.age-modal {
+  background: var(--secondary);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255,105,180,0.3);
+  width: 90%;
+  max-width: 500px;
+}
+
+.project-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.project-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--accent);
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background: var(--secondary);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(45deg, var(--accent), var(--primary));
+  width: 0%;
+  transition: width 1s ease-in-out;
+}
+
+.donate-button {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donate-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255,105,180,0.5);
+}
+
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.scene-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+  align-items: center;
+  background: var(--secondary);
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255,105,180,0.3);
+}
+
+.scene-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.scene-card:hover::before {
+  transform: scaleX(1);
+}
+
+.scene-svg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--primary);
+  padding: 10px;
+}
+
+.scene-title {
+  color: var(--accent);
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.item-card {
+  background: var(--secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shopee-link {
+  display: inline-block;
+  background: #ff4500;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.shopee-link:hover {
+  background: #ff6b3d;
+}
+
+.item-card img {
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .scene-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .donate-button {
+    width: 100%;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="age-verification" id="ageVerification">
+  <div class="age-modal">
+    <h2>Verificação de Idade</h2>
+    <p>Este site contém conteúdo adulto. Você confirma que tem 18 anos ou mais?</p>
+    <button class="donate-button" onclick="verifyAge()">Sim, tenho 18 anos ou mais</button>
+  </div>
+</div>
+
+<div class="container" style="display: none" id="mainContent">
+  <header class="project-header">
+    <h1 class="project-title">
+      <i class="fas fa-moon"></i> Kleiner Mond
+    </h1>
+    <p>Uma experiência única de BDSM e roleplay</p>
+  </header>
+
+  <section class="story-section">
+    <h2 class="section-title">Nossa História</h2>
+    <p>Bem-vindos ao projeto Kleiner Mond, uma iniciativa criada por Bergsee Mond (Luanny) e Kleiner Mond (Luanna). Nossa jornada começou com um sonho de criar conteúdo artístico que celebra a diversidade, a intimidade e a confiança.</p>
+  </section>
+
+  <section class="goals-section">
+    <h2 class="section-title">Objetivos</h2>
+    <p>Nossa objetivo é oferecer conteúdo exclusivo e de qualidade, garantindo a privacidade e segurança através de uma produção cuidadosa e profissional.</p>
+  </section>
+
+  <section class="items-section">
+    <h2 class="section-title">Itens Necessários</h2>
+    <div id="itemsList" class="item-list"></div>
+    
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" aria-valuenow="0" role="progressbar"></div>
+    </div>
+    
+    <a href="https://wa.me/5512982572507" class="donate-button" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-whatsapp"></i> Fazer Doação via WhatsApp
+    </a>
+  </section>
+
+  <section class="scenes-section">
+    <h2 class="section-title">Cenas Planejadas</h2>
+    <div class="scene-grid">
+      <div class="scene-card">
+        <svg class="scene-svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#ff69b4" stroke-width="4"/>
+          <path d="M30 50a20 20 0 0 1 40 0" fill="none" stroke="#ff69b4" stroke-width="4"/>
+          <circle cx="50" cy="50" r="5" fill="#ff69b4"/>
+        </svg>
+        <div>
+          <h3 class="scene-title">Cena 01: Ritual de Iniciação</h3>
+          <p>Uma jornada sensual de descoberta onde Bergsee Mond guia Kleiner Mond através dos primeiros passos no universo BDSM. Com velas, vendas e toques suaves, estabelecemos os fundamentos de confiança e entrega.</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <svg class="scene-svg" viewBox="0 0 100 100">
+          <rect x="20" y="40" width="60" height="20" fill="#ff69b4"/>
+          <circle cx="50" cy="50" r="25" fill="none" stroke="#ff69b4" stroke-width="4"/>
+          <path d="M35 50h30" stroke="#4a0048" stroke-width="4"/>
+        </svg>
+        <div>
+          <h3 class="scene-title">Cena 02: Adestramento</h3>
+          <p>Uma experiência intensa onde Kleiner Mond aprende obediência e submissão através de práticas de bondage, disciplina e jogos de poder. A coleira simboliza o compromisso e entrega total à sua Dominadora.</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <svg class="scene-svg" viewBox="0 0 100 100">
+          <path d="M20 50c0-20 60-20 60 0s-60 20-60 0z" fill="#ff69b4"/>
+          <circle cx="35" cy="45" r="5" fill="#4a0048"/>
+          <circle cx="65" cy="45" r="5" fill="#4a0048"/>
+          <path d="M40 60q10 10 20 0" fill="none" stroke="#4a0048" stroke-width="3"/>
+        </svg>
+        <div>
+          <h3 class="scene-title">Cena 03: Ato I</h3>
+          <p>O ápice da conexão entre Dominadora e submissa, explorando os limites do prazer e da dor. Uma dança de poder onde máscaras de látex, cordas e acessórios criam uma sinfonia de sensações.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const items = [
+  {
+    name: "Suíte + Gastos",
+    value: 500,
+    description: "Ambiente seguro e privado para as gravações",
+    icon: "fas fa-hotel",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234a0048'/%3E%3Cpath d='M20 40h60v40H20z' fill='%238b008b'/%3E%3Crect x='35' y='60' width='30' height='20' fill='%23ff69b4'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de uma suíte em tons de roxo e rosa"
+    }
+  },
+  {
+    name: "2 coleiras personalizadas",
+    value: 150,
+    description: "Coleiras em couro com detalhes em metal",
+    icon: "fas fa-ring",
+    shopeeLink: "https://shopee.com.br/Coleira-Choker-G%C3%B3tica-Couro-Sint%C3%A9tico-BDSM-i.314650428.20448944733",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='%23ff69b4' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='5' fill='%238b008b'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de uma coleira em tons de roxo e rosa"
+    }
+  },
+  {
+    name: "2 fantasias látex",
+    value: 400,
+    description: "Trajes especiais para performances",
+    icon: "fas fa-user-tie",
+    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30 20h40v60H30z' fill='%238b008b'/%3E%3Cpath d='M35 25h30v50H35z' fill='%23ff69b4'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de uma fantasia em tons de roxo e rosa"
+    }
+  },
+  {
+    name: "2 máscaras",
+    value: 60,
+    description: "Máscaras decorativas para preservar identidade",
+    icon: "fas fa-mask",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 40c0 20 80 20 80 0s-80 20-80 0z' fill='%238b008b'/%3E%3Cpath d='M20 40c0 10 60 10 60 0s-60 10-60 0z' fill='%23ff69b4'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de uma máscara em tons de roxo e rosa"
+    }
+  },
+  {
+    name: "Acessórios adicionais",
+    value: 100,
+    description: "Complementos para as cenas",
+    icon: "fas fa-gift",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='none' stroke='%23ff69b4' stroke-width='6'/%3E%3Cline x1='10' y1='30' x2='90' y2='30' stroke='%238b008b' stroke-width='6'/%3E%3Cline x1='10' y1='70' x2='90' y2='70' stroke='%238b008b' stroke-width='6'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de acessórios adicionais em tons de roxo e rosa"
+    }
+  },
+  {
+    name: "Plugs",
+    value: 70,
+    description: "Acessórios específicos para as cenas",
+    icon: "fas fa-plug",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23ff69b4'/%3E%3Cpath d='M50 20v20l-10 10h20l-10-10z' fill='%238b008b'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de plugs em tons de roxo e rosa"
+    }
+  },
+  {
+    name: "Algemas",
+    value: 40,
+    description: "Algemas acolchoadas de qualidade",
+    icon: "fas fa-link",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='30' cy='50' rx='20' ry='10' fill='%238b008b'/%3E%3Cellipse cx='70' cy='50' rx='20' ry='10' fill='%238b008b'/%3E%3Cline x1='40' y1='50' x2='60' y2='50' stroke='%23ff69b4' stroke-width='6'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de algemas em tons de roxo e rosa"
+    }
+  },
+  {
+    name: "Chicote",
+    value: 30,
+    description: "Chicote profissional para práticas BDSM",
+    icon: "fas fa-wind",
+    image: {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 90V70M50 10v30' stroke='%23ff69b4' stroke-width='6'/%3E%3Cpath d='M90 40l-20 20' stroke='%238b008b' stroke-width='6'/%3E%3C/svg%3E",
+      alt: "Ilustração minimalista de um chicote em tons de roxo e rosa"
+    }
+  }
+];
+
+let totalValue = items.reduce((acc, item) => acc + item.value, 0);
+let currentValue = 0;
+
+function verifyAge() {
+  document.getElementById('ageVerification').style.display = 'none';
+  document.getElementById('mainContent').style.display = 'block';
+  renderItems();
+  updateProgress();
+}
+
+function renderItems() {
+  const itemsList = document.getElementById('itemsList');
+  itemsList.className = 'item-list';
+  items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'item-card';
+    div.innerHTML = `
+      <div>
+        <i class="${item.icon}"></i>
+        <strong>${item.name}</strong>
+        <p>${item.description}</p>
+        ${item.image ? `<img src="${item.image.src}" alt="${item.image.alt}" width="100" height="100" style="display: block; margin: 10px 0;">` : ''}
+        ${item.shopeeLink ? `<a href="${item.shopeeLink}" target="_blank" rel="noopener noreferrer" class="shopee-link">Ver na Shopee</a>` : ''}
+      </div>
+      <div>R$ ${item.value},00</div>
+    `;
+    itemsList.appendChild(div);
+  });
+}
+
+function updateProgress() {
+  const percentage = Math.min((currentValue / totalValue) * 100, 100);
+  const progressFill = document.getElementById('progressFill');
+  progressFill.style.width = `${percentage}%`;
+  progressFill.setAttribute('aria-valuenow', percentage);
+}
+</script>
+</body>
+</html>
