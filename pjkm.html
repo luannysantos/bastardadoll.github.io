@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Kleiner Mond - Uma experiência única de BDSM e roleplay">
-<meta name="keywords" content="BDSM, roleplay, arte, performance">
+<meta name="keywords" content="BDSM, roleplay, confiança, casais, intimidade, cumplicidade">
 <meta name="author" content="Bergsee Mond & Kleiner Mond">
 <meta property="og:title" content="Kleiner Mond">
 <meta property="og:description" content="Uma experiência única de BDSM e roleplay">
+<meta property="og:image" content="preview.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🌙</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -224,6 +225,18 @@ body {
   }
 }
 
+.trust-section {
+  background: rgba(255,105,180,0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.trust-section h3 {
+  color: var(--accent);
+  margin-top: 0;
+}
+
 .scene-ambience {
   display: flex;
   gap: 1rem;
@@ -275,18 +288,9 @@ body {
   font-size: 0.8rem;
 }
 
-.bdsm-practices {
-  margin: 3rem 0;
-}
-
-.practices-intro {
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-}
-
 .practices-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
 }
@@ -302,44 +306,41 @@ body {
   transform: translateY(-5px);
 }
 
-.practice-card h3 {
+.practice-card i {
+  font-size: 2rem;
   color: var(--accent);
-  margin: 0 0 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.info-box {
+.practice-card h3 {
+  color: var(--accent);
+  margin: 0.5rem 0;
+}
+
+.practice-card p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.safety-note {
   background: rgba(255,105,180,0.1);
   padding: 1.5rem;
   border-radius: 10px;
-  margin-top: 2rem;
-}
-
-.info-box h3 {
-  color: var(--accent);
+  margin: 2rem 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 0;
+  gap: 1rem;
 }
 
-.info-box ul {
-  list-style: none;
-  padding-left: 1rem;
-}
-
-.info-box li {
-  margin: 0.5rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.info-box li::before {
-  content: "•";
+.safety-note i {
+  font-size: 2rem;
   color: var(--accent);
+}
+
+.practices-intro {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
 }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -365,12 +366,65 @@ body {
 
   <section class="story-section">
     <h2 class="section-title">Nossa História</h2>
-    <p>Bem-vindos ao projeto Kleiner Mond, uma iniciativa criada por Bergsee Mond (Trans) e Kleiner Mond (Mulher). Nossa jornada começou com um sonho de criar conteúdo artístico que celebra a diversidade, a intimidade e a confiança.</p>
+    <p>Bem-vindos ao projeto Kleiner Mond, uma iniciativa de Bergsee Mond (mulher trans) e Kleiner Mond (mulher cis). Criamos este projeto com o objetivo de celebrar a cumplicidade, a confiança e a intimidade entre casais, oferecendo uma experiência onde cada detalhe é planejado para criar uma conexão única.</p>
+    
+    <div class="trust-section">
+      <h3>Cumplicidade e Confiança</h3>
+      <p>A cumplicidade é o fundamento de qualquer relação saudável, e no universo do BDSM, ela ganha ainda mais significado. Quando casais exploram juntos práticas como o BDSM e roleplay, estão se aprofundando em uma experiência de parceria e confiança mútua, construindo momentos que reforçam o respeito, o entendimento e o cuidado um com o outro.</p>
+    </div>
   </section>
 
   <section class="goals-section">
     <h2 class="section-title">Objetivos</h2>
     <p>Nossa objetivo é oferecer conteúdo exclusivo e de qualidade, garantindo a privacidade e segurança através de uma produção cuidadosa e profissional.</p>
+  </section>
+
+  <section class="practices-section">
+    <h2 class="section-title">Práticas e Fetiches</h2>
+    <p class="practices-intro">Exploramos diversas práticas BDSM e roleplay de forma segura, consensual e respeitosa. Aqui está um guia das principais práticas:</p>
+    
+    <div class="practices-grid">
+      <div class="practice-card">
+        <i class="fas fa-link"></i>
+        <h3>Bondage</h3>
+        <p>Amarrações e restrições consensuais com foco em confiança e segurança.</p>
+      </div>
+      
+      <div class="practice-card">
+        <i class="fas fa-crown"></i>
+        <h3>Dominação e Submissão</h3>
+        <p>Troca de poder consensual com comandos e práticas de obediência.</p>
+      </div>
+      
+      <div class="practice-card">
+        <i class="fas fa-theater-masks"></i>
+        <h3>Roleplay</h3>
+        <p>Interpretação de papéis e cenários para explorar fantasias.</p>
+      </div>
+      
+      <div class="practice-card">
+        <i class="fas fa-eye-slash"></i>
+        <h3>Controle Sensorial</h3>
+        <p>Uso de vendas e privação sensorial para intensificar experiências.</p>
+      </div>
+      
+      <div class="practice-card">
+        <i class="fas fa-temperature-high"></i>
+        <h3>Temperatura</h3>
+        <p>Exploração segura de sensações com cera e gelo.</p>
+      </div>
+      
+      <div class="practice-card">
+        <i class="fas fa-hand-paper"></i>
+        <h3>Impact Play</h3>
+        <p>Tapas e estímulos controlados para explorar sensações.</p>
+      </div>
+    </div>
+
+    <div class="safety-note">
+      <i class="fas fa-shield-alt"></i>
+      <p>Todas as práticas são realizadas com <strong>consentimento explícito</strong>, <strong>comunicação aberta</strong> e respeito aos <strong>limites</strong> de cada pessoa envolvida.</p>
+    </div>
   </section>
 
   <section class="items-section">
@@ -384,27 +438,6 @@ body {
     <a href="https://wa.me/5512982572507" class="donate-button" target="_blank" rel="noopener noreferrer">
       <i class="fab fa-whatsapp"></i> Fazer Doação via WhatsApp
     </a>
-  </section>
-
-  <section class="bdsm-practices">
-    <h2 class="section-title">Práticas e Fetiches</h2>
-    <p class="practices-intro">Aqui está uma lista de práticas comuns em BDSM e roleplay, apresentados de maneira objetiva e respeitosa. Todas as práticas requerem consentimento explícito e comunicação aberta.</p>
-    
-    <div class="practices-grid">
-      <!-- Practice cards will be dynamically generated by JS -->
-    </div>
-
-    <div class="info-box">
-      <h3><i class="fas fa-exclamation-circle"></i> Importante</h3>
-      <p>Todas as práticas requerem:</p>
-      <ul>
-        <li>Consentimento explícito</li>
-        <li>Comunicação aberta</li>
-        <li>Conhecimento dos limites</li>
-        <li>Segurança e bem-estar</li>
-        <li>Respeito mútuo</li>
-      </ul>
-    </div>
   </section>
 
   <section class="scenes-section">
@@ -432,7 +465,7 @@ body {
           <path d="M90,50 Q100,20 110,50" stroke="var(--accent)" fill="none" stroke-width="2"/>
         </svg>
         <div class="scene-details">
-          <p class="scene-description">Um momento íntimo de entrega e confiança, onde Kleiner Mond, vendada, é guiada por Bergsee Mond em um ritual sensorial de iniciação. A atmosfera é criada por velas, incenso e música suave.</p>
+          <p class="scene-description">Um momento íntimo de entrega e confiança, onde Kleiner Mond, vendada, é guiada por Bergsee Mond em um ritual sensorial de iniciação. A atmosfera é criada por velas, incenso e música suave, proporcionando uma experiência única de conexão.</p>
           <div class="scene-elements">
             <span><i class="fas fa-list"></i> Elementos:</span>
             <ul>
@@ -514,130 +547,69 @@ body {
 <script>
 const items = [
   {
-    name: "Suíte + Gastos",
+    name: "Suíte Privativa",
     value: 500,
-    description: "Ambiente seguro e privado para as gravações",
+    description: "Ambiente reservado para gravações, garantindo segurança e privacidade",
     icon: "fas fa-hotel",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234a0048'/%3E%3Cpath d='M20 40h60v40H20z' fill='%238b008b'/%3E%3Crect x='35' y='60' width='30' height='20' fill='%23ff69b4'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de uma suíte em tons de roxo e rosa"
-    }
   },
   {
     name: "2 coleiras personalizadas",
     value: 150,
     description: "Coleiras em couro com detalhes em metal",
     icon: "fas fa-ring",
-    shopeeLink: "https://shopee.com.br/Coleira-Choker-G%C3%B3tica-Couro-Sint%C3%A9tico-BDSM-i.314650428.20448944733",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='%23ff69b4' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='5' fill='%238b008b'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de uma coleira em tons de roxo e rosa"
-    }
+    shopeeLink: "https://shopee.com.br/Coleira-Choker-G%C3%B3tica-Couro-Sint%C3%A9tico-BDSM-i.314650428.20448944733"
   },
   {
     name: "2 fantasias látex",
     value: 400,
     description: "Trajes especiais para performances",
     icon: "fas fa-user-tie",
-    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30 20h40v60H30z' fill='%238b008b'/%3E%3Cpath d='M35 25h30v50H35z' fill='%23ff69b4'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de uma fantasia em tons de roxo e rosa"
-    }
+    shopeeLink: "https://shopee.com.br/Fantasia-Vinil-Látex-Body-Feminino-i.314650428.21848944857"
   },
   {
     name: "2 máscaras",
     value: 60,
     description: "Máscaras decorativas para preservar identidade",
     icon: "fas fa-mask",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 40c0 20 80 20 80 0s-80 20-80 0z' fill='%238b008b'/%3E%3Cpath d='M20 40c0 10 60 10 60 0s-60 10-60 0z' fill='%23ff69b4'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de uma máscara em tons de roxo e rosa"
-    }
+    shopeeLink: "https://shopee.com.br/"
   },
   {
     name: "Acessórios adicionais",
     value: 100,
     description: "Complementos para as cenas",
     icon: "fas fa-gift",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='none' stroke='%23ff69b4' stroke-width='6'/%3E%3Cline x1='10' y1='30' x2='90' y2='30' stroke='%238b008b' stroke-width='6'/%3E%3Cline x1='10' y1='70' x2='90' y2='70' stroke='%238b008b' stroke-width='6'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de acessórios adicionais em tons de roxo e rosa"
-    }
+    shopeeLink: "https://shopee.com.br/"
   },
   {
     name: "Plugs",
     value: 70,
     description: "Acessórios específicos para as cenas",
     icon: "fas fa-plug",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23ff69b4'/%3E%3Cpath d='M50 20v20l-10 10h20l-10-10z' fill='%238b008b'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de plugs em tons de roxo e rosa"
-    }
+    shopeeLink: "https://shopee.com.br/"
   },
   {
     name: "Algemas",
     value: 40,
     description: "Algemas acolchoadas de qualidade",
     icon: "fas fa-link",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='30' cy='50' rx='20' ry='10' fill='%238b008b'/%3E%3Cellipse cx='70' cy='50' rx='20' ry='10' fill='%238b008b'/%3E%3Cline x1='40' y1='50' x2='60' y2='50' stroke='%23ff69b4' stroke-width='6'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de algemas em tons de roxo e rosa"
-    }
+    shopeeLink: "https://shopee.com.br/"
   },
   {
     name: "Chicote",
     value: 30,
     description: "Chicote profissional para práticas BDSM",
     icon: "fas fa-wind",
-    image: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 90V70M50 10v30' stroke='%23ff69b4' stroke-width='6'/%3E%3Cpath d='M90 40l-20 20' stroke='%238b008b' stroke-width='6'/%3E%3C/svg%3E",
-      alt: "Ilustração minimalista de um chicote em tons de roxo e rosa"
-    }
+    shopeeLink: "https://shopee.com.br/"
   }
 ];
 
 let totalValue = items.reduce((acc, item) => acc + item.value, 0);
 let currentValue = 0;
 
-const practices = [
-  {
-    name: "Bondage (Amarração)",
-    icon: "fas fa-link",
-    description: "Uso de cordas, algemas ou outros materiais para restringir movimentos de forma consensual, com foco em confiança e segurança."
-  },
-  {
-    name: "Dominação e Submissão",
-    icon: "fas fa-user-secret",
-    description: "Uma dinâmica onde um parceiro assume o controle e o outro se submete, requerendo confiança mútua."
-  },
-  {
-    name: "Roleplay",
-    icon: "fas fa-theater-masks",
-    description: "Atuar em diferentes personagens ou cenários, explorando fantasias de forma consensual."
-  },
-  {
-    name: "Impact Play",
-    icon: "fas fa-thunderbolt",
-    description: "Uso de contato físico, como palmadas ou chicotadas, para prazer consensual."
-  },
-  {
-    name: "Sensory Play",
-    icon: "fas fa-eye",
-    description: "Exploração de sentidos como toque, som e cheiro para intensificar experiências BDSM."
-  },
-  {
-    name: "Asfixia erótica",
-    icon: "fas fa-smoke",
-    description: "Restringir temporariamente a respiração para aumentar a excitação, prática que deve ser realizada com extremo cuidado."
-  }
-];
-
 function verifyAge() {
   document.getElementById('ageVerification').style.display = 'none';
   document.getElementById('mainContent').style.display = 'block';
   renderItems();
-  renderPractices();
   updateProgress();
 }
 
@@ -652,25 +624,11 @@ function renderItems() {
         <i class="${item.icon}"></i>
         <strong>${item.name}</strong>
         <p>${item.description}</p>
-        ${item.image ? `<img src="${item.image.src}" alt="${item.image.alt}" width="100" height="100" style="display: block; margin: 10px 0;">` : ''}
         ${item.shopeeLink ? `<a href="${item.shopeeLink}" target="_blank" rel="noopener noreferrer" class="shopee-link">Ver na Shopee</a>` : ''}
       </div>
       <div>R$ ${item.value},00</div>
     `;
     itemsList.appendChild(div);
-  });
-}
-
-function renderPractices() {
-  const grid = document.querySelector('.practices-grid');
-  practices.forEach(practice => {
-    const card = document.createElement('div');
-    card.className = 'practice-card';
-    card.innerHTML = `
-      <h3><i class="${practice.icon}"></i>${practice.name}</h3>
-      <p>${practice.description}</p>
-    `;
-    grid.appendChild(card);
   });
 }
 
@@ -681,4 +639,5 @@ function updateProgress() {
   progressFill.setAttribute('aria-valuenow', percentage);
 }
 </script>
-</body></html>
+</body>
+</html>
