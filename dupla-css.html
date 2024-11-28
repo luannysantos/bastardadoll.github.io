@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <base href="/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato SSC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 1rem;
+            font-family: 'Poppins', sans-serif;
+            background: #1a0010;
+            color: #ffd1ea;
+            line-height: 1.6;
+        }
+
+        .contract-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(26,0,16,0.95);
+            border: 2px solid #ff1493;
+            border-radius: 15px;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+            box-shadow: 0 5px 25px rgba(255,20,147,0.15);
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            .contract-content { padding: 1rem; }
+            .signature-block { flex-direction: column; }
+            .signature-line { margin: 1rem 0; }
+            .section-title { font-size: 1.2rem; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .clause {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .subclause {
+            margin-left: 2rem;
+            font-size: 0.95em;
+            color: #ffa6d3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "•";
+            color: #ff1493;
+            position: absolute;
+            left: 0;
+        }
+
+        .requirements {
+            border: 1px solid #ff1493;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            background: rgba(255,20,147,0.05);
+        }
+
+        .requirements h3 {
+            color: #ff1493;
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 1px solid #ff1493;
+            padding-bottom: 0.5rem;
+        }
+
+        h2, h3, h4 {
+            color: #ff1493;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 2rem 0;
+            color: #ff69b4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,20,147,0.3);
+        }
+
+        .signature-block {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ff1493;
+        }
+
+        .signature-line {
+            text-align: center;
+            flex: 1;
+            margin: 0 2rem;
+        }
+
+        .signature-line hr {
+            border: none;
+            border-bottom: 1px solid #ff69b4;
+            margin-bottom: 0.5rem;
+        }
+
+        .clause-number {
+            color: #ff1493;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .highlight {
+            background: rgba(255,20,147,0.1);
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,20,147,0.4);
+            background-color: #ff69b4;
+        }
+
+        @media (max-width: 768px) {
+            a {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9em;
+            }
+        }
+
+        .service-selector {
+            padding: 1rem;
+        }
+
+        .phase {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,20,147,0.3);
+            padding-bottom: 1rem;
+        }
+
+        .time-block {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            background: rgba(255,20,147,0.05);
+            border-radius: 8px;
+        }
+
+        .time-block h5 {
+            color: #ff69b4;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .service-option {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ff1493;
+            background: rgba(26,0,16,0.95);
+            color: #ffd1ea;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .service-option:focus {
+            outline: none;
+            border-color: #ff69b4;
+            box-shadow: 0 0 5px rgba(255,20,147,0.5);
+        }
+
+        .service-option option {
+            background: #1a0010;
+            color: #ffd1ea;
+            padding: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ff69b4;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ff1493;
+            background: rgba(26,0,16,0.95);
+            color: #ffd1ea;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff69b4;
+            box-shadow: 0 0 5px rgba(255,20,147,0.5);
+        }
+
+        .service-option:invalid {
+            border-color: #ff4444;
+        }
+
+        .form-group input:invalid,
+        .form-group select:invalid {
+            border-color: #ff4444;
+        }
+
+        .validation-message {
+            color: #ff4444;
+            font-size: 0.9em;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .service-option:invalid + .validation-message {
+            display: block;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-item {
+            background: rgba(255,20,147,0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item h4 {
+            margin-bottom: 1rem;
+        }
+
+        .carousel-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img,
+        .carousel-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="contract-content">
+        <h2 class="section-title">CONTRATO DE SUBMISSÃO E SERVIDÃO TOTAL</h2>
+
+        <div class="requirements">
+            <h3>1. IDENTIFICAÇÃO DAS PARTES</h3>
+            <p><strong>Dona:</strong> Luanny Ravatche - Trans, branca magra, 177cm de altura, 64kg, definida, seios pequenos, loira de cabelo comprido, 29 anos, com 19 centímetros reto de dote.</p>
+            <p><strong>Submissa:</strong> Pamela - Mulher cis, branca, 167cm de altura, 64kg, seios médios, morena de cabelo comprido, 25 anos, buceta rosinha.</p>
+        </div>
+
+        <div class="requirements">
+            <h3>2. TERMOS PROFISSIONAIS</h3>
+            <ul>
+                <li>Atendimentos conjuntos como garotas de programa com valores tabelados</li>
+                <li>Pamela: sem práticas anais, todos serviços com preservativo, uso obrigatório de lingerie</li>
+                <li>Pamela: especialização em massagens eróticas e sexo vaginal</li>
+                <li>Luanny: sexo oral e garganta profunda sem preservativo</li>
+                <li>Luanny: penetração ativa</li>
+                <li>Luanny: preferência passiva em atendimentos individuais</li>
+                <li>Luanny: penetração passiva</li>
+                <li>Luanny: gestão exclusiva de conteúdo adulto online e mídias sociais</li>
+                <li>Luanny: responsável pela proteção durante atendimentos e porte de spray</li>
+                <li>Luanny: negociação de valores e agendamento dos programas</li>
+                <li>Exames médicos mensais obrigatórios para ambas</li>
+                <li>Manutenção de kit de primeiros socorros e preservativos</li>
+                <li>Local de atendimento: apenas motéis e hotéis cadastrados</li>
+                <li>Política de cancelamento: mínimo 2 horas de antecedência</li>
+            </ul>
+        </div>
+
+        <div class="requirements">
+            <h3>3. DEVERES DA SUBMISSA</h3>
+            <ul>
+                <li>Disponibilidade sexual permanente</li>
+                <li>Obediência incondicional a todos os desejos da Dona</li>
+                <li>Aceitação de todas as formas de punição</li>
+                <li>Participação em exposições públicas quando ordenado</li>
+                <li>Colaboração na produção de conteúdo adulto</li>
+            </ul>
+        </div>
+
+        <div class="requirements">
+            <h3>4. DIREITOS DA PROPRIETÁRIA</h3>
+            <ul>
+                <li>Uso irrestrito do corpo da submissa</li>
+                <li>Compartilhamento durante atendimentos profissionais</li>
+                <li>Aplicação de punições e correções</li>
+                <li>Controle total sobre rotina e comportamento</li>
+                <li>Gestão exclusiva de conteúdo online</li>
+                <li>Autoridade sobre exposição pública</li>
+            </ul>
+        </div>
+
+        <div class="requirements">
+            <h3>5. COMPROMISSO DE GESTÃO E MONETIZAÇÃO</h3>
+            <p>A Dona Luanny Ravatche se compromete a:</p>
+            <ul>
+                <li>Desenvolvimento estratégico de perfis em plataformas adultas</li>
+                <li>Gestão profissional de produção e edição de conteúdo</li>
+                <li>Maximização de alcance e engajamento</li>
+                <li>Distribuição igualitária de lucros (50/50) após custos</li>
+                <li>Investimento em equipamentos e marketing</li>
+                <li>Transparência total na gestão financeira</li>
+                <li>Proteção de propriedade intelectual</li>
+                <li>Reinvestimento para melhoria contínua</li>
+            </ul>
+        </div>
+
+        <div class="requirements">
+            <h3>6. CONSIDERAÇÕES FINAIS</h3>
+            <p>Este contrato tem validade permanente e indeterminada. Todas as atividades são consensuais e as condições estabelecidas são aceitas integralmente por ambas as partes.</p>
+        </div>
+
+        <div class="requirements">
+            <h3>7. CLÁUSULAS E SUBCLÁUSULAS ADICIONAIS</h3>
+            
+            <div class="clause">
+                <span class="clause-number">7.1</span> Moradia
+                <div class="subclause">7.1.1 - Cada uma em sua residência</div>
+                <div class="subclause">7.1.2 - Visitas programadas conforme necessidade</div>
+                <div class="subclause">7.1.3 - Manutenção de espaço dedicado para sessões</div>
+            </div>
+
+            <div class="clause">
+                <span class="clause-number">7.2</span> Rotina Diária
+                <div class="subclause">7.2.1 - Acordar e enviar uma foto para sua Dona</div>
+                <div class="subclause">7.2.2 - Apresentação pessoal conforme especificações</div>
+                <div class="subclause">7.2.3 - Relatórios diários de atividades</div>
+            </div>
+
+            <div class="clause">
+                <span class="clause-number">7.3</span> Conduta Social
+                <div class="subclause">7.3.1 - Comportamento submisso em atendimentos</div>
+                <div class="subclause">7.3.2 - Restrições de comunicação com terceiros</div>
+                <div class="subclause">7.3.3 - Protocolos específicos para eventos sociais</div>
+            </div>
+
+            <div class="clause">
+                <span class="clause-number">7.4</span> Desenvolvimento Profissional
+                <div class="subclause">7.4.1 - Participação em treinamentos específicos</div>
+                <div class="subclause">7.4.2 - Metas mensais de produtividade</div>
+                <div class="subclause">7.4.3 - Avaliações periódicas de desempenho</div>
+            </div>
+
+            <div class="clause">
+                <span class="clause-number">7.5</span> Penalidades
+                <div class="subclause">7.5.1 - Gradação das punições conforme gravidade</div>
+                <div class="subclause">7.5.2 - Sistema de advertências formais</div>
+                <div class="subclause">7.5.3 - Procedimentos de correção comportamental</div>
+            </div>
+        </div>
+
+        <div class="requirements">
+            <h3>GALERIA</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <h4>Luanny Ravatche</h4>
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/300x400" alt="Luanny">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/300x400" alt="Luanny GIF">
+                            </div>
+                            <div class="carousel-slide">
+                                <video autoplay loop muted playsinline>
+                                    <source src="" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <h4>Pamela</h4>
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/300x400" alt="Pamela">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/300x400" alt="Pamela GIF">
+                            </div>
+                            <div class="carousel-slide">
+                                <video autoplay loop muted playsinline>
+                                    <source src="" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="requirements">
+            <h3>8. ROTEIRO PERSONALIZADO DE ATENDIMENTO (1 HORA)</h3>
+            
+            <div class="service-selector">
+                <div class="phase">
+                    <h4>8.1 Primeira Fase (0-20 minutos)</h4>
+                    
+                    <div class="time-block">
+                        <h5>0-5 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Recepção calorosa, conversação leve, oferecimento de bebidas</option>
+                            <option>Striptease sensual de apresentação</option>
+                            <option>Banho quente relaxante conjunto</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>6-10 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Massagem relaxante preliminar com óleos específicos</option>
+                            <option>Beijos e carícias suaves pelo corpo</option>
+                            <option>Sensualização com lingerie especial</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>11-15 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Pamela inicia massagem sensual completa</option>
+                            <option>Pamela realiza strip-tease exclusivo</option>
+                            <option>Pamela faz apresentação erótica especial</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>16-20 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Luanny começa estímulos orais suaves</option>
+                            <option>Luanny realiza massagem com finale especial</option>
+                            <option>Luanny apresenta show particular</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <h4>8.2 Segunda Fase (21-40 minutos)</h4>
+                    
+                    <div class="time-block">
+                        <h5>21-25 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Pamela realiza oral enquanto Luanny estimula outras zonas</option>
+                            <option>Dupla estimulação sincronizada</option>
+                            <option>Shows eróticos individuais alternados</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>26-30 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Intensificação dos estímulos, introdução de acessórios</option>
+                            <option>Massagem corporal completa a quatro mãos</option>
+                            <option>Apresentação erótica conjunta</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>31-35 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Pamela foco em penetração vaginal</option>
+                            <option>Pamela realiza show especial</option>
+                            <option>Pamela massagem tântrica</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>36-40 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Luanny assume posição ativa com Pamela</option>
+                            <option>Luanny realiza show particular</option>
+                            <option>Luanny massagem especial</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <h4>8.3 Fase Final (41-60 minutos)</h4>
+                    
+                    <div class="time-block">
+                        <h5>41-45 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Alternância de posições e ritmos</option>
+                            <option>Show especial conjunto</option>
+                            <option>Massagem relaxante final</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>46-50 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Intensificação para clímax</option>
+                            <option>Relaxamento sensual</option>
+                            <option>Momento especial personalizado</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>51-55 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Relaxamento e carícias suaves</option>
+                            <option>Massagem final relaxante</option>
+                            <option>Momento de conexão especial</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+
+                    <div class="time-block">
+                        <h5>56-60 minutos</h5>
+                        <select class="service-option" required>
+                            <option value="">Selecione uma opção</option>
+                            <option>Higienização, despedida cordial</option>
+                            <option>Banho relaxante conjunto</option>
+                            <option>Momento final especial</option>
+                        </select>
+                        <div class="validation-message">Por favor, selecione uma opção.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="requirements">
+            <h3>FORMULÁRIO DE AGENDAMENTO</h3>
+            
+            <form id="bookingForm" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="form-group">
+                    <label for="nick">Nick:</label>
+                    <input type="text" id="nick" class="service-option" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthdate">Data de Nascimento:</label>
+                    <input type="date" id="birthdate" class="service-option" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bookingDate">Data Pretendida:</label>
+                    <input type="date" id="bookingDate" class="service-option" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bookingTime">Horário:</label>
+                    <input type="time" id="bookingTime" class="service-option" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Local (Hotel/Motel e especificações):</label>
+                    <input type="text" id="location" class="service-option" placeholder="Nome do Hotel/Motel e detalhes" required>
+                </div>
+            </form>
+        </div>
+
+        <div class="requirements">
+            <h3>9. INFORMAÇÕES DE AGENDAMENTO E VALORES</h3>
+            
+            <div class="clause">
+                <span class="clause-number">9.1</span> Procedimento de Agendamento
+                <div class="subclause">9.1.1 - Agendamento com mínimo de 4 horas de antecedência</div>
+                <div class="subclause">9.1.2 - Reserva confirmada mediante adiantamento de R$ 50,00</div>
+                <div class="subclause">9.1.3 - Adiantamento descontado no valor final</div>
+            </div>
+
+            <div class="clause">
+                <span class="clause-number">9.2</span> Valores
+                <div class="subclause">9.2.1 - Valor base: R$ 500,00 (1 hora)</div>
+                <div class="subclause">9.2.2 - Hotel/Motel não incluso</div>
+                <div class="subclause">9.2.3 - Taxa de deslocamento conforme região</div>
+            </div>
+
+            <div class="highlight">
+                <p><strong>Observações sobre pagamento:</strong></p>
+                <ul>
+                    <li>Adiantamento via PIX</li>
+                    <li>Saldo restante em dinheiro no início do encontro</li>
+                    <li>Valores adicionais conforme serviços especiais</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://wa.me/5512982572507?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20com%20Luanny%20e%20Pamela.%0A%0AServiço:%201%20hora%20-%20R$%20500,00%20%2B%20local%20(Hotel/Motel)%20%2B%20deslocamento%0A%0ANick:%20__%0AData%20de%20Nascimento:%20__%0AData%20pretendida:%20__%0AHorário:%20__%0ALocal%20(Hotel/Motel):%20__" 
+                   style="display: inline-block; 
+                          background-color: #ff1493; 
+                          color: white; 
+                          padding: 1rem 2rem; 
+                          border-radius: 25px; 
+                          text-decoration: none;
+                          font-weight: bold;
+                          transition: all 0.3s ease;
+                          box-shadow: 0 4px 15px rgba(255,20,147,0.3);">
+                    💋 CONTRATAR AGORA
+                </a>
+            </div>
+        </div>
+
+        <div class="signature-block">
+            <div class="signature-line">
+                <hr>
+                <p>Pamela<br>Submissa</p>
+            </div>
+            <div class="signature-line">
+                <hr>
+                <p>Luanny Ravatche<br>Proprietária</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 2rem; font-style: italic;">
+            Data: ___ / ___ / ______
+        </p>
+    </div>
+
+    <script>
+        document.querySelector('a[href^="https://wa.me"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const nick = document.getElementById('nick').value;
+            const birthdate = document.getElementById('birthdate').value;
+            const bookingDate = document.getElementById('bookingDate').value;
+            const bookingTime = document.getElementById('bookingTime').value;
+            const location = document.getElementById('location').value;
+            
+            // Validate form and selections
+            const selects = document.querySelectorAll('.service-option');
+            let allSelectsChosen = true;
+            let selectedOptions = [];
+            
+            selects.forEach(select => {
+                if (select.tagName === 'SELECT' && select.value) {
+                    const timeBlock = select.closest('.time-block');
+                    const timeLabel = timeBlock.querySelector('h5').textContent;
+                    selectedOptions.push(`${timeLabel}: ${select.value}`);
+                }
+                if (!select.value) {
+                    allSelectsChosen = false;
+                }
+            });
+
+            if (!nick || !birthdate || !bookingDate || !bookingTime || !location || !allSelectsChosen) {
+                alert('Por favor, preencha todos os campos do formulário e selecione todas as opções do roteiro antes de prosseguir.');
+                return;
+            }
+            
+            // Format the message with proper sections and line breaks
+            const message = `Olá! Gostaria de agendar um horário com Luanny e Pamela.
+
+*Serviço:* 1 hora - R$ 500,00 + local (Hotel/Motel) + deslocamento
+
+*DADOS DO CLIENTE:*
+Nick: ${nick}
+Data de Nascimento: ${birthdate}
+Data pretendida: ${bookingDate}
+Horário: ${bookingTime}
+Local (Hotel/Motel): ${location}
+
+*ROTEIRO SELECIONADO:*
+${selectedOptions.join('\n')}`;
+
+            // Encode and redirect to WhatsApp
+            window.location.href = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
+        });
+
+        // Rest of the carousel code remains the same
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.carousel');
+            
+            carousels.forEach(carousel => {
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                let currentSlide = 0;
+                
+                slides[0].classList.add('active');
+                
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
