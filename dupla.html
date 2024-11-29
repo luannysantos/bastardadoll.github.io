@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <base href="bastardadoll.github.io">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Luanny e Pamela, acompanhantes de luxo em São José dos Campos. Serviço premium, discrição e qualidade garantida.">
+    <meta name="keywords" content="acompanhantes, luxo, São José dos Campos, sjc, vale do paraíba, luanny, pamela, trans, massagem">
+    <meta name="robots" content="index, follow">
+
+    <!-- Location Meta Tags -->
+    <meta name="geo.region" content="BR-SP">
+    <meta name="geo.placename" content="São José dos Campos">
+    <meta name="geo.position" content="-23.1896;-45.9032">
+    <meta name="ICBM" content="23.1896, -45.9032">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Luanny & Pamela - Acompanhantes de Luxo em São José dos Campos">
+    <meta property="og:description" content="Serviço premium de acompanhantes em São José dos Campos. Discrição e qualidade garantida com Luanny e Pamela.">
+    <meta property="og:image" content="https://bastardadoll.github.io/cover.jpg">
+    <meta property="og:url" content="https://bastardadoll.github.io">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Luanny & Pamela - Acompanhantes de Luxo em SJC">
+    <meta name="twitter:description" content="Serviço premium de acompanhantes em São José dos Campos. Encontre Luanny e Pamela.">
+    <meta name="twitter:image" content="https://bastardadoll.github.io/cover.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
+
+    <title>Luanny & Pamela - Acompanhantes de Luxo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 1rem;
+            font-family: 'Poppins', sans-serif;
+            background: #1a0010;
+            color: #ffd1ea;
+            line-height: 1.6;
+        }
+
+        .contract-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(26,0,16,0.95);
+            border: 2px solid #ff1493;
+            border-radius: 15px;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+            box-shadow: 0 5px 25px rgba(255,20,147,0.15);
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            .contract-content { padding: 1rem; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Force two equal columns */
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr 1fr; /* Maintain two columns */
+                gap: 1rem; /* Reduce gap on mobile */
+            }
+        }
+
+        .profile-card {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255,20,147,0.05);
+            border: 1px solid #ff1493;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-card h3 {
+            height: 40px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-media {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* This creates the correct 16:9 aspect ratio for 1920x1080 */
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            border-radius: 10px;
+        }
+
+        .profile-media img, 
+        .profile-media video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: none; /* Hide by default until loaded */
+        }
+
+        .profile-media img.loaded {
+            opacity: 1;
+            display: block;
+        }
+
+        .profile-media::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.2) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        .media-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 0.9em;
+            text-align: center;
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            min-height: 120px; /* Fixed height for stats section */
+        }
+
+        .stat-item {
+            background: rgba(255,20,147,0.1);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9em;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .profile-card p {
+            min-height: 150px; /* Fixed height for description */
+            margin: 1rem 0;
+            font-size: 0.9em;
+            color: #ffd1ea;
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+
+        .services {
+            min-height: 200px; /* Fixed height for services section */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .services h4 {
+            height: 40px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .services ul {
+            flex: 1;
+            margin: 0;     
+            padding-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .services ul li {
+            margin: 0.5rem 0;
+            text-align: left;
+        }
+
+        .highlight-box {
+            background: rgba(255,20,147,0.05);
+            border: 1px solid #ff1493;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .price-tag {
+            font-size: 2rem;
+            color: #ff1493;
+            margin: 1rem 0;
+        }
+
+        h2, h3, h4 {
+            color: #ff1493;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 2rem 0;
+            color: #ff69b4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,20,147,0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #ffd1ea;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            background: rgba(255,20,147,0.1);
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,20,147,0.4);
+            background-color: #ff69b4;
+        }
+
+        @media (max-width: 768px) {
+            a {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9em;
+            }
+
+            .profile-card {
+                padding: 1rem;
+            }
+
+            .profile-card h3 {
+                font-size: 1.1em;
+                height: 35px;
+            }
+
+            .stat-item {
+                font-size: 0.8em;
+                padding: 0.25rem;
+            }
+
+            .profile-card p {
+                font-size: 0.8em;
+                min-height: 180px;
+            }
+
+            .services {
+                min-height: 180px;
+            }
+
+            .services h4 {
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-card h3 {
+                font-size: 1em;
+                height: 30px;
+            }
+
+            .stat-item {
+                font-size: 0.7em;
+            }
+
+            .profile-card p {
+                font-size: 0.7em;
+                min-height: 200px;
+            }
+
+            .services ul {
+                font-size: 0.7em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contract-content">
+        <h2 class="section-title">LUANNY & PAMELA</h2>
+        <h3 class="section-subtitle">Acompanhantes de Luxo em São José dos Campos</h3>
+
+        <div class="profile-section">
+            <div class="profile-card">
+                <div class="profile-media">
+                    <img src="https://bastardadoll.github.io/luanny.gif" 
+                         alt="Luanny Ravatche" 
+                         width="1920" 
+                         height="1080">
+                    <div class="media-placeholder">
+                        GIF HD 1920x1080<br>
+                        (Aguardando mídia)
+                    </div>
+                </div>
+                <h3>Luanny Ravatche</h3>
+                <div class="stats">
+                    <div class="stat-item">Trans | 29 anos</div>
+                    <div class="stat-item">177cm | 64kg</div>
+                    <div class="stat-item">Loira | Definida</div>
+                    <div class="stat-item">19cm Dote</div>
+                </div>
+                <p style="text-align: left;">
+                    Luanny é uma acompanhante trans sofisticada e carismática. Com sua beleza estonteante e corpo definido, oferece experiências únicas e inesquecíveis. Profissional versátil, combina sensualidade e carinho em cada encontro. Especialista em proporcionar momentos de prazer intenso, com um sorriso encantador e personalidade cativante. Discretamente elegante, garante total satisfação em encontros memoráveis.
+                </p>
+                <div class="services">
+                    <h4>Especialidades</h4>
+                    <ul>
+                        <li>Sexo oral sem preservativo</li>
+                        <li>Garganta profunda</li>
+                        <li>Ativa e Passiva</li>
+                        <li>Atendimento Premium</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-media">
+                    <img src="https://bastardadoll.github.io/pamela.gif" 
+                         alt="Pamela"
+                         width="1920" 
+                         height="1080">
+                    <div class="media-placeholder">
+                        GIF HD 1920x1080<br>
+                        (Aguardando mídia)
+                    </div>
+                </div>
+                <h3>Pamela</h3>
+                <div class="stats">
+                    <div class="stat-item">Cis | 25 anos</div>
+                    <div class="stat-item">167cm | 64kg</div>
+                    <div class="stat-item">Morena | Seios Médios</div>
+                    <div class="stat-item">Buceta Rosa</div>
+                </div>
+                <p style="text-align: left;">
+                    Pamela é uma acompanhante cis que emana sensualidade natural e elegância. Com curvas perfeitas e uma energia contagiante, ela proporciona momentos de puro prazer e conexão. Especialista em massagens sensuais e shows eróticos, combina delicadeza e intensidade de forma única. Sua personalidade doce e envolvente garante experiências inesquecíveis, sempre com muito carinho e profissionalismo.
+                </p>
+                <div class="services">
+                    <h4>Especialidades</h4>
+                    <ul>
+                        <li>Massagem Erótica</li>
+                        <li>Sexo Vaginal</li>
+                        <li>Shows Sensuais</li>
+                        <li>Atendimento Premium</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>Valores e Condições</h3>
+            <div class="price-tag">R$ 500,00</div>
+            <p>(1 hora de atendimento)</p>
+            <p>+ Taxa de deslocamento</p>
+            <p>Local (Hotel/Motel) não incluso</p>
+        </div>
+
+        <div class="requirements">
+            <h3>9. INFORMAÇÕES DE AGENDAMENTO E VALORES</h3>
+
+            <div class="clause">
+                <span class="clause-number">9.1</span> Procedimento de Agendamento
+                <div class="subclause">9.1.1 - Agendamento com mínimo de 4 horas de antecedência</div>
+                <div class="subclause">9.1.2 - Reserva confirmada mediante adiantamento de R$ 50,00</div>
+                <div class="subclause">9.1.3 - Adiantamento descontado no valor final</div>
+            </div>
+
+            <div class="clause">
+                <span class="clause-number">9.2</span> Valores
+                <div class="subclause">9.2.1 - Valor base: R$ 500,00 (1 hora)</div>
+                <div class="subclause">9.2.2 - Hotel/Motel não incluso</div>
+                <div class="subclause">9.2.3 - Taxa de deslocamento conforme região</div>
+            </div>
+
+            <div class="highlight">
+                <p><strong>Observações sobre pagamento:</strong></p>
+                <ul>
+                    <li>Adiantamento via PIX</li>
+                    <li>Saldo restante em dinheiro no início do encontro</li>
+                    <li>Valores adicionais conforme serviços especiais</li>
+                </ul>
+            </div>
+
+            <form id="bookingForm" style="max-width: 500px; margin: 2rem auto;">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label for="nick">Nick:</label>
+                    <input type="text" id="nick" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label for="birthdate">Data de Nascimento:</label>
+                    <input type="date" id="birthdate" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label for="bookingDate">Data pretendida:</label>
+                    <input type="date" id="bookingDate" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label for="bookingTime">Horário:</label>
+                    <input type="time" id="bookingTime" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label for="location">Local (Hotel/Motel):</label>
+                    <textarea id="location" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 100px;"></textarea>
+                </div>
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://wa.me/5512982572507?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20com%20Luanny%20e%20Pamela.%0A%0AServiço:%201%20hora%20-%20R$%20500,00%20%2B%20local%20(Hotel/Motel)%20%2B%20deslocamento%0A%0ANick:%20__%0AData%20de%20Nascimento:%20__%0AData%20pretendida:%20__%0AHorário:%20__%0ALocal%20(Hotel/Motel):%20__" 
+                   style="display: inline-block; 
+                          background-color: #ff1493; 
+                          color: white; 
+                          padding: 1rem 2rem; 
+                          border-radius: 25px; 
+                          text-decoration: none;
+                          font-weight: bold;
+                          transition: all 0.3s ease;
+                          box-shadow: 0 4px 15px rgba(255,20,147,0.3);">
+                    💋 CONTRATAR AGORA
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.profile-media img');
+            
+            function loadImage(img) {
+                return new Promise((resolve, reject) => {
+                    img.onload = () => {
+                        console.log('Image loaded successfully:', img.src);
+                        img.style.display = 'block';
+                        img.classList.add('loaded');
+                        img.nextElementSibling.style.display = 'none';
+                        resolve(img);
+                    };
+                    
+                    img.onerror = () => {
+                        console.error('Image failed to load:', img.src);
+                        img.style.display = 'none';
+                        img.nextElementSibling.style.display = 'block';
+                        reject(new Error(`Failed to load image: ${img.src}`));
+                    };
+                    
+                    // Force reload image
+                    const currentSrc = img.src;
+                    img.src = '';
+                    img.src = currentSrc;
+                });
+            }
+            
+            // Load all images
+            images.forEach(img => {
+                loadImage(img).catch(error => {
+                    console.error(error);
+                });
+            });
+        });
+
+        const whatsappLink = document.querySelector('a[href^="https://wa.me"]');
+        
+        whatsappLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            try {
+                // Get form values
+                const nick = document.getElementById('nick').value.trim();
+                const birthdate = document.getElementById('birthdate').value.trim();
+                const bookingDate = document.getElementById('bookingDate').value.trim();
+                const bookingTime = document.getElementById('bookingTime').value.trim();
+                const location = document.getElementById('location').value.trim();
+                
+                // Validate form fields
+                if (!nick || !birthdate || !bookingDate || !bookingTime || !location) {
+                    alert('Por favor, preencha todos os campos do formulário antes de prosseguir.');
+                    return;
+                }
+                
+                // Format the message
+                const message = `Olá! Gostaria de agendar um horário com Luanny e Pamela.
+
+*DADOS DO CLIENTE:*
+Nick: ${nick}
+Data de Nascimento: ${birthdate}
+Data pretendida: ${bookingDate}
+Horário: ${bookingTime}
+Local (Hotel/Motel): ${location}
+
+*Serviço:* 1 hora - R$ 500,00 + local (Hotel/Motel) + deslocamento`;
+
+                // Encode and open WhatsApp in a new window
+                const whatsappUrl = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
+                
+                // Try opening in new window first
+                const newWindow = window.open(whatsappUrl, '_blank');
+                
+                // If blocked or fails, try direct location
+                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                    window.location.href = whatsappUrl;
+                }
+                
+            } catch (error) {
+                console.error('Erro ao tentar abrir WhatsApp:', error);
+                alert('Houve um erro ao tentar abrir o WhatsApp. Por favor, tente novamente ou entre em contato diretamente pelo número: (12) 98257-2507');
+                
+                // Fallback: create a clickable link
+                const fallbackLink = document.createElement('div');
+                fallbackLink.innerHTML = `
+                    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                                background: rgba(0,0,0,0.9); padding: 20px; border-radius: 10px; z-index: 1000; 
+                                text-align: center; border: 2px solid #ff1493;">
+                        <p>Se o WhatsApp não abrir automaticamente, clique no link abaixo:</p>
+                        <a href="tel:+5512982572507" style="display: block; margin: 10px 0; color: #ff1493;">
+                            📞 Ligar agora: (12) 98257-2507
+                        </a>
+                        <button onclick="this.parentElement.remove()" style="background: #ff1493; border: none; 
+                                color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+                            Fechar
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(fallbackLink);
+            }
+        });
+    </script>
+</body>
+</html>
