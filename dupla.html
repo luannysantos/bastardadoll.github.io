@@ -119,25 +119,214 @@
 
         @media (max-width: 768px) {
             .contract-content {
-                width: calc(100% - 180px);
-                margin-right: 180px;
+                width: calc(100% - 140px); /* Reduced margin for sidebar */
+                margin-right: 130px;
                 margin-left: 10px;
                 padding: 1rem;
             }
-            .sidebar {
-                width: 160px;
+
+            .header-info {
+                padding: 1rem;
+            }
+
+            .header-info h2 {
+                font-size: 1.4rem;
+            }
+
+            .header-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .header-info p {
+                font-size: 0.9rem;
+            }
+
+            .profile-section {
+                grid-template-columns: 1fr; /* Single column for mobile */
+                gap: 1rem;
+            }
+
+            .profile-card {
+                padding: 1rem;
+            }
+
+            .profile-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .stats {
+                gap: 0.5rem;
+            }
+
+            .stat-item {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+                min-height: 40px;
+            }
+
+            .profile-card p {
+                font-size: 0.9rem;
+                padding: 1rem;
+            }
+
+            .services {
+                padding: 1rem;
+            }
+
+            .services h4 {
+                font-size: 1rem;
+            }
+
+            .services ul {
+                font-size: 0.9rem;
+            }
+
+            .highlight-box {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .price-tag {
+                font-size: 1.6rem;
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 480px) {
             .contract-content {
-                width: calc(100% - 140px);
-                margin-right: 140px;
-                margin-left: 10px;
+                width: calc(100% - 120px);
+                margin-right: 110px;
+                margin-left: 5px;
+                padding: 0.5rem;
+            }
+
+            .sidebar {
+                width: 100px;
+            }
+
+            .time-display {
+                padding: 10px;
+            }
+
+            .time-display h3 {
+                font-size: 0.9rem;
+            }
+
+            .current-time {
+                font-size: 1.2rem !important;
+            }
+
+            .header-info h2 {
+                font-size: 1.2rem;
+            }
+
+            .header-info h3 {
+                font-size: 1rem;
+            }
+
+            .header-info p {
+                font-size: 0.8rem;
+            }
+
+            .profile-card {
                 padding: 0.8rem;
             }
+
+            .profile-card h3 {
+                font-size: 1rem;
+            }
+
+            .stat-item {
+                font-size: 0.7rem;
+                padding: 0.3rem;
+                min-height: 35px;
+            }
+
+            .profile-card p {
+                font-size: 0.8rem;
+                padding: 0.8rem;
+            }
+
+            .services h4 {
+                font-size: 0.9rem;
+            }
+
+            .services ul {
+                font-size: 0.8rem;
+                padding-left: 1rem;
+            }
+
+            .services ul li {
+                margin: 0.5rem 0;
+            }
+
+            .highlight-box {
+                width: 100%;
+                padding: 0.8rem;
+            }
+
+            .price-tag {
+                font-size: 1.4rem;
+            }
+
+            /* Form adjustments */
+            #bookingForm {
+                width: 100%;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 0.9rem;
+                padding: 0.4rem;
+            }
+
+            /* Button adjustments */
+            a[href^="https://wa.me"] {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .contract-content {
+                width: calc(100% - 100px);
+                margin-right: 90px;
+                margin-left: 5px;
+                padding: 0.3rem;
+            }
+
             .sidebar {
-                width: 120px;
+                width: 80px;
+            }
+
+            .time-display h3 {
+                font-size: 0.8rem;
+            }
+
+            .current-time {
+                font-size: 1rem !important;
+            }
+
+            .header-info h2 {
+                font-size: 1.1rem;
+            }
+
+            .header-info h3 {
+                font-size: 0.9rem;
+            }
+
+            .stat-item {
+                font-size: 0.6rem;
+                padding: 0.2rem;
+                min-height: 30px;
             }
         }
 
