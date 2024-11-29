@@ -38,7 +38,10 @@
     <style>
         body {
             margin: 0;
-            padding: 1rem;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
             background: #1a0010;
             color: #ffd1ea;
@@ -46,19 +49,78 @@
         }
 
         .contract-content {
-            max-width: 800px;
-            margin: 0 auto;
+            width: 95%;
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 1rem;
             background: rgba(26,0,16,0.95);
             border: 2px solid #ff1493;
             border-radius: 15px;
-            padding: 2rem;
             animation: fadeIn 1s ease-out;
             box-shadow: 0 5px 25px rgba(255,20,147,0.15);
         }
 
+        @media (max-width: 1200px) {
+            .profile-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            body { padding: 0.5rem; }
-            .contract-content { padding: 1rem; }
+            .contract-content {
+                padding: 0.5rem;
+            }
+            .profile-section {
+                grid-template-columns: 1fr;
+            }
+            .profile-card {
+                margin-bottom: 1rem;
+            }
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .header-info h2 {
+                font-size: 1.5rem;
+            }
+            .header-info h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            .profile-card {
+                padding: 0.5rem;
+            }
+            .header-info {
+                padding: 0.5rem;
+            }
+            .stats {
+                gap: 0.5rem;
+            }
+            .form-group {
+                margin-bottom: 1rem;
+            }
+            input, select, textarea {
+                font-size: 16px;
+            }
+            .price-tag {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            input, select, textarea {
+                padding: 8px;
+            }
+            .form-group label {
+                font-size: 0.9rem;
+            }
+            .profile-card p {
+                font-size: 0.8rem;
+            }
         }
 
         @keyframes fadeIn {
@@ -67,10 +129,11 @@
         }
 
         .header-info {
-            text-align: center;
-            margin: 3rem auto;
+            width: 95%;
             max-width: 800px;
-            padding: 2rem;
+            padding: 1rem;
+            margin: 1rem auto;
+            text-align: center;
         }
 
         .header-info p {
@@ -89,27 +152,19 @@
             padding-left: 0.5rem;
         }
 
-        @media (max-width: 768px) {
-            .header-info ol {
-                padding-left: 1rem;
-            }
-        }
-
         .profile-section {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Force two equal columns */
-            gap: 2rem;
-            margin: 4rem auto;
-        }
-
-        @media (max-width: 768px) {
-            .profile-section {
-                grid-template-columns: 1fr 1fr; /* Maintain two columns */
-                gap: 1rem; /* Reduce gap on mobile */
-            }
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            width: 95%;
+            max-width: 1200px;
+            margin: 2rem auto;
         }
 
         .profile-card {
+            width: 100%;
+            min-width: 280px;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
             background: rgba(255,20,147,0.05);
@@ -132,7 +187,7 @@
         .profile-media {
             width: 100%;
             height: 0;
-            padding-bottom: 177.77%; /* This creates the correct 9:16 aspect ratio for 1080x1920 */
+            padding-bottom: min(177.77%, 80vh);
             position: relative;
             overflow: hidden;
             margin-bottom: 1rem;
@@ -151,7 +206,7 @@
             border-radius: 10px;
             opacity: 0;
             transition: opacity 0.3s ease;
-            display: none; /* Hide by default until loaded */
+            display: none;
         }
 
         .profile-media img.loaded {
@@ -202,7 +257,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             margin: 1.5rem 0;
-            min-height: 120px; /* Fixed height for stats section */
+            min-height: 120px;
         }
 
         .stat-item {
@@ -218,7 +273,7 @@
         }
 
         .profile-card p {
-            min-height: 150px; /* Fixed height for description */
+            min-height: 150px;
             margin: 1rem 0;
             font-size: 0.9em;
             color: #ffd1ea;
@@ -228,7 +283,7 @@
         }
 
         .services {
-            min-height: 200px; /* Fixed height for services section */
+            min-height: 200px;
             display: flex;
             flex-direction: column;
         }
@@ -278,7 +333,7 @@
         .section-title {
             text-align: center;
             font-size: 1.5rem;
-            margin: 2rem 0 1rem 0; /* Adjusted margin to reduce space below */
+            margin: 2rem 0 1rem 0;
             color: #ff69b4;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -288,9 +343,9 @@
         .section-subtitle {
             text-align: center;
             color: #ffd1ea;
-            margin: 0 0 2rem 0; /* Adjusted margin to be consistent */
-            font-size: 1.2rem; /* Added specific font size */
-            font-weight: 300; /* Made it slightly lighter */
+            margin: 0 0 2rem 0;
+            font-size: 1.2rem;
+            font-weight: 300;
         }
 
         .highlight {
@@ -306,37 +361,41 @@
             background-color: #ff69b4;
         }
 
-        @media (max-width: 768px) {
-            a {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9em;
-            }
+        a[href^="https://wa.me"] {
+            max-width: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 1rem auto;
+            display: block;
+            text-align: center;
+        }
 
-            .profile-card {
-                padding: 1rem;
-            }
+        .back-to-top {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(255,20,147,0.9);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            z-index: 1000;
+        }
 
-            .profile-card h3 {
-                font-size: 1.1em;
-                height: 35px;
-            }
-
-            .stat-item {
-                font-size: 0.8em;
-                padding: 0.25rem;
-            }
-
-            .profile-card p {
-                font-size: 0.8em;
-                min-height: 180px;
-            }
-
-            .services {
-                min-height: 180px;
-            }
-
-            .services h4 {
-                height: 35px;
+        @media (max-width: 360px) {
+            .back-to-top {
+                bottom: 0.5rem;
+                right: 0.5rem;
+                width: 30px;
+                height: 30px;
             }
         }
 
@@ -389,28 +448,56 @@
             scroll-behavior: smooth;
         }
 
-        /* Add a back-to-top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: rgba(255,20,147,0.9);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            cursor: pointer;
-            z-index: 1000;
+        /* Add these style rules inside the existing <style> tag */
+        /* Improve input/select/textarea visibility when selected */
+        input, select, textarea {
+            background: rgba(255,255,255,0.05) !important;
+            color: #ffd1ea !important;
+            transition: all 0.3s ease;
         }
 
-        .back-to-top.visible {
+        input:focus, select:focus, textarea:focus {
+            background: rgba(255,20,147,0.15) !important;
+            border-color: #ff69b4 !important;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255,20,147,0.5);
+        }
+
+        /* Improve select options visibility */
+        select option, select optgroup {
+            background: #1a0010;
+            color: #ffd1ea;
+        }
+
+        select optgroup {
+            font-weight: bold;
+            color: #ff69b4;
+        }
+
+        /* Improve placeholder text visibility */
+        input::placeholder, 
+        textarea::placeholder {
+            color: rgba(255,209,234,0.5) !important;
+        }
+
+        /* Improve selected text visibility */
+        input::selection,
+        textarea::selection {
+            background: rgba(255,20,147,0.3);
+            color: #ffffff;
+        }
+
+        /* Improve date/time input visibility */
+        input[type="date"],
+        input[type="time"] {
+            color-scheme: dark;
+        }
+
+        /* Improve number input arrows */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
             opacity: 1;
+            background: rgba(255,20,147,0.2);
         }
     </style>
 </head>
@@ -422,7 +509,7 @@
             
             <h4 style="margin-bottom: 1rem;">Quem Somos</h4>
             <p style="margin-bottom: 1rem;">
-                Somos uma dupla perfeita para voc^que realmente tem interesse em uma surubinha. <br>Atendendo juntas na madrugada das 00:00 às 05:00 
+                Somos acompanhantes de luxo, atendendo juntas na madrugada das 00:00 às 05:00 
                 no centro de São José dos Campos - SP.
             </p>
             <p style="margin-bottom: 2rem;">
@@ -531,7 +618,7 @@
                 </ul>
             </div>
 
-            <form id="bookingForm" style="max-width: 600px; margin: 2rem auto;">
+            <form id="bookingForm" style="width: 95%; max-width: 600px; margin: 2rem auto;">
                 <h3 style="text-align: center; color: #ff1493; margin-bottom: 2rem;">
                     Formulário de Agendamento Premium
                 </h3>
@@ -708,7 +795,7 @@
 
             window.addEventListener('scroll', function() {
                 const backToTop = document.querySelector('.back-to-top');
-                if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                if (window.pageYOffset > 300) {
                     backToTop.style.display = 'flex';
                     backToTop.classList.add('visible');
                 } else {
