@@ -66,11 +66,40 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .header-info {
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .header-info p {
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        .header-info ol {
+            color: #ffd1ea;
+            line-height: 2;
+            padding-left: 1.5rem;
+        }
+
+        .header-info ol li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-info ol {
+                padding-left: 1rem;
+            }
+        }
+
         .profile-section {
             display: grid;
             grid-template-columns: 1fr 1fr; /* Force two equal columns */
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 4rem auto;
         }
 
         @media (max-width: 768px) {
@@ -232,7 +261,7 @@
             border: 1px solid #ff1493;
             border-radius: 10px;
             padding: 1.5rem;
-            margin: 2rem 0;
+            margin: 4rem auto;
             text-align: center;
         }
 
@@ -249,7 +278,7 @@
         .section-title {
             text-align: center;
             font-size: 1.5rem;
-            margin: 2rem 0;
+            margin: 2rem 0 1rem 0; /* Adjusted margin to reduce space below */
             color: #ff69b4;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -259,7 +288,9 @@
         .section-subtitle {
             text-align: center;
             color: #ffd1ea;
-            margin-bottom: 2rem;
+            margin: 0 0 2rem 0; /* Adjusted margin to be consistent */
+            font-size: 1.2rem; /* Added specific font size */
+            font-weight: 300; /* Made it slightly lighter */
         }
 
         .highlight {
@@ -328,12 +359,77 @@
                 font-size: 0.7em;
             }
         }
+
+        /* Add section dividers with decorative borders */
+        .section-divider {
+            border-top: 2px solid rgba(255,20,147,0.3);
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '❋';
+            color: #ff1493;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a0010;
+            padding: 0 1rem;
+        }
+
+        /* Improve spacing and readability */
+        .requirements {
+            margin: 4rem auto;
+            max-width: 800px;
+        }
+
+        /* Add smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Add a back-to-top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(255,20,147,0.9);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <div class="contract-content">
-        <h2 class="section-title">LUANNY & PAMELA</h2>
-        <h3 class="section-subtitle">Acompanhantes de Luxo em São José dos Campos</h3>
+        <div class="header-info">
+            <h2 style="color: #ff1493; margin-bottom: 0.5rem; font-size: 1.8rem;">LUANNY & PAMELA</h2>
+            <h3 style="color: #ffd1ea; margin-bottom: 2rem; font-size: 1.4rem;">Acompanhantes de Luxo em São José dos Campos</h3>
+            
+            <h4 style="margin-bottom: 1rem;">Quem Somos</h4>
+            <p style="margin-bottom: 1rem;">
+                Somos uma dupla perfeita para voc^que realmente tem interesse em uma surubinha. <br>Atendendo juntas na madrugada das 00:00 às 05:00 
+                no centro de São José dos Campos - SP.
+            </p>
+            <p style="margin-bottom: 2rem;">
+                Realizamos atendimentos exclusivamente juntas em motéis selecionados ou 
+                opção de rapidinha no carro.
+            </p>
+        </div>
 
         <div class="profile-section">
             <div class="profile-card">
@@ -435,30 +531,101 @@
                 </ul>
             </div>
 
-            <form id="bookingForm" style="max-width: 500px; margin: 2rem auto;">
-                <div class="form-group" style="margin-bottom: 1rem;">
-                    <label for="nick">Nick:</label>
-                    <input type="text" id="nick" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+            <form id="bookingForm" style="max-width: 600px; margin: 2rem auto;">
+                <h3 style="text-align: center; color: #ff1493; margin-bottom: 2rem;">
+                    Formulário de Agendamento Premium
+                </h3>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label for="title">Título do Encontro:</label>
+                    <input type="text" id="title" required 
+                           placeholder="Ex: Encontro Especial com Luanny e Pamela"
+                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
-                
-                <div class="form-group" style="margin-bottom: 1rem;">
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label for="description">Descrição (máx. 400 caracteres):</label>
+                    <textarea id="description" maxlength="400" required 
+                              placeholder="Descreva suas preferências e expectativas para o encontro..."
+                              style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 120px; text-align: justify;"></textarea>
+                    <small style="color: #ffd1ea; display: block; text-align: right;">
+                        <span id="charCount">0</span>/400 caracteres
+                    </small>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label for="nick">Seu Nick:</label>
+                    <input type="text" id="nick" required 
+                           placeholder="Como deseja ser chamado"
+                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="birthdate">Data de Nascimento:</label>
-                    <input type="date" id="birthdate" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                    <input type="date" id="birthdate" required 
+                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
-                
-                <div class="form-group" style="margin-bottom: 1rem;">
+
+                <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="bookingDate">Data pretendida:</label>
-                    <input type="date" id="bookingDate" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                    <input type="date" id="bookingDate" required 
+                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
-                
-                <div class="form-group" style="margin-bottom: 1rem;">
+
+                <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="bookingTime">Horário:</label>
-                    <input type="time" id="bookingTime" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                    <input type="time" id="bookingTime" required 
+                           min="00:00" max="05:00"
+                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                    <small style="color: #ffd1ea;">Atendimento das 00:00 às 05:00</small>
                 </div>
-                
-                <div class="form-group" style="margin-bottom: 1rem;">
-                    <label for="location">Local (Hotel/Motel):</label>
-                    <textarea id="location" required style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 100px;"></textarea>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label for="duration">Período do Encontro:</label>
+                    <select id="duration" required 
+                            style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                        <option value="1">1 hora - R$ 500,00</option>
+                        <option value="2">2 horas - R$ 900,00</option>
+                        <option value="3">3 horas - R$ 1.300,00</option>
+                        <option value="4">4 horas - R$ 1.600,00</option>
+                        <option value="quick">Rapidinha (30min) - R$ 300,00</option>
+                    </select>
+                </div>
+
+                <div class="price-display" style="text-align: center; margin: 2rem 0; padding: 1rem; background: rgba(255,20,147,0.1); border-radius: 10px;">
+                    <h4>Valor Total</h4>
+                    <div class="price" style="font-size: 2rem; color: #ff1493;">R$ <span id="totalPrice">500,00</span></div>
+                    <small style="color: #ffd1ea;">+ Taxa de deslocamento conforme local</small>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label for="location">Local do Encontro:</label>
+                    <select id="location" required 
+                            style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                        <optgroup label="Hotéis e Motéis no Centro">
+                            <option value="joabi">Motel Joabi</option>
+                            <option value="veneza">Motel Veneza</option>
+                            <option value="albertino">Hotel Albertino</option>
+                            <option value="liberdade">Hotel Liberdade</option>
+                            <option value="luma">Luma Hotel</option>
+                        </optgroup>
+                        <optgroup label="Outros Motéis">
+                            <option value="point">Motel Point</option>
+                            <option value="orion">Motel Orion</option>
+                            <option value="bellatrix">Motel Bellatrix</option>
+                            <option value="if">IF Hotel</option>
+                            <option value="corpo">Motel Corpo e Alma</option>
+                            <option value="1001">1001 Motel</option>
+                        </optgroup>
+                        <option value="car">Rapidinha no Carro</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label for="specifications">Especificações Adicionais:</label>
+                    <textarea id="specifications" 
+                              placeholder="Informe quaisquer preferências específicas, restrições ou pedidos especiais..."
+                              style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 100px;"></textarea>
                 </div>
             </form>
 
@@ -478,6 +645,7 @@
             </div>
         </div>
 
+        <a href="#" class="back-to-top" style="display: none;">↑</a>
     </div>
 
     <script>
@@ -514,6 +682,57 @@
                     console.error(error);
                 });
             });
+
+            // Character counter for description
+            const description = document.getElementById('description');
+            const charCount = document.getElementById('charCount');
+            
+            description.addEventListener('input', function() {
+                charCount.textContent = this.value.length;
+            });
+
+            // Price calculator
+            const duration = document.getElementById('duration');
+            const totalPrice = document.getElementById('totalPrice');
+            
+            duration.addEventListener('change', function() {
+                const prices = {
+                    '1': '500,00',
+                    '2': '900,00',
+                    '3': '1.300,00',
+                    '4': '1.600,00',
+                    'quick': '300,00'
+                };
+                totalPrice.textContent = prices[this.value];
+            });
+
+            window.addEventListener('scroll', function() {
+                const backToTop = document.querySelector('.back-to-top');
+                if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                    backToTop.style.display = 'flex';
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                    setTimeout(() => {
+                        if (!backToTop.classList.contains('visible')) {
+                            backToTop.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
+
+            // Smooth scroll to section links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
 
         const whatsappLink = document.querySelector('a[href^="https://wa.me"]');
@@ -523,6 +742,8 @@
             
             try {
                 // Get form values
+                const title = document.getElementById('title').value.trim();
+                const description = document.getElementById('description').value.trim();
                 const nick = document.getElementById('nick').value.trim();
                 const birthdate = document.getElementById('birthdate').value.trim();
                 const bookingDate = document.getElementById('bookingDate').value.trim();
@@ -530,7 +751,7 @@
                 const location = document.getElementById('location').value.trim();
                 
                 // Validate form fields
-                if (!nick || !birthdate || !bookingDate || !bookingTime || !location) {
+                if (!title || !description || !nick || !birthdate || !bookingDate || !bookingTime || !location) {
                     alert('Por favor, preencha todos os campos do formulário antes de prosseguir.');
                     return;
                 }
@@ -539,13 +760,15 @@
                 const message = `Olá! Gostaria de agendar um horário com Luanny e Pamela.
 
 *DADOS DO CLIENTE:*
+Título do Encontro: ${title}
+Descrição: ${description}
 Nick: ${nick}
 Data de Nascimento: ${birthdate}
 Data pretendida: ${bookingDate}
 Horário: ${bookingTime}
-Local (Hotel/Motel): ${location}
+Local do Encontro: ${location}
 
-*Serviço:* 1 hora - R$ 500,00 + local (Hotel/Motel) + deslocamento`;
+*Serviço:* ${duration.options[duration.selectedIndex].text}`;
 
                 // Encode and open WhatsApp in a new window
                 const whatsappUrl = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
