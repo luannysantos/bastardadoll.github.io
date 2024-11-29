@@ -49,10 +49,11 @@
         }
 
         .contract-content {
-            width: 95%;
-            max-width: 1200px;
-            margin: 1rem auto;
-            padding: 1rem;
+            width: calc(100% - 240px); /* Add space for sidebar */
+            margin-left: 20px;
+            margin-right: 220px; /* Match sidebar width */
+            padding: 2rem;
+            max-width: 1400px;
             background: rgba(26,0,16,0.95);
             border: 2px solid #ff1493;
             border-radius: 15px;
@@ -60,66 +61,104 @@
             box-shadow: 0 5px 25px rgba(255,20,147,0.15);
         }
 
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100vh;
+            background: rgba(26,0,16,0.95);
+            border-left: 2px solid #ff1493;
+            padding: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .time-display {
+            background: rgba(255,20,147,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ff1493;
+            text-align: center;
+        }
+
+        .time-display h3 {
+            margin: 0 0 10px 0;
+            color: #ff1493;
+            font-size: 1.2rem;
+        }
+
+        .time-display .current-time {
+            font-size: 1.8rem;
+            color: #ffd1ea;
+            font-weight: bold;
+        }
+
         @media (max-width: 1200px) {
             .profile-section {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contract-content {
+                width: calc(100% - 180px);
+                margin-right: 160px;
+                padding: 1.5rem;
+            }
+            
+            .sidebar {
+                width: 160px;
             }
         }
 
         @media (max-width: 768px) {
             .contract-content {
-                padding: 0.5rem;
+                width: calc(100% - 140px);
+                margin-right: 120px;
+                padding: 1rem;
             }
+            
+            .sidebar {
+                width: 120px;
+            }
+            
             .profile-section {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
-            .profile-card {
-                margin-bottom: 1rem;
-            }
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .header-info h2 {
-                font-size: 1.5rem;
-            }
-            .header-info h3 {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 14px;
-            }
-            .profile-card {
-                padding: 0.5rem;
-            }
+            
             .header-info {
-                padding: 0.5rem;
-            }
-            .stats {
-                gap: 0.5rem;
-            }
-            .form-group {
-                margin-bottom: 1rem;
-            }
-            input, select, textarea {
-                font-size: 16px;
-            }
-            .price-tag {
-                font-size: 1.5rem;
+                padding: 1.5rem;
             }
         }
 
-        @media (max-width: 320px) {
-            input, select, textarea {
-                padding: 8px;
+        @media (max-width: 576px) {
+            .contract-content {
+                width: calc(100% - 100px);
+                margin-right: 80px;
+                margin-left: 10px;
+                padding: 0.8rem;
             }
-            .form-group label {
+            
+            .sidebar {
+                width: 80px;
+            }
+            
+            .time-display {
+                padding: 10px;
+            }
+            
+            .time-display h3 {
                 font-size: 0.9rem;
             }
-            .profile-card p {
-                font-size: 0.8rem;
+            
+            .time-display .current-time {
+                font-size: 1.2rem;
             }
         }
 
@@ -129,11 +168,12 @@
         }
 
         .header-info {
-            width: 95%;
+            width: 100%;
             max-width: 800px;
-            padding: 1rem;
-            margin: 1rem auto;
-            text-align: center;
+            margin: 0 auto 3rem auto;
+            padding: 2rem;
+            background: rgba(255,20,147,0.03);
+            border-radius: 15px;
         }
 
         .header-info p {
@@ -154,26 +194,23 @@
 
         .profile-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            width: 95%;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
             max-width: 1200px;
             margin: 2rem auto;
+            padding: 0 1rem;
         }
 
         .profile-card {
-            width: 100%;
-            min-width: 280px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
             background: rgba(255,20,147,0.05);
             border: 1px solid #ff1493;
             border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
+            gap: 1.5rem;
+            height: 100%;
         }
 
         .profile-card h3 {
@@ -256,59 +293,50 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
-            margin: 1.5rem 0;
-            min-height: 120px;
+            margin: 0;
         }
 
         .stat-item {
             background: rgba(255,20,147,0.1);
-            padding: 0.5rem;
-            border-radius: 5px;
-            font-size: 0.9em;
-            height: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            min-height: 50px;
         }
 
         .profile-card p {
-            min-height: 150px;
-            margin: 1rem 0;
-            font-size: 0.9em;
-            color: #ffd1ea;
-            display: flex;
-            align-items: center;
-            text-align: left;
+            min-height: auto;
+            margin: 0;
+            padding: 1.5rem;
+            background: rgba(255,20,147,0.03);
+            border-radius: 8px;
+            line-height: 1.6;
+            text-align: justify;
         }
 
         .services {
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
+            min-height: auto;
+            background: rgba(255,20,147,0.03);
+            border-radius: 8px;
+            padding: 1.5rem;
         }
 
         .services h4 {
-            height: 40px;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin: 0 0 1rem 0;
+            height: auto;
         }
 
         .services ul {
-            flex: 1;
-            margin: 0;     
+            margin: 0;
             padding-left: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            text-align: left;
         }
 
         .services ul li {
-            margin: 0.5rem 0;
-            text-align: left;
+            margin: 0.75rem 0;
         }
 
         .highlight-box {
@@ -316,8 +344,10 @@
             border: 1px solid #ff1493;
             border-radius: 10px;
             padding: 1.5rem;
-            margin: 4rem auto;
+            margin: 2rem auto;
             text-align: center;
+            width: 90%;
+            max-width: 600px;
         }
 
         .price-tag {
@@ -439,8 +469,10 @@
 
         /* Improve spacing and readability */
         .requirements {
-            margin: 4rem auto;
+            width: 90%;
             max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
         }
 
         /* Add smooth scrolling */
@@ -448,12 +480,14 @@
             scroll-behavior: smooth;
         }
 
-        /* Add these style rules inside the existing <style> tag */
         /* Improve input/select/textarea visibility when selected */
         input, select, textarea {
             background: rgba(255,255,255,0.05) !important;
             color: #ffd1ea !important;
             transition: all 0.3s ease;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         input:focus, select:focus, textarea:focus {
@@ -502,6 +536,12 @@
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <div class="time-display">
+            <h3>Horário Atual</h3>
+            <div class="current-time" id="currentTime">00:00:00</div>
+        </div>
+    </div>
     <div class="contract-content">
         <div class="header-info">
             <h2 style="color: #ff1493; margin-bottom: 0.5rem; font-size: 1.8rem;">LUANNY & PAMELA</h2>
@@ -627,14 +667,14 @@
                     <label for="title">Título do Encontro:</label>
                     <input type="text" id="title" required 
                            placeholder="Ex: Encontro Especial com Luanny e Pamela"
-                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
                 <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="description">Descrição (máx. 400 caracteres):</label>
                     <textarea id="description" maxlength="400" required 
                               placeholder="Descreva suas preferências e expectativas para o encontro..."
-                              style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 120px; text-align: justify;"></textarea>
+                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 120px; text-align: justify;"></textarea>
                     <small style="color: #ffd1ea; display: block; text-align: right;">
                         <span id="charCount">0</span>/400 caracteres
                     </small>
@@ -644,33 +684,33 @@
                     <label for="nick">Seu Nick:</label>
                     <input type="text" id="nick" required 
                            placeholder="Como deseja ser chamado"
-                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
                 <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="birthdate">Data de Nascimento:</label>
                     <input type="date" id="birthdate" required 
-                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
                 <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="bookingDate">Data pretendida:</label>
                     <input type="date" id="bookingDate" required 
-                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
                 <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="bookingTime">Horário:</label>
                     <input type="time" id="bookingTime" required 
                            min="00:00" max="05:00"
-                           style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                     <small style="color: #ffd1ea;">Atendimento das 00:00 às 05:00</small>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="duration">Período do Encontro:</label>
                     <select id="duration" required 
-                            style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                         <option value="1">1 hora - R$ 500,00</option>
                         <option value="2">2 horas - R$ 900,00</option>
                         <option value="3">3 horas - R$ 1.300,00</option>
@@ -688,7 +728,7 @@
                 <div class="form-group" style="margin-bottom: 2rem;">
                     <label for="location">Local do Encontro:</label>
                     <select id="location" required 
-                            style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                         <optgroup label="Hotéis e Motéis no Centro">
                             <option value="joabi">Motel Joabi</option>
                             <option value="veneza">Motel Veneza</option>
@@ -712,7 +752,7 @@
                     <label for="specifications">Especificações Adicionais:</label>
                     <textarea id="specifications" 
                               placeholder="Informe quaisquer preferências específicas, restrições ou pedidos especiais..."
-                              style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 100px;"></textarea>
+                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 100px;"></textarea>
                 </div>
             </form>
 
@@ -820,6 +860,20 @@
                     }
                 });
             });
+
+            // Time update function
+            function updateTime() {
+                const timeDisplay = document.getElementById('currentTime');
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+            }
+
+            // Update time immediately and then every second
+            updateTime();
+            setInterval(updateTime, 1000);
         });
 
         const whatsappLink = document.querySelector('a[href^="https://wa.me"]');
