@@ -48,53 +48,79 @@
             line-height: 1.6;
         }
 
-        .contract-content {
-            width: calc(100% - 260px); /* Account for sidebar width + padding */
-            margin-left: 20px; 
-            margin-right: 240px; /* Match sidebar total width */
-            padding: 2rem;
-            box-sizing: border-box;
-            background: rgba(26,0,16,0.95);
-            border: 2px solid #ff1493;
-            border-radius: 15px;
-            animation: fadeIn 1s ease-out;
-            box-shadow: 0 5px 25px rgba(255,20,147,0.15);
-        }
-
+        /* Update sidebar positioning */
         .sidebar {
             position: fixed;
-            top: 200px; /* Position below header */
+            top: 0; /* Changed from 200px to 0 */
             right: 0;
             width: 220px;
-            height: calc(100vh - 200px); /* Adjust height to account for top offset */
+            height: 100px; /* Reduced height for top bar */
             background: rgba(26,0,16,0.95);
             border-left: 2px solid #ff1493;
-            padding: 20px;
-            z-index: 1000;
+            border-bottom: 2px solid #ff1493;
+            padding: 10px 20px;
+            z-index: 1002; /* Increased to stay above header */
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* Update header positioning */
+        .header-info {
+            position: fixed;
+            top: 100px; /* Position below sidebar */
+            left: 0;
+            right: 0;
+            width: calc(100% - 40px);
+            background: rgba(26,0,16,0.95);
+            margin: 0 20px;
+            padding: 1rem;
+            box-sizing: border-box;
+            z-index: 1001;
+            border-radius: 15px;
+            border: 2px solid #ff1493;
+        }
+
+        /* Update main content spacing */
+        .contract-content {
+            margin-top: 250px; /* Account for fixed header + sidebar */
+            width: 100%;
+            max-width: calc(100% - 40px);
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 1rem;
             box-sizing: border-box;
         }
 
         .time-display {
             background: rgba(255,20,147,0.1);
-            padding: 15px;
+            padding: 5px 10px;
+            margin: 0;
             border-radius: 10px;
             border: 1px solid #ff1493;
             text-align: center;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .time-display h3 {
-            margin: 0 0 10px 0;
+            font-size: 1rem;
+            margin: 0 0 5px 0;
             color: #ff1493;
             font-size: 1.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
         }
 
         .time-display .current-time {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: #ffd1ea;
             font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
         }
 
         @media (max-width: 1200px) {
@@ -130,15 +156,19 @@
             }
 
             .header-info h2 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
+                text-align: center;
+                word-wrap: break-word;
+                hyphens: auto;
+                max-width: 100%;
             }
 
             .header-info h3 {
-                font-size: 1.1rem;
-            }
-
-            .header-info p {
-                font-size: 0.9rem;
+                font-size: 1.2rem;
+                text-align: center;
+                word-wrap: break-word;
+                hyphens: auto;
+                max-width: 100%;
             }
 
             .profile-section {
@@ -189,6 +219,14 @@
             .price-tag {
                 font-size: 1.6rem;
             }
+
+            .time-display h3 {
+                font-size: 1rem;
+            }
+
+            .time-display .current-time {
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -204,27 +242,23 @@
             }
 
             .time-display {
-                padding: 10px;
+                padding: 5px 10px;
             }
 
             .time-display h3 {
                 font-size: 0.9rem;
             }
 
-            .current-time {
-                font-size: 1.2rem !important;
+            .time-display .current-time {
+                font-size: 1.2rem;
             }
 
             .header-info h2 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .header-info h3 {
                 font-size: 1rem;
-            }
-
-            .header-info p {
-                font-size: 0.8rem;
             }
 
             .profile-card {
@@ -312,8 +346,8 @@
                 font-size: 0.8rem;
             }
 
-            .current-time {
-                font-size: 1rem !important;
+            .time-display .current-time {
+                font-size: 1rem;
             }
 
             .header-info h2 {
@@ -422,8 +456,8 @@
                 font-size: 0.7rem;
             }
 
-            .current-time {
-                font-size: 0.9rem !important;
+            .time-display .current-time {
+                font-size: 0.9rem;
             }
 
             .header-info h2 {
