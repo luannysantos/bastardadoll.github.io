@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <base href="bastardadoll.github.io">
+<head><base href="bastardadoll.github.io">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -48,7 +47,7 @@
             line-height: 1.6;
         }
 
-        /* Update sidebar positioning for fixed top bar */
+        /* Update sidebar/clock bar positioning */
         .sidebar {
             position: fixed;
             top: 0;
@@ -68,65 +67,65 @@
         /* Update header positioning */
         .header-info {
             position: fixed;
-            top: 50px; /* Below sidebar */
+            top: 50px; /* Position below clock bar */
             left: 0;
             width: 100%;
             background: rgba(26,0,16,0.95);
-            padding: 1rem 20px;
-            box-sizing: border-box;
-            z-index: 1001;
+            padding: 1rem;
             border-bottom: 2px solid #ff1493;
+            z-index: 1001;
+            margin: 0;
         }
 
         /* Update main content spacing */
         .contract-content {
-            margin-top: 180px; /* Account for fixed header + sidebar */
+            margin-top: 200px; /* Account for fixed header + clock bar */
+            padding: 20px;
             width: 100%;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
-            padding: 0 20px;
             box-sizing: border-box;
         }
 
-        /* Improve time display */
+        /* Clock display styling */
         .time-display {
             display: flex;
             align-items: center;
-            gap: 15px;
-            background: transparent;
-            padding: 0;
-            margin: 0;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255,20,147,0.1);
+            border: 1px solid #ff1493;
+            padding: 5px 15px;
+            border-radius: 10px;
         }
 
         .time-display h3 {
             font-size: 1rem;
-            color: #ff1493;
             margin: 0;
-            white-space: nowrap;
+            color: #ff1493;
         }
 
         .time-display .current-time {
             font-size: 1.2rem;
-            color: #ffd1ea;  
             margin: 0;
-            white-space: nowrap;
+            color: #ffd1ea;
+            font-weight: bold;
         }
 
-        /* Mobile responsive adjustments */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .sidebar {
                 height: 40px;
+                padding: 5px 10px;
             }
             
             .header-info {
                 top: 40px;
-                padding: 0.8rem 15px;
             }
             
             .contract-content {
-                margin-top: 150px;
-                padding: 0.8rem 15px;
+                margin-top: 160px;
             }
             
             .time-display h3 {
@@ -145,12 +144,10 @@
             
             .header-info {
                 top: 35px;
-                padding: 0.6rem 10px;
             }
             
             .contract-content {
-                margin-top: 130px;
-                padding: 0.6rem 10px;
+                margin-top: 140px;
             }
             
             .time-display h3 {
