@@ -49,11 +49,11 @@
         }
 
         .contract-content {
-            width: calc(100% - 240px); /* Add space for sidebar */
-            margin-left: 20px;
-            margin-right: 220px; /* Match sidebar width */
+            width: calc(100% - 260px); /* Account for sidebar width + padding */
+            margin-left: 20px; 
+            margin-right: 240px; /* Match sidebar total width */
             padding: 2rem;
-            max-width: 1400px;
+            box-sizing: border-box;
             background: rgba(26,0,16,0.95);
             border: 2px solid #ff1493;
             border-radius: 15px;
@@ -65,7 +65,7 @@
             position: fixed;
             top: 0;
             right: 0;
-            width: 200px;
+            width: 220px; /* Increased width */
             height: 100vh;
             background: rgba(26,0,16,0.95);
             border-left: 2px solid #ff1493;
@@ -74,7 +74,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
         .time-display {
@@ -98,80 +98,55 @@
         }
 
         @media (max-width: 1200px) {
-            .profile-section {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+            .contract-content {
+                width: calc(100% - 240px);
+                margin-right: 220px;
+            }
+            .sidebar {
+                width: 200px;
             }
         }
 
         @media (max-width: 992px) {
             .contract-content {
-                width: calc(100% - 180px);
-                margin-right: 160px;
-                padding: 1.5rem;
+                width: calc(100% - 220px);
+                margin-right: 200px;
             }
-            
             .sidebar {
-                width: 160px;
+                width: 180px;
             }
         }
 
         @media (max-width: 768px) {
             .contract-content {
-                width: calc(100% - 140px);
-                margin-right: 120px;
+                width: calc(100% - 180px);
+                margin-right: 180px;
+                margin-left: 10px;
                 padding: 1rem;
             }
-            
             .sidebar {
-                width: 120px;
-            }
-            
-            .profile-section {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .header-info {
-                padding: 1.5rem;
+                width: 160px;
             }
         }
 
         @media (max-width: 576px) {
             .contract-content {
-                width: calc(100% - 100px);
-                margin-right: 80px;
+                width: calc(100% - 140px);
+                margin-right: 140px;
                 margin-left: 10px;
                 padding: 0.8rem;
             }
-            
             .sidebar {
-                width: 80px;
+                width: 120px;
             }
-            
-            .time-display {
-                padding: 10px;
-            }
-            
-            .time-display h3 {
-                font-size: 0.9rem;
-            }
-            
-            .time-display .current-time {
-                font-size: 1.2rem;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .header-info {
             width: 100%;
             max-width: 800px;
-            margin: 0 auto 3rem auto;
+            margin: 0 auto 2rem auto;
             padding: 2rem;
+            box-sizing: border-box;
             background: rgba(255,20,147,0.03);
             border-radius: 15px;
         }
@@ -199,37 +174,26 @@
             width: 100%;
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 0;
         }
 
         .profile-card {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
             background: rgba(255,20,147,0.05);
             border: 1px solid #ff1493;
             border-radius: 15px;
             padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            height: 100%;
-        }
-
-        .profile-card h3 {
-            height: 40px;
-            margin: 1rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .profile-media {
+            aspect-ratio: 9/16;
             width: 100%;
-            height: 0;
-            padding-bottom: min(177.77%, 80vh);
+            height: auto;
             position: relative;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            border-radius: 10px;
         }
 
         .profile-media img, 
@@ -340,14 +304,15 @@
         }
 
         .highlight-box {
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 600px;
+            padding: 1.5rem;
+            box-sizing: border-box;
             background: rgba(255,20,147,0.05);
             border: 1px solid #ff1493;
             border-radius: 10px;
-            padding: 1.5rem;
-            margin: 2rem auto;
             text-align: center;
-            width: 90%;
-            max-width: 600px;
         }
 
         .price-tag {
@@ -469,10 +434,10 @@
 
         /* Improve spacing and readability */
         .requirements {
+            margin: 2rem auto;
             width: 90%;
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
+            padding: 0;
         }
 
         /* Add smooth scrolling */
@@ -532,6 +497,36 @@
         input[type="number"]::-webkit-outer-spin-button {
             opacity: 1;
             background: rgba(255,20,147,0.2);
+        }
+
+        /* Fix form layout */
+        .form-group {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Fix highlight box layout */
+        .highlight-box {
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 600px;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        /* Fix booking form layout */
+        #bookingForm {
+            width: 90%;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0;
         }
     </style>
 </head>
@@ -658,19 +653,19 @@
                 </ul>
             </div>
 
-            <form id="bookingForm" style="width: 95%; max-width: 600px; margin: 2rem auto;">
+            <form id="bookingForm" style="width: 90%; max-width: 600px; margin: 2rem auto; padding: 0;">
                 <h3 style="text-align: center; color: #ff1493; margin-bottom: 2rem;">
                     Formulário de Agendamento Premium
                 </h3>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="title">Título do Encontro:</label>
                     <input type="text" id="title" required 
                            placeholder="Ex: Encontro Especial com Luanny e Pamela"
                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="description">Descrição (máx. 400 caracteres):</label>
                     <textarea id="description" maxlength="400" required 
                               placeholder="Descreva suas preferências e expectativas para o encontro..."
@@ -680,26 +675,26 @@
                     </small>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="nick">Seu Nick:</label>
                     <input type="text" id="nick" required 
                            placeholder="Como deseja ser chamado"
                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="birthdate">Data de Nascimento:</label>
                     <input type="date" id="birthdate" required 
                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="bookingDate">Data pretendida:</label>
                     <input type="date" id="bookingDate" required 
                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="bookingTime">Horário:</label>
                     <input type="time" id="bookingTime" required 
                            min="00:00" max="05:00"
@@ -707,7 +702,7 @@
                     <small style="color: #ffd1ea;">Atendimento das 00:00 às 05:00</small>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="duration">Período do Encontro:</label>
                     <select id="duration" required 
                             style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
@@ -725,7 +720,7 @@
                     <small style="color: #ffd1ea;">+ Taxa de deslocamento conforme local</small>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="location">Local do Encontro:</label>
                     <select id="location" required 
                             style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
@@ -748,7 +743,7 @@
                     </select>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 2rem;">
+                <div class="form-group">
                     <label for="specifications">Especificações Adicionais:</label>
                     <textarea id="specifications" 
                               placeholder="Informe quaisquer preferências específicas, restrições ou pedidos especiais..."
@@ -845,6 +840,29 @@
                             backToTop.style.display = 'none';
                         }
                     }, 300);
+                }
+            });
+
+            // Resize handler
+            window.addEventListener('resize', function() {
+                // Recalculate layout dimensions
+                const sidebar = document.querySelector('.sidebar');
+                const content = document.querySelector('.contract-content');
+                const windowWidth = window.innerWidth;
+                
+                // Adjust widths based on screen size
+                if (windowWidth > 1200) {
+                    content.style.width = 'calc(100% - 260px)';
+                    sidebar.style.width = '220px';
+                } else if (windowWidth > 992) {
+                    content.style.width = 'calc(100% - 220px)';
+                    sidebar.style.width = '180px';
+                } else if (windowWidth > 768) {
+                    content.style.width = 'calc(100% - 180px)';
+                    sidebar.style.width = '160px';
+                } else {
+                    content.style.width = 'calc(100% - 140px)';
+                    sidebar.style.width = '120px';
                 }
             });
 
