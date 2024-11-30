@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <base href="bastardadoll.github.io">
+    <base href="https://bastardadoll.github.io/">
+
+    <!-- Important Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Group SEO Meta Tags -->
     <meta name="description" content="Luanny e Pamela, acompanhantes de luxo em São José dos Campos. Serviço premium, discrição e qualidade garantida.">
     <meta name="keywords" content="acompanhantes, luxo, São José dos Campos, sjc, vale do paraíba, luanny, pamela, trans, massagem">
     <meta name="robots" content="index, follow">
-
-    <!-- Location Meta Tags -->
-    <meta name="geo.region" content="BR-SP">
-    <meta name="geo.placename" content="São José dos Campos">
-    <meta name="geo.position" content="-23.1896;-45.9032">
-    <meta name="ICBM" content="23.1896, -45.9032">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Luanny & Pamela - Acompanhantes de Luxo em São José dos Campos">
@@ -33,9 +30,21 @@
     <link rel="icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
 
+    <meta name="theme-color" content="#1a0010">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <title>Luanny & Pamela - Acompanhantes de Luxo</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #ff1493;
+            --primary-light: rgba(255,20,147,0.1);
+            --text-color: #ffd1ea;
+            --bg-color: #1a0010;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -43,9 +52,26 @@
             min-height: 100vh;
             overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
-            background: #1a0010;
-            color: #ffd1ea;
+            background: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
+        }
+
+        /* Group layout styles */
+        .layout-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Update main content spacing */
+        .contract-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         /* Update sidebar/clock bar positioning */
@@ -54,748 +80,88 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 50px;
-            background: rgba(26,0,16,0.95);
-            border-bottom: 2px solid #ff1493;
-            padding: 5px 20px;
-            z-index: 1002;
+            height: 60px;
+            background: rgba(26,0,16,0.98);
+            border-bottom: 2px solid var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-sizing: border-box;
+            z-index: 1003;
         }
 
-        /* Update header positioning */
+        /* Update header positioning - remove fixed positioning */
         .header-info {
-            position: fixed;
-            top: 50px; /* Position below clock bar */
-            left: 0;
             width: 100%;
-            background: rgba(26,0,16,0.95);
-            padding: 1rem;
-            border-bottom: 2px solid #ff1493;
-            z-index: 1001;
-            margin: 0;
-        }
-
-        /* Update main content spacing */
-        .contract-content {
-            margin-top: 200px; /* Account for fixed header + clock bar */
-            padding: 20px;
-            width: 100%;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            background: rgba(26,0,16,0.98);
+            padding: 2rem;
+            margin: 60px auto 2rem auto; /* Add margin-top to account for fixed clock */
             box-sizing: border-box;
         }
 
         /* Clock display styling */
         .time-display {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: rgba(255,20,147,0.1);
-            border: 1px solid #ff1493;
-            padding: 5px 15px;
-            border-radius: 10px;
+            text-align: center;
         }
 
         .time-display h3 {
-            font-size: 1rem;
             margin: 0;
-            color: #ff1493;
+            font-size: 1rem;
+            color: var(--primary-color);
         }
 
-        .time-display .current-time {
+        .current-time {
             font-size: 1.2rem;
-            margin: 0;
-            color: #ffd1ea;
+            color: var(--text-color);
             font-weight: bold;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 1200px) {
-            .contract-content {
-                padding: 15px;
-                margin-top: 140px;
+        /* Responsive clock adjustments */
+        @media (max-width: 480px) {
+            .time-display h3 {
+                font-size: 0.9rem;
             }
-
-            .profile-section {
-                grid-template-columns: 1fr;
-                max-width: 800px;
-            }
-
-            .profile-card {
-                margin: 0 auto;
-                max-width: 600px;
+            
+            .current-time {
+                font-size: 1.1rem;
             }
         }
 
+        @media (max-width: 360px) {
+            .time-display h3 {
+                font-size: 0.8rem;
+            }
+            
+            .current-time {
+                font-size: 1rem;
+            }
+        }
+
+        /* Responsive improvements */
         @media (max-width: 768px) {
+            .header-info {
+                margin-top: 60px;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                height: 50px;
+            }
+            
+            .header-info {
+                margin-top: 50px;
+            }
+        }
+
+        @media (max-width: 360px) {
             .sidebar {
                 height: 45px;
             }
-
-            .header-info {
-                top: 45px;
-                padding: 15px;
-            }
-
-            .contract-content {
-                margin-top: 120px;
-                padding: 10px;
-            }
-
-            .header-info h2 {
-                font-size: 1.4rem;
-                line-height: 1.3;
-            }
-
-            .header-info h3 {
-                font-size: 1.1rem;
-                line-height: 1.3; 
-            }
-
-            .profile-card {
-                padding: 15px;
-            }
-
-            .stat-item {
-                font-size: 0.9rem;
-                padding: 8px;
-                min-height: 40px;
-            }
-
-            .profile-card p {
-                font-size: 0.9rem;
-                padding: 12px;
-            }
-
-            .services h4 {
-                font-size: 1.1rem;
-            }
-
-            .services ul {
-                font-size: 0.9rem;
-            }
-
-            .highlight-box {
-                padding: 15px;
-            }
-
-            .price-tag {
-                font-size: 1.6rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sidebar {
-                height: 40px;
-            }
-
-            .time-display {
-                gap: 8px;
-            }
-
-            .time-display h3 {
-                font-size: 0.8rem;
-            }
-
-            .time-display .current-time {
-                font-size: 1rem;
-            }
-
-            .header-info {
-                top: 40px;
-                padding: 12px;
-            }
-
-            .contract-content {
-                margin-top: 110px;
-                padding: 8px;
-            }
-
-            .header-info h2 {
-                font-size: 1.2rem;
-            }
-
-            .header-info h3 {
-                font-size: 1rem;
-            }
-
-            .profile-card {
-                padding: 12px;
-            }
-
-            .stat-item {
-                font-size: 0.8rem;
-                padding: 6px;
-                min-height: 35px;
-            }
-
-            .profile-card p {
-                font-size: 0.8rem;
-                padding: 10px;
-            }
-
-            .services h4 {
-                font-size: 1rem;
-            }
-
-            .services ul {
-                font-size: 0.8rem;
-            }
-
-            .form-group label {
-                font-size: 0.9rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 0.9rem;
-                padding: 8px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .sidebar {
-                height: 35px;
-            }
-
-            .time-display h3 {
-                font-size: 0.75rem;
-            }
-
-            .time-display .current-time {
-                font-size: 0.9rem;
-            }
-
-            .header-info {
-                top: 35px;
-                padding: 10px;
-            }
-
-            .contract-content {
-                margin-top: 100px;
-                padding: 5px;
-            }
-
-            .header-info h2 {
-                font-size: 1.1rem;
-            }
-
-            .header-info h3 {
-                font-size: 0.9rem;
-            }
-
-            .profile-card {
-                padding: 10px;
-            }
-
-            .stat-item {
-                font-size: 0.75rem;
-                padding: 5px;
-                min-height: 32px;
-            }
-
-            .form-group label {
-                font-size: 0.8rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 0.8rem;
-                padding: 6px;
-            }
             
-            .profile-card p {
-                font-size: 0.75rem;
-                padding: 8px;
-            }
-
-            .services h4 {
-                font-size: 0.9rem;
-            }
-
-            .services ul {
-                font-size: 0.75rem;
-                padding-left: 15px;
-            }
-
-            .highlight-box {
-                padding: 10px;
-            }
-
-            .price-tag {
-                font-size: 1.3rem;
-            }
-        }
-
-        /* Improve fixed header/sidebar stacking */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(26,0,16,0.95);
-            border-bottom: 2px solid #ff1493;
-            z-index: 1002;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-
-        .header-info {
-            position: fixed;
-            background: rgba(26,0,16,0.95);
-            border-bottom: 2px solid #ff1493;
-            z-index: 1001;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Improve form responsiveness */
-        #bookingForm {
-            width: 100%;
-            max-width: 600px;
-            margin: 1rem auto;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        @media (max-width: 480px) {
-            #bookingForm {
-                padding: 10px;
-            }
-        }
-
-        /* Improve button responsiveness */
-        a[href^="https://wa.me"] {
-            max-width: 100%;
-            padding: 12px 24px;
-            margin: 1rem auto;
-            font-size: 1rem;
-            white-space: normal;
-        }
-
-        @media (max-width: 360px) {
-            a[href^="https://wa.me"] {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        .header-info h2,
-        .header-info h3 {
-            text-align: center;
-            word-wrap: break-word;
-            hyphens: auto;
-            max-width: 100%;
-        }
-
-        .profile-card h3 {
-            text-align: center;
-            margin: 0.5rem 0;
-        }
-
-        .time-display h3 {
-            font-size: 1rem;
-            margin: 0 0 5px 0;
-            color: #ff1493;
-            font-size: 1.2rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-align: center;
-        }
-
-        .time-display .current-time {
-            font-size: 1.4rem;
-            color: #ffd1ea;
-            font-weight: bold;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        @media (max-width: 1200px) {
-            .contract-content {
-                width: calc(100% - 240px);
-                margin-right: 220px;
-            }
-            .sidebar {
-                width: 200px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .contract-content {
-                width: calc(100% - 220px);
-                margin-right: 200px;
-            }
-            .sidebar {
-                width: 180px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .contract-content {
-                width: calc(100% - 140px); /* Reduced margin for sidebar */
-                margin-right: 130px;
-                margin-left: 10px;
-                padding: 1rem;
-            }
-
             .header-info {
-                padding: 1rem;
+                margin-top: 45px;
             }
-
-            .header-info h2 {
-                font-size: 1.5rem;
-                text-align: center;
-                word-wrap: break-word;
-                hyphens: auto;
-                max-width: 100%;
-            }
-
-            .header-info h3 {
-                font-size: 1.2rem;
-                text-align: center;
-                word-wrap: break-word;
-                hyphens: auto;
-                max-width: 100%;
-            }
-
-            .profile-section {
-                grid-template-columns: 1fr; /* Single column for mobile */
-                gap: 1rem;
-            }
-
-            .profile-card {
-                padding: 1rem;
-            }
-
-            .profile-card h3 {
-                font-size: 1.2rem;
-            }
-
-            .stats {
-                gap: 0.5rem;
-            }
-
-            .stat-item {
-                font-size: 0.8rem;
-                padding: 0.5rem;
-                min-height: 40px;
-            }
-
-            .profile-card p {
-                font-size: 0.9rem;
-                padding: 1rem;
-            }
-
-            .services {
-                padding: 1rem;
-            }
-
-            .services h4 {
-                font-size: 1rem;
-            }
-
-            .services ul {
-                font-size: 0.9rem;
-            }
-
-            .highlight-box {
-                width: 95%;
-                padding: 1rem;
-            }
-
-            .price-tag {
-                font-size: 1.6rem;
-            }
-
-            .time-display h3 {
-                font-size: 1rem;
-            }
-
-            .time-display .current-time {
-                font-size: 1.4rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contract-content {
-                width: calc(100% - 120px);
-                margin-right: 110px;
-                margin-left: 5px;
-                padding: 0.5rem;
-            }
-
-            .sidebar {
-                width: 100px;
-            }
-
-            .time-display {
-                padding: 5px 10px;
-            }
-
-            .time-display h3 {
-                font-size: 0.9rem;
-            }
-
-            .time-display .current-time {
-                font-size: 1.2rem;
-            }
-
-            .header-info h2 {
-                font-size: 1.3rem;
-            }
-
-            .header-info h3 {
-                font-size: 1rem;
-            }
-
-            .profile-card {
-                padding: 0.8rem;
-            }
-
-            .profile-card h3 {
-                font-size: 1rem;
-            }
-
-            .stat-item {
-                font-size: 0.7rem;
-                padding: 0.3rem;
-                min-height: 35px;
-            }
-
-            .profile-card p {
-                font-size: 0.8rem;
-                padding: 0.8rem;
-            }
-
-            .services h4 {
-                font-size: 0.9rem;
-            }
-
-            .services ul {
-                font-size: 0.8rem;
-                padding-left: 1rem;
-            }
-
-            .services ul li {
-                margin: 0.5rem 0;
-            }
-
-            .highlight-box {
-                width: 100%;
-                padding: 0.8rem;
-            }
-
-            .price-tag {
-                font-size: 1.4rem;
-            }
-
-            /* Form adjustments */
-            #bookingForm {
-                width: 100%;
-            }
-
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            .form-group label {
-                font-size: 0.9rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 0.9rem;
-                padding: 0.4rem;
-            }
-
-            /* Button adjustments */
-            a[href^="https://wa.me"] {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .contract-content {
-                width: calc(100% - 100px);
-                margin-right: 90px;
-                margin-left: 5px;
-                padding: 0.3rem;
-            }
-
-            .sidebar {
-                top: 140px;
-                width: 80px;
-            }
-
-            .time-display h3 {
-                font-size: 0.8rem;
-            }
-
-            .time-display .current-time {
-                font-size: 1rem;
-            }
-
-            .header-info h2 {
-                font-size: 1.1rem;
-            }
-
-            .header-info h3 {
-                font-size: 0.9rem;
-            }
-
-            .profile-card {
-                padding: 0.5rem;
-            }
-
-            .profile-card h3 {
-                font-size: 0.9rem;
-                margin: 0.3rem 0;
-            }
-
-            .stat-item {
-                font-size: 0.6rem;
-                padding: 0.2rem;
-                min-height: 30px;
-            }
-
-            .services {
-                padding: 0.8rem;
-            }
-
-            .services h4 {
-                font-size: 0.8rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .services ul {
-                font-size: 0.7rem;
-                padding-left: 1rem;
-            }
-
-            .services ul li {
-                margin: 0.3rem 0;
-            }
-
-            .profile-card p {
-                font-size: 0.7rem;
-                padding: 0.8rem;
-            }
-
-            .highlight-box {
-                padding: 0.8rem;
-                margin: 1rem auto;
-            }
-
-            .price-tag {
-                font-size: 1.2rem;
-            }
-
-            /* Form adjustments */
-            .form-group {
-                margin-bottom: 0.8rem;
-            }
-
-            .form-group label {
-                font-size: 0.8rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 0.8rem;
-                padding: 0.3rem;
-            }
-
-            /* WhatsApp button adjustments */
-            a[href^="https://wa.me"] {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.8rem;
-                margin: 0.8rem auto;
-            }
-
-            /* Back to top button adjustments */
-            .back-to-top {
-                width: 25px;
-                height: 25px;
-                bottom: 0.3rem;
-                right: 0.3rem;
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Additional adjustments for ultra small screens */
-        @media (max-width: 320px) {
-            .contract-content {
-                width: calc(100% - 90px);
-                margin-right: 80px;
-                margin-left: 5px;
-                padding: 0.2rem;
-            }
-
-            .sidebar {
-                top: 140px;
-                width: 70px;
-            }
-
-            .time-display h3 {
-                font-size: 0.7rem;
-            }
-
-            .time-display .current-time {
-                font-size: 0.9rem;
-            }
-
-            .header-info h2 {
-                font-size: 1rem;
-            }
-
-            .header-info h3 {
-                font-size: 0.8rem;
-            }
-
-            .stat-item {
-                font-size: 0.5rem;
-                padding: 0.2rem;
-                min-height: 25px;
-            }
-
-            .profile-card p,
-            .services ul,
-            .form-group label,
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 0.6rem;
-            }
-
-            .price-tag {
-                font-size: 1rem;
-            }
-        }
-
-        .header-info {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
-            padding: 2rem;
-            box-sizing: border-box;
-            background: rgba(255,20,147,0.03);
-            border-radius: 15px;
-            position: relative;
-            z-index: 1001; /* Ensure header stays above sidebar */
         }
 
         .header-info p {
@@ -804,7 +170,7 @@
         }
 
         .header-info ol {
-            color: #ffd1ea;
+            color: var(--text-color);
             line-height: 2;
             padding-left: 1.5rem;
         }
@@ -815,13 +181,10 @@
         }
 
         .profile-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
             width: 100%;
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0;
         }
 
         .profile-card {
@@ -831,9 +194,22 @@
             flex-direction: column;
             gap: 1.5rem;
             background: rgba(255,20,147,0.05);
-            border: 1px solid #ff1493;
+            border: 1px solid var(--primary-color);
             border-radius: 15px;
             padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        /* Add margin between profile cards */
+        .profile-card + .profile-card {
+            margin-top: 2rem;
+        }
+
+        /* Ensure responsive layout maintains column */
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+            }
         }
 
         .profile-media {
@@ -895,7 +271,7 @@
             color: white;
             font-size: 0.9em;
             text-align: center;
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            background: linear-gradient(45deg, var(--primary-color), #ff69b4);
             padding: 20px;
             border-radius: 10px;
         }
@@ -957,19 +333,19 @@
             padding: 1.5rem;
             box-sizing: border-box;
             background: rgba(255,20,147,0.05);
-            border: 1px solid #ff1493;
+            border: 1px solid var(--primary-color);
             border-radius: 10px;
             text-align: center;
         }
 
         .price-tag {
             font-size: 2rem;
-            color: #ff1493;
+            color: var(--primary-color);
             margin: 1rem 0;
         }
 
         h2, h3, h4 {
-            color: #ff1493;
+            color: var(--primary-color);
         }
 
         .section-title {
@@ -984,7 +360,7 @@
 
         .section-subtitle {
             text-align: center;
-            color: #ffd1ea;
+            color: var(--text-color);
             margin: 0 0 2rem 0;
             font-size: 1.2rem;
             font-weight: 300;
@@ -1061,91 +437,6 @@
             }
         }
 
-        /* Add section dividers with decorative borders */
-        .section-divider {
-            border-top: 2px solid rgba(255,20,147,0.3);
-            margin: 3rem 0;
-            position: relative;
-        }
-
-        .section-divider::before {
-            content: '❋';
-            color: #ff1493;
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1a0010;
-            padding: 0 1rem;
-        }
-
-        /* Improve spacing and readability */
-        .requirements {
-            margin: 2rem auto;
-            width: 90%;
-            max-width: 800px;
-            padding: 0;
-        }
-
-        /* Add smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Improve input/select/textarea visibility when selected */
-        input, select, textarea {
-            background: rgba(255,255,255,0.05) !important;
-            color: #ffd1ea !important;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            background: rgba(255,20,147,0.15) !important;
-            border-color: #ff69b4 !important;
-            outline: none;
-            box-shadow: 0 0 5px rgba(255,20,147,0.5);
-        }
-
-        /* Improve select options visibility */
-        select option, select optgroup {
-            background: #1a0010;
-            color: #ffd1ea;
-        }
-
-        select optgroup {
-            font-weight: bold;
-            color: #ff69b4;
-        }
-
-        /* Improve placeholder text visibility */
-        input::placeholder, 
-        textarea::placeholder {
-            color: rgba(255,209,234,0.5) !important;
-        }
-
-        /* Improve selected text visibility */
-        input::selection,
-        textarea::selection {
-            background: rgba(255,20,147,0.3);
-            color: #ffffff;
-        }
-
-        /* Improve date/time input visibility */
-        input[type="date"],
-        input[type="time"] {
-            color-scheme: dark;
-        }
-
-        /* Improve number input arrows */
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            opacity: 1;
-            background: rgba(255,20,147,0.2);
-        }
-
         /* Fix form layout */
         .form-group {
             width: 100%;
@@ -1178,16 +469,21 @@
     </style>
 </head>
 <body>
+    <!-- Fixed Top Bar -->
     <div class="sidebar">
+        <!-- Time Display -->
         <div class="time-display">
             <h3>Horário Atual</h3>
             <div class="current-time" id="currentTime">00:00:00</div>
         </div>
     </div>
+
+    <!-- Main Content Container -->
     <div class="contract-content">
+        <!-- Header Section -->
         <div class="header-info">
-            <h2 style="color: #ff1493; margin-bottom: 0.5rem; font-size: 1.8rem;">LUANNY & PAMELA</h2>
-            <h3 style="color: #ffd1ea; margin-bottom: 2rem; font-size: 1.4rem;">Acompanhantes de Luxo em São José dos Campos</h3>
+            <h2 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.8rem;">LUANNY & PAMELA</h2>
+            <h3 style="color: var(--text-color); margin-bottom: 2rem; font-size: 1.4rem;">Acompanhantes de Luxo em São José dos Campos</h3>
             
             <h4 style="margin-bottom: 1rem;">Quem Somos</h4>
             <p style="margin-bottom: 1rem;">
@@ -1200,6 +496,7 @@
             </p>
         </div>
 
+        <!-- Profile Section -->
         <div class="profile-section">
             <div class="profile-card">
                 <div class="profile-media">
@@ -1266,6 +563,7 @@
             </div>
         </div>
 
+        <!-- Pricing Section -->
         <div class="highlight-box">
             <h3>Valores e Condições</h3>
             <div class="price-tag">R$ 500,00</div>
@@ -1274,6 +572,7 @@
             <p>Local (Hotel/Motel) não incluso</p>
         </div>
 
+        <!-- Requirements Section -->
         <div class="requirements">
             <h3>9. INFORMAÇÕES DE AGENDAMENTO E VALORES</h3>
 
@@ -1300,8 +599,9 @@
                 </ul>
             </div>
 
-            <form id="bookingForm" style="width: 90%; max-width: 600px; margin: 2rem auto; padding: 0;">
-                <h3 style="text-align: center; color: #ff1493; margin-bottom: 2rem;">
+            <!-- Booking Form Section -->
+            <form id="bookingForm">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 2rem;">
                     Formulário de Agendamento Premium
                 </h3>
 
@@ -1309,15 +609,15 @@
                     <label for="title">Título do Encontro:</label>
                     <input type="text" id="title" required 
                            placeholder="Ex: Encontro Especial com Luanny e Pamela"
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Descrição (máx. 400 caracteres):</label>
                     <textarea id="description" maxlength="400" required 
                               placeholder="Descreva suas preferências e expectativas para o encontro..."
-                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 120px; text-align: justify;"></textarea>
-                    <small style="color: #ffd1ea; display: block; text-align: right;">
+                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color); min-height: 120px; text-align: justify;"></textarea>
+                    <small style="color: var(--text-color); display: block; text-align: right;">
                         <span id="charCount">0</span>/400 caracteres
                     </small>
                 </div>
@@ -1326,33 +626,33 @@
                     <label for="nick">Seu Nick:</label>
                     <input type="text" id="nick" required 
                            placeholder="Como deseja ser chamado"
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
                 </div>
 
                 <div class="form-group">
                     <label for="birthdate">Data de Nascimento:</label>
                     <input type="date" id="birthdate" required 
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
                 </div>
 
                 <div class="form-group">
                     <label for="bookingDate">Data pretendida:</label>
                     <input type="date" id="bookingDate" required 
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
                 </div>
 
                 <div class="form-group">
                     <label for="bookingTime">Horário:</label>
                     <input type="time" id="bookingTime" required 
                            min="00:00" max="05:00"
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
-                    <small style="color: #ffd1ea;">Atendimento das 00:00 às 05:00</small>
+                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
+                    <small style="color: var(--text-color);">Atendimento das 00:00 às 05:00</small>
                 </div>
 
                 <div class="form-group">
                     <label for="duration">Período do Encontro:</label>
                     <select id="duration" required 
-                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
                         <option value="1">1 hora - R$ 500,00</option>
                         <option value="2">2 horas - R$ 900,00</option>
                         <option value="3">3 horas - R$ 1.300,00</option>
@@ -1363,14 +663,14 @@
 
                 <div class="price-display" style="text-align: center; margin: 2rem 0; padding: 1rem; background: rgba(255,20,147,0.1); border-radius: 10px;">
                     <h4>Valor Total</h4>
-                    <div class="price" style="font-size: 2rem; color: #ff1493;">R$ <span id="totalPrice">500,00</span></div>
-                    <small style="color: #ffd1ea;">+ Taxa de deslocamento conforme local</small>
+                    <div class="price" style="font-size: 2rem; color: var(--primary-color);">R$ <span id="totalPrice">500,00</span></div>
+                    <small style="color: var(--text-color);">+ Taxa de deslocamento conforme local</small>
                 </div>
 
                 <div class="form-group">
                     <label for="location">Local do Encontro:</label>
                     <select id="location" required 
-                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea;">
+                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
                         <optgroup label="Hotéis e Motéis no Centro">
                             <option value="joabi">Motel Joabi</option>
                             <option value="veneza">Motel Veneza</option>
@@ -1394,14 +694,14 @@
                     <label for="specifications">Especificações Adicionais:</label>
                     <textarea id="specifications" 
                               placeholder="Informe quaisquer preferências específicas, restrições ou pedidos especiais..."
-                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid #ff1493; background: rgba(255,255,255,0.1); color: #ffd1ea; min-height: 100px;"></textarea>
+                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color); min-height: 100px;"></textarea>
                 </div>
             </form>
 
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="https://wa.me/5512982572507?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20com%20Luanny%20e%20Pamela.%0A%0AServiço:%201%20hora%20-%20R$%20500,00%20%2B%20local%20(Hotel/Motel)%20%2B%20deslocamento%0A%0ANick:%20__%0AData%20de%20Nascimento:%20__%0AData%20pretendida:%20__%0AHorário:%20__%0ALocal%20(Hotel/Motel):%20__" 
                    style="display: inline-block; 
-                          background-color: #ff1493; 
+                          background-color: var(--primary-color); 
                           color: white; 
                           padding: 1rem 2rem; 
                           border-radius: 25px; 
@@ -1418,63 +718,69 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.profile-media img');
-            
-            function loadImage(img) {
-                return new Promise((resolve, reject) => {
-                    img.onload = () => {
-                        console.log('Image loaded successfully:', img.src);
-                        img.style.display = 'block';
-                        img.classList.add('loaded');
-                        img.nextElementSibling.style.display = 'none';
-                        resolve(img);
-                    };
-                    
-                    img.onerror = () => {
-                        console.error('Image failed to load:', img.src);
-                        img.style.display = 'none';
-                        img.nextElementSibling.style.display = 'block';
-                        reject(new Error(`Failed to load image: ${img.src}`));
-                    };
-                    
-                    // Force reload image
-                    const currentSrc = img.src;
-                    img.src = '';
-                    img.src = currentSrc;
-                });
-            }
-            
-            // Load all images
-            images.forEach(img => {
-                loadImage(img).catch(error => {
-                    console.error(error);
-                });
+        // Utility Functions
+        function loadImage(img) {
+            return new Promise((resolve, reject) => {
+                img.onload = () => {
+                    img.style.display = 'block';
+                    img.classList.add('loaded');
+                    img.nextElementSibling.style.display = 'none';
+                    resolve(img);
+                };
+                
+                img.onerror = () => {
+                    img.style.display = 'none';
+                    img.nextElementSibling.style.display = 'block';
+                    reject(new Error(`Failed to load image: ${img.src}`));
+                };
+                
+                const currentSrc = img.src;
+                img.src = '';
+                img.src = currentSrc;
             });
+        }
 
-            // Character counter for description
+        function updateTime() {
+            const timeDisplay = document.getElementById('currentTime');
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load Images
+            const images = document.querySelectorAll('.profile-media img');
+            images.forEach(img => loadImage(img).catch(console.error));
+
+            // Initialize Form Handlers
             const description = document.getElementById('description');
             const charCount = document.getElementById('charCount');
-            
-            description.addEventListener('input', function() {
-                charCount.textContent = this.value.length;
-            });
+            if (description && charCount) {
+                description.addEventListener('input', function() {
+                    charCount.textContent = this.value.length;
+                });
+            }
 
-            // Price calculator
+            // Initialize Price Calculator
             const duration = document.getElementById('duration');
             const totalPrice = document.getElementById('totalPrice');
-            
-            duration.addEventListener('change', function() {
-                const prices = {
-                    '1': '500,00',
-                    '2': '900,00',
-                    '3': '1.300,00',
-                    '4': '1.600,00',
-                    'quick': '300,00'
-                };
-                totalPrice.textContent = prices[this.value];
-            });
+            if (duration && totalPrice) {
+                duration.addEventListener('change', function() {
+                    const prices = {
+                        '1': '500,00',
+                        '2': '900,00',
+                        '3': '1.300,00',
+                        '4': '1.600,00',
+                        'quick': '300,00'
+                    };
+                    totalPrice.textContent = prices[this.value];
+                });
+            }
 
+            // Initialize Scroll Handler
             window.addEventListener('scroll', function() {
                 const backToTop = document.querySelector('.back-to-top');
                 if (window.pageYOffset > 300) {
@@ -1490,125 +796,9 @@
                 }
             });
 
-            // Resize handler
-            window.addEventListener('resize', function() {
-                // Recalculate layout dimensions
-                const sidebar = document.querySelector('.sidebar');
-                const content = document.querySelector('.contract-content');
-                const windowWidth = window.innerWidth;
-                
-                // Adjust widths based on screen size
-                if (windowWidth > 1200) {
-                    content.style.width = 'calc(100% - 260px)';
-                    sidebar.style.width = '220px';
-                } else if (windowWidth > 992) {
-                    content.style.width = 'calc(100% - 220px)';
-                    sidebar.style.width = '180px';
-                } else if (windowWidth > 768) {
-                    content.style.width = 'calc(100% - 180px)';
-                    sidebar.style.width = '160px';
-                } else {
-                    content.style.width = 'calc(100% - 140px)';
-                    sidebar.style.width = '120px';
-                }
-            });
-
-            // Smooth scroll to section links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Time update function
-            function updateTime() {
-                const timeDisplay = document.getElementById('currentTime');
-                const now = new Date();
-                const hours = String(now.getHours()).padStart(2, '0');
-                const minutes = String(now.getMinutes()).padStart(2, '0');
-                const seconds = String(now.getSeconds()).padStart(2, '0');
-                timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
-            }
-
-            // Update time immediately and then every second
+            // Initialize Time Display
             updateTime();
             setInterval(updateTime, 1000);
-        });
-
-        const whatsappLink = document.querySelector('a[href^="https://wa.me"]');
-        
-        whatsappLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            try {
-                // Get form values
-                const title = document.getElementById('title').value.trim();
-                const description = document.getElementById('description').value.trim();
-                const nick = document.getElementById('nick').value.trim();
-                const birthdate = document.getElementById('birthdate').value.trim();
-                const bookingDate = document.getElementById('bookingDate').value.trim();
-                const bookingTime = document.getElementById('bookingTime').value.trim();
-                const location = document.getElementById('location').value.trim();
-                
-                // Validate form fields
-                if (!title || !description || !nick || !birthdate || !bookingDate || !bookingTime || !location) {
-                    alert('Por favor, preencha todos os campos do formulário antes de prosseguir.');
-                    return;
-                }
-                
-                // Format the message
-                const message = `Olá! Gostaria de agendar um horário com Luanny e Pamela.
-
-*DADOS DO CLIENTE:*
-Título do Encontro: ${title}
-Descrição: ${description}
-Nick: ${nick}
-Data de Nascimento: ${birthdate}
-Data pretendida: ${bookingDate}
-Horário: ${bookingTime}
-Local do Encontro: ${location}
-
-*Serviço:* ${duration.options[duration.selectedIndex].text}`;
-
-                // Encode and open WhatsApp in a new window
-                const whatsappUrl = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
-                
-                // Try opening in new window first
-                const newWindow = window.open(whatsappUrl, '_blank');
-                
-                // If blocked or fails, try direct location
-                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-                    window.location.href = whatsappUrl;
-                }
-                
-            } catch (error) {
-                console.error('Erro ao tentar abrir WhatsApp:', error);
-                alert('Houve um erro ao tentar abrir o WhatsApp. Por favor, tente novamente ou entre em contato diretamente pelo número: (12) 98257-2507');
-                
-                // Fallback: create a clickable link
-                const fallbackLink = document.createElement('div');
-                fallbackLink.innerHTML = `
-                    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-                                background: rgba(0,0,0,0.9); padding: 20px; border-radius: 10px; z-index: 1000; 
-                                text-align: center; border: 2px solid #ff1493;">
-                        <p>Se o WhatsApp não abrir automaticamente, clique no link abaixo:</p>
-                        <a href="tel:+5512982572507" style="display: block; margin: 10px 0; color: #ff1493;">
-                            📞 Ligar agora: (12) 98257-2507
-                        </a>
-                        <button onclick="this.parentElement.remove()" style="background: #ff1493; border: none; 
-                                color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
-                            Fechar
-                        </button>
-                    </div>
-                `;
-                document.body.appendChild(fallbackLink);
-            }
         });
     </script>
 </body>
