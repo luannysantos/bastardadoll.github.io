@@ -183,7 +183,18 @@ body {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+}
+
+/* Update tag styles to use background and border */
+.tag {
+    display: inline-block;
+    padding: 2px 6px;
+    margin: 2px;
+    font-size: 0.65em; /* Smaller than description text */
+    background: rgba(255,20,147,0.05);
+    border: 1px solid rgba(255,20,147,0.3);
+    border-radius: 8px;
+    color: #ffd1ea;
 }
 
 /* Update tag container styles */
@@ -586,7 +597,6 @@ h3 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
 }
 
 /* Mobile adaptations */
@@ -675,6 +685,12 @@ h3 {
 /* Ensure status icon remains green */
 .status-icon {
     background-color: #2ecc71;
+}
+
+/* Add/update in the CSS section */
+.grid-box svg {
+    display: block;
+    margin: 0 auto 10px auto; /* Centers the SVG icon and adds bottom margin */
 }
 </style>
 </head>
@@ -933,6 +949,7 @@ h3 {
             </svg>
             <h4>@pamelamulher</h4>
             <p>Perfil oficial com fotos sensuais e conteúdo exclusivo.</p>
+            <a href="https://instagram.com/pamelamulher" class="contact-btn">Seguir</a>
         </div>
 
         <div class="grid-box">
@@ -941,6 +958,7 @@ h3 {
             </svg>
             <h4>@luannytrans</h4>
             <p>Perfil oficial com lives e interação exclusiva.</p>
+            <a href="https://instagram.com/luannytrans" class="contact-btn">Seguir</a>
         </div>
 
         <div class="grid-box">
@@ -949,6 +967,7 @@ h3 {
             </svg>
             <h4>@dupla_lp.oficial</h4>
             <p>Perfil oficial da dupla com bastidores e momentos especiais.</p>
+            <a href="https://instagram.com/dupla_lp.oficial" class="contact-btn">Seguir</a>
         </div>
     </div>
 </div>
@@ -959,7 +978,7 @@ h3 {
         <div class="grid-box">
             <img src="blog.gif" alt="Blog">
             <h4>Blog</h4>
-            <p>Explore nosso blog exclusivo com dicas e histórias sobre experiências únicas no mundo do prazer e sensualidade.</p>
+            <p>Conteúdo exclusivo sobre experiências e histórias no universo do prazer. Dicas e relatos especiais para você.</p>
             <div class="tags">
                 <span class="tag">Dicas</span>
                 <span class="tag">Histórias</span>
@@ -970,8 +989,8 @@ h3 {
         
         <div class="grid-box">
             <img src="sobre.gif" alt="Sobre">
-            <h4>Detalhes Sobre a Gente</h4>
-            <p>Descubra nossas histórias pessoais e o que nos torna especiais no universo do prazer e entretenimento adulto.</p>
+            <h4>Sobre Nós</h4>
+            <p>Conheça mais sobre nossas histórias e o que nos torna únicas no universo do entretenimento adulto.</p>
             <div class="tags">
                 <span class="tag">Histórias</span>
                 <span class="tag">Perfis</span>
@@ -983,7 +1002,7 @@ h3 {
         <div class="grid-box">
             <img src="contos.gif" alt="Contos">
             <h4>Contos e Relatos</h4>
-            <p>Mergulhe em histórias reais e fantásticas dos nossos encontros mais intensos e memoráveis com clientes especiais.</p>
+            <p>Histórias reais dos nossos encontros mais intensos. Relatos exclusivos de momentos inesquecíveis.</p>
             <div class="tags">
                 <span class="tag">Relatos</span>
                 <span class="tag">Experiências</span>
@@ -995,7 +1014,7 @@ h3 {
         <div class="grid-box">
             <img src="fetiches.gif" alt="Fetiches">
             <h4>Fetiches e Fantasias</h4>
-            <p>Explore conosco um mundo de possibilidades e descubra novos prazeres através de fetiches e fantasias exclusivas.</p>
+            <p>Descubra um mundo de possibilidades. Fetiches exclusivos e fantasias especiais para realizar.</p>
             <div class="tags">
                 <span class="tag">Fetiches</span>
                 <span class="tag">Fantasias</span>
@@ -1007,7 +1026,7 @@ h3 {
         <div class="grid-box">
             <img src="roleplay.gif" alt="Roleplay">
             <h4>Questionário Roleplay</h4>
-            <p>Participe do nosso questionário especial e descubra novas dimensões de prazer através do roleplay personalizado.</p>
+            <p>Participe e descubra novas dimensões de prazer. Roleplay personalizado para suas fantasias.</p>
             <div class="tags">
                 <span class="tag">Roleplay</span>
                 <span class="tag">Fantasias</span>
@@ -1019,7 +1038,7 @@ h3 {
         <div class="grid-box">
             <img src="solo.gif" alt="Solo">
             <h4>Questionário Solo</h4>
-            <p>Responda nosso questionário individual para explorar seus desejos mais íntimos e descobrir novas experiências.</p>
+            <p>Explore seus desejos mais íntimos. Questionário individual para descobrir novas experiências.</p>
             <div class="tags">
                 <span class="tag">Individual</span>
                 <span class="tag">Preferências</span>
