@@ -73,154 +73,53 @@ body {
     opacity: 0.9;
 }
 
-/* Update main section container margins and width */
-.section-container,
-.info-section,
-.social-section,
-.learn-more-section {
-    max-width: 1200px;
-    margin: 50px auto;
-    margin-right: 140px; /* Space for clock */
-    padding: 30px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 20px;
-    width: calc(100% - 140px); /* Account for clock space */
+/* New navigation menu styles */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(26, 0, 16, 0.98);
+    border-left: 2px solid #ff1493;
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
 }
 
-/* Adjust grid boxes */
-.grid-box {
-    position: relative;
-    min-height: 180px;
-    padding: 8px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+.nav-menu.active {
+    right: 0;
 }
 
-/* Position contact button at bottom */
-.grid-box .contact-btn {
-    margin-top: auto;
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 16px);
-    padding: 8px;
-    font-size: 0.9em;
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 60px 0 0 0;
 }
 
-/* Mobile adaptations */
-@media (max-width: 768px) {
-    .section-container,
-    .info-section,
-    .social-section,
-    .learn-more-section {
-        margin: 20px;
-        margin-right: 20px;
-        padding: 15px;
-        width: calc(100% - 40px);
-    }
-    
-    .grid-boxes {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    
-    .grid-box {
-        min-height: 160px;
-        padding: 6px;
-    }
-    
-    .grid-box h4 {
-        font-size: 0.75em;
-        margin: 4px 0;
-    }
-    
-    .grid-box p {
-        font-size: 0.7em;
-        min-height: 35px;
-        margin: 4px 0;
-        padding: 0 4px;
-    }
-
-    .grid-box .contact-btn {
-        font-size: 0.75em;
-        padding: 6px;
-        bottom: 6px;
-    }
-
-    /* Adjust clock position for mobile */
-    #clock-box {
-        position: fixed;
-        bottom: 20px;
-        right: 10px;
-        top: auto;
-        transform: none;
-        width: auto;
-        padding: 8px;
-        flex-direction: row;
-        gap: 8px;
-        background: rgba(26, 0, 16, 0.9);
-    }
-
-    #clock {
-        font-size: 0.9em;
-    }
-
-    #message {
-        font-size: 0.8em;
-    }
-
-    .status-icon {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        background: #00ff00;
-        border-radius: 50%;
-        margin-right: 4px;
-    }
+.nav-menu li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 20, 147, 0.2);
 }
 
-@media (max-width: 480px) {
-    .grid-boxes {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-    
-    .grid-box {
-        min-height: 140px;
-    }
-    
-    .grid-box h4 {
-        font-size: 0.7em;
-    }
-    
-    .grid-box p {
-        font-size: 0.65em;
-        min-height: 30px;
-    }
-
-    .grid-box .contact-btn {
-        font-size: 0.7em;
-        padding: 4px;
-    }
-
+.nav-menu a {
+    color: #ffd1ea;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    padding: 5px;
+    transition: all 0.3s ease;
 }
 
-/* Add status icon style for ON indicator */
-.status-icon {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: #00ff00;
-    border-radius: 50%;
-    margin-right: 5px;
+.nav-menu a:hover {
+    color: #ff1493;
+    transform: translateX(10px);
 }
 
+/* Update menu toggle button */
 .menu-toggle {
     display: block;
     position: fixed;
@@ -241,7 +140,7 @@ body {
     background: #ff69b4;
 }
 
-/* Update section container margin */
+/* Update section container margin and layout */
 .section-container,
 .info-section,
 .social-section,
@@ -252,30 +151,167 @@ body {
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 20px;
+    margin-right: 100px; /* Reduced from 140px */
 }
 
-@media (min-width: 769px) {
+/* Grid box adjustments */
+.grid-box {
+    position: relative;
+    min-height: 160px; /* Reduced from 200px */
+    padding: 6px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-box .contact-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 8px;
+    padding: 8px;
+    font-size: 0.9em;
+}
+
+/* Mobile adaptations */
+@media (max-width: 768px) {
     .section-container,
     .info-section,
     .social-section,
     .learn-more-section {
-        margin-right: 140px;
+        margin: 20px;
+        margin-right: 80px; /* Maintain space for clock */
+        padding: 15px;
+    }
+
+    .grid-boxes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .grid-box {
+        min-height: 140px;
+        padding: 4px;
+    }
+    
+    .grid-box h4 {
+        font-size: 0.75em;
+        margin: 4px 0;
+    }
+    
+    .grid-box p {
+        font-size: 0.7em;
+        min-height: 30px;
+        margin: 4px 0;
+    }
+
+    .grid-box .contact-btn {
+        font-size: 0.75em;
+        padding: 6px;
+        margin: 4px;
     }
 }
 
-/* Update clock box styles */
+@media (max-width: 480px) {
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
+        margin: 10px;
+        margin-right: 70px;
+        padding: 10px;
+    }
+
+    .grid-boxes {
+        gap: 6px;
+    }
+    
+    .grid-box {
+        min-height: 130px;
+    }
+
+    .grid-box h4 {
+        font-size: 0.7em;
+    }
+    
+    .grid-box p {
+        font-size: 0.65em;
+        min-height: 25px;
+    }
+
+    .grid-box .contact-btn {
+        font-size: 0.7em;
+        padding: 4px;
+    }
+}
+
+/* Clock box status icon */
+.status-icon {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #00ff00; /* Green color for ON status */
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+/* Update clock box for all screen sizes */
 #clock-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
-    width: 80px;
+    width: 60px; /* Reduced width */
     height: auto;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
-    padding: 8px;
+    padding: 6px;
+    box-shadow: 0 0 15px rgba(255,20,147,0.2);
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 998;
+    transition: opacity 0.3s ease;
+}
+
+#clock {
+    font-size: 0.9em;
+}
+
+#message {
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clock-box .contact-btn {
+    font-size: 0.7em;
+    padding: 4px;
+    margin-top: 4px;
+    width: 100%;
+}
+
+/* Update clock box position and style */
+#clock-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 80px; /* Reduced from 120px */
+    height: auto; 
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 15px;
+    padding: 8px; /* Reduced padding */
     box-shadow: 0 0 15px rgba(255,20,147,0.2);
     position: fixed;
     top: 50%;
@@ -285,23 +321,20 @@ body {
     transition: opacity 0.3s ease;
 }
 
-/* Mobile adjustments for clock */
+/* Add responsive adjustments */
 @media (max-width: 768px) {
-    #clock-box {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        top: auto;
-        transform: none;
-        width: auto;
-        padding: 8px;
-        flex-direction: row;
-        gap: 8px;
+    .section-container {
+        margin: 20px;
+        margin-right: 20px; /* Reset margin for mobile */
+        padding: 20px;
     }
 
-    #clock-box .contact-btn {
-        margin-top: 0;
-        padding: 4px 8px;
+    #clock-box {
+        width: auto;
+        padding: 4px;
+        top: 20px;
+        right: 10px;
+        transform: none;
     }
 }
 
@@ -532,7 +565,7 @@ body {
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 20px;
-    margin-right: 140px; /* Match section container margin */
+    margin-right: 100px; /* Reduced from 140px */
 }
 
 .clause {
@@ -601,12 +634,14 @@ h3 {
 
 .grid-box {
     position: relative;
-    min-height: 200px;
-    padding: 8px;
+    min-height: 160px; /* Reduced from 200px */
+    padding: 6px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .grid-box img {
@@ -640,8 +675,8 @@ h3 {
     }
     
     .grid-box {
-        min-height: 180px;
-        padding: 6px;
+        min-height: 140px; /* Reduced from 160px */
+        padding: 4px;
     }
     
     .grid-box h4 {
@@ -660,7 +695,7 @@ h3 {
     }
     
     .grid-box {
-        min-height: 160px;
+        min-height: 130px;
     }
 }
 </style>
@@ -1055,13 +1090,12 @@ function updateClock() {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const clock = document.getElementById('clock');
-    clock.textContent = `${hours}:${minutes}`;
+    clock.textContent = `${hours}:${minutes}`;  // Removed seconds for simplicity
 
     const message = document.getElementById('message');
     if (hours >= 0 && hours <= 5) {
-        message.innerHTML = `<span class="status-icon"></span>ON`;
+        message.innerHTML = `<span class="status-icon"></span> ON`;
         message.style.display = 'flex';
-        message.style.alignItems = 'center';
     } else {
         message.style.display = 'none';
     }
