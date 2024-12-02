@@ -72,6 +72,76 @@ body {
     opacity: 0.9;
 }
 
+#clock-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 120px; /* Reduced from 180px */
+    height: auto;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 15px;
+    padding: 10px; /* Reduced from 15px */
+    box-shadow: 0 0 15px rgba(255,20,147,0.2);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+#clock {
+    font-size: 1.5em; /* Reduced from 2em */
+    font-weight: bold;
+    margin-bottom: 5px; /* Reduced from 10px */
+    color: #ff1493;
+    text-shadow: 0 0 10px rgba(255,20,147,0.3);
+}
+
+#message {
+    font-size: 0.8em; /* Reduced from 1.1em */
+    background-color: rgba(255,20,147,0.2);
+    color: #ffd1ea;
+    padding: 5px; /* Reduced from 8px */
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    display: none;
+}
+
+.booking-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(26, 0, 16, 0.95);
+    padding: 30px;
+    border: 2px solid #ff1493;
+    border-radius: 20px;
+    z-index: 1001;
+    max-width: 500px;
+    width: 90%;
+    position: relative; /* Add this to properly position the close button */
+}
+
+.close-btn {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background: none; 
+    border: none; 
+    color: #ff1493; 
+    font-size: 1.5em; 
+    cursor: pointer; 
+    padding: 5px;
+}
+
+.close-btn:hover {
+    color: #ff69b4;
+    transform: scale(1.1);
+}
+
 .about-us {
     max-width: 1200px;
     margin: 0 auto 50px auto;
@@ -370,6 +440,95 @@ h3 {
     <p>Dupla sexy de São José dos Campos</p>
 </div>
 
+<!-- Add clock box here -->
+<div id="clock-box">
+    <div id="clock"></div>
+    <div id="message"></div>
+    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 5px 10px; font-size: 0.9em; margin-top: 5px;">Conferir</button>
+</div>
+
+<div class="booking-form" id="quickBooking" style="display: none;">
+    <button onclick="toggleQuickBooking()" class="close-btn">&times;</button>
+    <h3>Fazer Agendamento</h3>
+    <form id="quickBookingForm" onsubmit="submitQuickBooking(event)">
+        <div class="form-group">
+            <label>Nome:</label>
+            <input type="text" name="nome" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Idade:</label>
+            <input type="number" name="idade" min="18" required>
+        </div>
+
+        <div class="form-group">
+            <label>Falar com:</label>
+            <select name="contato" required>
+                <option value="">Selecione...</option>
+                <option value="pamela">Pamela (Mulher)</option>
+                <option value="luanny">Luanny (Trans)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo de Encontro:</label>
+            <select name="tipo" required>
+                <option value="">Selecione...</option>
+                <option value="solo">Solo</option>
+                <option value="dupla">Dupla</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Local do Encontro:</label>
+            <select name="local" required>
+                <optgroup label="Hotéis e Motéis no Centro">
+                    <option value="joabi">Motel Joabi</option>
+                    <option value="veneza">Motel Veneza</option>
+                    <option value="albertino">Hotel Albertino</option>
+                    <option value="liberdade">Hotel Liberdade</option>
+                    <option value="luma">Luma Hotel</option>
+                </optgroup>
+                <optgroup label="Outros Motéis">
+                    <option value="point">Motel Point</option>
+                    <option value="orion">Motel Orion</option>
+                    <option value="bellatrix">Motel Bellatrix</option>
+                    <option value="if">IF Hotel</option>
+                    <option value="corpo">Motel Corpo e Alma</option>
+                    <option value="1001">1001 Motel</option>
+                </optgroup>
+                <option value="car">Rapidinha no Carro</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Serviço:</label>
+            <select name="servico" required>
+                <option value="">Selecione o serviço...</option>
+                <optgroup label="Serviços Solo">
+                    <option value="boquete">Boquete (20min - R$ 80,00)</option>
+                    <option value="69">69 (20min - R$ 100,00)</option>
+                    <optgroup label="Completo Passiva">
+                        <option value="passiva_20">20 minutos - R$ 150,00</option>
+                        <option value="passiva_40">40 minutos - R$ 200,00</option>
+                        <option value="passiva_60">60 minutos - R$ 250,00</option>
+                    </optgroup>
+                    <optgroup label="Completo Flex">
+                        <option value="flex_20">20 minutos - R$ 200,00</option>
+                        <option value="flex_40">40 minutos - R$ 250,00</option>
+                        <option value="flex_60">60 minutos - R$ 300,00</option>
+                    </optgroup>
+                </optgroup>
+                <optgroup label="Serviços Dupla">
+                    <option value="boquete_duplo">Boquete Duplo (20min - R$ 80,00)</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+</div>
+
 <div class="about-us">
     <h2 class="section-title">SOBRE NÓS</h2>
     <p>
@@ -538,6 +697,61 @@ function submitForm(event) {
     
     // Reset form after submission
     form.reset();
+}
+
+function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const clock = document.getElementById('clock');
+    clock.textContent = `${hours}:${minutes}:${seconds}`;
+
+    const message = document.getElementById('message');
+    if (hours >= 0 && hours <= 5) {
+        message.textContent = "PROBABILIDADE DE ESTARMOS JUNTAS";
+        message.style.display = 'block';
+    } else {
+        message.style.display = 'none';
+    }
+}
+
+// Start the clock when the page loads
+window.onload = function() {
+    updateClock();
+    setInterval(updateClock, 1000);
+};
+
+function toggleQuickBooking() {
+    const form = document.getElementById('quickBooking');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+function submitQuickBooking(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Create message
+    let message = `*Nova Solicitação de Atendimento*\n\n`;
+    message += `*Nome:* ${data.nome}\n`;
+    message += `*Idade:* ${data.idade}\n`;
+    message += `*Tipo:* ${data.tipo}\n`;
+    message += `*Local:* ${data.local}\n`;
+    message += `*Serviço:* ${data.servico}\n`;
+
+    // Get correct WhatsApp number
+    const recipient = data.contato === "pamela" 
+        ? "5512982094926" 
+        : "5512982572507";
+    
+    // Open WhatsApp
+    window.open(`https://wa.me/${recipient}?text=${encodeURIComponent(message)}`, "_blank");
+    
+    // Reset and close form
+    form.reset();
+    toggleQuickBooking();
 }
 </script>
 
