@@ -149,6 +149,70 @@ body {
     margin-right: 140px; /* Increased margin to prevent clock overlap */
 }
 
+/* Update clock box styles */
+#clock-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 80px; /* Reduced from 120px */
+    height: auto;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 15px;
+    padding: 8px; /* Reduced padding */
+    box-shadow: 0 0 15px rgba(255,20,147,0.2);
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 999;
+}
+
+#clock {
+    font-size: 0.9em; /* Smaller font size */
+    margin-bottom: 2px;
+}
+
+#message {
+    font-size: 0.7em; /* Smaller font size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+/* Add style for ON icon */
+.status-icon {
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 5px #00ff00;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#clock-box .contact-btn {
+    padding: 4px 8px;
+    font-size: 0.8em;
+    margin-top: 4px;
+    width: 100%;
+}
+
 /* Update clock box position and style */
 #clock-box {
     display: flex;
@@ -156,12 +220,12 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    width: 120px;
+    width: 80px; /* Reduced from 120px */
     height: auto; 
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
-    padding: 10px;
+    padding: 8px; /* Reduced padding */
     box-shadow: 0 0 15px rgba(255,20,147,0.2);
     position: fixed;
     top: 50%;
@@ -180,7 +244,7 @@ body {
 
     #clock-box {
         width: auto;
-        padding: 5px;
+        padding: 4px;
         top: 20px;
         right: 10px;
         transform: none;
@@ -543,7 +607,7 @@ h3 {
 
     #clock-box {
         width: auto;
-        padding: 5px;
+        padding: 4px;
         top: 20px;
         right: 10px;
         transform: none;
@@ -621,7 +685,7 @@ h3 {
 <div id="clock-box">
     <div id="clock"></div>
     <div id="message"></div>
-    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 5px 10px; font-size: 0.9em; margin-top: 5px; width: 100%;">
+    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 4px 8px; font-size: 0.8em; margin-top: 4px; width: 100%;">
         Conferir
     </button>
 </div>
@@ -976,14 +1040,13 @@ function updateClock() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
     const clock = document.getElementById('clock');
-    clock.textContent = `${hours}:${minutes}:${seconds}`;
+    clock.textContent = `${hours}:${minutes}`;  // Removed seconds for simplicity
 
     const message = document.getElementById('message');
     if (hours >= 0 && hours <= 5) {
-        message.textContent = "PROBABILIDADE DE ESTARMOS JUNTAS";
-        message.style.display = 'block';
+        message.innerHTML = `<span class="status-icon"></span> ON`;
+        message.style.display = 'flex';
     } else {
         message.style.display = 'none';
     }
