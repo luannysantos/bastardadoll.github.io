@@ -50,6 +50,7 @@ body {
     color: #ffd1ea;
     line-height: 1.6;
     padding: 20px;
+    font-size: 14px; /* Reduced base font size */
 }
 
 .header {
@@ -61,14 +62,14 @@ body {
 }
 
 .header h1 {
-    font-size: 3em;
+    font-size: 2.5em; /* Reduced from 3em */
     color: #ff1493;
     margin-bottom: 15px;
     text-shadow: 0 0 15px rgba(255,20,147,0.3);
 }
 
 .header p {
-    font-size: 1.4em;
+    font-size: 1.2em; /* Reduced from 1.4em */
     color: #ffd1ea;
     opacity: 0.9;
 }
@@ -147,60 +148,84 @@ body {
 .learn-more-section {
     max-width: calc(100% - 80px); /* Adjust width to account for clock */
     margin: 20px auto;
-    margin-right: 70px;
     padding: 20px;
 }
 
-/* Update grid box styles */
+/* Update grid box styles for consistent alignment */
 .grid-box {
     position: relative;
-    padding-bottom: 40px; /* Space for button */
-    min-height: 180px; /* Adjusted height */
+    min-height: 180px;
+    padding: 15px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px; /* Space for tags and button */
+}
+
+/* Center Instagram icon */
+.grid-box svg {
+    margin: 0 auto;
+    display: block;
+}
+
+/* Update grid box content styles */
+.grid-box h4 {
+    margin: 8px 0 4px;
+    color: #ff1493;
+    font-size: 0.85em;
+    text-align: center;
 }
 
 .grid-box p {
     font-size: 0.75em;
     line-height: 1.2;
     margin: 4px 0;
+    text-align: center;
+    color: #ffd1ea;
+    min-height: 40px;
     padding: 0 4px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     overflow: hidden;
-    max-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
-/* Update tag styles */
+/* Update tag container styles */
+.tags {
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
 .tag {
-    font-size: 0.65em;
+    font-size: 0.6em;
     padding: 2px 6px;
     border-radius: 12px;
-    background: rgba(255,20,147,0.1);
+    background: rgba(255,20,147,0.05);
     border: 1px solid rgba(255,20,147,0.3);
     color: #ffd1ea;
     display: inline-block;
-    margin: 2px;
 }
 
-/* Update clock box styles */
-#clock-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Update contact button styles */
+.grid-box .contact-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    padding: 8px 15px;
+    font-size: 0.9em;
     margin: 0;
-    width: 50px; /* Reduced width */
-    height: auto;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 15px;
-    padding: 4px;
-    box-shadow: 0 0 15px rgba(255,20,147,0.2);
-    position: fixed;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    z-index: 998;
 }
 
 /* Mobile adaptations */
@@ -214,28 +239,19 @@ body {
         padding: 15px;
     }
 
-    .grid-boxes {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-    
     .grid-box {
         min-height: 160px;
+        padding-bottom: 55px;
     }
 
     .grid-box h4 {
         font-size: 0.65em;
     }
-    
-    .grid-box p {
-        font-size: 0.7em;
-        -webkit-line-clamp: 2;
-        max-height: 4.2em;
-    }
 
-    .grid-box .contact-btn {
-        font-size: 0.8em;
-        padding: 6px 12px;
+    .grid-box p {
+        font-size: 0.6em;
+        min-height: 30px;
+        -webkit-line-clamp: 2;
     }
 }
 
@@ -251,15 +267,16 @@ body {
 
     .grid-box {
         min-height: 140px;
+        padding-bottom: 50px;
     }
 
     .grid-box h4 {
-        font-size: 0.65em;
+        font-size: 0.6em;
     }
     
     .grid-box p {
-        font-size: 0.65em;
-        line-height: 1.2;
+        font-size: 0.55em;
+        min-height: 25px;
     }
 
     .grid-box .contact-btn {
@@ -315,7 +332,7 @@ body {
 
 .about-section .section-title {
     color: #ff1493;
-    font-size: 2em;
+    font-size: 1.8em; /* Reduced from 2em */
     text-align: center;
     margin-bottom: 20px;
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
@@ -323,7 +340,7 @@ body {
 
 .about-section .section-description {
     text-align: justify;
-    font-size: 1.2em;
+    font-size: 1em; /* Reduced from 1.2em */
     line-height: 1.8;
     color: #ffd1ea;
     margin-bottom: 40px;
@@ -356,7 +373,7 @@ body {
 }
 
 .box-content h2 {
-    font-size: 2em;
+    font-size: 1.8em; /* Reduced from 2em */
     color: #ff1493;
     margin-bottom: 20px;
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
@@ -367,6 +384,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin-bottom: 25px;
+    font-size: 0.9em; /* Reduced stats text */
 }
 
 .stat-item {
@@ -378,7 +396,7 @@ body {
 }
 
 .box-content p {
-    font-size: 1.1em;
+    font-size: 1em; /* Reduced from 1.1em */
     line-height: 1.8;
     text-align: justify;
     margin-bottom: 30px;
@@ -417,17 +435,6 @@ body {
     font-size: 0.9em;
 }
 
-.grid-box .contact-btn {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    background: #ff1493; /* Return to original pink color */
-    padding: 8px 15px;
-    font-size: 0.9em;
-}
-
 /* Add pulse animation only for clock button */
 @keyframes pulse {
     0% {
@@ -443,7 +450,7 @@ body {
 
 .duo-form h3 {
     color: #ff1493;
-    font-size: 1.5em;
+    font-size: 1.3em; /* Reduced from 1.5em */
     margin-bottom: 20px;
 }
 
@@ -456,6 +463,7 @@ body {
     display: block;
     margin-bottom: 8px;
     color: #ff1493;
+    font-size: 0.9em; /* Reduced from 1em */
 }
 
 .form-group input, .form-group textarea, .form-group select {
@@ -465,7 +473,7 @@ body {
     border: 1px solid rgba(255,20,147,0.3);
     background: rgba(26, 0, 16, 0.9);
     color: #ffd1ea;
-    font-size: 1em;
+    font-size: 0.9em; /* Reduced from 1em */
 }
 
 .form-group select {
@@ -475,7 +483,7 @@ body {
     border: 1px solid rgba(255,20,147,0.3);
     background: rgba(26, 0, 16, 0.9);
     color: #ffd1ea;
-    font-size: 1em;
+    font-size: 0.9em; /* Reduced from 1em */
 }
 
 .form-group select option,
@@ -536,7 +544,7 @@ body {
 .clause {
     margin-bottom: 25px;
     color: #ffd1ea;
-    font-size: 1.1em;
+    font-size: 0.95em; /* Reduced from 1.1em */
 }
 
 .clause-number {
@@ -549,6 +557,7 @@ body {
     margin: 10px 0 10px 25px;
     color: #ffd1ea;
     opacity: 0.9;
+    font-size: 0.9em; /* Reduced from 1em */
 }
 
 .highlight {
@@ -560,7 +569,7 @@ body {
 
 .highlight p {
     color: #ff1493;
-    font-size: 1.2em;
+    font-size: 1.1em; /* Reduced from 1.2em */
     margin-bottom: 15px;
 }
 
@@ -584,7 +593,7 @@ body {
 
 h3 {
     color: #ff1493;
-    font-size: 1.8em;
+    font-size: 1.6em; /* Reduced from 1.8em */
     margin-bottom: 30px;
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
 }
@@ -600,13 +609,14 @@ h3 {
 .grid-box {
     position: relative;
     min-height: 180px;
-    padding: 6px;
+    padding: 15px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
     text-align: center;
     display: flex;
     flex-direction: column;
+    padding-bottom: 60px; /* Space for tags and button */
 }
 
 .grid-box img {
@@ -619,11 +629,12 @@ h3 {
 .grid-box h4 {
     margin: 8px 0 4px;
     color: #ff1493;
-    font-size: 0.9em;
+    font-size: 0.85em; /* Reduced from 0.9em */
+    text-align: center;
 }
 
 .grid-box p {
-    font-size: 0.8em;
+    font-size: 0.75em; /* Reduced from 0.8em */
     line-height: 1.2;
     margin: 4px 0;
     text-align: center;
@@ -645,15 +656,16 @@ h3 {
     
     .grid-box {
         min-height: 160px; /* Reduced from 180px */
+        padding-bottom: 55px;
     }
     
     .grid-box h4 {
-        font-size: 0.7em;
+        font-size: 0.65em;
         margin: 4px 0;
     }
     
     .grid-box p {
-        font-size: 0.65em;
+        font-size: 0.6em; /* Reduced from 0.65em */
         min-height: 30px;
         -webkit-line-clamp: 2;
     }
@@ -666,10 +678,11 @@ h3 {
     
     .grid-box {
         min-height: 140px;
+        padding-bottom: 50px;
     }
 
     .grid-box h4 {
-        font-size: 0.65em;
+        font-size: 0.6em;
     }
     
     .grid-box p {
@@ -708,14 +721,18 @@ h3 {
     margin-top: 4px;
 }
 
-/* Update clock box button to be green */
+/* Update clock button styles */
 #clock-box .contact-btn {
     background: #2ecc71; /* Green color */
+    animation: pulse 2s infinite;
     padding: 4px 8px;
     font-size: 0.8em;
     margin-top: 4px;
-    width: 100%;
-    animation: pulse 2s infinite;
+}
+
+/* Ensure status icon remains green */
+.status-icon {
+    background-color: #2ecc71;
 }
 </style>
 </head>
