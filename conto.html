@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <head>
+        <base href="https://bastardadoll.github.io/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Luanny & Pamela</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a0010;
+            color: #ffd1ea;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255,20,147,0.05);
+            border-bottom: 2px solid rgba(255,20,147,0.3);
+        }
+
+        .header h1 {
+            font-size: 2em;
+            color: #ff1493;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255,20,147,0.3);
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .blog-post {
+            background: rgba(255,20,147,0.05);
+            border: 2px solid rgba(255,20,147,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,20,147,0.3);
+        }
+
+        .post-content {
+            padding: 20px;
+        }
+
+        .post-date {
+            font-size: 0.8em;
+            color: #ff1493;
+            margin-bottom: 10px;
+        }
+
+        .post-title {
+            font-size: 1.2em;
+            color: #ff1493;
+            margin-bottom: 10px;
+        }
+
+        .post-excerpt {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            font-size: 0.7em;
+            padding: 4px 8px;
+            background: rgba(255,20,147,0.05);
+            border: 1px solid rgba(255,20,147,0.3);
+            border-radius: 15px;
+            color: #ffd1ea;
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #ff1493;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .read-more:hover {
+            background: #ff69b4;
+        }
+
+        @media (max-width: 768px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .post-title {
+                font-size: 1.1em;
+            }
+        }
+
+        .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff1493;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            box-shadow: 0 2px 10px rgba(255,20,147,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background: #ff69b4;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Blog Luanny & Pamela</h1>
+        <p>Experiências, histórias e momentos especiais</p>
+    </div>
+
+    <div class="blog-container">
+        <!-- Post 1 -->
+        <article class="blog-post">
+            <img src="experiencias.gif" alt="Experiências Únicas" class="post-img">
+            <div class="post-content">
+                <div class="post-date">23 OUT 2023</div>
+                <h2 class="post-title">Como é um encontro com nossa dupla</h2>
+                <p class="post-excerpt">Descubra todos os detalhes de como funciona um encontro especial com Luanny e Pamela. Da preparação aos momentos mais intensos...</p>
+                <div class="post-tags">
+                    <span class="tag">Experiências</span>
+                    <span class="tag">Encontros</span>
+                    <span class="tag">Dupla</span>
+                </div>
+                <a href="#" class="read-more">Ler mais</a>
+            </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-post">
+            <img src="fantasias.gif" alt="Fantasias" class="post-img">
+            <div class="post-content">
+                <div class="post-date">20 OUT 2023</div>
+                <h2 class="post-title">Top 5 Fantasias mais Pedidas</h2>
+                <p class="post-excerpt">Conheça as fantasias mais solicitadas por nossos clientes e como realizamos cada uma delas com muito profissionalismo e dedicação...</p>
+                <div class="post-tags">
+                    <span class="tag">Fantasias</span>
+                    <span class="tag">Fetiches</span>
+                    <span class="tag">Desejos</span>
+                </div>
+                <a href="#" class="read-more">Ler mais</a>
+            </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-post">
+            <img src="dicas.gif" alt="Dicas Especiais" class="post-img">
+            <div class="post-content">
+                <div class="post-date">18 OUT 2023</div>
+                <h2 class="post-title">Dicas para o Primeiro Encontro</h2>
+                <p class="post-excerpt">Vai ter seu primeiro encontro conosco? Confira nossas dicas especiais para tornar esse momento ainda mais especial e inesquecível...</p>
+                <div class="post-tags">
+                    <span class="tag">Dicas</span>
+                    <span class="tag">Primeiro Encontro</span>
+                    <span class="tag">Preparação</span>
+                </div>
+                <a href="#" class="read-more">Ler mais</a>
+            </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-post">
+            <img src="bastidores.gif" alt="Bastidores" class="post-img">
+            <div class="post-content">
+                <div class="post-date">15 OUT 2023</div>
+                <h2 class="post-title">Bastidores de um Dia Especial</h2>
+                <p class="post-excerpt">Como é nossa preparação para um dia de atendimento? Descubra todos os cuidados e detalhes que tornam nossa experiência única...</p>
+                <div class="post-tags">
+                    <span class="tag">Bastidores</span>
+                    <span class="tag">Preparação</span>
+                    <span class="tag">Cuidados</span>
+                </div>
+                <a href="#" class="read-more">Ler mais</a>
+            </div>
+        </article>
+    </div>
+
+    <a href="https://bastardadoll.github.io/dupla.html" class="back-to-home">Voltar ao início</a>
+</body></html>
