@@ -145,113 +145,62 @@ body {
 .info-section,
 .social-section,
 .learn-more-section {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 20px;
-    margin-right: 100px; /* Reduced from 140px */
+    max-width: calc(100% - 80px); /* Adjust width to account for clock */
+    margin: 20px auto;
+    margin-right: 70px;
+    padding: 20px;
 }
 
-/* Update grid box styles for better mobile responsiveness */
+/* Update grid box styles */
 .grid-box {
     position: relative;
-    min-height: 140px; /* Reduced height */
-    padding: 6px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+    padding-bottom: 40px; /* Space for button */
+    min-height: 180px; /* Adjusted height */
 }
 
 .grid-box p {
     font-size: 0.75em;
     line-height: 1.2;
     margin: 4px 0;
-    text-align: center;
-    color: #ffd1ea;
-    min-height: 40px;
     padding: 0 4px;
-    overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 2.4em;
 }
 
-.grid-box .contact-btn {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 16px);
-    padding: 6px;
-    font-size: 0.8em;
-}
-
-/* Add tag styles */
-.tags {
-    margin: 8px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
-}
-
+/* Update tag styles */
 .tag {
-    font-size: 0.7em;
+    font-size: 0.65em;
     padding: 2px 6px;
     border-radius: 12px;
     background: rgba(255,20,147,0.1);
     border: 1px solid rgba(255,20,147,0.3);
     color: #ffd1ea;
-}
-
-/* Clock box status icon */
-.status-icon {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: #00ff00; /* Bright green */
-    border-radius: 50%;
-    margin-right: 4px;
-    box-shadow: 0 0 5px rgba(0,255,0,0.5);
+    margin: 2px;
 }
 
-/* Update clock box for all screen sizes */
+/* Update clock box styles */
 #clock-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
-    width: 60px; /* Reduced width */
+    width: 50px; /* Reduced width */
     height: auto;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
-    padding: 6px;
+    padding: 4px;
     box-shadow: 0 0 15px rgba(255,20,147,0.2);
     position: fixed;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
     z-index: 998;
-    transition: opacity 0.3s ease;
-}
-
-#clock {
-    font-size: 0.9em;
-}
-
-#message {
-    font-size: 0.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Mobile adaptations */
@@ -260,8 +209,8 @@ body {
     .info-section,
     .social-section,
     .learn-more-section {
-        margin: 20px;
-        margin-right: 70px; /* Space for clock */
+        margin: 15px;
+        margin-right: 65px;
         padding: 15px;
     }
 
@@ -271,30 +220,22 @@ body {
     }
     
     .grid-box {
-        min-height: 120px;
-        padding: 4px;
+        min-height: 160px;
     }
-    
+
     .grid-box h4 {
-        font-size: 0.7em;
-        margin: 4px 0;
+        font-size: 0.65em;
     }
     
     .grid-box p {
-        font-size: 0.65em;
-        min-height: 30px;
+        font-size: 0.7em;
         -webkit-line-clamp: 2;
-    }
-
-    .tag {
-        font-size: 0.6em;
-        padding: 1px 4px;
+        max-height: 4.2em;
     }
 
     .grid-box .contact-btn {
-        font-size: 0.7em;
-        padding: 4px;
-        bottom: 4px;
+        font-size: 0.8em;
+        padding: 6px 12px;
     }
 }
 
@@ -308,12 +249,8 @@ body {
         padding: 10px;
     }
 
-    .grid-boxes {
-        gap: 6px;
-    }
-    
     .grid-box {
-        min-height: 110px;
+        min-height: 140px;
     }
 
     .grid-box h4 {
@@ -321,13 +258,13 @@ body {
     }
     
     .grid-box p {
-        font-size: 0.6em;
-        min-height: 25px;
+        font-size: 0.65em;
+        line-height: 1.2;
     }
 
     .grid-box .contact-btn {
-        font-size: 0.65em;
-        padding: 3px;
+        font-size: 0.7em;
+        padding: 5px 10px;
     }
 }
 
@@ -467,7 +404,41 @@ body {
 .contact-btn:hover {
     background: #ff69b4;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255,20,147,0.4);
+}
+
+.grid-box .contact-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background: #ff1493; /* Return to original pink color */
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+.grid-box .contact-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background: #ff1493; /* Return to original pink color */
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+/* Add pulse animation only for clock button */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .duo-form h3 {
@@ -553,13 +524,13 @@ body {
 .info-section,
 .social-section,
 .learn-more-section {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 30px;
+    max-width: calc(100% - 80px); /* Adjust width to account for clock */
+    margin: 20px auto;
+    padding: 20px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 20px;
-    margin-right: 100px; /* Reduced from 140px */
+    margin-right: 70px; /* Reduced from 140px */
 }
 
 .clause {
@@ -628,7 +599,7 @@ h3 {
 
 .grid-box {
     position: relative;
-    min-height: 140px; /* Reduced from 200px */
+    min-height: 180px;
     padding: 6px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
@@ -659,6 +630,10 @@ h3 {
     color: #ffd1ea;
     min-height: 40px;
     padding: 0 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /* Mobile adaptations */
@@ -669,27 +644,28 @@ h3 {
     }
     
     .grid-box {
-        min-height: 120px; /* Reduced from 160px */
-        padding: 4px;
+        min-height: 160px; /* Reduced from 180px */
     }
     
     .grid-box h4 {
-        font-size: 0.85em;
+        font-size: 0.7em;
+        margin: 4px 0;
     }
     
     .grid-box p {
-        font-size: 0.75em;
-        min-height: 35px;
+        font-size: 0.65em;
+        min-height: 30px;
+        -webkit-line-clamp: 2;
     }
 }
 
 @media (max-width: 480px) {
     .grid-boxes {
-        gap: 8px;
+        gap: 6px;
     }
     
     .grid-box {
-        min-height: 110px;
+        min-height: 140px;
     }
 
     .grid-box h4 {
@@ -697,14 +673,49 @@ h3 {
     }
     
     .grid-box p {
-        font-size: 0.6em;
+        font-size: 0.55em;
         min-height: 25px;
     }
 
     .grid-box .contact-btn {
-        font-size: 0.65em;
-        padding: 3px;
+        font-size: 0.7em;
+        padding: 5px 10px;
     }
+}
+
+.status-icon {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+#message {
+    color: #2ecc71;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+/* Update clock box button to be green */
+#clock-box .contact-btn {
+    background: #2ecc71; /* Green color */
+    padding: 4px 8px;
+    font-size: 0.8em;
+    margin-top: 4px;
+    width: 100%;
+    animation: pulse 2s infinite;
 }
 </style>
 </head>
@@ -730,8 +741,8 @@ h3 {
 <div id="clock-box">
     <div id="clock"></div>
     <div id="message"></div>
-    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 4px 8px; font-size: 0.8em; margin-top: 4px; width: 100%;">
-        Conferir
+    <button onclick="toggleQuickBooking()" class="contact-btn">
+        Ver
     </button>
 </div>
 
@@ -989,7 +1000,7 @@ h3 {
         <div class="grid-box">
             <img src="blog.gif" alt="Blog">
             <h4>Blog</h4>
-            <p>Confira nosso blog com dicas, histórias e experiências sobre o mundo do prazer e da sensualidade.</p>
+            <p>Explore nosso blog exclusivo com dicas e histórias sobre experiências únicas no mundo do prazer e sensualidade.</p>
             <div class="tags">
                 <span class="tag">Dicas</span>
                 <span class="tag">Histórias</span>
@@ -1001,7 +1012,7 @@ h3 {
         <div class="grid-box">
             <img src="sobre.gif" alt="Sobre">
             <h4>Detalhes Sobre a Gente</h4>
-            <p>Conheça mais sobre nossas histórias, personalidades e o que nos faz únicas no mundo do prazer.</p>
+            <p>Descubra nossas histórias pessoais e o que nos torna especiais no universo do prazer e entretenimento adulto.</p>
             <div class="tags">
                 <span class="tag">Histórias</span>
                 <span class="tag">Perfis</span>
@@ -1013,7 +1024,7 @@ h3 {
         <div class="grid-box">
             <img src="contos.gif" alt="Contos">
             <h4>Contos e Relatos</h4>
-            <p>Histórias reais e fantásticas dos nossos encontros mais intensos e memoráveis.</p>
+            <p>Mergulhe em histórias reais e fantásticas dos nossos encontros mais intensos e memoráveis com clientes especiais.</p>
             <div class="tags">
                 <span class="tag">Relatos</span>
                 <span class="tag">Experiências</span>
@@ -1025,7 +1036,7 @@ h3 {
         <div class="grid-box">
             <img src="fetiches.gif" alt="Fetiches">
             <h4>Fetiches e Fantasias</h4>
-            <p>Explore o mundo dos fetiches e fantasias conosco. Descubra novos prazeres e possibilidades.</p>
+            <p>Explore conosco um mundo de possibilidades e descubra novos prazeres através de fetiches e fantasias exclusivas.</p>
             <div class="tags">
                 <span class="tag">Fetiches</span>
                 <span class="tag">Fantasias</span>
@@ -1037,7 +1048,7 @@ h3 {
         <div class="grid-box">
             <img src="roleplay.gif" alt="Roleplay">
             <h4>Questionário Roleplay</h4>
-            <p>Participe do nosso questionário de roleplay e descubra novas possibilidades de prazer e diversão.</p>
+            <p>Participe do nosso questionário especial e descubra novas dimensões de prazer através do roleplay personalizado.</p>
             <div class="tags">
                 <span class="tag">Roleplay</span>
                 <span class="tag">Fantasias</span>
@@ -1049,7 +1060,7 @@ h3 {
         <div class="grid-box">
             <img src="solo.gif" alt="Solo">
             <h4>Questionário Solo</h4>
-            <p>Responda nosso questionário individual e descubra suas preferências e desejos mais íntimos.</p>
+            <p>Responda nosso questionário individual para explorar seus desejos mais íntimos e descobrir novas experiências.</p>
             <div class="tags">
                 <span class="tag">Individual</span>
                 <span class="tag">Preferências</span>
