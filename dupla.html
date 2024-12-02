@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <base href="https://bastardadoll.github.io/">
+    <head><base href="https://bastardadoll.github.io/">
     <!-- Important Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,24 +87,24 @@ body {
     box-shadow: 0 0 15px rgba(255,20,147,0.2);
     position: fixed;
     top: 50%;
-    right: 0;
+    right: 10px;
     transform: translateY(-50%);
-    z-index: 1000;
+    z-index: 999;
 }
 
 #clock {
     font-size: 1.5em;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 5px; 
     color: #ff1493;
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
 }
 
 #message {
-    font-size: 0.8em;
+    font-size: 0.8em; 
     background-color: rgba(255,20,147,0.2);
     color: #ffd1ea;
-    padding: 5px;
+    padding: 5px; 
     border-radius: 5px;
     margin-bottom: 5px;
     text-align: center;
@@ -112,35 +112,20 @@ body {
 }
 
 .booking-form {
-    display: none;
+    display: none; 
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(26, 0, 16, 0.98);
+    background: rgba(26, 0, 16, 0.98); 
     padding: 30px;
     border: 2px solid #ff1493;
     border-radius: 20px;
-    z-index: 1001;
+    z-index: 1000;
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-}
-
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-}
-
-.container, .about-us, .info-section, .duo-form {
-    margin-right: 140px;
 }
 
 .close-btn {
@@ -160,16 +145,24 @@ body {
     transform: scale(1.1);
 }
 
-.about-us {
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+}
+
+.about-section {
     max-width: 1200px;
     margin: 0 auto 50px auto;
     padding: 30px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 20px;
 }
 
-.about-us h2 {
+.about-section .section-title {
     color: #ff1493;
     font-size: 2em;
     text-align: center;
@@ -177,16 +170,22 @@ body {
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
 }
 
-.about-us p {
+.about-section .section-description {
     text-align: justify;
     font-size: 1.2em;
     line-height: 1.8;
     color: #ffd1ea;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 20px;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: calc(100% - 140px);
+    margin: 0;
+    padding-right: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
@@ -416,6 +415,127 @@ h3 {
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
 }
 
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;  
+    right: 20px;
+    z-index: 1000;
+    background: #ff1493;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.social-section,
+.learn-more-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 20px;
+}
+
+.grid-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.grid-box {
+    position: relative;
+    min-height: 450px;
+    padding-bottom: 60px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.grid-box img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.grid-box h4 {
+    margin: 20px 0 15px;
+    color: #ff1493;
+    font-size: 1.4em;
+}
+
+.grid-box p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 15px 0;
+    text-align: justify;
+    color: #ffd1ea;
+    min-height: 80px;
+}
+
+.grid-box .contact-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    margin: 0;
+}
+
+.grid-box .tags {
+    margin: 15px 0 30px;
+}
+
+/* Mobile adaptations */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .about-section {
+        padding: 15px;
+    }
+    
+    .about-section .section-title {
+        font-size: 1.8em;
+    }
+    
+    .about-section .section-description {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    #clock-box {
+        top: 20px;
+        transform: none;
+        width: auto;
+    }
+    
+    .grid-boxes {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-box {
+        min-height: 400px;
+    }
+    
+    .grid-box p {
+        min-height: 60px;
+        font-size: 0.9em;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
@@ -453,19 +573,23 @@ h3 {
 </style>
 </head>
 <body>
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+<div id="overlay" class="overlay"></div>
 <div class="header">
     <h1>Luanny & Pamela</h1>
     <p>Dupla sexy de São José dos Campos</p>
 </div>
 
-<div class="overlay"></div>
-
+<!-- Update clock box HTML -->
 <div id="clock-box">
     <div id="clock"></div>
     <div id="message"></div>
-    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 5px 10px; font-size: 0.9em; margin-top: 5px; width: 100%;">Conferir</button>
+    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 5px 10px; font-size: 0.9em; margin-top: 5px; width: 100%;">
+        Conferir
+    </button>
 </div>
 
+<!-- Update booking form div -->
 <div class="booking-form" id="quickBooking">
     <button onclick="toggleQuickBooking()" class="close-btn">&times;</button>
     <h3>Fazer Agendamento</h3>
@@ -548,45 +672,44 @@ h3 {
     </form>
 </div>
 
-<div class="about-us">
-    <h2 class="section-title">SOBRE NÓS</h2>
-    <p>
-        Somos uma dupla única e apaixonante que oferece experiências inesquecíveis em São José dos Campos. Pamela, mulher cis safada que adora uma boa diversão, e Luanny, trans com 19cm de puro prazer, formam uma combinação perfeita para realizar suas fantasias mais intensas. Proporcionamos momentos de prazer sem limites em ambiente discreto e sigiloso. Nossa química especial em dupla é única - Luanny adora brincar com Pamela, explorando todos os limites do prazer. Seja para momentos individuais ou experiências em dupla, oferecemos encontros inesquecíveis das 00:00 às 05:00. Outros horários mediante agendamento com sinal.
+<div class="about-section">
+    <h2 class="section-title">CONHEÇA NOSSAS ACOMPANHANTES</h2>
+    <p class="section-description">
+        Duas personalidades únicas e intensas unidas para proporcionar momentos inesquecíveis em São José dos Campos. Uma combinação perfeita entre a sensualidade natural de Pamela e o poder sedutor de Luanny. Juntas ou separadas, elas são especialistas em realizar fantasias e proporcionar experiências memoráveis. Discretas e profissionais, elas garantem momentos de prazer intenso com muito sigilo e segurança. Disponíveis para encontros individuais ou em dupla, sempre prontas para surpreender e satisfazer seus desejos mais íntimos.
     </p>
-</div>
-
-<div class="container">
-    <div class="box">
-        <img src="pamela.gif" alt="Pamela">
-        <div class="box-content">
-            <h2>Pamela</h2>
-            <div class="stats">
-                <div class="stat-item">Mulher | 25 anos</div>
-                <div class="stat-item">167cm | 64kg</div>
-                <div class="stat-item">Cabelo longo</div>
-                <div class="stat-item">Buceta Rosa</div>
+    <div class="container">
+        <div class="box">
+            <img src="pamela.gif" alt="Pamela">
+            <div class="box-content">
+                <h2>Pamela</h2>
+                <div class="stats">
+                    <div class="stat-item">Mulher | 25 anos</div>
+                    <div class="stat-item">167cm | 64kg</div>
+                    <div class="stat-item">Cabelo longo</div>
+                    <div class="stat-item">Buceta Rosa</div>
+                </div>
+                <p>
+                    Pamela é uma mulher cis que transborda sensualidade e tesão. Com curvas perfeitas e uma energia safada, ela proporciona momentos de puro prazer sem limites. Super liberal e sem tabus, adora uma boa suruba e momentos quentes com Luanny. Sua bucetinha rosa é um convite ao prazer, sempre pronta para realizar suas fantasias mais intensas. Mente aberta para quase tudo, exceto anal.
+                </p>
+                <a href="https://wa.me/5512982094926" target="_blank" class="contact-btn">Contato Pamela</a>
             </div>
-            <p>
-                Pamela é uma mulher cis que transborda sensualidade e tesão. Com curvas perfeitas e uma energia safada, ela proporciona momentos de puro prazer sem limites. Super liberal e sem tabus, adora uma boa suruba e momentos quentes com Luanny. Sua bucetinha rosa é um convite ao prazer, sempre pronta para realizar suas fantasias mais intensas. Mente aberta para quase tudo, exceto anal.
-            </p>
-            <a href="https://wa.me/5512982094926" target="_blank" class="contact-btn">Contato Pamela</a>
         </div>
-    </div>
 
-    <div class="box">
-        <img src="luanny.gif" alt="Luanny">
-        <div class="box-content">
-            <h2>Luanny</h2>
-            <div class="stats">
-                <div class="stat-item">Trans | 29 anos</div>
-                <div class="stat-item">177cm | 64kg</div>
-                <div class="stat-item">Loira | Definida</div>
-                <div class="stat-item">19cm Dote</div>
+        <div class="box">
+            <img src="luanny.gif" alt="Luanny">
+            <div class="box-content">
+                <h2>Luanny</h2>
+                <div class="stats">
+                    <div class="stat-item">Trans | 29 anos</div>
+                    <div class="stat-item">177cm | 64kg</div>
+                    <div class="stat-item">Loira | Definida</div>
+                    <div class="stat-item">19cm Dote</div>
+                </div>
+                <p>
+                    Luanny é uma trans safada e sem limites. Com sua beleza estonteante, corpo definido e 19cm de pura diversão, oferece experiências únicas e inesquecíveis. Super versátil e liberal, adora brincar com Pamela e explorar todos os prazeres possíveis. Em dupla, é uma delícia ver sua química com Pamela - juntas são puro fogo! Especialista em proporcionar momentos de prazer intenso, sem pudor e com muito tesão.
+                </p>
+                <a href="https://wa.me/5512982572507" target="_blank" class="contact-btn">Contato Luanny</a>
             </div>
-            <p>
-                Luanny é uma trans safada e sem limites. Com sua beleza estonteante, corpo definido e 19cm de pura diversão, oferece experiências únicas e inesquecíveis. Super versátil e liberal, adora brincar com Pamela e explorar todos os prazeres possíveis. Em dupla, é uma delícia ver sua química com Pamela - juntas são puro fogo! Especialista em proporcionar momentos de prazer intenso, sem pudor e com muito tesão.
-            </p>
-            <a href="https://wa.me/5512982572507" target="_blank" class="contact-btn">Contato Luanny</a>
         </div>
     </div>
 </div>
@@ -685,6 +808,100 @@ h3 {
     </form>
 </div>
 
+<div class="social-section">
+    <h3>REDES SOCIAIS</h3>
+    <div class="grid-boxes">
+        <div class="grid-box">
+            <img src="instagram.gif" alt="Instagram">
+            <h4>Instagram</h4>
+            <p>Siga-nos no Instagram para fotos exclusivas e atualizações diárias</p>
+            <div class="tags">
+                <span class="tag">Fotos</span>
+                <span class="tag">Stories</span>
+                <span class="tag">Lives</span>
+            </div>
+            <a href="https://instagram.com/luannypamela" class="contact-btn">Seguir</a>
+        </div>
+    </div>
+</div>
+
+<div class="learn-more-section">
+    <h3>SAIBA MAIS</h3>
+    <div class="grid-boxes">
+        <div class="grid-box">
+            <img src="blog.gif" alt="Blog">
+            <h4>Blog</h4>
+            <p>Confira nosso blog com dicas, histórias e experiências sobre o mundo do prazer e da sensualidade.</p>
+            <div class="tags">
+                <span class="tag">Dicas</span>
+                <span class="tag">Histórias</span>
+                <span class="tag">Experiências</span>
+            </div>
+            <a href="https://bastardadoll.github.io/blog.html" class="contact-btn">Ler Mais</a>
+        </div>
+        
+        <div class="grid-box">
+            <img src="sobre.gif" alt="Sobre">
+            <h4>Detalhes Sobre a Gente</h4>
+            <p>Conheça mais sobre nossas histórias, personalidades e o que nos faz únicas no mundo do prazer.</p>
+            <div class="tags">
+                <span class="tag">Histórias</span>
+                <span class="tag">Perfis</span>
+                <span class="tag">Depoimentos</span>
+            </div>
+            <a href="https://bastardadoll.github.io/sobre.html" class="contact-btn">Conhecer</a>
+        </div>
+
+        <div class="grid-box">
+            <img src="contos.gif" alt="Contos">
+            <h4>Contos e Relatos</h4>
+            <p>Histórias reais e fantásticas dos nossos encontros mais intensos e memoráveis.</p>
+            <div class="tags">
+                <span class="tag">Relatos</span>
+                <span class="tag">Experiências</span>
+                <span class="tag">Contos</span>
+            </div>
+            <a href="https://bastardadoll.github.io/contos.html" class="contact-btn">Ler Contos</a>
+        </div>
+
+        <div class="grid-box">
+            <img src="fetiches.gif" alt="Fetiches">
+            <h4>Fetiches e Fantasias</h4>
+            <p>Explore o mundo dos fetiches e fantasias conosco. Descubra novos prazeres e possibilidades.</p>
+            <div class="tags">
+                <span class="tag">Fetiches</span>
+                <span class="tag">Fantasias</span>
+                <span class="tag">Desejos</span>
+            </div>
+            <a href="https://bastardadoll.github.io/fantasia.html" class="contact-btn">Explorar</a>
+        </div>
+
+        <div class="grid-box">
+            <img src="roleplay.gif" alt="Roleplay">
+            <h4>Questionário Roleplay</h4>
+            <p>Participe do nosso questionário de roleplay e descubra novas possibilidades de prazer e diversão.</p>
+            <div class="tags">
+                <span class="tag">Roleplay</span>
+                <span class="tag">Fantasias</span>
+                <span class="tag">Personagens</span>
+            </div>
+            <a href="https://bastardadoll.github.io/roleplay.html" class="contact-btn">Participar</a>
+        </div>
+
+        <div class="grid-box">
+            <img src="solo.gif" alt="Solo">
+            <h4>Questionário Solo</h4>
+            <p>Responda nosso questionário individual e descubra suas preferências e desejos mais íntimos.</p>
+            <div class="tags">
+                <span class="tag">Individual</span>
+                <span class="tag">Preferências</span>
+                <span class="tag">Desejos</span>
+            </div>
+            <a href="https://bastardadoll.github.io/solo.html" class="contact-btn">Responder</a>
+        </div>
+    </div>
+</div>
+
 <script>
 function submitForm(event) {
     event.preventDefault();
@@ -692,6 +909,7 @@ function submitForm(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     
+    // New message format
     let message = `*Nova Solicitação de Atendimento em Dupla!*\n\n`;
     message += `*Nome:* ${data.nome}\n`;
     message += `*Data:* ${data.data}\n`; 
@@ -702,14 +920,18 @@ function submitForm(event) {
     message += `*Mensagem:* ${data.mensagem || "Nenhuma mensagem adicional."}\n\n`;
     message += `Por favor, confirme ou entre em contato para maiores detalhes.`;
 
+    // Get recipient phone number
     const recipient = data.enviarPara === "pamela" 
         ? "5512982094926" 
         : "5512982572507";
     
+    // Create WhatsApp URL with encoded message
     const whatsappURL = `https://wa.me/${recipient}?text=${encodeURIComponent(message)}`;
     
+    // Open WhatsApp in new tab
     window.open(whatsappURL, "_blank");
     
+    // Reset form after submission
     form.reset();
 }
 
@@ -730,26 +952,51 @@ function updateClock() {
     }
 }
 
+// Start the clock when the page loads
 window.onload = function() {
     updateClock();
     setInterval(updateClock, 1000);
+    
+    // Setup mobile menu
+    if (window.innerWidth <= 768) {
+        const container = document.querySelector('.container');
+        container.style.display = 'none';
+    }
 };
+
+function toggleMenu() {
+    const container = document.querySelector('.container');
+    if (container.style.display === 'none') {
+        container.style.display = 'grid';
+    } else {
+        container.style.display = 'none';
+    }
+}
 
 function toggleQuickBooking() {
     const form = document.getElementById('quickBooking');
-    const overlay = document.querySelector('.overlay');
-    const body = document.body;
+    const overlay = document.getElementById('overlay');
     
     if (form.style.display === 'none' || !form.style.display) {
         form.style.display = 'block';
         overlay.style.display = 'block';
-        body.classList.add('modal-open');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     } else {
         form.style.display = 'none';
         overlay.style.display = 'none';
-        body.classList.remove('modal-open');
+        document.body.style.overflow = 'auto';
     }
 }
+
+// Add event listener for clicking outside form
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('overlay');
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            toggleQuickBooking();
+        }
+    });
+});
 
 function submitQuickBooking(event) {
     event.preventDefault();
@@ -757,6 +1004,7 @@ function submitQuickBooking(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     
+    // Create message
     let message = `*Nova Solicitação de Atendimento*\n\n`;
     message += `*Nome:* ${data.nome}\n`;
     message += `*Idade:* ${data.idade}\n`;
@@ -764,16 +1012,18 @@ function submitQuickBooking(event) {
     message += `*Local:* ${data.local}\n`;
     message += `*Serviço:* ${data.servico}\n`;
 
+    // Get correct WhatsApp number
     const recipient = data.contato === "pamela" 
         ? "5512982094926" 
         : "5512982572507";
     
+    // Open WhatsApp
     window.open(`https://wa.me/${recipient}?text=${encodeURIComponent(message)}`, "_blank");
     
+    // Reset and close form
     form.reset();
     toggleQuickBooking();
 }
 </script>
 
-</body>
-</html>
+</body></html>
