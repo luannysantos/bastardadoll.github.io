@@ -2,7 +2,6 @@
 <html lang="pt-br">
 <head>
     <base href="https://bastardadoll.github.io/">
-
     <!-- Important Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +35,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <title>Luanny & Pamela - Acompanhantes de Luxo</title>
+
 <style>
 * {
     margin: 0;
@@ -49,6 +49,27 @@ body {
     color: #ffd1ea;
     line-height: 1.6;
     padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px 20px;
+    background: rgba(255,20,147,0.05);
+    border-bottom: 2px solid rgba(255,20,147,0.3);
+}
+
+.header h1 {
+    font-size: 3em;
+    color: #ff1493;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255,20,147,0.3);
+}
+
+.header p {
+    font-size: 1.4em;
+    color: #ffd1ea;
+    opacity: 0.9;
 }
 
 .container {
@@ -128,7 +149,7 @@ body {
     box-shadow: 0 6px 20px rgba(255,20,147,0.4);
 }
 
-.price-info, .duo-form {
+.duo-form {
     max-width: 600px;
     margin: 50px auto;
     padding: 30px;
@@ -138,22 +159,10 @@ body {
     text-align: center;
 }
 
-.price-info h3, .duo-form h3 {
+.duo-form h3 {
     color: #ff1493;
     font-size: 1.5em;
     margin-bottom: 20px;
-}
-
-.price-tag {
-    font-size: 2.5em;
-    color: #ff1493;
-    margin: 20px 0;
-    text-shadow: 0 0 10px rgba(255,20,147,0.3);
-}
-
-.price-info p {
-    font-size: 1.1em;
-    margin: 10px 0;
 }
 
 .form-group {
@@ -172,9 +181,41 @@ body {
     padding: 12px;
     border-radius: 10px;
     border: 1px solid rgba(255,20,147,0.3);
-    background: rgba(255,255,255,0.05);
+    background: rgba(26, 0, 16, 0.9);
     color: #ffd1ea;
     font-size: 1em;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,20,147,0.3);
+    background: rgba(26, 0, 16, 0.9);
+    color: #ffd1ea;
+    font-size: 1em;
+}
+
+.form-group select option,
+.form-group select optgroup {
+    background: #1a0010;
+    color: #ffd1ea;
+    padding: 8px;
+}
+
+.form-group select optgroup {
+    font-weight: bold;
+    color: #ff1493;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #ff1493;
+    box-shadow: 0 0 5px rgba(255,20,147,0.5);
+}
+
+.form-group select option:disabled {
+    color: rgba(255,209,234,0.5);
 }
 
 .form-group textarea {
@@ -215,13 +256,21 @@ body {
         font-size: 0.9em;
     }
     
-    .price-tag {
-        font-size: 2em;
+    .header h1 {
+        font-size: 2.2em;
+    }
+    
+    .header p {
+        font-size: 1.2em;
     }
 }
 </style>
 </head>
 <body>
+<div class="header">
+    <h1>Luanny & Pamela</h1>
+    <p>Dupla sexy de São José dos Campos</p>
+</div>
 <div class="container">
     <div class="box">
         <img src="pamela.gif" alt="Pamela">
@@ -258,14 +307,6 @@ body {
     </div>
 </div>
 
-<div class="price-info">
-    <h3>Valores e Condições</h3>
-    <div class="price-tag">R$ 500,00</div>
-    <p>1 hora de atendimento</p>
-    <p>+ Taxa de deslocamento</p>
-    <p>Local (Hotel/Motel) não incluso</p>
-</div>
-
 <div class="duo-form">
     <h3>Atendimento em Dupla</h3>
     <form id="duoForm" onsubmit="submitForm(event)">
@@ -280,6 +321,17 @@ body {
         <div class="form-group">
             <label>Horário Pretendido:</label>
             <input type="time" name="horario" required>
+        </div>
+        <div class="form-group">
+            <label>Duração do Atendimento:</label>
+            <select name="duracao" required>
+                <option value="">Selecione a duração...</option>
+                <option value="quick">Rapidinha (30min) - R$ 300,00</option>
+                <option value="1">1 hora - R$ 500,00</option>
+                <option value="2">2 horas - R$ 900,00</option>
+                <option value="3">3 horas - R$ 1.300,00</option>
+                <option value="4">4 horas - R$ 1.600,00</option>
+            </select>
         </div>
         <div class="form-group">
             <label>Local do Atendimento:</label>
@@ -329,6 +381,7 @@ function submitForm(event) {
     message += `Nome: ${data.nome}\n`;
     message += `Data: ${data.data}\n`;
     message += `Horário: ${data.horario}\n`;
+    message += `Duração: ${data.duracao}\n`;
     message += `Local: ${data.local}\n`;
     message += `Mensagem: ${data.mensagem}\n`;
     
