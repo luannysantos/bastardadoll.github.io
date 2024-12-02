@@ -539,118 +539,109 @@ h3 {
 
 .grid-box {
     position: relative;
-    min-height: 450px;
-    padding-bottom: 60px;
+    min-height: 350px; /* Reduced from 450px */
+    padding: 15px; /* Reduced from 20px */
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
-    padding: 20px;
     text-align: center;
 }
 
 .grid-box img {
     width: 100%;
-    max-width: 300px;
+    max-width: 200px; /* Reduced from 300px */
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .grid-box h4 {
-    margin: 20px 0 15px;
+    margin: 15px 0 10px;
     color: #ff1493;
-    font-size: 1.4em;
+    font-size: 1.2em; /* Reduced from 1.4em */
 }
 
 .grid-box p {
-    font-size: 1em;
-    line-height: 1.5;
-    margin: 15px 0;
+    font-size: 0.9em; /* Reduced from 1em */
+    line-height: 1.4;
+    margin: 10px 0;
     text-align: justify;
     color: #ffd1ea;
-    min-height: 80px;
+    min-height: 60px;
+    padding: 0 10px;
 }
 
-.grid-box .contact-btn {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    margin: 0;
+/* Update status message style */
+#message {
+    font-size: 0.9em;
+    color: #00ff00; /* Green color for ON status */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
-.grid-box .tags {
-    margin: 15px 0 30px;
+/* Update grid layouts for better mobile adaptation */
+.grid-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reduced from 300px */
+    gap: 20px; /* Reduced from 30px */
+    margin-top: 20px;
+    width: 100%;
 }
 
 /* Mobile adaptations */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    .container {
-        padding: 0;
-    }
-    
-    .box {
-        margin-bottom: 20px;
-    }
-
-    #clock-box {
-        width: auto;
-        padding: 4px;
-        top: 20px;
-        right: 10px;
-        transform: none;
-    }
-    
     .grid-boxes {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
     }
     
     .grid-box {
-        min-height: 400px;
+        min-height: 300px;
+        padding: 10px;
+    }
+    
+    .grid-box h4 {
+        font-size: 1.1em;
     }
     
     .grid-box p {
-        min-height: 60px;
+        font-size: 0.85em;
+        min-height: 50px;
+    }
+
+    #clock-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        top: auto;
+        transform: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 8px;
+        width: auto;
+    }
+
+    #clock {
         font-size: 0.9em;
+    }
+
+    #message {
+        font-size: 0.8em;
+        margin-left: 4px;
     }
 }
 
-@media (max-width: 768px) {
-    .container {
+@media (max-width: 480px) {
+    .grid-boxes {
         grid-template-columns: 1fr;
+        gap: 10px;
     }
     
-    .box {
-        padding: 20px;
-    }
-    
-    .box-content h2 {
-        font-size: 1.8em;
-    }
-    
-    .stat-item {
-        font-size: 0.9em;
-    }
-    
-    .header h1 {
-        font-size: 2.2em;
-    }
-    
-    .header p {
-        font-size: 1.2em;
-    }
-
-    .about-us {
-        padding: 20px;
-        margin: 0 auto 30px auto;
-    }
-    
-    .about-us p {
-        font-size: 1.1em;
+    .grid-box {
+        min-height: 280px;
     }
 }
 </style>
@@ -905,38 +896,32 @@ h3 {
     <h3>REDES SOCIAIS</h3>
     <div class="grid-boxes">
         <div class="grid-box">
-            <img src="instagram.gif" alt="Instagram Pamela">
+            <!-- Instagram SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#ff1493">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
             <h4>@pamelamulher</h4>
-            <p>Perfil oficial da Pamela. Confira fotos exclusivas e acompanhe seu dia a dia</p>
-            <div class="tags">
-                <span class="tag">Fotos</span>
-                <span class="tag">Stories</span>
-                <span class="tag">Exclusivo</span>
-            </div>
+            <p>Perfil oficial da Pamela. Fotos exclusivas, stories diários e conteúdo especial mostrando seu dia a dia e momentos mais sensuais.</p>
             <a href="https://instagram.com/pamelamulher" target="_blank" class="contact-btn">Seguir</a>
         </div>
 
         <div class="grid-box">
-            <img src="instagram.gif" alt="Instagram Luanny">
+            <!-- Instagram SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#ff1493">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
             <h4>@luannytrans</h4>
-            <p>Perfil oficial da Luanny. Conteúdo diário e momentos especiais</p>
-            <div class="tags">
-                <span class="tag">Fotos</span>
-                <span class="tag">Stories</span>
-                <span class="tag">Lives</span>
-            </div>
+            <p>Perfil oficial da Luanny. Compartilhando momentos especiais, fotos sensuais e interagindo com seus seguidores através de lives e stories.</p>
             <a href="https://instagram.com/luannytrans" target="_blank" class="contact-btn">Seguir</a>
         </div>
 
         <div class="grid-box">
-            <img src="instagram.gif" alt="Instagram Dupla">
+            <!-- Instagram SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#ff1493">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
             <h4>@dupla_lp.oficial</h4>
-            <p>Perfil oficial da dupla. Momentos especiais juntas e bastidores dos encontros</p>
-            <div class="tags">
-                <span class="tag">Dupla</span>
-                <span class="tag">Encontros</span>
-                <span class="tag">Bastidores</span>
-            </div>
+            <p>Perfil oficial da dupla. Bastidores dos encontros, momentos especiais juntas e interação exclusiva com os seguidores.</p>
             <a href="https://instagram.com/dupla_lp.oficial" target="_blank" class="contact-btn">Seguir</a>
         </div>
     </div>
