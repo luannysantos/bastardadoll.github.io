@@ -73,7 +73,7 @@ body {
     opacity: 0.9;
 }
 
-/* New navigation menu styles */
+/* Updated navigation menu styles */
 .nav-menu {
     position: fixed;
     top: 0;
@@ -85,7 +85,7 @@ body {
     border-left: 2px solid #ff1493;
     padding: 20px;
     transition: right 0.3s ease;
-    z-index: 999;
+    z-index: 1000;   /* Increased z-index */
     overflow-y: auto;
 }
 
@@ -154,10 +154,10 @@ body {
     margin-right: 100px; /* Reduced from 140px */
 }
 
-/* Grid box adjustments */
+/* Update grid box styles for better mobile responsiveness */
 .grid-box {
     position: relative;
-    min-height: 160px; /* Reduced from 200px */
+    min-height: 140px; /* Reduced height */
     padding: 6px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
@@ -165,88 +165,49 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.grid-box p {
+    font-size: 0.75em;
+    line-height: 1.2;
+    margin: 4px 0;
+    text-align: center;
+    color: #ffd1ea;
+    min-height: 40px;
+    padding: 0 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .grid-box .contact-btn {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 8px;
-    padding: 8px;
-    font-size: 0.9em;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 16px);
+    padding: 6px;
+    font-size: 0.8em;
 }
 
-/* Mobile adaptations */
-@media (max-width: 768px) {
-    .section-container,
-    .info-section,
-    .social-section,
-    .learn-more-section {
-        margin: 20px;
-        margin-right: 80px; /* Maintain space for clock */
-        padding: 15px;
-    }
-
-    .grid-boxes {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-    
-    .grid-box {
-        min-height: 140px;
-        padding: 4px;
-    }
-    
-    .grid-box h4 {
-        font-size: 0.75em;
-        margin: 4px 0;
-    }
-    
-    .grid-box p {
-        font-size: 0.7em;
-        min-height: 30px;
-        margin: 4px 0;
-    }
-
-    .grid-box .contact-btn {
-        font-size: 0.75em;
-        padding: 6px;
-        margin: 4px;
-    }
+/* Add tag styles */
+.tags {
+    margin: 8px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
 }
 
-@media (max-width: 480px) {
-    .section-container,
-    .info-section,
-    .social-section,
-    .learn-more-section {
-        margin: 10px;
-        margin-right: 70px;
-        padding: 10px;
-    }
-
-    .grid-boxes {
-        gap: 6px;
-    }
-    
-    .grid-box {
-        min-height: 130px;
-    }
-
-    .grid-box h4 {
-        font-size: 0.7em;
-    }
-    
-    .grid-box p {
-        font-size: 0.65em;
-        min-height: 25px;
-    }
-
-    .grid-box .contact-btn {
-        font-size: 0.7em;
-        padding: 4px;
-    }
+.tag {
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 12px;
+    background: rgba(255,20,147,0.1);
+    border: 1px solid rgba(255,20,147,0.3);
+    color: #ffd1ea;
 }
 
 /* Clock box status icon */
@@ -254,9 +215,10 @@ body {
     display: inline-block;
     width: 8px;
     height: 8px;
-    background-color: #00ff00; /* Green color for ON status */
+    background-color: #00ff00; /* Bright green */
     border-radius: 50%;
     margin-right: 4px;
+    box-shadow: 0 0 5px rgba(0,255,0,0.5);
 }
 
 /* Update clock box for all screen sizes */
@@ -292,52 +254,84 @@ body {
     justify-content: center;
 }
 
-#clock-box .contact-btn {
-    font-size: 0.7em;
-    padding: 4px;
-    margin-top: 4px;
-    width: 100%;
-}
-
-/* Update clock box position and style */
-#clock-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    width: 80px; /* Reduced from 120px */
-    height: auto; 
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 15px;
-    padding: 8px; /* Reduced padding */
-    box-shadow: 0 0 15px rgba(255,20,147,0.2);
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    z-index: 998; /* Lower than menu z-index */
-    transition: opacity 0.3s ease;
-}
-
-/* Add responsive adjustments */
+/* Mobile adaptations */
 @media (max-width: 768px) {
-    .section-container {
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
         margin: 20px;
-        margin-right: 20px; /* Reset margin for mobile */
-        padding: 20px;
+        margin-right: 70px; /* Space for clock */
+        padding: 15px;
     }
 
-    #clock-box {
-        width: auto;
+    .grid-boxes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .grid-box {
+        min-height: 120px;
         padding: 4px;
-        top: 20px;
-        right: 10px;
-        transform: none;
+    }
+    
+    .grid-box h4 {
+        font-size: 0.7em;
+        margin: 4px 0;
+    }
+    
+    .grid-box p {
+        font-size: 0.65em;
+        min-height: 30px;
+        -webkit-line-clamp: 2;
+    }
+
+    .tag {
+        font-size: 0.6em;
+        padding: 1px 4px;
+    }
+
+    .grid-box .contact-btn {
+        font-size: 0.7em;
+        padding: 4px;
+        bottom: 4px;
     }
 }
 
+@media (max-width: 480px) {
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
+        margin: 10px;
+        margin-right: 60px;
+        padding: 10px;
+    }
+
+    .grid-boxes {
+        gap: 6px;
+    }
+    
+    .grid-box {
+        min-height: 110px;
+    }
+
+    .grid-box h4 {
+        font-size: 0.65em;
+    }
+    
+    .grid-box p {
+        font-size: 0.6em;
+        min-height: 25px;
+    }
+
+    .grid-box .contact-btn {
+        font-size: 0.65em;
+        padding: 3px;
+    }
+}
+
+/* Booking form styles */
 .booking-form {
     display: none; 
     position: fixed;
@@ -634,7 +628,7 @@ h3 {
 
 .grid-box {
     position: relative;
-    min-height: 160px; /* Reduced from 200px */
+    min-height: 140px; /* Reduced from 200px */
     padding: 6px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
@@ -675,7 +669,7 @@ h3 {
     }
     
     .grid-box {
-        min-height: 140px; /* Reduced from 160px */
+        min-height: 120px; /* Reduced from 160px */
         padding: 4px;
     }
     
@@ -695,7 +689,21 @@ h3 {
     }
     
     .grid-box {
-        min-height: 130px;
+        min-height: 110px;
+    }
+
+    .grid-box h4 {
+        font-size: 0.65em;
+    }
+    
+    .grid-box p {
+        font-size: 0.6em;
+        min-height: 25px;
+    }
+
+    .grid-box .contact-btn {
+        font-size: 0.65em;
+        padding: 3px;
     }
 }
 </style>
@@ -1116,61 +1124,34 @@ function toggleMenu() {
         menu.classList.remove('active');
         overlay.style.display = 'none';
         document.body.style.overflow = 'auto';
-        clockBox.style.opacity = '1'; // Show clock
-        clockBox.style.visibility = 'visible';
+        clockBox.style.display = 'flex'; // Show clock
     } else {
         menu.classList.add('active');
         overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
-        clockBox.style.opacity = '0'; // Hide clock
-        clockBox.style.visibility = 'hidden';
-    }
-
-    // Close menu when clicking a link
-    const menuLinks = menu.getElementsByTagName('a');
-    for (let link of menuLinks) {
-        link.addEventListener('click', function() {
-            setTimeout(() => {
-                menu.classList.remove('active');
-                overlay.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                clockBox.style.opacity = '1'; // Show clock
-                clockBox.style.visibility = 'visible';
-            }, 100);
-        });
+        clockBox.style.display = 'none'; // Hide clock
     }
 }
 
-// Add IDs to main sections
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = {
-        'acompanhantes': document.querySelector('.about-section'),
-        'informacoes': document.querySelector('.info-section'),
-        'atendimento': document.querySelector('.duo-form'),
-        'redes': document.querySelector('.social-section'),
-        'saiba-mais': document.querySelector('.learn-more-section')
-    };
-    
-    // Add IDs to sections
-    Object.entries(sections).forEach(([id, element]) => {
-        if (element) element.id = id;
-    });
-    
-    // Smooth scroll for navigation links
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-});
+// Update mobile detection and clock positioning
+function adjustClockPosition() {
+    const clockBox = document.getElementById('clock-box');
+    if (window.innerWidth <= 768) {
+        clockBox.style.position = 'fixed';
+        clockBox.style.top = '50%';
+        clockBox.style.transform = 'translateY(-50%)';
+        clockBox.style.right = '10px';
+    } else {
+        clockBox.style.position = 'fixed';
+        clockBox.style.top = '50%';
+        clockBox.style.transform = 'translateY(-50%)';
+        clockBox.style.right = '20px';
+    }
+}
+
+// Add event listeners
+window.addEventListener('load', adjustClockPosition);
+window.addEventListener('resize', adjustClockPosition);
 
 function toggleQuickBooking() {
     const form = document.getElementById('quickBooking');
