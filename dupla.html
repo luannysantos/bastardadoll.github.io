@@ -225,16 +225,169 @@ body {
 
 /* Mobile adaptations */
 @media (max-width: 768px) {
-    .grid-box {
-        min-height: 260px; /* Adjusted for mobile */
-        padding-bottom: 65px;
+    /* Header adjustments */
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .header p {
+        font-size: 1em;
+    }
+
+    /* Adjust section padding */
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
+        padding: 15px;
+        margin: 15px auto;
+        max-width: 100%;
+        margin-right: 60px;
+    }
+
+    /* Container adjustments */
+    .container {
+        gap: 20px;
+    }
+
+    /* Box content adjustments */
+    .box-content h2 {
+        font-size: 1.5em;
+    }
+
+    .box-content .stats {
+        font-size: 0.8em;
+        gap: 10px;
+    }
+
+    .box-content p {
+        font-size: 0.9em;
+        padding: 15px;
+    }
+
+    /* Form adjustments */
+    .form-group label {
+        font-size: 0.8em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 8px;
+        font-size: 0.8em;
+    }
+
+    /* Button adjustments */
+    .contact-btn,
+    .submit-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
     }
 }
 
 @media (max-width: 480px) {
+    /* Header adjustments */
+    .header h1 {
+        font-size: 1.8em;
+    }
+    
+    .header p {
+        font-size: 0.9em;
+    }
+
+    /* Section adjustments */
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
+        padding: 10px;
+        margin: 10px auto;
+        margin-right: 50px;
+    }
+
+    /* Grid adjustments */
+    .grid-boxes {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Box adjustments */
+    .box {
+        padding: 15px;
+    }
+
+    .box-content h2 {
+        font-size: 1.3em;
+    }
+
+    .box-content .stats {
+        font-size: 0.7em;
+        gap: 8px;
+    }
+
+    /* Form adjustments */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 0.75em;
+        margin-bottom: 4px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 6px;
+        font-size: 0.75em;
+    }
+
+    /* Clock box adjustments */
+    #clock-box {
+        right: 5px;
+    }
+
+    #clock {
+        font-size: 0.9em;
+    }
+
+    #message {
+        font-size: 0.7em;
+    }
+
+    /* Navigation adjustments */
+    .nav-menu {
+        width: 90%;
+    }
+
+    .nav-menu a {
+        font-size: 0.9em;
+    }
+
+    .menu-toggle {
+        padding: 8px;
+        font-size: 1em;
+    }
+}
+
+/* Additional adjustments for extra small screens */
+@media (max-width: 320px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
     .grid-box {
-        min-height: 240px; /* Adjusted for smaller mobile */
-        padding-bottom: 60px;
+        min-height: 220px;
+    }
+
+    .box-content h2 {
+        font-size: 1.2em;
+    }
+
+    .contact-btn,
+    .submit-btn {
+        padding: 8px 15px;
+        font-size: 0.8em;
     }
 }
 
@@ -601,50 +754,169 @@ h3 {
 
 /* Mobile adaptations */
 @media (max-width: 768px) {
-    .grid-boxes {
-        grid-template-columns: repeat(2, 1fr);
+    /* Header adjustments */
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .header p {
+        font-size: 1em;
+    }
+
+    /* Adjust section padding */
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
+        padding: 15px;
+        margin: 15px auto;
+        max-width: 100%;
+        margin-right: 60px;
+    }
+
+    /* Container adjustments */
+    .container {
+        gap: 20px;
+    }
+
+    /* Box content adjustments */
+    .box-content h2 {
+        font-size: 1.5em;
+    }
+
+    .box-content .stats {
+        font-size: 0.8em;
         gap: 10px;
     }
-    
-    .grid-box {
-        min-height: 260px; /* Adjusted for mobile */
-        padding-bottom: 65px;
+
+    .box-content p {
+        font-size: 0.9em;
+        padding: 15px;
     }
-    
-    .grid-box h4 {
-        font-size: 0.65em;
-        margin: 4px 0;
+
+    /* Form adjustments */
+    .form-group label {
+        font-size: 0.8em;
     }
-    
-    .grid-box p {
-        font-size: 0.6em; /* Reduced from 0.65em */
-        min-height: 30px;
-        -webkit-line-clamp: 2;
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 8px;
+        font-size: 0.8em;
+    }
+
+    /* Button adjustments */
+    .contact-btn,
+    .submit-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
     }
 }
 
 @media (max-width: 480px) {
+    /* Header adjustments */
+    .header h1 {
+        font-size: 1.8em;
+    }
+    
+    .header p {
+        font-size: 0.9em;
+    }
+
+    /* Section adjustments */
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
+        padding: 10px;
+        margin: 10px auto;
+        margin-right: 50px;
+    }
+
+    /* Grid adjustments */
     .grid-boxes {
-        gap: 6px;
-    }
-    
-    .grid-box {
-        min-height: 240px; /* Adjusted for smaller mobile */
-        padding-bottom: 60px;
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 
-    .grid-box h4 {
-        font-size: 0.6em;
-    }
-    
-    .grid-box p {
-        font-size: 0.55em;
-        min-height: 25px;
+    /* Box adjustments */
+    .box {
+        padding: 15px;
     }
 
-    .grid-box .contact-btn {
+    .box-content h2 {
+        font-size: 1.3em;
+    }
+
+    .box-content .stats {
         font-size: 0.7em;
-        padding: 5px 10px;
+        gap: 8px;
+    }
+
+    /* Form adjustments */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 0.75em;
+        margin-bottom: 4px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 6px;
+        font-size: 0.75em;
+    }
+
+    /* Clock box adjustments */
+    #clock-box {
+        right: 5px;
+    }
+
+    #clock {
+        font-size: 0.9em;
+    }
+
+    #message {
+        font-size: 0.7em;
+    }
+
+    /* Navigation adjustments */
+    .nav-menu {
+        width: 90%;
+    }
+
+    .nav-menu a {
+        font-size: 0.9em;
+    }
+
+    .menu-toggle {
+        padding: 8px;
+        font-size: 1em;
+    }
+}
+
+/* Additional adjustments for extra small screens */
+@media (max-width: 320px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .grid-box {
+        min-height: 220px;
+    }
+
+    .box-content h2 {
+        font-size: 1.2em;
+    }
+
+    .contact-btn,
+    .submit-btn {
+        padding: 8px 15px;
+        font-size: 0.8em;
     }
 }
 
