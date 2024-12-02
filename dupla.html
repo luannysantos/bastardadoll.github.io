@@ -151,10 +151,10 @@ body {
     padding: 20px;
 }
 
-/* Update grid box styles for consistent alignment */
+/* Updated grid box styles */
 .grid-box {
     position: relative;
-    min-height: 180px;
+    min-height: 220px; /* Increased from 180px */
     padding: 15px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
@@ -165,13 +165,6 @@ body {
     padding-bottom: 60px; /* Space for tags and button */
 }
 
-/* Center Instagram icon */
-.grid-box svg {
-    margin: 0 auto;
-    display: block;
-}
-
-/* Update grid box content styles */
 .grid-box h4 {
     margin: 8px 0 4px;
     color: #ff1493;
@@ -181,12 +174,12 @@ body {
 
 .grid-box p {
     font-size: 0.75em;
-    line-height: 1.2;
-    margin: 4px 0;
+    line-height: 1.4;
+    margin: 8px 0;
     text-align: center;
     color: #ffd1ea;
-    min-height: 40px;
-    padding: 0 4px;
+    min-height: 45px; /* Increased from 40px */
+    padding: 0 8px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -204,11 +197,12 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 5px;
+    margin-bottom: 5px;
 }
 
 .tag {
     font-size: 0.6em;
-    padding: 2px 6px;
+    padding: 2px 8px;
     border-radius: 12px;
     background: rgba(255,20,147,0.05);
     border: 1px solid rgba(255,20,147,0.3);
@@ -230,58 +224,16 @@ body {
 
 /* Mobile adaptations */
 @media (max-width: 768px) {
-    .section-container,
-    .info-section,
-    .social-section,
-    .learn-more-section {
-        margin: 15px;
-        margin-right: 65px;
-        padding: 15px;
-    }
-
     .grid-box {
-        min-height: 160px;
+        min-height: 200px; /* Adjusted for mobile */
         padding-bottom: 55px;
-    }
-
-    .grid-box h4 {
-        font-size: 0.65em;
-    }
-
-    .grid-box p {
-        font-size: 0.6em;
-        min-height: 30px;
-        -webkit-line-clamp: 2;
     }
 }
 
 @media (max-width: 480px) {
-    .section-container,
-    .info-section,
-    .social-section,
-    .learn-more-section {
-        margin: 10px;
-        margin-right: 60px;
-        padding: 10px;
-    }
-
     .grid-box {
-        min-height: 140px;
+        min-height: 180px; /* Adjusted for smaller mobile */
         padding-bottom: 50px;
-    }
-
-    .grid-box h4 {
-        font-size: 0.6em;
-    }
-    
-    .grid-box p {
-        font-size: 0.55em;
-        min-height: 25px;
-    }
-
-    .grid-box .contact-btn {
-        font-size: 0.7em;
-        padding: 5px 10px;
     }
 }
 
@@ -608,7 +560,7 @@ h3 {
 
 .grid-box {
     position: relative;
-    min-height: 180px;
+    min-height: 220px; /* Increased from 180px */
     padding: 15px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
@@ -635,12 +587,12 @@ h3 {
 
 .grid-box p {
     font-size: 0.75em; /* Reduced from 0.8em */
-    line-height: 1.2;
-    margin: 4px 0;
+    line-height: 1.4;
+    margin: 8px 0; /* Increased margin */
     text-align: center;
     color: #ffd1ea;
-    min-height: 40px;
-    padding: 0 4px;
+    min-height: 45px; /* Increased from 40px */
+    padding: 0 8px; /* Increased padding */
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -655,7 +607,7 @@ h3 {
     }
     
     .grid-box {
-        min-height: 160px; /* Reduced from 180px */
+        min-height: 200px; /* Adjusted for mobile */
         padding-bottom: 55px;
     }
     
@@ -677,7 +629,7 @@ h3 {
     }
     
     .grid-box {
-        min-height: 140px;
+        min-height: 180px; /* Adjusted for smaller mobile */
         padding-bottom: 50px;
     }
 
