@@ -138,23 +138,18 @@ body {
     background: #ff69b4;
 }
 
-/* Adjust section container margin for all screens */
+/* Update section container margin */
 .section-container {
-    margin-right: 140px;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 20px;
+    margin-right: 140px; /* Increased margin to prevent clock overlap */
 }
 
-@media (max-width: 768px) {
-    .section-container {
-        margin-right: 20px;
-    }
-    
-    .nav-menu {
-        width: 100%;
-        right: -100%;
-    }
-}
-
-/* Update clock box CSS */
+/* Update clock box position and style */
 #clock-box {
     display: flex;
     flex-direction: column;
@@ -162,7 +157,7 @@ body {
     align-items: center;
     margin: 0;
     width: 120px;
-    height: auto;
+    height: auto; 
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
@@ -175,34 +170,21 @@ body {
     z-index: 999;
 }
 
-/* Update section container CSS to prevent overlap */
-.section-container {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 20px;
-    margin-right: 140px; /* Add margin to prevent clock overlap */
-}
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    .section-container {
+        margin: 20px;
+        margin-right: 20px; /* Reset margin for mobile */
+        padding: 20px;
+    }
 
-#clock {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 5px; 
-    color: #ff1493;
-    text-shadow: 0 0 10px rgba(255,20,147,0.3);
-}
-
-#message {
-    font-size: 0.8em; 
-    background-color: rgba(255,20,147,0.2);
-    color: #ffd1ea;
-    padding: 5px; 
-    border-radius: 5px;
-    margin-bottom: 5px;
-    text-align: center;
-    display: none;
+    #clock-box {
+        width: auto;
+        padding: 5px;
+        top: 20px;
+        right: 10px;
+        transform: none;
+    }
 }
 
 .booking-form {
@@ -219,7 +201,6 @@ body {
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
-    overflow-y: auto;
 }
 
 .close-btn {
@@ -424,13 +405,16 @@ body {
     transform: translateY(-3px);
 }
 
-.info-section {
+.info-section,
+.social-section,
+.learn-more-section {
     max-width: 1200px;
     margin: 50px auto;
     padding: 30px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 20px;
+    margin-right: 140px; /* Match section container margin */
 }
 
 .clause {
@@ -489,21 +473,12 @@ h3 {
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
 }
 
-.social-section,
-.learn-more-section {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 20px;
-}
-
 .grid-boxes {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 30px;
+    width: 100%;
 }
 
 .grid-box {
@@ -556,22 +531,6 @@ h3 {
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
-    }
-    
-    .section-container {
-        margin: 20px;
-        margin-right: 20px; /* Reset margin for mobile */
-        padding: 20px;
-    }
-    
-    .about-section {
-        margin: 20px;
-        padding: 20px;
-    }
-    
-    .about-section .section-description {
-        padding: 15px;
-        font-size: 1.1em;
     }
     
     .container {
