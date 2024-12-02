@@ -77,8 +77,9 @@ body {
 .nav-menu {
     position: fixed;
     top: 0;
-    right: -300px; /* Hidden by default */
-    width: 300px;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
     height: 100vh;
     background: rgba(26, 0, 16, 0.98);
     border-left: 2px solid #ff1493;
@@ -128,10 +129,11 @@ body {
     background: #ff1493;
     border: none;
     color: white;
-    padding: 12px 15px;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 1.2em;
 }
 
 .menu-toggle:hover {
@@ -139,14 +141,25 @@ body {
 }
 
 /* Update section container margin */
-.section-container {
+.section-container,
+.info-section,
+.social-section,
+.learn-more-section {
     max-width: 1200px;
     margin: 50px auto;
     padding: 30px;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 20px;
-    margin-right: 140px; /* Increased margin to prevent clock overlap */
+}
+
+@media (min-width: 769px) {
+    .section-container,
+    .info-section,
+    .social-section,
+    .learn-more-section {
+        margin-right: 140px;
+    }
 }
 
 /* Update clock box styles */
@@ -156,61 +169,39 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    width: 80px; /* Reduced from 120px */
+    width: 80px;
     height: auto;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
-    padding: 8px; /* Reduced padding */
+    padding: 8px;
     box-shadow: 0 0 15px rgba(255,20,147,0.2);
     position: fixed;
     top: 50%;
-    right: 10px;
+    right: 20px;
     transform: translateY(-50%);
-    z-index: 999;
+    z-index: 998; /* Lower than menu z-index */
+    transition: opacity 0.3s ease;
 }
 
-#clock {
-    font-size: 0.9em; /* Smaller font size */
-    margin-bottom: 2px;
-}
-
-#message {
-    font-size: 0.7em; /* Smaller font size */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-}
-
-/* Add style for ON icon */
-.status-icon {
-    width: 8px;
-    height: 8px;
-    background: #00ff00;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 5px #00ff00;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 1;
+/* Mobile adjustments for clock */
+@media (max-width: 768px) {
+    #clock-box {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        transform: none;
+        width: auto;
+        padding: 8px;
+        flex-direction: row;
+        gap: 8px;
     }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
-}
 
-#clock-box .contact-btn {
-    padding: 4px 8px;
-    font-size: 0.8em;
-    margin-top: 4px;
-    width: 100%;
+    #clock-box .contact-btn {
+        margin-top: 0;
+        padding: 4px 8px;
+    }
 }
 
 /* Update clock box position and style */
@@ -229,9 +220,10 @@ body {
     box-shadow: 0 0 15px rgba(255,20,147,0.2);
     position: fixed;
     top: 50%;
-    right: 10px;
+    right: 20px;
     transform: translateY(-50%);
-    z-index: 999;
+    z-index: 998; /* Lower than menu z-index */
+    transition: opacity 0.3s ease;
 }
 
 /* Add responsive adjustments */
@@ -1056,28 +1048,39 @@ function updateClock() {
 window.onload = function() {
     updateClock();
     setInterval(updateClock, 1000);
-    
-    // Setup mobile menu
-    if (window.innerWidth <= 768) {
-        const sections = document.querySelectorAll('.section-container');
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
-    }
 };
 
 function toggleMenu() {
     const menu = document.getElementById('navMenu');
     const overlay = document.getElementById('overlay');
+    const clockBox = document.getElementById('clock-box');
     
     if (menu.classList.contains('active')) {
         menu.classList.remove('active');
         overlay.style.display = 'none';
         document.body.style.overflow = 'auto';
+        clockBox.style.opacity = '1'; // Show clock
+        clockBox.style.visibility = 'visible';
     } else {
         menu.classList.add('active');
         overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        clockBox.style.opacity = '0'; // Hide clock
+        clockBox.style.visibility = 'hidden';
+    }
+
+    // Close menu when clicking a link
+    const menuLinks = menu.getElementsByTagName('a');
+    for (let link of menuLinks) {
+        link.addEventListener('click', function() {
+            setTimeout(() => {
+                menu.classList.remove('active');
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                clockBox.style.opacity = '1'; // Show clock
+                clockBox.style.visibility = 'visible';
+            }, 100);
+        });
     }
 }
 
