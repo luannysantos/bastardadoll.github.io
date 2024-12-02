@@ -36,770 +36,308 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <title>Luanny & Pamela - Acompanhantes de Luxo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #ff1493;
-            --primary-light: rgba(255,20,147,0.1);
-            --text-color: #ffd1ea;
-            --bg-color: #1a0010;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+body {
+    font-family: Arial, sans-serif;  
+    background: #1a0010;
+    color: #ffd1ea;
+    line-height: 1.6;
+    padding: 20px;
+}
 
-        /* Group layout styles */
-        .layout-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
 
-        /* Update main content spacing */
-        .contract-content {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
+.box {
+    background: rgba(255,20,147,0.05);
+    border: 2px solid #ff1493;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
 
-        /* Update sidebar/clock bar positioning */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: rgba(26,0,16,0.98);
-            border-bottom: 2px solid var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1003;
-        }
+.box img {
+    width: 100%;
+    aspect-ratio: 1080/1920;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255,20,147,0.3);
+}
 
-        /* Update header positioning - remove fixed positioning */
-        .header-info {
-            width: 100%;
-            background: rgba(26,0,16,0.98);
-            padding: 2rem;
-            margin: 60px auto 2rem auto; /* Add margin-top to account for fixed clock */
-            box-sizing: border-box;
-        }
+.box-content h2 {
+    font-size: 2em;
+    color: #ff1493;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255,20,147,0.3);
+}
 
-        /* Clock display styling */
-        .time-display {
-            text-align: center;
-        }
+.box-content .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
 
-        .time-display h3 {
-            margin: 0;
-            font-size: 1rem;
-            color: var(--primary-color);
-        }
+.stat-item {
+    background: rgba(255,20,147,0.1);
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1em;
+    border: 1px solid rgba(255,20,147,0.2);
+}
 
-        .current-time {
-            font-size: 1.2rem;
-            color: var(--text-color);
-            font-weight: bold;
-        }
+.box-content p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255,20,147,0.03);
+    border-radius: 10px;
+}
 
-        /* Responsive clock adjustments */
-        @media (max-width: 480px) {
-            .time-display h3 {
-                font-size: 0.9rem;
-            }
-            
-            .current-time {
-                font-size: 1.1rem;
-            }
-        }
+.contact-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ff1493;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255,20,147,0.3);
+}
 
-        @media (max-width: 360px) {
-            .time-display h3 {
-                font-size: 0.8rem;
-            }
-            
-            .current-time {
-                font-size: 1rem;
-            }
-        }
+.contact-btn:hover {
+    background: #ff69b4;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255,20,147,0.4);
+}
 
-        /* Responsive improvements */
-        @media (max-width: 768px) {
-            .header-info {
-                margin-top: 60px;
-                padding: 1rem;
-            }
-        }
+.price-info, .duo-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid #ff1493;
+    border-radius: 20px;
+    text-align: center;
+}
 
-        @media (max-width: 480px) {
-            .sidebar {
-                height: 50px;
-            }
-            
-            .header-info {
-                margin-top: 50px;
-            }
-        }
+.price-info h3, .duo-form h3 {
+    color: #ff1493;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
 
-        @media (max-width: 360px) {
-            .sidebar {
-                height: 45px;
-            }
-            
-            .header-info {
-                margin-top: 45px;
-            }
-        }
+.price-tag {
+    font-size: 2.5em;
+    color: #ff1493;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(255,20,147,0.3);
+}
 
-        .header-info p {
-            text-align: justify;
-            margin-bottom: 1rem;
-        }
+.price-info p {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
 
-        .header-info ol {
-            color: var(--text-color);
-            line-height: 2;
-            padding-left: 1.5rem;
-        }
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
 
-        .header-info ol li {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-        }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ff1493;
+}
 
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            width: 100%;
-        }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,20,147,0.3);
+    background: rgba(255,255,255,0.05);
+    color: #ffd1ea;
+    font-size: 1em;
+}
 
-        .profile-card {
-            width: 100%;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            background: rgba(255,20,147,0.05);
-            border: 1px solid var(--primary-color);
-            border-radius: 15px;
-            padding: 2rem;
-            box-sizing: border-box;
-        }
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
 
-        /* Add margin between profile cards */
-        .profile-card + .profile-card {
-            margin-top: 2rem;
-        }
+.submit-btn {
+    background: #ff1493;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
 
-        /* Ensure responsive layout maintains column */
-        @media (max-width: 768px) {
-            .profile-section {
-                flex-direction: column;
-            }
-        }
+.submit-btn:hover {
+    background: #ff69b4;
+    transform: translateY(-3px);
+}
 
-        .profile-media {
-            aspect-ratio: 9/16;
-            width: 100%;
-            height: auto;
-            position: relative;
-        }
-
-        .profile-media img, 
-        .profile-media video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: none;
-        }
-
-        .profile-media img.loaded {
-            opacity: 1;
-            display: block;
-        }
-
-        .profile-media::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                rgba(255,255,255,0) 0%,
-                rgba(255,255,255,0.2) 50%,
-                rgba(255,255,255,0) 100%
-            );
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-50%);
-            }
-            100% {
-                transform: translateX(50%);
-            }
-        }
-
-        .media-placeholder {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 0.9em;
-            text-align: center;
-            background: linear-gradient(45deg, var(--primary-color), #ff69b4);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 0;
-        }
-
-        .stat-item {
-            background: rgba(255,20,147,0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 50px;
-        }
-
-        .profile-card p {
-            min-height: auto;
-            margin: 0;
-            padding: 1.5rem;
-            background: rgba(255,20,147,0.03);
-            border-radius: 8px;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        .services {
-            min-height: auto;
-            background: rgba(255,20,147,0.03);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .services h4 {
-            margin: 0 0 1rem 0;
-            height: auto;
-        }
-
-        .services ul {
-            margin: 0;
-            padding-left: 1.5rem;
-        }
-
-        .services ul li {
-            margin: 0.75rem 0;
-        }
-
-        .highlight-box {
-            margin: 2rem auto;
-            width: 90%;
-            max-width: 600px;
-            padding: 1.5rem;
-            box-sizing: border-box;
-            background: rgba(255,20,147,0.05);
-            border: 1px solid var(--primary-color);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .price-tag {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin: 1rem 0;
-        }
-
-        h2, h3, h4 {
-            color: var(--primary-color);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.5rem;
-            margin: 2rem 0 1rem 0;
-            color: #ff69b4;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255,20,147,0.3);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-color);
-            margin: 0 0 2rem 0;
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-
-        .highlight {
-            background: rgba(255,20,147,0.1);
-            padding: 0.5rem;
-            border-radius: 5px;
-            margin: 0.5rem 0;
-        }
-
-        a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,20,147,0.4);
-            background-color: #ff69b4;
-        }
-
-        a[href^="https://wa.me"] {
-            max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin: 1rem auto;
-            display: block;
-            text-align: center;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            background: rgba(255,20,147,0.9);
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        @media (max-width: 360px) {
-            .back-to-top {
-                bottom: 0.5rem;
-                right: 0.5rem;
-                width: 30px;
-                height: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-card h3 {
-                font-size: 1em;
-                height: 30px;
-            }
-
-            .stat-item {
-                font-size: 0.7em;
-            }
-
-            .profile-card p {
-                font-size: 0.7em;
-                min-height: 200px;
-            }
-
-            .services ul {
-                font-size: 0.7em;
-            }
-        }
-
-        /* Fix form layout */
-        .form-group {
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Fix highlight box layout */
-        .highlight-box {
-            margin: 2rem auto;
-            width: 90%;
-            max-width: 600px;
-            padding: 1.5rem;
-            box-sizing: border-box;
-        }
-
-        /* Fix booking form layout */
-        #bookingForm {
-            width: 90%;
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 0;
-        }
-    </style>
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .box {
+        padding: 20px;
+    }
+    
+    .box-content h2 {
+        font-size: 1.8em;
+    }
+    
+    .stat-item {
+        font-size: 0.9em;
+    }
+    
+    .price-tag {
+        font-size: 2em;
+    }
+}
+</style>
 </head>
 <body>
-    <!-- Fixed Top Bar -->
-    <div class="sidebar">
-        <!-- Time Display -->
-        <div class="time-display">
-            <h3>Horário Atual</h3>
-            <div class="current-time" id="currentTime">00:00:00</div>
+<div class="container">
+    <div class="box">
+        <img src="pamela.gif" alt="Pamela">
+        <div class="box-content">
+            <h2>Pamela</h2>
+            <div class="stats">
+                <div class="stat-item">Mulher | 25 anos</div>
+                <div class="stat-item">167cm | 64kg</div>
+                <div class="stat-item">Cabelo longo</div>
+                <div class="stat-item">Buceta Rosa</div>
+            </div>
+            <p>
+                Pamela é uma acompanhante cis que emana sensualidade natural e elegância. Com curvas perfeitas e uma energia contagiante, ela proporciona momentos de puro prazer e conexão. Especialista em massagens sensuais e shows eróticos, combina delicadeza e intensidade de forma única. Sua personalidade doce e envolvente garante experiências inesquecíveis.
+            </p>
+            <a href="https://wa.me/5512982094926" target="_blank" class="contact-btn">Contato Pamela</a>
         </div>
     </div>
 
-    <!-- Main Content Container -->
-    <div class="contract-content">
-        <!-- Header Section -->
-        <div class="header-info">
-            <h2 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.8rem;">LUANNY & PAMELA</h2>
-            <h3 style="color: var(--text-color); margin-bottom: 2rem; font-size: 1.4rem;">Acompanhantes de Luxo em São José dos Campos</h3>
-            
-            <h4 style="margin-bottom: 1rem;">Quem Somos</h4>
-            <p style="margin-bottom: 1rem;">
-                Somos acompanhantes de luxo, atendendo juntas na madrugada das 00:00 às 05:00 
-                no centro de São José dos Campos - SP.
+    <div class="box">
+        <img src="luanny.gif" alt="Luanny">
+        <div class="box-content">
+            <h2>Luanny</h2>
+            <div class="stats">
+                <div class="stat-item">Trans | 29 anos</div>
+                <div class="stat-item">177cm | 64kg</div>
+                <div class="stat-item">Loira | Definida</div>
+                <div class="stat-item">19cm Dote</div>
+            </div>
+            <p>
+                Luanny é uma acompanhante trans sofisticada e carismática. Com sua beleza estonteante e corpo definido, oferece experiências únicas e inesquecíveis. Profissional versátil, combina sensualidade e carinho em cada encontro. Especialista em proporcionar momentos de prazer intenso, com um sorriso encantador e personalidade cativante.
             </p>
-            <p style="margin-bottom: 2rem;">
-                Realizamos atendimentos exclusivamente juntas em motéis selecionados ou 
-                opção de rapidinha no carro.
-            </p>
+            <a href="https://wa.me/5512982572507" target="_blank" class="contact-btn">Contato Luanny</a>
         </div>
-
-        <!-- Profile Section -->
-        <div class="profile-section">
-            <div class="profile-card">
-                <div class="profile-media">
-                    <img src="https://bastardadoll.github.io/luanny.gif" 
-                         alt="Luanny Ravatche" 
-                         width="1080" 
-                         height="1920">
-                    <div class="media-placeholder">
-                        GIF HD 1080x1920<br>
-                        (Aguardando mídia)
-                    </div>
-                </div>
-                <h3>Luanny Ravatche</h3>
-                <div class="stats">
-                    <div class="stat-item">Trans | 29 anos</div>
-                    <div class="stat-item">177cm | 64kg</div>
-                    <div class="stat-item">Loira | Definida</div>
-                    <div class="stat-item">19cm Dote</div>
-                </div>
-                <p style="text-align: left;">
-                    Luanny é uma acompanhante trans sofisticada e carismática. Com sua beleza estonteante e corpo definido, oferece experiências únicas e inesquecíveis. Profissional versátil, combina sensualidade e carinho em cada encontro. Especialista em proporcionar momentos de prazer intenso, com um sorriso encantador e personalidade cativante. Discretamente elegante, garante total satisfação em encontros memoráveis.
-                </p>
-                <div class="services">
-                    <h4>Especialidades</h4>
-                    <ul>
-                        <li>Penetração em Pamela</li>
-                        <li>Garganta profunda</li>
-                        <li>Ativa e Passiva</li>
-                        <li>Atendimento Premium</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="profile-card">
-                <div class="profile-media">
-                    <img src="https://bastardadoll.github.io/pamela.gif" 
-                         alt="Pamela"
-                         width="1080" 
-                         height="1920">
-                    <div class="media-placeholder">
-                        GIF HD 1080x1920<br>
-                        (Aguardando mídia)
-                    </div>
-                </div>
-                <h3>Pamela</h3>
-                <div class="stats">
-                    <div class="stat-item">Mulher | 25 anos</div>
-                    <div class="stat-item">167cm | 64kg</div>
-                    <div class="stat-item">Cabelo longo</div>
-                    <div class="stat-item">Buceta Rosa</div>
-                </div>
-                <p style="text-align: left;">
-                    Pamela é uma acompanhante cis que emana sensualidade natural e elegância. Com curvas perfeitas e uma energia contagiante, ela proporciona momentos de puro prazer e conexão. Especialista em massagens sensuais e shows eróticos, combina delicadeza e intensidade de forma única. Sua personalidade doce e envolvente garante experiências inesquecíveis, sempre com muito carinho e profissionalismo.
-                </p>
-                <div class="services">
-                    <h4>Especialidades</h4>
-                    <ul>
-                        <li>Massagem Erótica</li>
-                        <li>Sexo Vaginal</li>
-                        <li>Shows Sensuais</li>
-                        <li>Atendimento Premium</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pricing Section -->
-        <div class="highlight-box">
-            <h3>Valores e Condições</h3>
-            <div class="price-tag">R$ 500,00</div>
-            <p>(1 hora de atendimento)</p>
-            <p>+ Taxa de deslocamento</p>
-            <p>Local (Hotel/Motel) não incluso</p>
-        </div>
-
-        <!-- Requirements Section -->
-        <div class="requirements">
-            <h3>9. INFORMAÇÕES DE AGENDAMENTO E VALORES</h3>
-
-            <div class="clause">
-                <span class="clause-number">9.1</span> Procedimento de Agendamento
-                <div class="subclause">9.1.1 - Agendamento com mínimo de 4 horas de antecedência</div>
-                <div class="subclause">9.1.2 - Reserva confirmada mediante adiantamento de R$ 50,00</div>
-                <div class="subclause">9.1.3 - Adiantamento descontado no valor final</div>
-            </div>
-
-            <div class="clause">
-                <span class="clause-number">9.2</span> Valores
-                <div class="subclause">9.2.1 - Valor base: R$ 500,00 (1 hora)</div>
-                <div class="subclause">9.2.2 - Hotel/Motel não incluso</div>
-                <div class="subclause">9.2.3 - Taxa de deslocamento conforme região</div>
-            </div>
-
-            <div class="highlight">
-                <p><strong>Observações sobre pagamento:</strong></p>
-                <ul>
-                    <li>Adiantamento via PIX</li>
-                    <li>Saldo restante em dinheiro no início do encontro</li>
-                    <li>Valores adicionais conforme serviços especiais</li>
-                </ul>
-            </div>
-
-            <!-- Booking Form Section -->
-            <form id="bookingForm">
-                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 2rem;">
-                    Formulário de Agendamento Premium
-                </h3>
-
-                <div class="form-group">
-                    <label for="title">Título do Encontro:</label>
-                    <input type="text" id="title" required 
-                           placeholder="Ex: Encontro Especial com Luanny e Pamela"
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
-                </div>
-
-                <div class="form-group">
-                    <label for="description">Descrição (máx. 400 caracteres):</label>
-                    <textarea id="description" maxlength="400" required 
-                              placeholder="Descreva suas preferências e expectativas para o encontro..."
-                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color); min-height: 120px; text-align: justify;"></textarea>
-                    <small style="color: var(--text-color); display: block; text-align: right;">
-                        <span id="charCount">0</span>/400 caracteres
-                    </small>
-                </div>
-
-                <div class="form-group">
-                    <label for="nick">Seu Nick:</label>
-                    <input type="text" id="nick" required 
-                           placeholder="Como deseja ser chamado"
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
-                </div>
-
-                <div class="form-group">
-                    <label for="birthdate">Data de Nascimento:</label>
-                    <input type="date" id="birthdate" required 
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
-                </div>
-
-                <div class="form-group">
-                    <label for="bookingDate">Data pretendida:</label>
-                    <input type="date" id="bookingDate" required 
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
-                </div>
-
-                <div class="form-group">
-                    <label for="bookingTime">Horário:</label>
-                    <input type="time" id="bookingTime" required 
-                           min="00:00" max="05:00"
-                           style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
-                    <small style="color: var(--text-color);">Atendimento das 00:00 às 05:00</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="duration">Período do Encontro:</label>
-                    <select id="duration" required 
-                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
-                        <option value="1">1 hora - R$ 500,00</option>
-                        <option value="2">2 horas - R$ 900,00</option>
-                        <option value="3">3 horas - R$ 1.300,00</option>
-                        <option value="4">4 horas - R$ 1.600,00</option>
-                        <option value="quick">Rapidinha (30min) - R$ 300,00</option>
-                    </select>
-                </div>
-
-                <div class="price-display" style="text-align: center; margin: 2rem 0; padding: 1rem; background: rgba(255,20,147,0.1); border-radius: 10px;">
-                    <h4>Valor Total</h4>
-                    <div class="price" style="font-size: 2rem; color: var(--primary-color);">R$ <span id="totalPrice">500,00</span></div>
-                    <small style="color: var(--text-color);">+ Taxa de deslocamento conforme local</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Local do Encontro:</label>
-                    <select id="location" required 
-                            style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color);">
-                        <optgroup label="Hotéis e Motéis no Centro">
-                            <option value="joabi">Motel Joabi</option>
-                            <option value="veneza">Motel Veneza</option>
-                            <option value="albertino">Hotel Albertino</option>
-                            <option value="liberdade">Hotel Liberdade</option>
-                            <option value="luma">Luma Hotel</option>
-                        </optgroup>
-                        <optgroup label="Outros Motéis">
-                            <option value="point">Motel Point</option>
-                            <option value="orion">Motel Orion</option>
-                            <option value="bellatrix">Motel Bellatrix</option>
-                            <option value="if">IF Hotel</option>
-                            <option value="corpo">Motel Corpo e Alma</option>
-                            <option value="1001">1001 Motel</option>
-                        </optgroup>
-                        <option value="car">Rapidinha no Carro</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="specifications">Especificações Adicionais:</label>
-                    <textarea id="specifications" 
-                              placeholder="Informe quaisquer preferências específicas, restrições ou pedidos especiais..."
-                              style="padding: 0.5rem; border-radius: 5px; border: 1px solid var(--primary-color); background: rgba(255,255,255,0.1); color: var(--text-color); min-height: 100px;"></textarea>
-                </div>
-            </form>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://wa.me/5512982572507?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20com%20Luanny%20e%20Pamela.%0A%0AServiço:%201%20hora%20-%20R$%20500,00%20%2B%20local%20(Hotel/Motel)%20%2B%20deslocamento%0A%0ANick:%20__%0AData%20de%20Nascimento:%20__%0AData%20pretendida:%20__%0AHorário:%20__%0ALocal%20(Hotel/Motel):%20__" 
-                   style="display: inline-block; 
-                          background-color: var(--primary-color); 
-                          color: white; 
-                          padding: 1rem 2rem; 
-                          border-radius: 25px; 
-                          text-decoration: none;
-                          font-weight: bold;
-                          transition: all 0.3s ease;
-                          box-shadow: 0 4px 15px rgba(255,20,147,0.3);">
-                    💋 CONTRATAR AGORA
-                </a>
-            </div>
-        </div>
-
-        <a href="#" class="back-to-top" style="display: none;">↑</a>
     </div>
+</div>
 
-    <script>
-        // Utility Functions
-        function loadImage(img) {
-            return new Promise((resolve, reject) => {
-                img.onload = () => {
-                    img.style.display = 'block';
-                    img.classList.add('loaded');
-                    img.nextElementSibling.style.display = 'none';
-                    resolve(img);
-                };
-                
-                img.onerror = () => {
-                    img.style.display = 'none';
-                    img.nextElementSibling.style.display = 'block';
-                    reject(new Error(`Failed to load image: ${img.src}`));
-                };
-                
-                const currentSrc = img.src;
-                img.src = '';
-                img.src = currentSrc;
-            });
-        }
+<div class="price-info">
+    <h3>Valores e Condições</h3>
+    <div class="price-tag">R$ 500,00</div>
+    <p>1 hora de atendimento</p>
+    <p>+ Taxa de deslocamento</p>
+    <p>Local (Hotel/Motel) não incluso</p>
+</div>
 
-        function updateTime() {
-            const timeDisplay = document.getElementById('currentTime');
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
-        }
+<div class="duo-form">
+    <h3>Atendimento em Dupla</h3>
+    <form id="duoForm" onsubmit="submitForm(event)">
+        <div class="form-group">
+            <label>Seu Nome:</label>
+            <input type="text" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label>Data Pretendida:</label>
+            <input type="date" name="data" required>
+        </div>
+        <div class="form-group">
+            <label>Horário Pretendido:</label>
+            <input type="time" name="horario" required>
+        </div>
+        <div class="form-group">
+            <label>Local do Atendimento:</label>
+            <select name="local" required>
+                <option value="">Selecione o local...</option>
+                <optgroup label="Motéis Centro">
+                    <option value="hotel_albertino">Hotel Albertino</option>
+                    <option value="hotel_liberdade">Hotel Liberdade</option>
+                    <option value="luma_hotel">Luma Hotel</option>
+                </optgroup>
+                <optgroup label="Outros Motéis">
+                    <option value="motel_point">Motel Point</option>
+                    <option value="motel_orion">Motel Órion</option>
+                    <option value="motel_bellatrix">Motel Bellatrix</option>
+                    <option value="hotel_if">Hotel IF</option>
+                    <option value="motel_corpo_alma">Motel Corpo e Alma</option>
+                    <option value="motel_1001">1001 Motel</option>
+                </optgroup>
+                <option value="carro">Rapidinha no Carro</option>
+                <option value="outro">Outro (especificar na mensagem)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Enviar mensagem para:</label>
+            <select name="enviarPara" required>
+                <option value="">Selecione...</option>
+                <option value="pamela">Pamela</option>
+                <option value="luanny">Luanny</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Mensagem Adicional:</label>
+            <textarea name="mensagem" placeholder="Detalhes adicionais sobre o atendimento..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Enviar Solicitação</button>
+    </form>
+</div>
 
-        // Initialize Page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load Images
-            const images = document.querySelectorAll('.profile-media img');
-            images.forEach(img => loadImage(img).catch(console.error));
+<script>
+function submitForm(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    let message = `*Nova Solicitação de Atendimento em Dupla*\n\n`;
+    message += `Nome: ${data.nome}\n`;
+    message += `Data: ${data.data}\n`;
+    message += `Horário: ${data.horario}\n`;
+    message += `Local: ${data.local}\n`;
+    message += `Mensagem: ${data.mensagem}\n`;
+    
+    const phone = data.enviarPara === 'pamela' ? '5512982094926' : '5512982572507';
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+    form.reset();
+}
+</script>
 
-            // Initialize Form Handlers
-            const description = document.getElementById('description');
-            const charCount = document.getElementById('charCount');
-            if (description && charCount) {
-                description.addEventListener('input', function() {
-                    charCount.textContent = this.value.length;
-                });
-            }
-
-            // Initialize Price Calculator
-            const duration = document.getElementById('duration');
-            const totalPrice = document.getElementById('totalPrice');
-            if (duration && totalPrice) {
-                duration.addEventListener('change', function() {
-                    const prices = {
-                        '1': '500,00',
-                        '2': '900,00',
-                        '3': '1.300,00',
-                        '4': '1.600,00',
-                        'quick': '300,00'
-                    };
-                    totalPrice.textContent = prices[this.value];
-                });
-            }
-
-            // Initialize Scroll Handler
-            window.addEventListener('scroll', function() {
-                const backToTop = document.querySelector('.back-to-top');
-                if (window.pageYOffset > 300) {
-                    backToTop.style.display = 'flex';
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                    setTimeout(() => {
-                        if (!backToTop.classList.contains('visible')) {
-                            backToTop.style.display = 'none';
-                        }
-                    }, 300);
-                }
-            });
-
-            // Initialize Time Display
-            updateTime();
-            setInterval(updateTime, 1000);
-        });
-    </script>
 </body>
 </html>
