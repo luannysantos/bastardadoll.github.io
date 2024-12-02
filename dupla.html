@@ -78,32 +78,33 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    width: 120px; /* Reduced from 180px */
+    width: 120px;
     height: auto;
     background: rgba(255,20,147,0.05);
     border: 2px solid rgba(255,20,147,0.3);
     border-radius: 15px;
-    padding: 10px; /* Reduced from 15px */
+    padding: 10px;
     box-shadow: 0 0 15px rgba(255,20,147,0.2);
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
     z-index: 1000;
 }
 
 #clock {
-    font-size: 1.5em; /* Reduced from 2em */
+    font-size: 1.5em;
     font-weight: bold;
-    margin-bottom: 5px; /* Reduced from 10px */
+    margin-bottom: 5px;
     color: #ff1493;
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
 }
 
 #message {
-    font-size: 0.8em; /* Reduced from 1.1em */
+    font-size: 0.8em;
     background-color: rgba(255,20,147,0.2);
     color: #ffd1ea;
-    padding: 5px; /* Reduced from 8px */
+    padding: 5px;
     border-radius: 5px;
     margin-bottom: 5px;
     text-align: center;
@@ -111,18 +112,35 @@ body {
 }
 
 .booking-form {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(26, 0, 16, 0.95);
+    background: rgba(26, 0, 16, 0.98);
     padding: 30px;
     border: 2px solid #ff1493;
     border-radius: 20px;
     z-index: 1001;
     max-width: 500px;
     width: 90%;
-    position: relative; /* Add this to properly position the close button */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.container, .about-us, .info-section, .duo-form {
+    margin-right: 140px;
 }
 
 .close-btn {
@@ -440,14 +458,15 @@ h3 {
     <p>Dupla sexy de São José dos Campos</p>
 </div>
 
-<!-- Add clock box here -->
+<div class="overlay"></div>
+
 <div id="clock-box">
     <div id="clock"></div>
     <div id="message"></div>
-    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 5px 10px; font-size: 0.9em; margin-top: 5px;">Conferir</button>
+    <button onclick="toggleQuickBooking()" class="contact-btn" style="padding: 5px 10px; font-size: 0.9em; margin-top: 5px; width: 100%;">Conferir</button>
 </div>
 
-<div class="booking-form" id="quickBooking" style="display: none;">
+<div class="booking-form" id="quickBooking">
     <button onclick="toggleQuickBooking()" class="close-btn">&times;</button>
     <h3>Fazer Agendamento</h3>
     <form id="quickBookingForm" onsubmit="submitQuickBooking(event)">
@@ -673,7 +692,6 @@ function submitForm(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     
-    // New message format
     let message = `*Nova Solicitação de Atendimento em Dupla!*\n\n`;
     message += `*Nome:* ${data.nome}\n`;
     message += `*Data:* ${data.data}\n`; 
@@ -684,18 +702,14 @@ function submitForm(event) {
     message += `*Mensagem:* ${data.mensagem || "Nenhuma mensagem adicional."}\n\n`;
     message += `Por favor, confirme ou entre em contato para maiores detalhes.`;
 
-    // Get recipient phone number
     const recipient = data.enviarPara === "pamela" 
         ? "5512982094926" 
         : "5512982572507";
     
-    // Create WhatsApp URL with encoded message
     const whatsappURL = `https://wa.me/${recipient}?text=${encodeURIComponent(message)}`;
     
-    // Open WhatsApp in new tab
     window.open(whatsappURL, "_blank");
     
-    // Reset form after submission
     form.reset();
 }
 
@@ -716,7 +730,6 @@ function updateClock() {
     }
 }
 
-// Start the clock when the page loads
 window.onload = function() {
     updateClock();
     setInterval(updateClock, 1000);
@@ -724,7 +737,18 @@ window.onload = function() {
 
 function toggleQuickBooking() {
     const form = document.getElementById('quickBooking');
-    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
+    
+    if (form.style.display === 'none' || !form.style.display) {
+        form.style.display = 'block';
+        overlay.style.display = 'block';
+        body.classList.add('modal-open');
+    } else {
+        form.style.display = 'none';
+        overlay.style.display = 'none';
+        body.classList.remove('modal-open');
+    }
 }
 
 function submitQuickBooking(event) {
@@ -733,7 +757,6 @@ function submitQuickBooking(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     
-    // Create message
     let message = `*Nova Solicitação de Atendimento*\n\n`;
     message += `*Nome:* ${data.nome}\n`;
     message += `*Idade:* ${data.idade}\n`;
@@ -741,15 +764,12 @@ function submitQuickBooking(event) {
     message += `*Local:* ${data.local}\n`;
     message += `*Serviço:* ${data.servico}\n`;
 
-    // Get correct WhatsApp number
     const recipient = data.contato === "pamela" 
         ? "5512982094926" 
         : "5512982572507";
     
-    // Open WhatsApp
     window.open(`https://wa.me/${recipient}?text=${encodeURIComponent(message)}`, "_blank");
     
-    // Reset and close form
     form.reset();
     toggleQuickBooking();
 }
