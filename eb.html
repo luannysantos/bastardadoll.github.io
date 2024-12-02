@@ -1,0 +1,878 @@
+
+<html><head><base href="https://bastardadoll.github.io/">
+<title>eBook Reader</title>
+<style>
+:root {
+  --primary-color: #6a1b9a;
+  --secondary-color: #e91e63;
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lora', serif;
+  line-height: 1.6;
+  background: var(--bg-color);
+  color: var(--text-color);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background: var(--primary-color);
+  padding: 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu.open {
+  transform: translateX(0);
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu h3 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.menu ul {
+  list-style: none;
+}
+
+.menu li {
+  margin: 1rem 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.content {
+  margin-left: 0;
+  padding: 2rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.content.shifted {
+  margin-left: 300px;
+}
+
+.chapter {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.controls {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.controls button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f5f5f5;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--secondary-color);
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.highlight-box {
+  background: #f3e5f5;
+  border-left: 4px solid var(--primary-color);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.chapter ul, .chapter ol {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.chapter h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.chapter h3 {
+  color: var(--secondary-color);
+  margin: 1rem 0;
+}
+
+.chapter-section {
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(106, 27, 154, 0.2);
+}
+
+.chapter-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.chapter-section ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chapter-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.highlight-box h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<button class="menu-toggle">☰</button>
+<button class="theme-toggle">🌙</button>
+
+<nav class="menu">
+  <h3>Índice</h3>
+  <ul>
+    <li><a href="#intro">Introdução</a></li>
+    <li><a href="#cap1">Capítulo 1: A Identidade do Projeto</a></li>
+    <li><a href="#cap2">Capítulo 2: Marketing Digital Estratégico</a></li>
+    <li><a href="#cap3">Capítulo 3: Atendimento Premium</a></li>
+    <li><a href="#cap4">Capítulo 4: Gestão Financeira</a></li>
+    <li><a href="#cap5">Capítulo 5: Crescimento e Evolução</a></li>
+    <li><a href="#conclusion">Conclusão</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+  <section id="intro" class="chapter">
+    <h1>Projeto Luanny & Pamela</h1>
+    <h2>Sensualidade e Exclusividade</h2>
+    <div class="highlight-box">
+      <p>"Este eBook foi criado para compartilhar nossa visão, estratégias e dicas para oferecer um serviço único e inesquecível no mercado adulto."</p>
+    </div>
+    <p>Somos profissionais dedicadas ao mercado adulto de luxo, com anos de experiência em proporcionar momentos únicos e memoráveis. Nossa abordagem combina elegância, discrição e profissionalismo, criando experiências verdadeiramente exclusivas.</p>
+    <p>Neste guia completo, compartilharemos nossa metodologia única, desenvolvida ao longo de anos de experiência no mercado VIP. Abordaremos desde o desenvolvimento da marca até as estratégias de fidelização de clientes.</p>
+  </section>
+
+  <section id="cap1" class="chapter">
+    <h2>Capítulo 1: A Identidade do Projeto</h2>
+    <h3>Construindo uma Marca Premium</h3>
+    <p>Nossa identidade foi cuidadosamente construída para refletir sofisticação e exclusividade. Cada elemento foi pensado para criar uma experiência única:</p>
+    <ul>
+      <li>Identidade visual elegante e discreta</li>
+      <li>Comunicação refinada e profissional</li>
+      <li>Ambiente selecionado e acolhedor</li>
+      <li>Experiências personalizadas</li>
+    </ul>
+    
+    <h3>Posicionamento no Mercado</h3>
+    <p>Nos posicionamos no segmento premium do mercado, focando em:</p>
+    <ul>
+      <li>Clientes que valorizam exclusividade</li>
+      <li>Encontros de alto nível</li>
+      <li>Experiências personalizadas</li>
+      <li>Máxima discrição</li>
+    </ul>
+    
+    <div class="highlight-box">
+      <h4>Diferenciais:</h4>
+      <ul>
+        <li>Atendimento VIP personalizado</li>
+        <li>Ambiente sofisticado e reservado</li>
+        <li>Experiências únicas e memoráveis</li>
+        <li>Compromisso com a excelência</li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Elementos da Marca Premium</h3>
+      <p>Nossa marca foi desenvolvida considerando elementos específicos:</p>
+      <ul>
+        <li>Paleta de cores sofisticada (dourado, preto, bordô)</li>
+        <li>Tipografia elegante e moderna</li>
+        <li>Material visual profissional</li>
+        <li>Tom de comunicação refinado</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Perfil do Cliente VIP:</h4>
+        <ul>
+          <li>Executivos e empresários de alto padrão</li>
+          <li>Viajantes internacionais</li>
+          <li>Apreciadores de experiências exclusivas</li>
+          <li>Pessoas que valorizam discrição e qualidade</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Investimentos Iniciais</h3>
+      <p>Para estabelecer um serviço premium, os seguintes investimentos são essenciais:</p>
+      <ul>
+        <li>Mobiliário de alto padrão: R$50.000 - R$80.000</li>
+        <li>Reforma e decoração: R$30.000 - R$50.000</li>
+        <li>Equipamentos de som e iluminação: R$15.000 - R$25.000</li>
+        <li>Vestuário inicial: R$20.000 - R$30.000</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Retorno do Investimento:</h4>
+        <ul>
+          <li>Período estimado: 6-12 meses</li>
+          <li>ROI esperado: 200-300%</li>
+          <li>Margem de lucro média: 60-70%</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="cap2" class="chapter">
+    <h2>Capítulo 2: Marketing Digital Estratégico</h2>
+    <h3>Presença Online Profissional</h3>
+    <p>Nossa estratégia digital inclui:</p>
+    <ul>
+      <li>Website responsivo e elegante</li>
+      <li>Perfis profissionais em redes selecionadas</li>
+      <li>Conteúdo exclusivo e envolvente</li>
+      <li>Sistema de agendamento discreto</li>
+    </ul>
+
+    <h3>Gestão de Redes Sociais</h3>
+    <p>Mantemos presença ativa e profissional em:</p>
+    <ul>
+      <li>Instagram (conteúdo exclusivo)</li>
+      <li>Twitter (comunicação direta)</li>
+      <li>Website próprio (portfólio completo)</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p>"A chave para o sucesso está na consistência da comunicação e na qualidade do conteúdo compartilhado."</p>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Estratégias de Marketing Digital Avançadas</h3>
+      <p>Plano detalhado de marketing digital:</p>
+      <ul>
+        <li>SEO Especializado
+          <ul>
+            <li>Palavras-chave premium</li>
+            <li>Conteúdo exclusivo otimizado</li>
+            <li>Backlinks em sites de luxo</li>
+          </ul>
+        </li>
+        <li>Marketing de Conteúdo
+          <ul>
+            <li>Blog com dicas de lifestyle</li>
+            <li>Newsletter VIP mensal</li>
+            <li>Conteúdo multimídia exclusivo</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Estratégias de Divulgação Premium</h3>
+      <p>Canais específicos para o mercado de luxo:</p>
+      <ul>
+        <li>Sites especializados em acompanhantes de luxo</li>
+        <li>Redes sociais privadas para público VIP</li>
+        <li>Grupos exclusivos no Telegram</li>
+        <li>Parcerias com hotéis 5 estrelas</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Orçamento Mensal de Marketing:</h4>
+        <ul>
+          <li>Fotografia profissional: R$2.000</li>
+          <li>Anúncios direcionados: R$3.000</li>
+          <li>Manutenção de site: R$500</li>
+          <li>Assessoria de marketing: R$1.500</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="cap3" class="chapter">
+    <h2>Capítulo 3: Atendimento Premium</h2>
+    <h3>Protocolo de Excelência</h3>
+    <p>Nosso protocolo de atendimento inclui:</p>
+    <ul>
+      <li>Triagem cuidadosa de clientes</li>
+      <li>Comunicação clara e profissional</li>
+      <li>Ambiente preparado com atenção aos detalhes</li>
+      <li>Follow-up discreto</li>
+    </ul>
+
+    <h3>Experiência Personalizada</h3>
+    <p>Cada encontro é único e inclui:</p>
+    <ul>
+      <li>Ambiente climatizado e perfumado</li>
+      <li>Música ambiente selecionada</li>
+      <li>Bebidas premium</li>
+      <li>Roupas e acessórios exclusivos</li>
+    </ul>
+
+    <div class="chapter-section">
+      <h3>Detalhes do Ambiente Premium</h3>
+      <p>Nossa localização e ambiente incluem:</p>
+      <ul>
+        <li>Apartamento em área nobre</li>
+        <li>Decoração de alto padrão</li>
+        <li>Sistema de som ambiente Bose</li>
+        <li>Iluminação planejada com diferentes ambientações</li>
+      </ul>
+      
+      <h3>Kit de Bem-estar</h3>
+      <div class="highlight-box">
+        <p>Oferecemos aos clientes:</p>
+        <ul>
+          <li>Toalhas egípcias de alta gramatura</li>
+          <li>Produtos de higiene importados</li>
+          <li>Roupões de seda personalizados</li>
+          <li>Champagne e petiscos gourmet</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Protocolo de Segurança</h3>
+      <p>Medidas essenciais para proteção:</p>
+      <ul>
+        <li>Sistema de câmeras no hall de entrada</li>
+        <li>Parceria com empresa de segurança privada</li>
+        <li>Processo de verificação de clientes</li>
+        <li>Protocolos de emergência estabelecidos</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Check-list de Segurança:</h4>
+        <ul>
+          <li>Verificação de referências</li>
+          <li>Confirmação de identidade</li>
+          <li>Sistema de palavra-código</li>
+          <li>Contatos de emergência</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Protocolos de Atendimento VIP</h3>
+      <p>Detalhamento do processo completo de atendimento:</p>
+      <ul>
+        <li>Primeiro Contato
+          <ul>
+            <li>Resposta em até 30 minutos</li>
+            <li>Verificação inicial do perfil</li>
+            <li>Apresentação do menu de serviços</li>
+          </ul>
+        </li>
+        <li>Preparação do Ambiente
+          <ul>
+            <li>Temperatura ideal (23°C)</li>
+            <li>Aromatização com essências importadas</li>
+            <li>Iluminação ajustada ao horário</li>
+            <li>Música ambiente personalizada</li>
+          </ul>
+        </li>
+        <li>Kit de Bem-estar Premium
+          <ul>
+            <li>Champagne Moët & Chandon</li>
+            <li>Chocolates belgas Godiva</li>
+            <li>Água mineral importada</li>
+            <li>Amenities L'Occitane</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Experiências VIP Especializadas</h3>
+      <p>Oferecemos pacotes exclusivos personalizados:</p>
+      <ul>
+        <li>Experiência Platinum
+          <ul>
+            <li>Serviço de motorista executivo</li>
+            <li>Suite presidencial em hotel 5 estrelas</li>
+            <li>Jantar gourmet personalizado</li>
+            <li>Spa day privativo</li>
+          </ul>
+        </li>
+        <li>Experiência Diamond
+          <ul>
+            <li>Jato privativo para destinos selecionados</li>
+            <li>Villa exclusiva</li>
+            <li>Chef particular</li>
+            <li>Concierge 24h</li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Investimento em Experiências:</h4>
+        <ul>
+          <li>Pacote Platinum: R$25.000 - R$35.000</li>
+          <li>Pacote Diamond: R$50.000 - R$80.000</li>
+          <li>Experiências customizadas: Sob consulta</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Protocolos Avançados de Atendimento</h3>
+      <p>Detalhamento completo dos procedimentos:</p>
+      <ul>
+        <li>Etiqueta Profissional
+          <ul>
+            <li>Dress code específico para cada ocasião</li>
+            <li>Protocolo de comunicação verbal e não-verbal</li>
+            <li>Regras de comportamento em eventos sociais</li>
+            <li>Etiqueta à mesa em restaurantes de luxo</li>
+          </ul>
+        </li>
+        <li>Protocolos de Higiene e Bem-estar
+          <ul>
+            <li>Rotina diária de cuidados pessoais</li>
+            <li>Produtos premium para skincare</li>
+            <li>Procedimentos estéticos regulares</li>
+            <li>Acompanhamento nutricional personalizado</li>
+          </ul>
+        </li>
+        <li>Desenvolvimento Pessoal
+          <ul>
+            <li>Coaching executivo mensal</li>
+            <li>Aulas de etiqueta internacional</li>
+            <li>Cursos de idiomas (inglês, francês, italiano)</li>
+            <li>Workshops de autoconhecimento</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cap4" class="chapter">
+    <h2>Capítulo 4: Gestão Financeira</h2>
+    <h3>Investimentos Estratégicos</h3>
+    <p>Áreas prioritárias para investimento:</p>
+    <ul>
+      <li>Marketing digital profissional</li>
+      <li>Ambiente e decoração</li>
+      <li>Vestuário e acessórios</li>
+      <li>Desenvolvimento profissional</li>
+    </ul>
+
+    <h3>Precificação Estratégica</h3>
+    <div class="highlight-box">
+      <p>Fatores considerados na definição de valores:</p>
+      <ul>
+        <li>Posicionamento premium</li>
+        <li>Qualidade do serviço</li>
+        <li>Exclusividade</li>
+        <li>Mercado local</li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Gestão Financeira Detalhada</h3>
+      <p>Distribuição ideal de investimentos:</p>
+      <ul>
+        <li>40% - Manutenção e upgrade do espaço</li>
+        <li>25% - Marketing e divulgação</li>
+        <li>20% - Vestuário e acessórios</li>
+        <li>15% - Desenvolvimento profissional</li>
+      </ul>
+      
+      <h3>Gestão de Agenda</h3>
+      <ul>
+        <li>Sistema de agendamento online exclusivo</li>
+        <li>Confirmação 24h antes</li>
+        <li>Política de cancelamento clara</li>
+        <li>Horários flexíveis para clientes VIP</li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Análise Financeira Detalhada</h3>
+      <p>Projeção financeira mensal:</p>
+      <ul>
+        <li>Receita bruta estimada: R$40.000 - R$60.000</li>
+        <li>Custos fixos: R$15.000 - R$20.000</li>
+        <li>Custos variáveis: 20% da receita</li>
+        <li>Lucro líquido esperado: 45-55% da receita</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Controle Financeiro:</h4>
+        <ul>
+          <li>Software de gestão financeira</li>
+          <li>Contador especializado</li>
+          <li>Planejamento tributário</li>
+          <li>Reserva de emergência</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Detalhamento de Custos Operacionais</h3>
+      <div class="highlight-box">
+        <h4>Custos Fixos Mensais:</h4>
+        <ul>
+          <li>Aluguel de Espaço Premium: R$8.000</li>
+          <li>Condomínio e Utilidades: R$2.500</li>
+          <li>Marketing Digital: R$3.500</li>
+          <li>Manutenção e Limpeza: R$1.800</li>
+          <li>Segurança Privada: R$2.500</li>
+          <li>Assessoria Contábil: R$1.200</li>
+        </ul>
+      </div>
+      
+      <div class="highlight-box">
+        <h4>Custos Variáveis:</h4>
+        <ul>
+          <li>Produtos de Beleza Premium: 5% da receita</li>
+          <li>Bebidas e Petiscos: 8% da receita</li>
+          <li>Material Promocional: 4% da receita</li>
+          <li>Vestuário e Acessórios: 10% da receita</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Análise de Mercado Premium</h3>
+      <p>Estudo detalhado do segmento luxo:</p>
+      <ul>
+        <li>Crescimento anual: 15-20%</li>
+        <li>Ticket médio: R$3.000 - R$5.000</li>
+        <li>Potencial de mercado: R$500M (principais capitais)</li>
+        <li>Taxa de retorno de clientes: 75%</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Métricas de Performance:</h4>
+        <ul>
+          <li>Net Promoter Score (NPS): > 85</li>
+          <li>Taxa de satisfação: 98%</li>
+          <li>Média de avaliações: 4.9/5.0</li>
+          <li>Taxa de fidelização: 80%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Planejamento Financeiro Estratégico</h3>
+      <div class="highlight-box">
+        <h4>Investimentos em Desenvolvimento:</h4>
+        <ul>
+          <li>Cursos e Workshops
+            <ul>
+              <li>Etiqueta internacional: R$15.000/ano</li>
+              <li>Idiomas: R$12.000/ano</li>
+              <li>Desenvolvimento pessoal: R$18.000/ano</li>
+              <li>Marketing digital: R$10.000/ano</li>
+            </ul>
+          </li>
+          <li>Cuidados Pessoais
+            <ul>
+              <li>Tratamentos estéticos: R$5.000/mês</li>
+              <li>Personal trainer: R$3.000/mês</li>
+              <li>Nutricionista: R$1.500/mês</li>
+              <li>Dermatologista: R$2.000/mês</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="cap5" class="chapter">
+    <h2>Capítulo 5: Crescimento e Evolução</h2>
+    <h3>Plano de Desenvolvimento</h3>
+    <p>Estratégias para crescimento contínuo:</p>
+    <ul>
+      <li>Expansão controlada da carteira de clientes</li>
+      <li>Desenvolvimento de novos serviços</li>
+      <li>Parcerias estratégicas</li>
+      <li>Atualização constante de habilidades</li>
+    </ul>
+
+    <h3>Metas para o Futuro</h3>
+    <div class="highlight-box">
+      <ul>
+        <li>Consolidação da marca no mercado premium</li>
+        <li>Expansão para novos mercados</li>
+        <li>Desenvolvimento de serviços exclusivos</li>
+        <li>Fortalecimento da presença digital</li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Inovações Planejadas</h3>
+      <ul>
+        <li>Experiências temáticas exclusivas</li>
+        <li>Pacotes de viagem personalizados</li>
+        <li>Eventos privados selecionados</li>
+        <li>Serviços de acompanhamento em eventos sociais</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Objetivos para 2024:</h4>
+        <ul>
+          <li>Expansão para capitais selecionadas</li>
+          <li>Lançamento de linha de produtos exclusivos</li>
+          <li>Desenvolvimento de app próprio</li>
+          <li>Parcerias internacionais</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Tendências do Mercado Premium</h3>
+      <p>Direções futuras do segmento:</p>
+      <ul>
+        <li>Experiências multissensoriais</li>
+        <li>Realidade virtual e aumentada</li>
+        <li>Serviços de wellness integrados</li>
+        <li>Experiências gastronômicas exclusivas</li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Investimentos Futuros:</h4>
+        <ul>
+          <li>Tecnologia de ponta: R$50.000</li>
+          <li>Expansão de espaço: R$150.000</li>
+          <li>Treinamento avançado: R$30.000</li>
+          <li>Marketing internacional: R$40.000</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Plano de Expansão Detalhado</h3>
+      <div class="highlight-box">
+        <h4>Metas 2024-2025:</h4>
+        <ul>
+          <li>Q1 2024: Lançamento app exclusivo</li>
+          <li>Q2 2024: Expansão para São Paulo</li>
+          <li>Q3 2024: Parcerias internacionais</li>
+          <li>Q4 2024: Programa de fidelidade premium</li>
+          <li>Q1 2025: Abertura de spa privativo</li>
+          <li>Q2 2025: Serviços de concierge VIP</li>
+        </ul>
+      </div>
+      
+      <div class="highlight-box">
+        <h4>Investimentos Projetados:</h4>
+        <ul>
+          <li>Desenvolvimento de App: R$80.000</li>
+          <li>Nova Unidade SP: R$250.000</li>
+          <li>Marketing Internacional: R$100.000</li>
+          <li>Spa Privativo: R$180.000</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Estratégias de Crescimento Internacional</h3>
+      <p>Plano detalhado para expansão global:</p>
+      <ul>
+        <li>Mercados Prioritários
+          <ul>
+            <li>Dubai - Q3 2024
+              <ul>
+                <li>Parceria com hotéis 7 estrelas</li>
+                <li>Eventos VIP no Burj Khalifa</li>
+                <li>Investimento inicial: $200.000</li>
+              </ul>
+            </li>
+            <li>Mônaco - Q1 2025
+              <ul>
+                <li>Presença no Grand Prix de Mônaco</li>
+                <li>Eventos no Casino de Monte Carlo</li>
+                <li>Investimento inicial: €180.000</li>
+              </ul>
+            </li>
+            <li>Singapura - Q4 2025
+              <ul>
+                <li>Parceria com Marina Bay Sands</li>
+                <li>Eventos corporativos exclusivos</li>
+                <li>Investimento inicial: $250.000</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="highlight-box">
+        <h4>Desenvolvimento de Marca Global:</h4>
+        <ul>
+          <li>Marketing Internacional
+            <ul>
+              <li>PR em revistas de luxo: $15.000/mês</li>
+              <li>Eventos VIP globais: $30.000/evento</li>
+              <li>Influencer marketing: $20.000/mês</li>
+            </ul>
+          </li>
+          <li>Certificações e Treinamentos
+            <ul>
+              <li>Etiqueta internacional: $8.000</li>
+              <li>Protocolos culturais: $12.000</li>
+              <li>Gestão de luxo: $15.000</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="conclusion" class="chapter">
+    <h2>Conclusão</h2>
+    <div class="highlight-box">
+      <p>"O sucesso no mercado premium é resultado de dedicação, profissionalismo e atenção aos detalhes. Continue evoluindo e inovando sempre."</p>
+    </div>
+    <p>Este guia representa anos de experiência e aprendizado no mercado VIP. Implementando estas estratégias com dedicação e profissionalismo, você estará no caminho certo para o sucesso.</p>
+  </section>
+</main>
+
+<div class="controls">
+  <button id="prev">← Anterior</button>
+  <button id="next">Próximo →</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+  const content = document.querySelector('.content');
+  const themeToggle = document.querySelector('.theme-toggle');
+  const progressBar = document.querySelector('.progress-bar');
+  const chapters = document.querySelectorAll('.chapter');
+  
+  let currentChapter = 0;
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    content.classList.toggle('shifted');
+  });
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+  });
+
+  document.getElementById('next').addEventListener('click', () => {
+    if (currentChapter < chapters.length - 1) {
+      chapters[currentChapter].style.display = 'none';
+      currentChapter++;
+      chapters[currentChapter].style.display = 'block';
+      updateProgress();
+    }
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    if (currentChapter > 0) {
+      chapters[currentChapter].style.display = 'none';
+      currentChapter--;
+      chapters[currentChapter].style.display = 'block';
+      updateProgress();
+    }
+  });
+
+  function updateProgress() {
+    const progress = ((currentChapter + 1) / chapters.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Initialize display
+  chapters.forEach((chapter, index) => {
+    if (index !== 0) chapter.style.display = 'none';
+  });
+  updateProgress();
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') document.getElementById('next').click();
+    if (e.key === 'ArrowLeft') document.getElementById('prev').click();
+  });
+
+  // Handle menu link clicks
+  document.querySelectorAll('.menu a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      chapters.forEach((chapter, index) => {
+        if (chapter.id === targetId) {
+          chapters[currentChapter].style.display = 'none';
+          currentChapter = index;
+          chapter.style.display = 'block';
+          updateProgress();
+        }
+      });
+      menu.classList.remove('open');
+      content.classList.remove('shifted');
+    });
+  });
+});
+</script>
+</body></html>
