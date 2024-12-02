@@ -73,6 +73,88 @@ body {
     opacity: 0.9;
 }
 
+/* New navigation menu styles */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden by default */
+    width: 300px;
+    height: 100vh;
+    background: rgba(26, 0, 16, 0.98);
+    border-left: 2px solid #ff1493;
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 60px 0 0 0;
+}
+
+.nav-menu li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 20, 147, 0.2);
+}
+
+.nav-menu a {
+    color: #ffd1ea;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ff1493;
+    transform: translateX(10px);
+}
+
+/* Update menu toggle button */
+.menu-toggle {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: #ff1493;
+    border: none;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: #ff69b4;
+}
+
+/* Adjust section container margin for all screens */
+.section-container {
+    margin-right: 140px;
+}
+
+@media (max-width: 768px) {
+    .section-container {
+        margin-right: 20px;
+    }
+    
+    .nav-menu {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* Update clock box CSS */
 #clock-box {
     display: flex;
     flex-direction: column;
@@ -91,6 +173,17 @@ body {
     right: 10px;
     transform: translateY(-50%);
     z-index: 999;
+}
+
+/* Update section container CSS to prevent overlap */
+.section-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 20px;
+    margin-right: 140px; /* Add margin to prevent clock overlap */
 }
 
 #clock {
@@ -155,16 +248,6 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     z-index: 998;
-}
-
-.section-container {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 20px;
-    margin-right: 150px; /* Add margin to prevent clock overlap */
 }
 
 .about-section .section-title {
@@ -406,20 +489,6 @@ h3 {
     text-shadow: 0 0 10px rgba(255,20,147,0.3);
 }
 
-.menu-toggle {
-    display: none;
-    position: fixed;
-    top: 20px;  
-    right: 20px;
-    z-index: 1000;
-    background: #ff1493;
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .social-section,
 .learn-more-section {
     max-width: 1200px;
@@ -514,10 +583,11 @@ h3 {
     }
 
     #clock-box {
+        width: auto;
+        padding: 5px;
         top: 20px;
         right: 10px;
         transform: none;
-        width: auto;
     }
     
     .grid-boxes {
@@ -573,6 +643,16 @@ h3 {
 <body>
 <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
 <div id="overlay" class="overlay"></div>
+<div class="nav-menu" id="navMenu">
+    <button onclick="toggleMenu()" class="close-btn">&times;</button>
+    <ul>
+        <li><a href="#acompanhantes" onclick="toggleMenu()">Conheça nossas Acompanhantes</a></li>
+        <li><a href="#informacoes" onclick="toggleMenu()">Informações e Valores</a></li>
+        <li><a href="#atendimento" onclick="toggleMenu()">Atendimento em Dupla</a></li>
+        <li><a href="#redes" onclick="toggleMenu()">Redes Sociais</a></li>
+        <li><a href="#saiba-mais" onclick="toggleMenu()">Saiba Mais</a></li>
+    </ul>
+</div>
 <div class="header">
     <h1>Luanny & Pamela</h1>
     <p>Dupla sexy de São José dos Campos</p>
@@ -965,15 +1045,50 @@ window.onload = function() {
 };
 
 function toggleMenu() {
-    const sections = document.querySelectorAll('.section-container');
-    sections.forEach(section => {
-        if (section.style.display === 'none' || !section.style.display) {
-            section.style.display = 'block';
-        } else {
-            section.style.display = 'none';
-        }
-    });
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('overlay');
+    
+    if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    } else {
+        menu.classList.add('active');
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
 }
+
+// Add IDs to main sections
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = {
+        'acompanhantes': document.querySelector('.about-section'),
+        'informacoes': document.querySelector('.info-section'),
+        'atendimento': document.querySelector('.duo-form'),
+        'redes': document.querySelector('.social-section'),
+        'saiba-mais': document.querySelector('.learn-more-section')
+    };
+    
+    // Add IDs to sections
+    Object.entries(sections).forEach(([id, element]) => {
+        if (element) element.id = id;
+    });
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
 
 function toggleQuickBooking() {
     const form = document.getElementById('quickBooking');
