@@ -1,5 +1,9 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <head>
+        <base href="https://bastardadoll.github.io/">
 
-<html><head><base href="https://bastardadoll.github.io/">
 <title>eBook Reader</title>
 <style>
 :root {
@@ -334,6 +338,29 @@ body {
     </div>
 
     <div class="chapter-section">
+      <h3>Marketing Digital Avançado</h3>
+      <p>Estratégias específicas para cada canal:</p>
+      <ul>
+        <li>Instagram
+          <ul>
+            <li>Stories diários com lifestyle</li>
+            <li>Posts semanais com dicas</li>
+            <li>Lives mensais exclusivas</li>
+            <li>Reels com conteúdo premium</li>
+          </ul>
+        </li>
+        <li>Website
+          <ul>
+            <li>Blog atualizado semanalmente</li>
+            <li>Área VIP com conteúdo exclusivo</li>
+            <li>Sistema de agendamento integrado</li>
+            <li>Chat criptografado para clientes</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="chapter-section">
       <h3>Estratégias de Divulgação Premium</h3>
       <p>Canais específicos para o mercado de luxo:</p>
       <ul>
@@ -510,6 +537,37 @@ body {
         </li>
       </ul>
     </div>
+
+    <div class="chapter-section">
+      <h3>Especificações de Ambiente Premium</h3>
+      <p>Detalhamento completo das configurações ambientais:</p>
+      <ul>
+        <li>Sistema de Som
+          <ul>
+            <li>Bose Lifestyle 650 - Som ambiente multiroom</li>
+            <li>Playlists curadas por DJ profissional</li>
+            <li>Controle via app personalizado</li>
+            <li>Isolamento acústico profissional</li>
+          </ul>
+        </li>
+        <li>Iluminação Inteligente
+          <ul>
+            <li>Sistema Philips Hue completo</li>
+            <li>Cenários pré-programados</li>
+            <li>Sensores de movimento</li>
+            <li>Integração com assistente virtual</li>
+          </ul>
+        </li>
+        <li>Climatização
+          <ul>
+            <li>Sistema VRF LG Dual Plus</li>
+            <li>Purificadores de ar HEPA</li>
+            <li>Umidificadores ultrassônicos</li>
+            <li>Monitoramento de qualidade do ar</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <section id="cap4" class="chapter">
@@ -639,6 +697,31 @@ body {
               <li>Personal trainer: R$3.000/mês</li>
               <li>Nutricionista: R$1.500/mês</li>
               <li>Dermatologista: R$2.000/mês</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h3>Análise Financeira Detalhada 2024-2025</h3>
+      <div class="highlight-box">
+        <h4>Projeções Financeiras Mensais:</h4>
+        <ul>
+          <li>Receita Bruta
+            <ul>
+              <li>Atendimentos Premium: R$35.000</li>
+              <li>Pacotes Especiais: R$15.000</li>
+              <li>Eventos VIP: R$10.000</li>
+              <li>Total: R$60.000</li>
+            </ul>
+          </li>
+          <li>Custos Operacionais
+            <ul>
+              <li>Infraestrutura: R$12.000</li>
+              <li>Marketing: R$8.000</li>
+              <li>Pessoal: R$5.000</li>
+              <li>Diversos: R$3.000</li>
             </ul>
           </li>
         </ul>
@@ -788,6 +871,94 @@ body {
 
   <section id="conclusion" class="chapter">
     <h2>Conclusão</h2>
+    <div class="highlight-box">
+      <p>"O sucesso no mercado premium é resultado de dedicação, profissionalismo e atenção aos detalhes. Continue evoluindo e inovando sempre."</p>
+    </div>
+    <p>Este guia representa anos de experiência e aprendizado no mercado VIP. Implementando estas estratégias com dedicação e profissionalismo, você estará no caminho certo para o sucesso.</p>
+  </section>
+</main>
+
+<div class="controls">
+  <button id="prev">← Anterior</button>
+  <button id="next">Próximo →</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+  const content = document.querySelector('.content');
+  const themeToggle = document.querySelector('.theme-toggle');
+  const progressBar = document.querySelector('.progress-bar');
+  const chapters = document.querySelectorAll('.chapter');
+  
+  let currentChapter = 0;
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    content.classList.toggle('shifted');
+  });
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+  });
+
+  document.getElementById('next').addEventListener('click', () => {
+    if (currentChapter < chapters.length - 1) {
+      chapters[currentChapter].style.display = 'none';
+      currentChapter++;
+      chapters[currentChapter].style.display = 'block';
+      updateProgress();
+    }
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    if (currentChapter > 0) {
+      chapters[currentChapter].style.display = 'none';
+      currentChapter--;
+      chapters[currentChapter].style.display = 'block';
+      updateProgress();
+    }
+  });
+
+  function updateProgress() {
+    const progress = ((currentChapter + 1) / chapters.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Initialize display
+  chapters.forEach((chapter, index) => {
+    if (index !== 0) chapter.style.display = 'none';
+  });
+  updateProgress();
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') document.getElementById('next').click();
+    if (e.key === 'ArrowLeft') document.getElementById('prev').click();
+  });
+
+  // Handle menu link clicks
+  document.querySelectorAll('.menu a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      chapters.forEach((chapter, index) => {
+        if (chapter.id === targetId) {
+          chapters[currentChapter].style.display = 'none';
+          currentChapter = index;
+          chapter.style.display = 'block';
+          updateProgress();
+        }
+      });
+      menu.classList.remove('open');
+      content.classList.remove('shifted');
+    });
+  });
+});
+</script>
+</body></html>
     <div class="highlight-box">
       <p>"O sucesso no mercado premium é resultado de dedicação, profissionalismo e atenção aos detalhes. Continue evoluindo e inovando sempre."</p>
     </div>
