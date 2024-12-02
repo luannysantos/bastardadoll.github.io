@@ -156,10 +156,13 @@ body {
     z-index: 998;
 }
 
-.about-section {
+.section-container {
     max-width: 1200px;
-    margin: 0 auto 50px auto;
+    margin: 50px auto;
     padding: 30px;
+    background: rgba(255,20,147,0.05);
+    border: 2px solid rgba(255,20,147,0.3);
+    border-radius: 20px;
 }
 
 .about-section .section-title {
@@ -177,15 +180,11 @@ body {
     color: #ffd1ea;
     margin-bottom: 40px;
     padding: 20px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid rgba(255,20,147,0.3);
-    border-radius: 20px;
 }
 
 .container {
-    max-width: calc(100% - 140px);
+    max-width: 100%;
     margin: 0;
-    padding-right: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
@@ -193,7 +192,7 @@ body {
 
 .box {
     background: rgba(255,20,147,0.05);
-    border: 2px solid #ff1493;
+    border: 2px solid rgba(255,20,147,0.3);
     border-radius: 20px;
     padding: 30px;
     text-align: center;
@@ -258,16 +257,6 @@ body {
     background: #ff69b4;
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(255,20,147,0.4);
-}
-
-.duo-form {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(255,20,147,0.05);
-    border: 2px solid #ff1493;
-    border-radius: 20px;
-    text-align: center;
 }
 
 .duo-form h3 {
@@ -498,24 +487,29 @@ h3 {
         display: block;
     }
     
-    .about-section {
-        padding: 15px;
+    .section-container {
+        margin: 20px;
+        padding: 20px;
     }
     
-    .about-section .section-title {
-        font-size: 1.8em;
+    .about-section {
+        margin: 20px;
+        padding: 20px;
     }
     
     .about-section .section-description {
-        font-size: 1.1em;
         padding: 15px;
+        font-size: 1.1em;
     }
     
     .container {
-        max-width: 100%;
-        padding: 0 10px;
+        padding: 0;
     }
     
+    .box {
+        margin-bottom: 20px;
+    }
+
     #clock-box {
         top: 20px;
         transform: none;
@@ -672,7 +666,7 @@ h3 {
     </form>
 </div>
 
-<div class="about-section">
+<div class="section-container about-section">
     <h2 class="section-title">CONHEÇA NOSSAS ACOMPANHANTES</h2>
     <p class="section-description">
         Duas personalidades únicas e intensas unidas para proporcionar momentos inesquecíveis em São José dos Campos. Uma combinação perfeita entre a sensualidade natural de Pamela e o poder sedutor de Luanny. Juntas ou separadas, elas são especialistas em realizar fantasias e proporcionar experiências memoráveis. Discretas e profissionais, elas garantem momentos de prazer intenso com muito sigilo e segurança. Disponíveis para encontros individuais ou em dupla, sempre prontas para surpreender e satisfazer seus desejos mais íntimos.
@@ -714,7 +708,7 @@ h3 {
     </div>
 </div>
 
-<div class="info-section">
+<div class="section-container info-section">
     <h3>INFORMAÇÕES DE AGENDAMENTO E VALORES</h3>
 
     <div class="clause">
@@ -741,7 +735,7 @@ h3 {
     </div>
 </div>
 
-<div class="duo-form">
+<div class="section-container duo-form">
     <h3>Atendimento em Dupla</h3>
     <p style="color: #ff1493; margin-bottom: 20px;">
         Disponíveis para dupla das 00:00 às 05:00.<br>
@@ -808,7 +802,7 @@ h3 {
     </form>
 </div>
 
-<div class="social-section">
+<div class="section-container social-section">
     <h3>REDES SOCIAIS</h3>
     <div class="grid-boxes">
         <div class="grid-box">
@@ -825,7 +819,7 @@ h3 {
     </div>
 </div>
 
-<div class="learn-more-section">
+<div class="section-container learn-more-section">
     <h3>SAIBA MAIS</h3>
     <div class="grid-boxes">
         <div class="grid-box">
@@ -959,18 +953,22 @@ window.onload = function() {
     
     // Setup mobile menu
     if (window.innerWidth <= 768) {
-        const container = document.querySelector('.container');
-        container.style.display = 'none';
+        const sections = document.querySelectorAll('.section-container');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
     }
 };
 
 function toggleMenu() {
-    const container = document.querySelector('.container');
-    if (container.style.display === 'none') {
-        container.style.display = 'grid';
-    } else {
-        container.style.display = 'none';
-    }
+    const sections = document.querySelectorAll('.section-container');
+    sections.forEach(section => {
+        if (section.style.display === 'none' || !section.style.display) {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
+        }
+    });
 }
 
 function toggleQuickBooking() {
