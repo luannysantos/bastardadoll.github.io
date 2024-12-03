@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <head>
+        <base href="https://bastardadoll.github.io/">
+    <!-- Important Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Group SEO Meta Tags -->
+    <meta name="description" content="Luanny e Pamela, acompanhantes de luxo em São José dos Campos. Serviço premium, discrição e qualidade garantida.">
+    <meta name="keywords" content="acompanhantes, luxo, São José dos Campos, sjc, vale do paraíba, luanny, pamela, trans, massagem">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Luanny & Pamela - Acompanhantes de Luxo em São José dos Campos">
+    <meta property="og:description" content="Serviço premium de acompanhantes em São José dos Campos. Discrição e qualidade garantida com Luanny e Pamela.">
+    <meta property="og:image" content="https://bastardadoll.github.io/cover.jpg">
+    <meta property="og:url" content="https://bastardadoll.github.io">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Luanny & Pamela - Acompanhantes de Luxo em SJC">
+    <meta name="twitter:description" content="Serviço premium de acompanhantes em São José dos Campos. Encontre Luanny e Pamela.">
+    <meta name="twitter:image" content="https://bastardadoll.github.io/cover.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
+
+    <meta name="theme-color" content="#1a0010">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Contos e Relatos - Luanny & Pamela</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a0010;
+            color: #ffd1ea;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255,20,147,0.05);
+            border-radius: 15px;
+            border: 2px solid rgba(255,20,147,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            color: #ff1493;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255,20,147,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #ffd1ea;
+            opacity: 0.9;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .story-card {
+            background: rgba(255,20,147,0.05);
+            border: 2px solid rgba(255,20,147,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .story-card h3 {
+            color: #ff1493;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #ffd1ea;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .story-preview {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ffd1ea;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(255,20,147,0.1);
+            border: 1px solid rgba(255,20,147,0.3);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: #ff1493;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+            border: none;
+        }
+
+        .read-more:hover {
+            background: #ff69b4;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: rgba(255,20,147,0.1);
+            color: #ff1493;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,20,147,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Voltar</a>
+
+    <div class="header">
+        <h1>Contos e Relatos</h1>
+        <p>Histórias reais e experiências únicas com Luanny e Pamela</p>
+    </div>
+
+    <div class="story-grid">
+        <!-- Story 1 -->
+        <div class="story-card">
+            <h3>Primeira Experiência em Dupla</h3>
+            <div class="story-meta">
+                <span>Por Luanny & Pamela</span>
+                <span>10 min de leitura</span>
+            </div>
+            <p class="story-preview">
+                Um relato especial sobre como começou nossa parceria e química única. Uma noite inesquecível que marcou o início de uma história cheia de prazer e cumplicidade...
+            </p>
+            <div class="tags">
+                <span class="tag">Dupla</span>
+                <span class="tag">Primeira Vez</span>
+                <span class="tag">Experiência</span>
+            </div>
+            <a href="#" class="read-more">Ler História</a>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-card">
+            <h3>Momentos de Sedução</h3>
+            <div class="story-meta">
+                <span>Por Pamela</span>
+                <span>8 min de leitura</span>
+            </div>
+            <p class="story-preview">
+                Uma história envolvente sobre um encontro especial onde a arte da sedução criou momentos mágicos. Uma experiência única de conexão e prazer...
+            </p>
+            <div class="tags">
+                <span class="tag">Sedução</span>
+                <span class="tag">Solo</span>
+                <span class="tag">Especial</span>
+            </div>
+            <a href="#" class="read-more">Ler História</a>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="story-card">
+            <h3>Encontro Surpresa</h3>
+            <div class="story-meta">
+                <span>Por Luanny</span>
+                <span>12 min de leitura</span>
+            </div>
+            <p class="story-preview">
+                Um relato especial sobre um encontro inesperado que se transformou em uma experiência única. Momentos de prazer e descobertas mútuas...
+            </p>
+            <div class="tags">
+                <span class="tag">Surpresa</span>
+                <span class="tag">Intenso</span>
+                <span class="tag">Especial</span>
+            </div>
+            <a href="#" class="read-more">Ler História</a>
+        </div>
+
+        <!-- Story 4 -->
+        <div class="story-card">
+            <h3>Química Perfeita</h3>
+            <div class="story-meta">
+                <span>Por Luanny & Pamela</span>
+                <span>15 min de leitura</span>
+            </div>
+            <p class="story-preview">
+                Uma história sobre como nossa sintonia cria momentos únicos. A perfeita combinação de experiências e desejos que torna cada encontro especial...
+            </p>
+            <div class="tags">
+                <span class="tag">Dupla</span>
+                <span class="tag">Química</span>
+                <span class="tag">Especial</span>
+            </div>
+            <a href="#" class="read-more">Ler História</a>
+        </div>
+    </div>
+</body>
+</html>
