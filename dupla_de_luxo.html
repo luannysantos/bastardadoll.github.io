@@ -37,975 +37,982 @@
 
     <title>Luanny & Pamela - Acompanhantes de Luxo</title>
 
-<style>
-      @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-    
-      @keyframes floatEffect {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-      }
-    
-      @keyframes glowPulse {
-        0% { box-shadow: 0 0 5px rgba(255,105,180,0.2); }
-        50% { box-shadow: 0 0 20px rgba(255,105,180,0.4); }
-        100% { box-shadow: 0 0 5px rgba(255,105,180,0.2); }
-      }
-      
-      @keyframes sparkle {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.8; }
-      }
-    
-      @keyframes shine {
-        0% { background-position: -200% center; }
-        100% { background-position: 200% center; }
-      }
-    
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-    
-      @keyframes snowfall {
-        0% {
-          transform: translateY(-10vh) rotate(0deg);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(100vh) rotate(360deg);
-          opacity: 0;
-        }
-      }
-    
-      @keyframes twinkle {
-        0%, 100% { opacity: 0.2; }
-        50% { opacity: 1; }
-      }
-    
-      body {
-        background: linear-gradient(135deg, #8b0000 0%, #c41e3a 50%, #8b0000 100%);
-        background-size: 200% 200%;
-        animation: gradientShift 15s ease infinite;
-        color: #f0f0f0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        margin: 0;
-        padding: 15px;
-        line-height: 1.6;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-    
-      .snow {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: white;
-        border-radius: 50%;
-        pointer-events: none;
-        animation: snowfall 10s linear infinite;
-        z-index: 1000;
-      }
-    
-      .container {
-        max-width: 100%;
-        width: 95%;
-        margin: 0 auto;
-        backdrop-filter: blur(10px);
-        background: linear-gradient(145deg, rgba(139, 0, 0, 0.8) 0%, rgba(196, 30, 58, 0.9) 100%);
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        border: 1px solid rgba(255, 215, 0, 0.1);
-        position: relative;
-      }
-    
-      @media (min-width: 768px) {
-        .container {
-          width: 90%;
-          max-width: 800px;
-          padding: 30px;
-        }
+
+        <style>
+          @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
         
-        body {
-          padding: 30px;
-        }
+          @keyframes floatEffect {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+          }
         
-        .profile {
-          padding: 25px;
-        }
-      }
-    
-      .profile {
-        animation: floatEffect 6s ease-in-out infinite;
-        background: linear-gradient(145deg, rgba(139, 0, 0, 0.9) 0%, rgba(196, 30, 58, 0.9) 100%);
-        padding: 25px;
-        border-radius: 15px;
-        margin: 25px 0;
-        border-left: 4px solid #c41e3a;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        transition: all 0.5s ease;
-      }
-    
-      .profile:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(255,105,180,0.3);
-      }
-    
-      .profile-image {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 9/16;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 15px;
-      }
-    
-      .details {
-        transform-style: preserve-3d;
-        perspective: 1000px;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-    
-      @media (min-width: 480px) {
-        .details {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-    
-      @media (min-width: 768px) {
-        .details {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-    
-      .service-option {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 12px 15px;
-        border-radius: 10px;
-        font-size: 15px;
-        background: linear-gradient(145deg, #8b0000 0%, #c41e3a 100%);
-        color: white;
-        border: 1px solid rgba(255, 215, 0, 0.3);
-        transition: all 0.3s ease;
-        animation: glowPulse 3s infinite;
-      }
-    
-      input.service-option:focus,
-      select.service-option:focus,
-      textarea.service-option:focus {
-        border-color: #c41e3a;
-        box-shadow: 0 0 15px rgba(255,105,180,0.2);
-        outline: none;
-        background: linear-gradient(145deg, #323245 0%, #2a2a38 100%);
-      }
-    
-      .service-option:hover {
-        transform: scale(1.02);
-        background: linear-gradient(145deg, #363649 0%, #2d2d3d 100%);
-      }
-    
-      .service-option option {
-        background: #1a1a1a;
-        color: white;
-        padding: 10px;
-      }
-    
-      .service-option optgroup {
-        background: #1a1a1a;
-        color: #c41e3a;
-        font-weight: bold;
-      }
-    
-      .form-group {
-        margin: 15px 0;
-      }
-    
-      .button {
-        width: 100%;
-        max-width: 300px;
-        padding: 15px 30px;
-        font-size: 16px;
-        font-weight: 600;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        background: linear-gradient(145deg, #c41e3a 0%, #990000 100%);
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        transition: all 0.5s ease;
-        display: block;
-        margin: 20px auto;
-        box-shadow: 0 5px 15px rgba(255,105,180,0.3);
-        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        position: relative;
-        overflow: hidden;
-      }
-    
-      .button:before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: rgba(255,255,255,0.1);
-        transform: rotate(45deg);
-        animation: shimmer 3s infinite;
-      }
-    
-      @keyframes shimmer {
-        0% { transform: translateX(-100%) rotate(45deg); }
-        100% { transform: translateX(100%) rotate(45deg); }
-      }
-    
-      .button:hover {
-        background: linear-gradient(145deg, #990000 0%, #800000 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(255,105,180,0.4);
-      }
-    
-      .price-section {
-        position: relative;
-        overflow: hidden;
-        padding: 40px;
-        text-align: center;
-        background: linear-gradient(145deg, 
-          rgba(139, 0, 0, 0.95) 0%, 
-          rgba(196, 30, 58, 0.98) 100%
-        );
-        border-radius: 20px;
-        border: 2px solid rgba(255, 215, 0, 0.4);
-        margin: 30px 0;
-        box-shadow: 0 10px 30px rgba(255,105,180,0.2);
-        animation: float 6s ease-in-out infinite;
-      }
-    
-      .price-section h3 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
-        background: linear-gradient(90deg, 
-          #c41e3a, #ffd700, #c41e3a, #ffd700, #c41e3a
-        );
-        background-size: 200% auto;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        animation: shine 3s linear infinite;
-        text-shadow: 0 0 15px rgba(255,105,180,0.5);
-        position: relative;
-      }
-    
-      .price-section h3::before,
-      .price-section h3::after {
-        content: '⭐';
-        position: absolute;
-        font-size: 1.5em;
-        animation: twinkle 2s ease-in-out infinite;
-      }
-    
-      .price-section h3::before {
-        top: 10px;
-        left: 10px;
-      }
-    
-      .price-section h3::after {
-        bottom: 10px;
-        right: 10px;
-      }
-    
-      .price-container {
-        background: rgba(0,0,0,0.3);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 30px;
-        transform: translateY(0);
-        transition: transform 0.3s ease;
-        border: 1px solid rgba(255, 215, 0, 0.2);
-      }
-    
-      .price-container:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(255,105,180,0.3);
-      }
-    
-      .original-price {
-        font-size: 1.6em;
-        color: #ccc;
-        text-decoration: line-through;
-        margin-bottom: 20px;
-        opacity: 0.7;
-        transform: rotate(-3deg);
-        display: inline-block;
-        padding: 5px 20px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 10px;
-        position: relative;
-      }
-    
-      .savings {
-        color: #c41e3a;
-        font-size: 1.5em;
-        font-weight: bold;
-        margin: 20px 0;
-        text-shadow: 0 0 10px rgba(255,105,180,0.5);
-        animation: pulse 2s infinite;
-      }
-    
-      .current-price {
-        font-size: 3em;
-        font-weight: bold;
-        color: #fff;
-        margin: 25px 0;
-        text-shadow: 0 0 20px rgba(255,105,180,0.6);
-        animation: float 4s ease-in-out infinite;
-      }
-    
-      .current-price span {
-        color: #ffd700;
-        font-size: 1.2em;
-      }
-    
-      .urgency {
-        font-size: 1.3em;
-        color: #ffd700;
-        font-weight: bold;
-        margin-top: 25px;
-        animation: pulse 1.5s infinite;
-        text-shadow: 0 0 10px rgba(255,105,180,0.4);
-      }
-    
-      .time-info {
-        font-size: 1.2em;
-        color: #fff;
-        margin-bottom: 15px;
-      }
-    
-      .benefits {
-        margin: 20px 0;
-        text-align: left;
-      }
-    
-      .benefit-item {
-        margin: 10px 0;
-        padding: 5px 0;
-        color: #f0f0f0;
-        transition: transform 0.3s ease;
-      }
-    
-      .benefit-item:hover {
-        transform: translateX(10px);
-        color: #c41e3a;
-      }
-    
-      .urgency {
-        font-size: 1.1em;
-        color: #ffd700;
-        font-weight: bold;
-        margin-top: 20px;
-        animation: blink 1s infinite;
-      }
-    
-      @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0.5; }
-        100% { opacity: 1; }
-      }
-    
-      @media (max-width: 768px) {
-        .price-section {
-          padding: 20px;
-        }
-        
-        .current-price {
-          font-size: 2em;
-        }
-        
-        .benefits {
-          padding: 0 10px;
-        }
-      }
-    
-      .warning {
-        background: linear-gradient(145deg, #ff3366 0%, #ff1a1a 100%);
-        font-weight: bold;
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
-        margin-bottom: 25px;
-        box-shadow: 0 5px 20px rgba(255,0,0,0.2);
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        border: 1px solid rgba(255,255,255,0.1);
-      }
-    
-      h2, h3, h4, h5 {
-        color: #c41e3a;
-        font-weight: 600;
-        letter-spacing: 0.8px;
-        margin-bottom: 20px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      }
-    
-      .time-block {
-        transform: translateX(0);
-        opacity: 0.9;
-        transition: all 0.3s ease;
-      }
-    
-      .time-block:hover {
-        transform: translateX(10px);
-        opacity: 1;
-        background: linear-gradient(145deg, #323245 0%, #2a2a38 100%);
-      }
-    
-      .phase {
-        transform: translateY(0);
-        transition: all 0.5s ease;
-        opacity: 0.95;
-      }
-    
-      .phase:hover {
-        transform: translateY(-5px);
-        opacity: 1;
-        box-shadow: 0 8px 25px rgba(255,105,180,0.25);
-      }
-    
-      .list {
-        padding-left: 20px;
-      }
-    
-      .list li {
-        margin: 12px 0;
-        position: relative;
-        padding-left: 30px;
-        transform: translateX(0);
-        transition: all 0.3s ease;
-      }
-    
-      .list li:hover {
-        transform: translateX(10px);
-        color: #c41e3a;
-      }
-    
-      .list li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 20px;
-        height: 20px;
-        background: #c41e3a;
-        border-radius: 50%;
-        opacity: 0.3;
-        transition: all 0.3s ease;
-      }
-    
-      .list li:hover::before {
-        transform: translateY(-50%) scale(1.2);
-        background: #c41e3a;
-        opacity: 0.8;
-      }
-    
-      .validation-message {
-        color: #ff4d4d;
-        font-size: 14px;
-        margin-top: 5px;
-        display: none;
-      }
-    
-      .container > div:last-child {
-        text-align: center;
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid #444;
-        color: #888;
-      }
-    
-      @media (max-width: 480px) {
-        .container {
-          padding: 15px;
-        }
-        
-        .profile {
-          padding: 15px;
-        }
-        
-        h2, h3, h4, h5 {
-          font-size: 90%;
-        }
-      }
-    
-      .container::before {
-        content: '🎄';
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 2em;
-        animation: snowfall 3s ease-in-out infinite;
-      }
-    
-      .container::after {
-        content: '🎅';
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 2em;
-        animation: snowfall 3s ease-in-out infinite reverse;
-      }
-    
-      .price-section::before,
-      .price-section::after {
-        content: '⭐';
-        position: absolute;
-        font-size: 1.5em;
-        animation: twinkle 2s ease-in-out infinite;
-      }
-    
-      .price-section::before {
-        top: 10px;
-        left: 10px;
-      }
-    
-      .price-section::after {
-        bottom: 10px;
-        right: 10px;
-      }
-    
-      .profile, .price-section, .service-option {
-        border-image: linear-gradient(to right, #c41e3a, #ffd700) 1;
-      }
-    </style>
-    </head>
-    <body>
-    
-    <div class="container">
-      <div class="warning">
-        ⚠️ CONTEÚDO ADULTO (18+) ⚠️
-      </div>
-    
-      <div class="profile">
-        <h2>Pamela</h2>
-        <img src="pamela.gif" alt="Pamela" class="profile-image">
-        <div class="details">
-          <div class="detail-item">Idade: 25 anos</div>
-          <div class="detail-item">Cabelo: Morena</div>
-          <div class="detail-item">Pele: Branca</div>
-          <div class="detail-item">Altura: 162cm</div>
-          <div class="detail-item">Peso: 70kg</div>
-        </div>
-      </div>
-    
-      <div class="profile">
-        <h2>Luanny</h2>
-        <img src="luanny.gif" alt="Luanny" class="profile-image">
-        <div class="details">
-          <div class="detail-item">Idade: 29 anos</div>
-          <div class="detail-item">Cabelo: Loira</div>
-          <div class="detail-item">Pele: Branca</div>
-          <div class="detail-item">Altura: 177cm</div>
-          <div class="detail-item">Peso: 64kg</div>
-          <div class="detail-item">Dote: 19cm reto</div>
-        </div>
-      </div>
-    
-      <div class="lists">
-        <h3>Restrições</h3>
-        <ul class="list">
-          <li>✖️ Tudo com camisinha</li>
-          <li>✖️ Não faz anal (Pamela)</li>
-          <li>✖️ Não gosta que puxe cabelo</li>
-          <li>✖️ Tapas moderados apenas</li>
-        </ul>
-    
-        <h3>Preferências</h3>
-        <ul class="list">
-          <li>✅ Homens maduros e/ou decididos</li>
-        </ul>
-      </div>
-    
-      <div class="price-section">
-        <h3>💎 OFERTA ESPECIAL LIMITADA 💎</h3>
-        <div class="price-container">
-          <div class="original-price">
-            Valor Normal: <span>R$ 2.500,00</span>
-          </div>
-          <div class="savings">
-            Economize R$ 833,00 (33% OFF)
-          </div>
-          <div class="current-price">
-            Apenas <span>R$ 1.667,00</span>
-          </div>
-          <div class="price-details">
-            <div class="time-info">1 hora completa de atendimento premium</div>
-            <div class="benefits">
-              <div class="benefit-item">✨ Experiência única com duas profissionais</div>
-              <div class="benefit-item">🌟 Ambiente discreto e luxuoso</div>
-              <div class="benefit-item">💫 Atendimento personalizado</div>
-            </div>
-            <div class="urgency">
-              ⚡ Promoção por tempo limitado! ⚡
-            </div>
-          </div>
-        </div>
-      </div>
-    
-      <div class="requirements">
-        <h3>8. ROTEIRO PERSONALIZADO DE ATENDIMENTO (1 HORA)</h3>
-        
-        <div class="service-selector">
-          <h4>Selecione as atividades para cada intervalo de 5 minutos</h4>
+          @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(255,105,180,0.2); }
+            50% { box-shadow: 0 0 20px rgba(255,105,180,0.4); }
+            100% { box-shadow: 0 0 5px rgba(255,105,180,0.2); }
+          }
           
-          <div class="phase">
-            <h4>Primeira Fase (0-30 minutos)</h4>
-            
-            <div class="time-block">
-              <h5>0-5 minutos</h5>
-              <select class="service-option" id="time-0-5" required>
-                <option value="">Selecione uma opção</option>
-                <option value="recepcao_pamela">Recepção sensual com Pamela</option>
-                <option value="recepcao_luanny">Recepção provocante com Luanny</option>
-                <option value="recepcao_ambas">Recepção quente com ambas</option>
-                <option value="strip_inicial">Strip-tease inicial</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>5-10 minutos</h5>
-              <select class="service-option" id="time-5-10" required>
-                <option value="">Selecione uma opção</option>
-                <option value="strip_pamela">Strip-tease com Pamela</option>
-                <option value="strip_luanny">Strip-tease com Luanny</option>
-                <option value="strip_duo">Strip-tease duplo</option>
-                <option value="massagem_tantrica">Massagem tântrica inicial</option>
-                <option value="preliminares">Preliminares suaves</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>10-15 minutos</h5>
-              <select class="service-option" id="time-10-15" required>
-                <option value="">Selecione uma opção</option>
-                <option value="beijos_pamela">Beijos e carícias com Pamela</option>
-                <option value="beijos_luanny">Beijos e carícias com Luanny</option>
-                <option value="beijos_duo">Beijos alternados com ambas</option>
-                <option value="oral_suave">Oral suave inicial</option>
-                <option value="massagem_corporal">Massagem corporal sensual</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>15-20 minutos</h5>
-              <select class="service-option" id="time-15-20" required>
-                <option value="">Selecione uma opção</option>
-                <option value="oral_pamela">Oral intenso com Pamela</option>
-                <option value="oral_luanny">Oral profundo com Luanny</option>
-                <option value="oral_duo">Oral duplo</option>
-                <option value="pamela_joelhos">Pamela de joelhos</option>
-                <option value="luanny_dominante">Luanny dominante</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>20-25 minutos</h5>
-              <select class="service-option" id="time-20-25" required>
-                <option value="">Selecione uma opção</option>
-                <option value="ativo_pamela">Ativo com Pamela</option>
-                <option value="ativo_luanny">Ativo com Luanny</option>
-                <option value="passivo_luanny">Passivo com Luanny</option>
-                <option value="oral_intenso">Oral intenso duplo</option>
-                <option value="69_variation">69 variado</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>25-30 minutos</h5>
-              <select class="service-option" id="time-25-30" required>
-                <option value="">Selecione uma opção</option>
-                <option value="massagem_pamela">Massagem relaxante com Pamela</option>
-                <option value="massagem_luanny">Massagem especial com Luanny</option>
-                <option value="massagem_duo">Massagem dupla</option>
-                <option value="oral_completo">Oral completo</option>
-                <option value="inversao">Inversão de papéis</option>
-              </select>
-            </div>
-          </div>
-    
-          <div class="phase">
-            <h4>Segunda Fase (30-60 minutos)</h4>
-            
-            <div class="time-block">
-              <h5>30-35 minutos</h5>
-              <select class="service-option" id="time-30-35" required>
-                <option value="">Selecione uma opção</option>
-                <option value="oral_pamela_2">Oral elaborado com Pamela</option>
-                <option value="oral_luanny_2">Oral elaborado com Luanny</option>
-                <option value="oral_duo_2">Oral duplo intenso</option>
-                <option value="dominacao">Dominação leve</option>
-                <option value="submissao">Submissão controlada</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>35-40 minutos</h5>
-              <select class="service-option" id="time-35-40" required>
-                <option value="">Selecione uma opção</option>
-                <option value="ativo_pamela_2">Momento ativo com Pamela</option>
-                <option value="ativo_luanny_2">Momento ativo com Luanny</option>
-                <option value="passivo_luanny_2">Momento passivo com Luanny</option>
-                <option value="oral_intenso_2">Oral intenso variado</option>
-                <option value="dupla_estimulacao">Dupla estimulação</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>40-45 minutos</h5>
-              <select class="service-option" id="time-40-45" required>
-                <option value="">Selecione uma opção</option>
-                <option value="69_pamela">69 com Pamela</option>
-                <option value="69_luanny">69 com Luanny</option>
-                <option value="duo_intenso">Momento duo intenso</option>
-                <option value="oral_misto">Oral misto</option>
-                <option value="caricias">Carícias no corpo</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>45-50 minutos</h5>
-              <select class="service-option" id="time-45-50" required>
-                <option value="">Selecione uma opção</option>
-                <option value="final_pamela">Final com Pamela</option>
-                <option value="final_luanny">Final com Luanny</option>
-                <option value="final_duo">Final com ambas</option>
-                <option value="massagem_final">Massagem final relaxante</option>
-                <option value="despedida_quente">Despedida quente</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>50-55 minutos</h5>
-              <select class="service-option" id="time-50-55" required>
-                <option value="">Selecione uma opção</option>
-                <option value="banho_pamela">Banho com Pamela</option>
-                <option value="banho_luanny">Banho com Luanny</option>
-                <option value="banho_duo">Banho com ambas</option>
-                <option value="massagem_banho">Massagem durante o banho</option>
-                <option value="carinho_final">Carinho final</option>
-              </select>
-            </div>
-    
-            <div class="time-block">
-              <h5>55-60 minutos</h5>
-              <select class="service-option" id="time-55-60" required>
-                <option value="">Selecione uma opção</option>
-                <option value="despedida_pamela">Despedida com Pamela</option>
-                <option value="despedida_luanny">Despedida com Luanny</option>
-                <option value="despedida_duo">Despedida com ambas</option>
-                <option value="reflexao">Reflexão do atendimento</option>
-                <option value="feedback">Feedback sobre a experiência</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-      <div class="requirements">
-        <h3>FORMULÁRIO DE AGENDAMENTO</h3>
-        <form id="bookingForm">
-          <div class="form-group">
-            <label for="nick">Nick:</label>
-            <input type="text" id="nick" required class="service-option">
-            <div class="validation-message">Por favor, insira seu nick.</div>
-          </div>
-          
-          <div class="form-group">
-            <label for="birthdate">Data de Nascimento:</label>
-            <input type="date" id="birthdate" required class="service-option">
-            <div class="validation-message">Por favor, insira sua data de nascimento.</div>
-          </div>
-          
-          <div class="form-group">
-            <label for="bookingDate">Data pretendida:</label>
-            <input type="date" id="bookingDate" required class="service-option">
-            <div class="validation-message">Por favor, escolha uma data.</div>
-          </div>
-          
-          <div class="form-group">
-            <label for="bookingTime">Horário:</label>
-            <input type="time" id="bookingTime" required class="service-option">
-            <div class="validation-message">Por favor, selecione um horário.</div>
-          </div>
-          
-          <div class="form-group">
-            <label for="location">Local do Atendimento:</label>
-            <select id="location" class="service-option" required>
-              <option value="">Selecione o local...</option>
-              <optgroup label="Motéis Centro">
-                <option value="hotel_albertino">Hotel Albertino</option>
-                <option value="hotel_liberdade">Hotel Liberdade</option>
-                <option value="luma_hotel">Luma Hotel</option>
-              </optgroup>
-              <optgroup label="Outros Motéis">
-                <option value="motel_1001">1001 Motel</option>
-                <option value="motel_bellatrix">Motel Bellatrix</option>
-                <option value="motel_corpo_alma">Motel Corpo e Alma</option>
-                <option value="hotel_if">Hotel IF</option>
-                <option value="motel_orion">Motel Órion</option>
-                <option value="motel_point">Motel Point</option>
-              </optgroup>
-              <option value="carro">Rapidinha no Carro</option>
-              <option value="outro">Outro (especificar na mensagem)</option>
-            </select>
-            <div class="validation-message">Por favor, selecione o local.</div>
-          </div>
-    
-          <div class="form-group" id="outroLocalGroup" style="display: none;">
-            <label for="outroLocal">Especifique o local:</label>
-            <textarea id="outroLocal" class="service-option" rows="3" style="width: 100%; resize: vertical;"></textarea>
-          </div>
-          
-          <button type="submit" class="button">Enviar Agendamento</button>
-        </form>
-      </div>
-    
-      <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const serviceOptions = document.querySelectorAll('.service-option');
-        serviceOptions.forEach(option => {
-            option.addEventListener('change', function() {
-                validateField(this);
-            });
-        });
-    
-        const bookingForm = document.getElementById('bookingForm');
-        bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            const formData = {};
-            
-            const requiredFields = bookingForm.querySelectorAll('[required]');
-            requiredFields.forEach(field => {
-                if (!validateField(field)) {
-                    isValid = false;
-                }
-                formData[field.id] = field.value;
-            });
-            
-            const serviceSelections = document.querySelectorAll('.service-option:not([type="text"]):not([type="date"]):not([type="time"])');
-            serviceSelections.forEach(select => {
-                if (!validateField(select)) {
-                    isValid = false;
-                }
-                formData[select.id] = select.value;
-            });
-    
-            if (isValid) {
-                const locationSelect = document.getElementById('location');
-                const selectedLocationText = locationSelect.options[locationSelect.selectedIndex].text;
-                const customLocation = locationSelect.value === 'outro' ? 
-                    `\nDetalhes do local: ${document.getElementById('outroLocal').value}` : '';
-                    
-                const message = `Olá! Gostaria de agendar um horário.
-    
-    Nick: ${formData.nick}
-    Data de Nascimento: ${formData.birthdate}
-    Data pretendida: ${formData.bookingDate}
-    Horário: ${formData.bookingTime}
-    Local: ${selectedLocationText}${customLocation}
-    
-    Roteiro detalhado:
-    0-5 min: ${document.getElementById('time-0-5').options[document.getElementById('time-0-5').selectedIndex].text}
-    5-10 min: ${document.getElementById('time-5-10').options[document.getElementById('time-5-10').selectedIndex].text}
-    10-15 min: ${document.getElementById('time-10-15').options[document.getElementById('time-10-15').selectedIndex].text}
-    15-20 min: ${document.getElementById('time-15-20').options[document.getElementById('time-15-20').selectedIndex].text}
-    20-25 min: ${document.getElementById('time-20-25').options[document.getElementById('time-20-25').selectedIndex].text}
-    25-30 min: ${document.getElementById('time-25-30').options[document.getElementById('time-25-30').selectedIndex].text}
-    30-35 min: ${document.getElementById('time-30-35').options[document.getElementById('time-30-35').selectedIndex].text}
-    35-40 min: ${document.getElementById('time-35-40').options[document.getElementById('time-35-40').selectedIndex].text}
-    40-45 min: ${document.getElementById('time-40-45').options[document.getElementById('time-40-45').selectedIndex].text}
-    45-50 min: ${document.getElementById('time-45-50').options[document.getElementById('time-45-50').selectedIndex].text}
-    50-55 min: ${document.getElementById('time-50-55').options[document.getElementById('time-50-55').selectedIndex].text}
-    55-60 min: ${document.getElementById('time-55-60').options[document.getElementById('time-55-60').selectedIndex].text}`;
-    
-                window.location.href = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
+          @keyframes sparkle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+          }
+        
+          @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+          }
+        
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+        
+          @keyframes snowfall {
+            0% {
+              transform: translateY(-10vh) rotate(0deg);
+              opacity: 1;
             }
-        });
-    
-        function validateField(field) {
-            const validationMessage = field.nextElementSibling;
-            if (validationMessage && validationMessage.classList.contains('validation-message')) {
-                if (!field.value) {
-                    validationMessage.style.display = 'block';
-                    return false;
+            100% {
+              transform: translateY(100vh) rotate(360deg);
+              opacity: 0;
+            }
+          }
+        
+          @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+          }
+        
+          body {
+            background: linear-gradient(135deg, #8b0000 0%, #c41e3a 50%, #8b0000 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: #ffffff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+          }
+        
+          .snow {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: snowfall 10s linear infinite;
+            z-index: 1000;
+          }
+        
+          .container {
+            max-width: 100%;
+            width: 95%;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            background: linear-gradient(145deg, rgba(139, 0, 0, 0.8) 0%, rgba(196, 30, 58, 0.9) 100%);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            position: relative;
+          }
+        
+          @media (min-width: 768px) {
+            .container {
+              width: 90%;
+              max-width: 800px;
+              padding: 30px;
+            }
+            
+            body {
+              padding: 30px;
+            }
+            
+            .profile {
+              padding: 25px;
+            }
+          }
+        
+          .profile {
+            animation: floatEffect 6s ease-in-out infinite;
+            background: linear-gradient(145deg, rgba(139, 0, 0, 0.9) 0%, rgba(196, 30, 58, 0.9) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 4px solid #c41e3a;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+          }
+        
+          .profile:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255,105,180,0.3);
+          }
+        
+          .profile-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+          }
+        
+          .details {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
+        
+          .detail-item {
+            color: #ffffff;
+          }
+        
+          @media (min-width: 480px) {
+            .details {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        
+          @media (min-width: 768px) {
+            .details {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+        
+          .service-option {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 15px;
+            background: linear-gradient(145deg, #8b0000 0%, #c41e3a 100%);
+            color: white;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: glowPulse 3s infinite;
+          }
+        
+          input.service-option:focus,
+          select.service-option:focus,
+          textarea.service-option:focus {
+            border-color: #c41e3a;
+            box-shadow: 0 0 15px rgba(255,105,180,0.2);
+            outline: none;
+            background: linear-gradient(145deg, #8b0000 0%, #990000 100%);
+          }
+        
+          .service-option:hover {
+            transform: scale(1.02);
+            background: linear-gradient(145deg, #363649 0%, #2d2d3d 100%);
+          }
+        
+          .service-option option {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px;
+          }
+        
+          .service-option optgroup {
+            background: #1a1a1a;
+            color: #c41e3a;
+            font-weight: bold;
+          }
+        
+          .form-group {
+            margin: 15px 0;
+          }
+        
+          .button {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: linear-gradient(145deg, #c41e3a 0%, #990000 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.5s ease;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(255,105,180,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+          }
+        
+          .button:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+          }
+        
+          @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+          }
+        
+          .button:hover {
+            background: linear-gradient(145deg, #990000 0%, #800000 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,105,180,0.4);
+          }
+        
+          .price-section {
+            position: relative;
+            overflow: hidden;
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(145deg, 
+              rgba(139, 0, 0, 0.95) 0%, 
+              rgba(196, 30, 58, 0.98) 100%
+            );
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(255,105,180,0.2);
+            animation: float 6s ease-in-out infinite;
+          }
+        
+          .price-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, 
+              #c41e3a, #ffd700, #c41e3a, #ffd700, #c41e3a
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            text-shadow: 0 0 15px rgba(255,105,180,0.5);
+            position: relative;
+          }
+        
+          .price-section h3::before,
+          .price-section h3::after {
+            content: '⭐';
+            position: absolute;
+            font-size: 1.5em;
+            animation: twinkle 2s ease-in-out infinite;
+          }
+        
+          .price-section h3::before {
+            top: 10px;
+            left: 10px;
+          }
+        
+          .price-section h3::after {
+            bottom: 10px;
+            right: 10px;
+          }
+        
+          .price-container {
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+          }
+        
+          .price-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255,105,180,0.3);
+          }
+        
+          .original-price {
+            font-size: 1.6em;
+            color: #ccc;
+            text-decoration: line-through;
+            margin-bottom: 20px;
+            opacity: 0.7;
+            transform: rotate(-3deg);
+            display: inline-block;
+            padding: 5px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            position: relative;
+          }
+        
+          .savings {
+            color: #c41e3a;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255,105,180,0.5);
+            animation: pulse 2s infinite;
+          }
+        
+          .current-price {
+            font-size: 3em;
+            font-weight: bold;
+            color: #fff;
+            margin: 25px 0;
+            text-shadow: 0 0 20px rgba(255,105,180,0.6);
+            animation: float 4s ease-in-out infinite;
+          }
+        
+          .current-price span {
+            color: #ffd700;
+            font-size: 1.2em;
+          }
+        
+          .urgency {
+            font-size: 1.3em;
+            color: #ffd700;
+            font-weight: bold;
+            margin-top: 25px;
+            animation: pulse 1.5s infinite;
+            text-shadow: 0 0 10px rgba(255,105,180,0.4);
+          }
+        
+          .time-info {
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 15px;
+          }
+        
+          .benefits {
+            margin: 20px 0;
+            text-align: left;
+          }
+        
+          .benefit-item {
+            margin: 10px 0;
+            padding: 5px 0;
+            color: #f0f0f0;
+            transition: transform 0.3s ease;
+          }
+        
+          .benefit-item:hover {
+            transform: translateX(10px);
+            color: #c41e3a;
+          }
+        
+          .urgency {
+            font-size: 1.1em;
+            color: #ffd700;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: blink 1s infinite;
+          }
+        
+          @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+          }
+        
+          @media (max-width: 768px) {
+            .price-section {
+              padding: 20px;
+            }
+            
+            .current-price {
+              font-size: 2em;
+            }
+            
+            .benefits {
+              padding: 0 10px;
+            }
+          }
+        
+          .warning {
+            background: linear-gradient(145deg, #ff3366 0%, #ff1a1a 100%);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(255,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+          }
+        
+          h2, h3, h4, h5 {
+            color: #00ff00; /* Green headings */
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          }
+        
+          .time-block {
+            transform: translateX(0);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+          }
+        
+          .time-block:hover {
+            transform: translateX(10px);
+            opacity: 1;
+            background: linear-gradient(145deg, #323245 0%, #2a2a38 100%);
+          }
+        
+          .phase {
+            transform: translateY(0);
+            transition: all 0.5s ease;
+            opacity: 0.95;
+          }
+        
+          .phase:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+            box-shadow: 0 8px 25px rgba(255,105,180,0.25);
+          }
+        
+          .list {
+            padding-left: 20px;
+          }
+        
+          .list li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 30px;
+            transform: translateX(0);
+            transition: all 0.3s ease;
+            color: #ffffff;
+          }
+        
+          .list li:hover {
+            transform: translateX(10px);
+            color: #00ff00;
+          }
+        
+          .list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #c41e3a;
+            border-radius: 50%;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+          }
+        
+          .list li:hover::before {
+            transform: translateY(-50%) scale(1.2);
+            background: #c41e3a;
+            opacity: 0.8;
+          }
+        
+          .validation-message {
+            color: #ff4d4d;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+          }
+        
+          .container > div:last-child {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #888;
+          }
+        
+          @media (max-width: 480px) {
+            .container {
+              padding: 15px;
+            }
+            
+            .profile {
+              padding: 15px;
+            }
+            
+            h2, h3, h4, h5 {
+              font-size: 90%;
+            }
+          }
+        
+          .container::before {
+            content: '🎄';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            animation: snowfall 3s ease-in-out infinite;
+          }
+        
+          .container::after {
+            content: '🎅';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            animation: snowfall 3s ease-in-out infinite reverse;
+          }
+        
+          .price-section::before,
+          .price-section::after {
+            content: '⭐';
+            position: absolute;
+            font-size: 1.5em;
+            animation: twinkle 2s ease-in-out infinite;
+          }
+        
+          .price-section::before {
+            top: 10px;
+            left: 10px;
+          }
+        
+          .price-section::after {
+            bottom: 10px;
+            right: 10px;
+          }
+        
+          .profile, .price-section, .service-option {
+            border-image: linear-gradient(to right, #c41e3a, #ffd700) 1;
+          }
+        </style>
+        </head>
+        <body>
+        
+        <div class="container">
+          <div class="warning">
+            ⚠️ CONTEÚDO ADULTO (18+) ⚠️
+          </div>
+        
+          <div class="profile">
+            <h2>Pamela</h2>
+            <img src="pamela.gif" alt="Pamela" class="profile-image">
+            <div class="details">
+              <div class="detail-item">Idade: 25 anos</div>
+              <div class="detail-item">Cabelo: Morena</div>
+              <div class="detail-item">Pele: Branca</div>
+              <div class="detail-item">Altura: 162cm</div>
+              <div class="detail-item">Peso: 70kg</div>
+            </div>
+          </div>
+        
+          <div class="profile">
+            <h2>Luanny</h2>
+            <img src="luanny.gif" alt="Luanny" class="profile-image">
+            <div class="details">
+              <div class="detail-item">Idade: 29 anos</div>
+              <div class="detail-item">Cabelo: Loira</div>
+              <div class="detail-item">Pele: Branca</div>
+              <div class="detail-item">Altura: 177cm</div>
+              <div class="detail-item">Peso: 64kg</div>
+              <div class="detail-item">Dote: 19cm reto</div>
+            </div>
+          </div>
+        
+          <div class="lists">
+            <h3>Restrições</h3>
+            <ul class="list">
+              <li>✖️ Tudo com camisinha</li>
+              <li>✖️ Não faz anal (Pamela)</li>
+              <li>✖️ Não gosta que puxe cabelo</li>
+              <li>✖️ Tapas moderados apenas</li>
+            </ul>
+        
+            <h3>Preferências</h3>
+            <ul class="list">
+              <li>✅ Homens maduros e/ou decididos</li>
+            </ul>
+          </div>
+        
+          <div class="price-section">
+            <h3>💎 OFERTA ESPECIAL LIMITADA 💎</h3>
+            <div class="price-container">
+              <div class="original-price">
+                Valor Normal: <span>R$ 2.500,00</span>
+              </div>
+              <div class="savings">
+                Economize R$ 833,00 (33% OFF)
+              </div>
+              <div class="current-price">
+                Apenas <span>R$ 1.667,00</span>
+              </div>
+              <div class="price-details">
+                <div class="time-info">1 hora completa de atendimento premium</div>
+                <div class="benefits">
+                  <div class="benefit-item">✨ Experiência única com duas profissionais</div>
+                  <div class="benefit-item">🌟 Ambiente discreto e luxuoso</div>
+                  <div class="benefit-item">💫 Atendimento personalizado</div>
+                </div>
+                <div class="urgency">
+                  ⚡ Promoção por tempo limitado! ⚡
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="requirements">
+            <h3>8. ROTEIRO PERSONALIZADO DE ATENDIMENTO (1 HORA)</h3>
+            
+            <div class="service-selector">
+              <h4>Selecione as atividades para cada intervalo de 5 minutos</h4>
+              
+              <div class="phase">
+                <h4>Primeira Fase (0-30 minutos)</h4>
+                
+                <div class="time-block">
+                  <h5>0-5 minutos</h5>
+                  <select class="service-option" id="time-0-5" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="recepcao_pamela">Recepção sensual com Pamela</option>
+                    <option value="recepcao_luanny">Recepção provocante com Luanny</option>
+                    <option value="recepcao_ambas">Recepção quente com ambas</option>
+                    <option value="strip_inicial">Strip-tease inicial</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>5-10 minutos</h5>
+                  <select class="service-option" id="time-5-10" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="strip_pamela">Strip-tease com Pamela</option>
+                    <option value="strip_luanny">Strip-tease com Luanny</option>
+                    <option value="strip_duo">Strip-tease duplo</option>
+                    <option value="massagem_tantrica">Massagem tântrica inicial</option>
+                    <option value="preliminares">Preliminares suaves</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>10-15 minutos</h5>
+                  <select class="service-option" id="time-10-15" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="beijos_pamela">Beijos e carícias com Pamela</option>
+                    <option value="beijos_luanny">Beijos e carícias com Luanny</option>
+                    <option value="beijos_duo">Beijos alternados com ambas</option>
+                    <option value="oral_suave">Oral suave inicial</option>
+                    <option value="massagem_corporal">Massagem corporal sensual</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>15-20 minutos</h5>
+                  <select class="service-option" id="time-15-20" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="oral_pamela">Oral intenso com Pamela</option>
+                    <option value="oral_luanny">Oral profundo com Luanny</option>
+                    <option value="oral_duo">Oral duplo</option>
+                    <option value="pamela_joelhos">Pamela de joelhos</option>
+                    <option value="luanny_dominante">Luanny dominante</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>20-25 minutos</h5>
+                  <select class="service-option" id="time-20-25" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="ativo_pamela">Ativo com Pamela</option>
+                    <option value="ativo_luanny">Ativo com Luanny</option>
+                    <option value="passivo_luanny">Passivo com Luanny</option>
+                    <option value="oral_intenso">Oral intenso duplo</option>
+                    <option value="69_variation">69 variado</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>25-30 minutos</h5>
+                  <select class="service-option" id="time-25-30" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="massagem_pamela">Massagem relaxante com Pamela</option>
+                    <option value="massagem_luanny">Massagem especial com Luanny</option>
+                    <option value="massagem_duo">Massagem dupla</option>
+                    <option value="oral_completo">Oral completo</option>
+                    <option value="inversao">Inversão de papéis</option>
+                  </select>
+                </div>
+              </div>
+        
+              <div class="phase">
+                <h4>Segunda Fase (30-60 minutos)</h4>
+                
+                <div class="time-block">
+                  <h5>30-35 minutos</h5>
+                  <select class="service-option" id="time-30-35" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="oral_pamela_2">Oral elaborado com Pamela</option>
+                    <option value="oral_luanny_2">Oral elaborado com Luanny</option>
+                    <option value="oral_duo_2">Oral duplo intenso</option>
+                    <option value="dominacao">Dominação leve</option>
+                    <option value="submissao">Submissão controlada</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>35-40 minutos</h5>
+                  <select class="service-option" id="time-35-40" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="ativo_pamela_2">Momento ativo com Pamela</option>
+                    <option value="ativo_luanny_2">Momento ativo com Luanny</option>
+                    <option value="passivo_luanny_2">Momento passivo com Luanny</option>
+                    <option value="oral_intenso_2">Oral intenso variado</option>
+                    <option value="dupla_estimulacao">Dupla estimulação</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>40-45 minutos</h5>
+                  <select class="service-option" id="time-40-45" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="69_pamela">69 com Pamela</option>
+                    <option value="69_luanny">69 com Luanny</option>
+                    <option value="duo_intenso">Momento duo intenso</option>
+                    <option value="oral_misto">Oral misto</option>
+                    <option value="caricias">Carícias no corpo</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>45-50 minutos</h5>
+                  <select class="service-option" id="time-45-50" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="final_pamela">Final com Pamela</option>
+                    <option value="final_luanny">Final com Luanny</option>
+                    <option value="final_duo">Final com ambas</option>
+                    <option value="massagem_final">Massagem final relaxante</option>
+                    <option value="despedida_quente">Despedida quente</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>50-55 minutos</h5>
+                  <select class="service-option" id="time-50-55" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="banho_pamela">Banho com Pamela</option>
+                    <option value="banho_luanny">Banho com Luanny</option>
+                    <option value="banho_duo">Banho com ambas</option>
+                    <option value="massagem_banho">Massagem durante o banho</option>
+                    <option value="carinho_final">Carinho final</option>
+                  </select>
+                </div>
+        
+                <div class="time-block">
+                  <h5>55-60 minutos</h5>
+                  <select class="service-option" id="time-55-60" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="despedida_pamela">Despedida com Pamela</option>
+                    <option value="despedida_luanny">Despedida com Luanny</option>
+                    <option value="despedida_duo">Despedida com ambas</option>
+                    <option value="reflexao">Reflexão do atendimento</option>
+                    <option value="feedback">Feedback sobre a experiência</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="requirements">
+            <h3>FORMULÁRIO DE AGENDAMENTO</h3>
+            <form id="bookingForm">
+              <div class="form-group">
+                <label for="nick">Nick:</label>
+                <input type="text" id="nick" required class="service-option">
+                <div class="validation-message">Por favor, insira seu nick.</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="birthdate">Data de Nascimento:</label>
+                <input type="date" id="birthdate" required class="service-option">
+                <div class="validation-message">Por favor, insira sua data de nascimento.</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="bookingDate">Data pretendida:</label>
+                <input type="date" id="bookingDate" required class="service-option">
+                <div class="validation-message">Por favor, escolha uma data.</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="bookingTime">Horário:</label>
+                <input type="time" id="bookingTime" required class="service-option">
+                <div class="validation-message">Por favor, selecione um horário.</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="location">Local do Atendimento:</label>
+                <select id="location" class="service-option" required>
+                  <option value="">Selecione o local...</option>
+                  <optgroup label="Motéis Centro">
+                    <option value="hotel_albertino">Hotel Albertino</option>
+                    <option value="hotel_liberdade">Hotel Liberdade</option>
+                    <option value="luma_hotel">Luma Hotel</option>
+                  </optgroup>
+                  <optgroup label="Outros Motéis">
+                    <option value="motel_1001">1001 Motel</option>
+                    <option value="motel_bellatrix">Motel Bellatrix</option>
+                    <option value="motel_corpo_alma">Motel Corpo e Alma</option>
+                    <option value="hotel_if">Hotel IF</option>
+                    <option value="motel_orion">Motel Órion</option>
+                    <option value="motel_point">Motel Point</option>
+                  </optgroup>
+                  <option value="carro">Rapidinha no Carro</option>
+                  <option value="outro">Outro (especificar na mensagem)</option>
+                </select>
+                <div class="validation-message">Por favor, selecione o local.</div>
+              </div>
+        
+              <div class="form-group" id="outroLocalGroup" style="display: none;">
+                <label for="outroLocal">Especifique o local:</label>
+                <textarea id="outroLocal" class="service-option" rows="3" style="width: 100%; resize: vertical;"></textarea>
+              </div>
+              
+              <button type="submit" class="button">Enviar Agendamento</button>
+            </form>
+          </div>
+        
+          <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceOptions = document.querySelectorAll('.service-option');
+            serviceOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    validateField(this);
+                });
+            });
+        
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const formData = {};
+                
+                const requiredFields = bookingForm.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    if (!validateField(field)) {
+                        isValid = false;
+                    }
+                    formData[field.id] = field.value;
+                });
+                
+                const serviceSelections = document.querySelectorAll('.service-option:not([type="text"]):not([type="date"]):not([type="time"])');
+                serviceSelections.forEach(select => {
+                    if (!validateField(select)) {
+                        isValid = false;
+                    }
+                    formData[select.id] = select.value;
+                });
+        
+                if (isValid) {
+                    const locationSelect = document.getElementById('location');
+                    const selectedLocationText = locationSelect.options[locationSelect.selectedIndex].text;
+                    const customLocation = locationSelect.value === 'outro' ? 
+                        `\nDetalhes do local: ${document.getElementById('outroLocal').value}` : '';
+                        
+                    const message = `Olá! Gostaria de agendar um horário.
+        
+        Nick: ${formData.nick}
+        Data de Nascimento: ${formData.birthdate}
+        Data pretendida: ${formData.bookingDate}
+        Horário: ${formData.bookingTime}
+        Local: ${selectedLocationText}${customLocation}
+        
+        Roteiro detalhado:
+        0-5 min: ${document.getElementById('time-0-5').options[document.getElementById('time-0-5').selectedIndex].text}
+        5-10 min: ${document.getElementById('time-5-10').options[document.getElementById('time-5-10').selectedIndex].text}
+        10-15 min: ${document.getElementById('time-10-15').options[document.getElementById('time-10-15').selectedIndex].text}
+        15-20 min: ${document.getElementById('time-15-20').options[document.getElementById('time-15-20').selectedIndex].text}
+        20-25 min: ${document.getElementById('time-20-25').options[document.getElementById('time-20-25').selectedIndex].text}
+        25-30 min: ${document.getElementById('time-25-30').options[document.getElementById('time-25-30').selectedIndex].text}
+        30-35 min: ${document.getElementById('time-30-35').options[document.getElementById('time-30-35').selectedIndex].text}
+        35-40 min: ${document.getElementById('time-35-40').options[document.getElementById('time-35-40').selectedIndex].text}
+        40-45 min: ${document.getElementById('time-40-45').options[document.getElementById('time-40-45').selectedIndex].text}
+        45-50 min: ${document.getElementById('time-45-50').options[document.getElementById('time-45-50').selectedIndex].text}
+        50-55 min: ${document.getElementById('time-50-55').options[document.getElementById('time-50-55').selectedIndex].text}
+        55-60 min: ${document.getElementById('time-55-60').options[document.getElementById('time-55-60').selectedIndex].text}`;
+        
+                    window.location.href = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
+                }
+            });
+        
+            function validateField(field) {
+                const validationMessage = field.nextElementSibling;
+                if (validationMessage && validationMessage.classList.contains('validation-message')) {
+                    if (!field.value) {
+                        validationMessage.style.display = 'block';
+                        return false;
+                    } else {
+                        validationMessage.style.display = 'none';
+                        return true;
+                    }
+                }
+                return !!field.value;
+            }
+        
+            const bookingDate = document.getElementById('bookingDate');
+            if (bookingDate) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                bookingDate.min = tomorrow.toISOString().split('T')[0];
+            }
+        
+            const birthdate = document.getElementById('birthdate');
+            if (birthdate) {
+                const maxDate = new Date();
+                maxDate.setFullYear(maxDate.getFullYear() - 18);
+                birthdate.max = maxDate.toISOString().split('T')[0];
+            }
+        
+            const locationSelect = document.getElementById('location');
+            const outroLocalGroup = document.getElementById('outroLocalGroup');
+            const outroLocal = document.getElementById('outroLocal');
+        
+            locationSelect.addEventListener('change', function() {
+                if (this.value === 'outro') {
+                    outroLocalGroup.style.display = 'block';
+                    outroLocal.required = true;
                 } else {
-                    validationMessage.style.display = 'none';
-                    return true;
+                    outroLocalGroup.style.display = 'none';
+                    outroLocal.required = false;
                 }
+            });
+        
+            function createSnow() {
+              const snow = document.createElement('div');
+              snow.classList.add('snow');
+              snow.style.left = Math.random() * 100 + 'vw';
+              snow.style.animationDuration = Math.random() * 3 + 7 + 's';
+              snow.style.opacity = Math.random();
+              snow.style.width = snow.style.height = Math.random() * 5 + 5 + 'px';
+              document.body.appendChild(snow);
+        
+              // Remove snow element after animation
+              setTimeout(() => snow.remove(), 10000);
             }
-            return !!field.value;
-        }
-    
-        const bookingDate = document.getElementById('bookingDate');
-        if (bookingDate) {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            bookingDate.min = tomorrow.toISOString().split('T')[0];
-        }
-    
-        const birthdate = document.getElementById('birthdate');
-        if (birthdate) {
-            const maxDate = new Date();
-            maxDate.setFullYear(maxDate.getFullYear() - 18);
-            birthdate.max = maxDate.toISOString().split('T')[0];
-        }
-    
-        const locationSelect = document.getElementById('location');
-        const outroLocalGroup = document.getElementById('outroLocalGroup');
-        const outroLocal = document.getElementById('outroLocal');
-    
-        locationSelect.addEventListener('change', function() {
-            if (this.value === 'outro') {
-                outroLocalGroup.style.display = 'block';
-                outroLocal.required = true;
-            } else {
-                outroLocalGroup.style.display = 'none';
-                outroLocal.required = false;
-            }
+        
+            // Create snow every 100ms
+            setInterval(createSnow, 100);
         });
-    
-        function createSnow() {
-          const snow = document.createElement('div');
-          snow.classList.add('snow');
-          snow.style.left = Math.random() * 100 + 'vw';
-          snow.style.animationDuration = Math.random() * 3 + 7 + 's';
-          snow.style.opacity = Math.random();
-          snow.style.width = snow.style.height = Math.random() * 5 + 5 + 'px';
-          document.body.appendChild(snow);
-    
-          // Remove snow element after animation
-          setTimeout(() => snow.remove(), 10000);
-        }
-    
-        // Create snow every 100ms
-        setInterval(createSnow, 100);
-    });
-    </script>
-    
-      <div style="text-align: center; margin-top: 20px; color: #888;">
-        <p>Proporciona uma experiência inesquecível com uma trans e uma mulher experientes</p>
-        <p>© 2024 - Todos os direitos reservados</p>
-      </div>
-    </div>
-    
-    </body>
-    </html>
+        </script>
+        
+          <div style="text-align: center; margin-top: 20px; color: #888;">
+            <p>Proporciona uma experiência inesquecível com uma trans e uma mulher experientes</p>
+            <p>© 2024 - Todos os direitos reservados</p>
+          </div>
+        </div>
+        
+        </body>
+        </html>
