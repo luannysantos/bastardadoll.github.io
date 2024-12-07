@@ -71,8 +71,24 @@
         50% { transform: translateY(-10px); }
       }
     
+      @keyframes snowfall {
+        0% {
+          transform: translateY(-10vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 1; }
+      }
+    
       body {
-        background: linear-gradient(135deg, #2b1f3b 0%, #1a1a2e 50%, #2b1f3b 100%);
+        background: linear-gradient(135deg, #8b0000 0%, #c41e3a 50%, #8b0000 100%);
         background-size: 200% 200%;
         animation: gradientShift 15s ease infinite;
         color: #f0f0f0;
@@ -85,17 +101,28 @@
         flex-direction: column;
       }
     
+      .snow {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: snowfall 10s linear infinite;
+        z-index: 1000;
+      }
+    
       .container {
         max-width: 100%;
         width: 95%;
         margin: 0 auto;
         backdrop-filter: blur(10px);
-        background: linear-gradient(145deg, rgba(45,45,58,0.8) 0%, rgba(35,35,50,0.9) 100%);
+        background: linear-gradient(145deg, rgba(139, 0, 0, 0.8) 0%, rgba(196, 30, 58, 0.9) 100%);
         padding: 20px;
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.1);
-        transition: all 0.5s ease;
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        position: relative;
       }
     
       @media (min-width: 768px) {
@@ -116,11 +143,11 @@
     
       .profile {
         animation: floatEffect 6s ease-in-out infinite;
-        background: linear-gradient(145deg, rgba(54,54,73,0.9) 0%, rgba(45,45,61,0.9) 100%);
+        background: linear-gradient(145deg, rgba(139, 0, 0, 0.9) 0%, rgba(196, 30, 58, 0.9) 100%);
         padding: 25px;
         border-radius: 15px;
         margin: 25px 0;
-        border-left: 4px solid #ff69b4;
+        border-left: 4px solid #c41e3a;
         box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         transition: all 0.5s ease;
       }
@@ -165,9 +192,9 @@
         padding: 12px 15px;
         border-radius: 10px;
         font-size: 15px;
-        background: linear-gradient(145deg, #2d2d3a 0%, #252533 100%);
+        background: linear-gradient(145deg, #8b0000 0%, #c41e3a 100%);
         color: white;
-        border: 1px solid rgba(255,105,180,0.3);
+        border: 1px solid rgba(255, 215, 0, 0.3);
         transition: all 0.3s ease;
         animation: glowPulse 3s infinite;
       }
@@ -175,7 +202,7 @@
       input.service-option:focus,
       select.service-option:focus,
       textarea.service-option:focus {
-        border-color: #ff69b4;
+        border-color: #c41e3a;
         box-shadow: 0 0 15px rgba(255,105,180,0.2);
         outline: none;
         background: linear-gradient(145deg, #323245 0%, #2a2a38 100%);
@@ -194,7 +221,7 @@
     
       .service-option optgroup {
         background: #1a1a1a;
-        color: #ff69b4;
+        color: #c41e3a;
         font-weight: bold;
       }
     
@@ -211,7 +238,7 @@
         border: none;
         border-radius: 12px;
         cursor: pointer;
-        background: linear-gradient(145deg, #ff69b4 0%, #ff458a 100%);
+        background: linear-gradient(145deg, #c41e3a 0%, #990000 100%);
         color: white;
         text-align: center;
         text-decoration: none;
@@ -242,7 +269,7 @@
       }
     
       .button:hover {
-        background: linear-gradient(145deg, #ff458a 0%, #ff2d7a 100%);
+        background: linear-gradient(145deg, #990000 0%, #800000 100%);
         transform: translateY(-2px);
         box-shadow: 0 8px 20px rgba(255,105,180,0.4);
       }
@@ -253,11 +280,11 @@
         padding: 40px;
         text-align: center;
         background: linear-gradient(145deg, 
-          rgba(45,45,58,0.95) 0%, 
-          rgba(35,35,50,0.98) 100%
+          rgba(139, 0, 0, 0.95) 0%, 
+          rgba(196, 30, 58, 0.98) 100%
         );
         border-radius: 20px;
-        border: 2px solid rgba(255,105,180,0.4);
+        border: 2px solid rgba(255, 215, 0, 0.4);
         margin: 30px 0;
         box-shadow: 0 10px 30px rgba(255,105,180,0.2);
         animation: float 6s ease-in-out infinite;
@@ -267,7 +294,7 @@
         font-size: 1.8em;
         margin-bottom: 30px;
         background: linear-gradient(90deg, 
-          #ff69b4, #fff, #ff69b4, #fff, #ff69b4
+          #c41e3a, #ffd700, #c41e3a, #ffd700, #c41e3a
         );
         background-size: 200% auto;
         color: transparent;
@@ -280,19 +307,20 @@
     
       .price-section h3::before,
       .price-section h3::after {
-        content: '💎';
+        content: '⭐';
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        animation: sparkle 2s ease-in-out infinite;
+        font-size: 1.5em;
+        animation: twinkle 2s ease-in-out infinite;
       }
     
       .price-section h3::before {
-        left: -40px;
+        top: 10px;
+        left: 10px;
       }
     
       .price-section h3::after {
-        right: -40px;
+        bottom: 10px;
+        right: 10px;
       }
     
       .price-container {
@@ -302,7 +330,7 @@
         padding: 30px;
         transform: translateY(0);
         transition: transform 0.3s ease;
-        border: 1px solid rgba(255,105,180,0.2);
+        border: 1px solid rgba(255, 215, 0, 0.2);
       }
     
       .price-container:hover {
@@ -325,7 +353,7 @@
       }
     
       .savings {
-        color: #ff69b4;
+        color: #c41e3a;
         font-size: 1.5em;
         font-weight: bold;
         margin: 20px 0;
@@ -343,13 +371,13 @@
       }
     
       .current-price span {
-        color: #ff69b4;
+        color: #ffd700;
         font-size: 1.2em;
       }
     
       .urgency {
         font-size: 1.3em;
-        color: #ff69b4;
+        color: #ffd700;
         font-weight: bold;
         margin-top: 25px;
         animation: pulse 1.5s infinite;
@@ -376,12 +404,12 @@
     
       .benefit-item:hover {
         transform: translateX(10px);
-        color: #ff69b4;
+        color: #c41e3a;
       }
     
       .urgency {
         font-size: 1.1em;
-        color: #ff69b4;
+        color: #ffd700;
         font-weight: bold;
         margin-top: 20px;
         animation: blink 1s infinite;
@@ -420,7 +448,7 @@
       }
     
       h2, h3, h4, h5 {
-        color: #ff69b4;
+        color: #c41e3a;
         font-weight: 600;
         letter-spacing: 0.8px;
         margin-bottom: 20px;
@@ -465,7 +493,7 @@
     
       .list li:hover {
         transform: translateX(10px);
-        color: #ff69b4;
+        color: #c41e3a;
       }
     
       .list li::before {
@@ -476,7 +504,7 @@
         transform: translateY(-50%);
         width: 20px;
         height: 20px;
-        background: #ff69b4;
+        background: #c41e3a;
         border-radius: 50%;
         opacity: 0.3;
         transition: all 0.3s ease;
@@ -484,7 +512,7 @@
     
       .list li:hover::before {
         transform: translateY(-50%) scale(1.2);
-        background: #ff69b4;
+        background: #c41e3a;
         opacity: 0.8;
       }
     
@@ -515,6 +543,46 @@
         h2, h3, h4, h5 {
           font-size: 90%;
         }
+      }
+    
+      .container::before {
+        content: '🎄';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 2em;
+        animation: snowfall 3s ease-in-out infinite;
+      }
+    
+      .container::after {
+        content: '🎅';
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2em;
+        animation: snowfall 3s ease-in-out infinite reverse;
+      }
+    
+      .price-section::before,
+      .price-section::after {
+        content: '⭐';
+        position: absolute;
+        font-size: 1.5em;
+        animation: twinkle 2s ease-in-out infinite;
+      }
+    
+      .price-section::before {
+        top: 10px;
+        left: 10px;
+      }
+    
+      .price-section::after {
+        bottom: 10px;
+        right: 10px;
+      }
+    
+      .profile, .price-section, .service-option {
+        border-image: linear-gradient(to right, #c41e3a, #ffd700) 1;
       }
     </style>
     </head>
@@ -569,13 +637,13 @@
         <h3>💎 OFERTA ESPECIAL LIMITADA 💎</h3>
         <div class="price-container">
           <div class="original-price">
-            Valor Normal: <span>R$ 750,00</span>
+            Valor Normal: <span>R$ 2.500,00</span>
           </div>
           <div class="savings">
-            Economize R$ 250,00 (33% OFF)
+            Economize R$ 833,00 (33% OFF)
           </div>
           <div class="current-price">
-            Apenas <span>R$ 500,00</span>
+            Apenas <span>R$ 1.667,00</span>
           </div>
           <div class="price-details">
             <div class="time-info">1 hora completa de atendimento premium</div>
@@ -914,6 +982,22 @@
                 outroLocal.required = false;
             }
         });
+    
+        function createSnow() {
+          const snow = document.createElement('div');
+          snow.classList.add('snow');
+          snow.style.left = Math.random() * 100 + 'vw';
+          snow.style.animationDuration = Math.random() * 3 + 7 + 's';
+          snow.style.opacity = Math.random();
+          snow.style.width = snow.style.height = Math.random() * 5 + 5 + 'px';
+          document.body.appendChild(snow);
+    
+          // Remove snow element after animation
+          setTimeout(() => snow.remove(), 10000);
+        }
+    
+        // Create snow every 100ms
+        setInterval(createSnow, 100);
     });
     </script>
     
