@@ -3,10 +3,7 @@
 <head>
     <head>
         <base href="https://bastardadoll.github.io/">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Diretório de Acompanhantes</title>
-        <style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Diretório de Acompanhantes</title><style>
 :root {
   --primary: #ff1493;
   --secondary: #9400d3;
@@ -75,6 +72,9 @@ body {
 }
 
 .escort-card {
+  position: relative;
+  min-height: 500px;
+  padding-bottom: 70px;
   background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
@@ -116,7 +116,7 @@ body {
 }
 
 .escort-details {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
 .escort-name {
@@ -147,9 +147,79 @@ body {
 
 .escort-price {
   margin-top: 1rem;
-  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.original-price {
+  color: #888;
+  text-decoration: line-through;
+  font-size: 1rem;
+  position: relative;
+  animation: fadeInOut 2s infinite;
+}
+
+.new-price {
   color: var(--secondary);
   font-weight: bold;
+  font-size: 1.5rem;
+  position: relative;
+  animation: pulsate 2s infinite;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes pulsate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.price-tag {
+  position: absolute;
+  right: -40px;
+  top: -10px;
+  background: var(--primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  transform: rotate(15deg);
+  animation: swing 2s infinite;
+}
+
+@keyframes swing {
+  0% { transform: rotate(15deg); }
+  50% { transform: rotate(-5deg); }
+  100% { transform: rotate(15deg); }
+}
+
+.card-booking-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  width: calc(100% - 3rem);
+  text-align: center;
+}
+
+.card-booking-btn:hover {
+  background: var(--secondary);
+  transform: translateX(-50%) translateY(-2px);
 }
 
 .modal {
@@ -158,25 +228,53 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
   z-index: 1000;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
 }
 
 .modal-content {
   background: var(--card-bg);
-  max-width: 800px;
-  width: 90%;
+  max-width: 600px;
+  width: 95%;
   margin: 2rem auto;
   border-radius: 12px;
   padding: 2rem;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  max-height: 90vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) var(--card-bg);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.booking-form {
+  display: none;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  animation: formSlideIn 0.3s ease;
+}
+
+@keyframes formSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-content::-webkit-scrollbar {
@@ -238,6 +336,17 @@ body {
   
   .escorts-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .escort-card {
+    min-height: 450px;
+    padding-bottom: 60px;
+  }
+  
+  .card-booking-btn {
+    bottom: 15px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -304,17 +413,6 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
-
-.booking-form {
-  display: none;
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 12px;
-  margin-top: 2rem;
-  transform: translateY(20px);
-  opacity: 0;
-  transition: all 0.3s ease;
 }
 
 .booking-form.active {
@@ -428,6 +526,17 @@ body {
   .form-group {
     margin-bottom: 1rem;
   }
+
+  .escort-card {
+    min-height: 400px;
+    padding-bottom: 55px;
+  }
+  
+  .card-booking-btn {
+    bottom: 12px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
 }
 </style></head><body>
 <header class="header">
@@ -435,10 +544,6 @@ body {
     <h1>Diretório VIP</h1>
     <button class="menu-toggle">☰</button>
     <div class="nav-links">
-      <a href="https://example.com/mulheres" class="nav-link">Mulheres</a>
-      <a href="https://example.com/trans" class="nav-link">Trans</a>
-      <a href="https://example.com/favoritos" class="nav-link">Favoritos</a>
-      <a href="https://example.com/contato" class="nav-link">Contato</a>
     </div>
   </nav>
 </header>
@@ -611,7 +716,7 @@ function renderEscorts() {
   }
   
   grid.innerHTML = state.escorts.map(escort => `
-    <article class="escort-card" onclick="showEscortDetails(${escort.id})">
+    <article class="escort-card">
       <div class="escort-image">
         <svg width="100" height="100" viewBox="0 0 100 100">
           <circle cx="50" cy="40" r="25" fill="#666"/>
@@ -626,8 +731,17 @@ function renderEscorts() {
             <span class="escort-tag">${tag}</span>
           `).join('')}
         </div>
-        <p class="escort-price">R$ ${escort.price.toLocaleString('pt-BR')}</p>
+        <div class="escort-price">
+          <div class="original-price">
+            R$ 500,00
+            <span class="price-tag">-40%</span>
+          </div>
+          <div class="new-price">R$ ${escort.price.toLocaleString('pt-BR')}</div>
+        </div>
       </div>
+      <button onclick="showEscortDetails(${escort.id})" class="card-booking-btn">
+        Ver mais
+      </button>
     </article>
   `).join('');
 }
@@ -643,38 +757,41 @@ function showEscortDetails(id) {
     <p style="margin-bottom: 1rem;">${escort.description}</p>
     <p style="margin-bottom: 1rem;"><strong>Localização:</strong> ${escort.location}</p>
     <p style="margin-bottom: 1rem;"><strong>${escort.hasLocation ? 'Possui local próprio' : 'Não possui local próprio'}</strong></p>
-    <div style="margin-bottom: 1rem;">
-      <h3 style="color: var(--secondary);">Serviços:</h3>
-      <div class="escort-info">
-        ${escort.services.map(service => `
-          <span class="escort-tag">${service}</span>
-        `).join('')}
+    <div class="escort-price" style="justify-content: center;">
+      <div class="original-price" style="font-size: 1.2rem;">
+        R$ 500,00
+        <span class="price-tag">-40%</span>
+      </div>
+      <div class="new-price" style="font-size: 1.8rem;">
+        R$ ${escort.price.toLocaleString('pt-BR')}
       </div>
     </div>
-    <div style="margin-bottom: 1rem;">
-      <h3 style="color: var(--secondary);">Disponibilidade:</h3>
-      <ul style="list-style: none; margin-left: 0;">
-        ${escort.availability.map(time => `
-          <li>${time}</li>
-        `).join('')}
-      </ul>
-    </div>
-    <p class="escort-price" style="font-size: 1.5rem;">R$ ${escort.price.toLocaleString('pt-BR')}</p>
-    <div style="display: flex; gap: 1rem; justify-content: center;">
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
       <button onclick="showBookingForm()" class="contact-btn">
         Agendar Horário
       </button>
     </div>
   `;
   
-  modal.style.display = 'block';
+  // Reset form before showing modal
   document.getElementById('bookingForm').style.display = 'none';
+  document.getElementById('bookingForm').reset();
+  
+  // Show modal with smooth animation
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
 
 function showBookingForm() {
   const form = document.getElementById('bookingForm');
+  const modalContent = document.getElementById('modalContent');
+  
+  // Hide escort details
+  modalContent.style.display = 'none';
+  
+  // Show booking form with animation
   form.style.display = 'block';
-  setTimeout(() => form.classList.add('active'), 10);
+  form.classList.add('active');
 }
 
 function formatBookingMessage(formData) {
@@ -693,7 +810,15 @@ Local: ${formData.location === 'outro' ? formData.outroLocal : formData.location
 
 // Event Listeners
 document.querySelector('.close-modal').onclick = () => {
-  document.getElementById('escortModal').style.display = 'none';
+  const modal = document.getElementById('escortModal');
+  const modalContent = document.getElementById('modalContent');
+  const form = document.getElementById('bookingForm');
+  
+  modal.style.display = 'none';
+  modalContent.style.display = 'block';
+  form.style.display = 'none';
+  form.classList.remove('active');
+  document.body.style.overflow = 'auto'; // Restore scrolling
 };
 
 document.querySelector('.menu-toggle').onclick = () => {
