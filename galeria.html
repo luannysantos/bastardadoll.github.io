@@ -1,1 +1,1287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <head>
+        <base href="https://bastardadoll.github.io/">
+            <!-- Important Meta Tags -->
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+            <!-- Group SEO Meta Tags -->
+            <meta name="description" content="Luanny e Pamela, acompanhantes de luxo em São José dos Campos. Serviço premium, discrição e qualidade garantida.">
+            <meta name="keywords" content="acompanhantes, luxo, São José dos Campos, sjc, vale do paraíba, luanny, pamela, trans, massagem">
+            <meta name="robots" content="index, follow">
+        
+            <!-- Open Graph Meta Tags -->
+            <meta property="og:title" content="Luanny & Pamela - Acompanhantes de Luxo em São José dos Campos">
+            <meta property="og:description" content="Serviço premium de acompanhantes em São José dos Campos. Discrição e qualidade garantida com Luanny e Pamela.">
+            <meta property="og:image" content="https://bastardadoll.github.io/cover.jpg">
+            <meta property="og:url" content="https://bastardadoll.github.io">
+            <meta property="og:type" content="website">
+        
+            <!-- Twitter Card Meta Tags -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="Luanny & Pamela - Acompanhantes de Luxo em SJC">
+            <meta name="twitter:description" content="Serviço premium de acompanhantes em São José dos Campos. Encontre Luanny e Pamela.">
+            <meta name="twitter:image" content="https://bastardadoll.github.io/cover.jpg">
+        
+            <!-- Favicon -->
+            <link rel="icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
+            <link rel="shortcut icon" href="https://bastardadoll.github.io/favicon.ico" type="image/x-icon">
+        
+            <!-- Mobile Meta Tags -->
+            <meta name="theme-color" content="#1a0010">
+            <meta name="mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        
+            <title>Luanny & Pamela - Acompanhantes de Luxo</title>
+        
+            <!-- Keep existing styles -->
+            <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #FAFAFA;
+  font-family: 'Roboto', sans-serif;
+  color: #262626;
+  padding: 20px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.instagram-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-menu {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 100;
+  padding: 10px 0;
+  border-bottom: 1px solid #dbdbdb;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+  max-width: 935px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ff66b3;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: rgba(255, 102, 179, 0.1);
+}
+
+.nav-link.active {
+  background: #ff66b3;
+  color: white;
+}
+
+.profile-container {
+  max-width: 935px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 3px;
+  padding: 40px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Update styles for profile section */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 44px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #dbdbdb;
+  background: white;
+}
+
+.username {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.verified-badge {
+  color: green;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.stat {
+  text-align: left;
+  cursor: pointer;
+}
+
+.stat-number {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #8e8e8e;
+}
+
+.profile-buttons {
+  margin-top: 10px;
+}
+
+.profile-button {
+  background: #ff66b3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-button.secondary {
+  background: #9933cc;
+}
+
+.profile-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,102,179,0.3);
+}
+
+#highlights {
+  margin-top: 40px;
+}
+
+/* Update highlight styles to match template */
+.highlights {
+  display: flex;
+  gap: 35px;
+  margin: 0 0 40px 0;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 200px;
+}
+
+.highlight-circle {
+  width: 87px;
+  height: 87px;
+  border-radius: 50%;
+  border: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.highlight-circle video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.highlight-text {
+  font-size: 1.5rem;
+  color: #ff66b3;
+  margin: 0.5rem 0;
+}
+
+.highlight-details {
+  margin-top: 1rem;
+}
+
+.highlight-price {
+  font-weight: bold;
+}
+
+.highlight-description {
+  margin: 0.5rem 0;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+}
+
+.highlight-buy {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(45deg, #ff66b3, #9933cc);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.highlight-buy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,102,179,0.3);
+}
+
+#services-solo {
+  margin-top: 40px;
+}
+
+/* Update the service grid styles */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+  border-top: 1px solid #dbdbdb;
+  padding-top: 40px;
+}
+
+.post {
+  position: relative;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-align: left;
+  font-size: 1em;
+  background: #FAFAFA;
+  border: 1px solid #dbdbdb;
+  display: flex;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.post-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.payment-methods {
+  margin: 1rem 0;
+}
+
+.hourly-rate {
+  font-size: 1.2rem;
+  color: #ff66b3;
+}
+
+.whatsapp-button {
+  background: linear-gradient(45deg, #ff66b3, #9933cc);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,102,179,0.3);
+}
+
+.profile-bio {
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid #dbdbdb;
+}
+
+.profile-bio p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #262626;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .profile-stats {
+    justify-content: center;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-link {
+    padding: 5px 10px;
+    font-size: 0.9em;
+  }
+
+  .highlights {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .highlight {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .highlight-details {
+    text-align: center;
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .post {
+    padding: 15px;
+  }
+
+  .post-content {
+    max-height: none !important;
+    height: auto;
+    display: block;
+  }
+
+  .professional-box {
+    margin: 10px 0;
+    padding: 15px;
+  }
+
+  .pros-cons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .back-to-top {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .profile-button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Additional responsive styles for extra small screens */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .username {
+    font-size: 1.2rem;
+  }
+
+  .highlight-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .highlight-text {
+    font-size: 1.2rem;
+  }
+
+  .post img {
+    width: 100%;
+    height: auto;
+  }
+
+  .professional-box img {
+    width: 100%;
+    height: auto;
+  }
+
+  .disclaimer {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+}
+
+/* Add tablet-specific styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .post-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .profile-container {
+    padding: 30px;
+  }
+  
+  .highlights {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .highlight {
+    width: calc(50% - 20px);
+  }
+}
+
+/* Add smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improve tap targets for mobile */
+.nav-link,
+.profile-button,
+.highlight-buy,
+.whatsapp-button,
+.professional-button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <svg class="instagram-logo" viewBox="0 0 24 24" fill="#262626">
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12zm0 22c-5.527 0-10-4.473-10-10 0-5.527 4.473-10 10-10 5.527 0 10 4.473 10 10 0 5.527-4.473 10-10 10zm1-15h-2v6h2V7zm-1 10c-1.104 0-2-.896-2-2s.896-2 2-2 2 .896 2 2-.896 2-2 2z"/>
+  </svg>
+</div>
+
+<div class="nav-menu">
+  <div class="nav-container">
+    <a href="#profile" class="nav-link">Perfil</a>
+    <a href="#bio" class="nav-link">Bio</a>
+    <a href="#highlights" class="nav-link">Destaques</a>
+    <a href="#services-solo" class="nav-link">Serviços Solo</a>
+    <a href="#services-duo" class="nav-link active">Serviços Dupla</a>
+    <a href="#professional-friends" class="nav-link">Amigas</a>
+  </div>
+</div>
+
+<div class="profile-container">
+  <div id="profile" class="profile-header">
+    <div class="profile-pic">
+      <img alt="Foto de perfil" src="profile.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div>
+      <div class="username">
+        luanny.acompanhante
+        <span class="verified-badge">✓</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat">
+          <span class="stat-number">R$200</span>
+          <span class="stat-label">hora</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">29</span>
+          <span class="stat-label">anos</span>
+        </div>
+      </div>
+      <div class="profile-buttons">
+        <button class="profile-button">Seguir</button>
+        <button class="profile-button secondary">Mensagem</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="bio" class="profile-bio">
+    <p>✨ Acompanhantes de luxo</p>
+    <p>💋 Atendimento com classe e discrição</p>
+    <p>💕 Ambiente climatizado e reservado</p>
+    <p>💰 Pagamentos: PIX / Dinheiro</p>
+    <p>📍 São José dos Campos - SP</p>
+  </div>
+
+  <div id="highlights">
+    <h4 style="margin: 0 0 10px 0; color: #8e8e8e; font-weight: 500; font-size: 14px;">Destaques em Vídeo</h4>
+    <div class="highlights">
+      <div class="highlight" data-video="video1.mp4">
+        <div class="highlight-circle">
+          <video width="100%" height="100%" muted loop playsinline>
+            <source src="preview1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="highlight-text">Bastidores</div>
+        <div class="highlight-details">
+          <div class="highlight-price">R$ 49,90</div>
+          <div class="highlight-description">
+            Confira os bastidores das nossas produções exclusivas, momentos especiais e making of das sessões de fotos. Um olhar íntimo sobre nossa rotina e preparação para criar conteúdo de qualidade.
+          </div>
+          <button class="highlight-buy">VER VÍDEO COMPLETO</button>
+        </div>
+      </div>
+
+      <div class="highlight" data-video="video2.mp4">
+        <div class="highlight-circle">
+          <video width="100%" height="100%" muted loop playsinline>
+            <source src="preview2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="highlight-text">Ensaios</div>
+        <div class="highlight-details">
+          <div class="highlight-price">R$ 69,90</div>
+          <div class="highlight-description">
+            Ensaios fotográficos profissionais em locações exclusivas. Um mix de sensualidade e arte, mostrando toda nossa beleza em cenários deslumbrantes.
+          </div>
+          <button class="highlight-buy">VER VÍDEO COMPLETO</button>
+        </div>
+      </div>
+
+      <div class="highlight" data-video="video3.mp4">
+        <div class="highlight-circle">
+          <video width="100%" height="100%" muted loop playsinline>
+            <source src="preview3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="highlight-text">Eventos</div>
+        <div class="highlight-details">
+          <div class="highlight-price">R$ 89,90</div>
+          <div class="highlight-description">
+            Cobertura completa dos eventos mais exclusivos. Momentos únicos, festas memoráveis e encontros especiais com nossas amigas profissionais.
+          </div>
+          <button class="highlight-buy">VER VÍDEO COMPLETO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="services-solo">
+    <h4 style="margin: 40px 0 20px 0; color: #8e8e8e; font-weight: 500; font-size: 14px;">
+      Serviços Disponíveis Solo
+    </h4>
+    <div class="post-grid">
+      <div class="post">
+        <img alt="Luanny - serviço passiva" src="luanny-passiva.jpg" width="300" height="200">
+        <h3>Luanny - Serviço Passiva</h3>
+        <div class="payment-methods">
+          <span class="payment-icon">💰</span> PIX / Dinheiro
+        </div>
+        <div class="hourly-rate">R$ 200/hora</div>
+        <div class="post-content">
+          <p style="text-align: justify;">
+            Trans passiva, branca, 177cm, 64kg, seios pequenos e bumbum arredondado. Na forma passiva, Luanny se disponibiliza como uma boneca sexual, com a função de te permitir o uso de sua boca e de sua raba para que meta com vontade. Atendo em local próprio na Rua Rio Grande do Sul, Vila São Pedro, próximo ao Jardim Paulista, em frente à Dutra no km 146 sentido Rio de Janeiro. A rua é tranquila, não possui garagem própria, mas há opção de estacionamento no Posto Shell da esquina para sua conveniência.
+          </p>
+          <ul>
+            <li>Banho disponível</li>
+            <li>Toalhas limpas</li>
+            <li>Filmes adultos</li>
+            <li>Sigilo absoluto</li>
+          </ul>
+          <button class="whatsapp-button" data-number="5512982572507">📱 Agendar Agora</button>
+        </div>
+      </div>
+      
+      <div class="post">
+        <img alt="Luanny - serviço flex" src="luanny-flex.jpg" width="300" height="200">
+        <h3>Luanny - Serviço Flex</h3>
+        <div class="payment-methods">
+          <span class="payment-icon">💰</span> PIX / Dinheiro
+        </div>
+        <div class="hourly-rate">R$ 250/hora</div>
+        <div class="post-content">
+          <p style="text-align: justify;">
+            Trans versátil, branca, 177cm, 64kg, seios pequenos, bumbum arredondado, 19 centímetros de dote reto. Na forma passiva, Luanny se disponibiliza como uma boneca sexual flexível. Atendo em local próprio na Rua Rio Grande do Sul, Vila São Pedro, próximo ao Jardim Paulista, em frente à Dutra no km 146 sentido Rio de Janeiro. A rua é tranquila, não possui garagem própria, mas há opção de estacionamento no Posto Shell da esquina para sua conveniência.
+          </p>
+          <ul>
+            <li>Banho disponível</li>
+            <li>Toalhas limpas</li>
+            <li>Filmes adultos</li>
+            <li>Sigilo absoluto</li>
+          </ul>
+          <button class="whatsapp-button" data-number="5512982572507">📱 Agendar Agora</button>
+        </div>
+      </div>
+
+      <div class="post">
+        <img alt="Luanny - serviço ativa" src="luanny-ativa.jpg" width="300" height="200">
+        <h3>Luanny - Serviço Ativa</h3>
+        <div class="payment-methods">
+          <span class="payment-icon">💰</span> PIX / Dinheiro
+        </div>
+        <div class="hourly-rate">R$ 200/hora</div>
+        <div class="post-content">
+          <p style="text-align: justify;">
+            Trans ativa, branca, 177cm, 64kg, seios pequenos, bumbum arredondado, 19 centímetros de dote reto. Na forma Ativa, Luanny se disponibiliza a te fazer de putinha vagabunda. Atendo em local próprio na Rua Rio Grande do Sul, Vila São Pedro, próximo ao Jardim Paulista, em frente à Dutra no km 146 sentido Rio de Janeiro. A rua é tranquila, não possui garagem própria, mas há opção de estacionamento no Posto Shell da esquina para sua conveniência.
+          </p>
+          <ul>
+            <li>Banho disponível</li>
+            <li>Toalhas limpas</li>
+            <li>Filmes adultos</li>
+            <li>Sigilo absoluto</li>
+          </ul>
+          <button class="whatsapp-button" data-number="5512982572507">📱 Agendar Agora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="services-duo">
+    <h4 style="margin: 40px 0 20px 0; color: #8e8e8e; font-weight: 500; font-size: 14px;">
+      Serviços Disponíveis em Dupla
+    </h4>
+    <div class="post-grid">
+      <div class="post">
+        <img alt="Luanny e Pamela - para você" src="duo.jpg" width="300" height="200">
+        <h3>Luanny e Pamela - Para Você</h3>
+        <div class="payment-methods">
+          <span class="payment-icon">💰</span> PIX / Dinheiro
+        </div>
+        <div class="hourly-rate">R$ 600/hora</div>
+        <div class="post-content">
+          <p style="text-align: justify;">
+            Nesse tipo de atendimento é para você que deseja experimentar uma aventura diferente e rara, onde você terá a oportunidade de se divertir com uma trans e uma mulher experientes e que gostam do que fazem. Podemos realizar o encontro em motel, no seu carro ou domicílio. Você poderá desfrutar de cenas como: beijinhos, oral sem preservativo, sexo vaginal (Pamela), sexo oral e sexo anal em você (Luanny), além de posições diversas. No caso do carro, sugerimos locais mais reservados e noturnos. Para motel, temos sugestões de estabelecimentos discretos na região. Atendimento a domicílio requer verificação prévia do local.
+          </p>
+          
+          <div style="margin-top: 15px;">
+            <h4>Pamela</h4>
+            <ul>
+              <li>Idade: 25 anos</li>
+              <li>Morena, pele branca</li>
+              <li>Altura: 1.62m</li>
+              <li>Peso: 70kg</li>
+            </ul>
+            
+            <h4>Luanny</h4>
+            <ul>
+              <li>Idade: 29 anos</li>
+              <li>Loira, pele branca</li>
+              <li>Altura: 1.77m</li>
+              <li>Peso: 64kg</li>
+              <li>Dote: 19cm reto</li>
+            </ul>
+
+            <h4>Restrições:</h4>
+            <ul>
+              <li>Tudo com camisinha</li>
+              <li>Não faz anal (Pamela)</li>
+              <li>Não gosta que puxe cabelo</li>
+              <li>Tapas moderados</li>
+            </ul>
+          </div>
+          <button class="whatsapp-button" data-number="5511965121044">📱 Agendar Agora</button>
+        </div>
+      </div>
+
+      <div class="post">
+        <img alt="Luanny e Pamela - completo" src="duo2.jpg" width="300" height="200">
+        <h3>Luanny e Pamela - Completo</h3>
+        <div class="payment-methods">
+          <span class="payment-icon">💰</span> PIX / Dinheiro
+        </div>
+        <div class="hourly-rate">R$ 800/hora</div>
+        <div class="post-content">
+          <p style="text-align: justify;">
+            Uma experiência completa onde tanto Luanny quanto Pamela estarão disponíveis para realizar suas fantasias mais intensas. Atendemos em motel, carro ou domicílio. Nessa modalidade, você poderá desfrutar de: beijos gostosos com as duas, sexo oral sem preservativo por ambas, sexo vaginal com Pamela, inversão com Luanny (oral e anal), cenas de lesbianismo entre nós, dupla penetração, oral duplo, beijo grego, 69 e muito mais. Para encontros em motel, sugerimos estabelecimentos discretos da região. No carro, indicamos locais mais reservados, preferencialmente à noite. Para atendimento a domicílio, necessária verificação prévia do local e condições de segurança.
+          </p>
+          
+          <div style="margin-top: 15px;">
+            <h4>Preferências de Local:</h4>
+            <ul>
+              <li>Motel (recomendado)</li>
+              <li>Carro em local discreto</li>
+              <li>Domicílio verificado</li>
+            </ul>
+
+            <h4>Restrições:</h4>
+            <ul>
+              <li>Tudo com camisinha</li>
+              <li>Não faz anal (Pamela)</li>
+              <li>Não gosta que puxe cabelo</li>
+              <li>Tapas moderados</li>
+            </ul>
+          </div>
+          <button class="whatsapp-button" data-number="5511965121044">📱 Agendar Agora</button>
+        </div>
+      </div>
+
+      <div class="post">
+        <img alt="Luanny e Pamela - casal" src="duo3.jpg" width="300" height="200">
+        <h3>Luanny e Pamela - Casal</h3>
+        <div class="payment-methods">
+          <span class="payment-icon">💰</span> PIX / Dinheiro
+        </div>
+        <div class="hourly-rate">R$ 1000/hora</div>
+        <div class="post-content">
+          <p style="text-align: justify;">
+            Serviço especial para casais que desejam uma experiência única e diferenciada. Atendemos em motel, carro ou domicílio. Com Pamela e Luanny, o casal poderá explorar fantasias como: troca de casais, ménage, cenas lésbicas, inversão, oral duplo, dupla penetração e muito mais. Para a esposa/namorada: beijos quentes, sexo oral, 69, brincadeiras com acessórios (opcional). Para o marido/namorado: oral sem preservativo por ambas, inversão com Luanny, sexo vaginal com Pamela, anal com Luanny. Cenas especiais podem incluir: esposa com Pamela enquanto marido com Luanny, troca de posições, todos juntos, voyeur. Para encontros em motel, sugerimos estabelecimentos discretos. Carro em locais reservados, preferencialmente à noite.
+          </p>
+          
+          <div style="margin-top: 15px;">
+            <h4>Ideal Para:</h4>
+            <ul>
+              <li>Casais curiosos</li>
+              <li>Experiências bissexuais</li>
+              <li>Fantasias a três</li>
+              <li>Primeira experiência com trans</li>
+            </ul>
+
+            <h4>Locais de Atendimento:</h4>
+            <ul>
+              <li>Motel (recomendado)</li>
+              <li>Carro em local discreto</li>
+              <li>Domicílio verificado</li>
+            </ul>
+
+            <h4>Restrições:</h4>
+            <ul>
+              <li>Tudo com camisinha</li>
+              <li>Não faz anal (Pamela)</li>
+              <li>Não gosta que puxe cabelo</li>
+              <li>Tapas moderados</li>
+            </ul>
+          </div>
+          <button class="whatsapp-button" data-number="5511965121044">📱 Agendar Agora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="professional-friends">
+    <h4 style="margin: 40px 0 20px 0; color: #8e8e8e; font-weight: 500; font-size: 14px;">AMIGAS PROFISSIONAIS</h4>
+    <div class="post-grid">
+      <div class="professional-box">
+        <img alt="Pamela - Acompanhante de luxo" src="pamela.jpg" width="100%" height="auto">
+        <h4>Pamela</h4>
+        <p class="professional-description">Loira, 23 anos, 1.70m, 54kg. Acompanhante de alto nível com atendimento VIP personalizado.</p>
+        <div class="pros-cons">
+          <div class="positives">
+            <h5>Pontos Positivos</h5>
+            <ul>
+              <li>Massagem tântrica profissional</li>
+              <li>Atendimento premium</li>
+              <li>Local próprio de luxo</li>
+            </ul>
+          </div>
+          <div class="negatives">
+            <h5>Pontos Negativos</h5>
+            <ul>
+              <li>Agenda seletiva</li>
+              <li>Não atende à domicílio</li>
+            </ul>
+          </div>
+        </div>
+        <button class="whatsapp-button" data-number="5511965121044">📱 Agendar Agora</button>
+      </div>
+
+      <div class="professional-box">
+        <img alt="Nathalia - Acompanhante premium" src="nathalia.jpg" width="100%" height="auto">
+        <h4>Nathalia</h4>
+        <p class="professional-description">Morena, 25 anos, 1.68m, 56kg. Especialista em proporcionar momentos únicos com muito glamour e sensualidade.</p>
+        <div class="pros-cons">
+          <div class="positives">
+            <h5>Pontos Positivos</h5>
+            <ul>
+              <li>Massagem relaxante</li>
+              <li>Ambiente climatizado</li>
+              <li>Atendimento VIP</li>
+            </ul>
+          </div>
+          <div class="negatives">
+            <h5>Pontos Negativos</h5>
+            <ul>
+              <li>Horários limitados</li>
+              <li>Somente local próprio</li>
+            </ul>
+          </div>
+        </div>
+        <button class="whatsapp-button" data-number="5512982572507">📱 Agendar Agora</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer" style="margin-top: 40px; padding: 20px; text-align: center; color: #8e8e8e; border-top: 1px solid #dbdbdb;">
+    Conteúdo exclusivo para maiores de 18 anos | Sigilo absoluto garantido
+  </div>
+</div>
+
+<button class="back-to-top" aria-label="Voltar ao topo">
+  ↑
+</button>
+
+<div id="sscModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 style="color: #262626;">Questionário SSC</h2>
+    <form id="sscForm" class="ssc-form">
+      <div class="form-group">
+        <label>Nome:</label>
+        <input type="text" required>
+      </div>
+      <div class="form-group">
+        <label>Idade:</label>
+        <input type="number" min="18" required>
+      </div>
+      <div class="form-group">
+        <label>Limites (hard limits):</label>
+        <textarea required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Preferências (soft limits):</label>
+        <textarea required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Palavra de segurança:</label>
+        <input type="text" required>
+      </div>
+      <button type="submit" class="submit-ssc">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<div id="contractModal" class="modal contract-modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Questionário Interativo - Contrato</h2>
+    <form id="contractForm" class="contract-form">
+      <div class="step step-1">
+        <h3>Fase 1: 0-20 minutos</h3>
+        <div class="time-blocks">
+          <div class="time-block">
+            <h4>0-5 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_0" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_0" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>5-10 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_5" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_5" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>10-15 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_10" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_10" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>15-20 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_15" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_15" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step step-2">
+        <h3>Fase 2: 21-40 minutos</h3>
+        <div class="time-blocks">
+          <div class="time-block">
+            <h4>21-25 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_21" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_21" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>26-30 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_26" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_26" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>31-35 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_31" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_31" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>36-40 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_36" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_36" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step step-3"> 
+        <h3>Fase 3: 41-60 minutos</h3>
+        <div class="time-blocks">
+          <div class="time-block">
+            <h4>41-45 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_41" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_41" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>46-50 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_46" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_46" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>51-55 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_51" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_51" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+          <div class="time-block">
+            <h4>56-60 minutos</h4>
+            <div class="time-block-options">
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_56" value="beijar"> Beijar (+R$50)
+              </label>
+              <label class="option-checkbox">
+                <input type="checkbox" name="act_56" value="oral"> Oral (+R$100)
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary">
+        <h3>Resumo</h3>
+        <div class="summary-content"></div>
+        <div class="total-price">
+          <span>Total: R$ </span>
+          <span class="price-value">500,00</span>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-contract">Enviar via WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<button onclick="document.getElementById('contractModal').style.display='block'">Abrir Questionário</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('sscModal');
+  const span = document.getElementsByClassName('close')[0];
+  const sscForm = document.getElementById('sscForm');
+  
+  document.querySelectorAll('.highlight-buy, .whatsapp-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const modal = document.getElementById('sscModal');
+      modal.sourceButton = e.target;
+      modal.style.display = "block";
+    });
+  });
+
+  span.onclick = () => modal.style.display = "none";
+  
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  sscForm.onsubmit = (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(sscForm);
+    let message = "Novo questionário SSC:\n";
+    formData.forEach((value, key) => {
+      message += `${key}: ${value}\n`; 
+    });
+    
+    const sourceButton = modal.sourceButton;
+    const price = sourceButton.closest('.post, .highlight')?.querySelector('.price-tag, .highlight-price')?.textContent;
+    const service = sourceButton.closest('.post, .highlight')?.querySelector('h3, .highlight-text')?.textContent;
+    
+    message += `\nServiço solicitado: ${service}\nPreço: ${price}`;
+
+    let whatsappNumber = '5512982572507';
+    
+    if (service && service.toLowerCase().includes('pamela')) {
+      whatsappNumber = '5511965121044';
+    } else if (service && service.toLowerCase().includes('vip')) {
+      whatsappNumber = '5511965121044';
+    }
+    
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+    modal.style.display = "none";
+    sscForm.reset();
+  };
+
+  // Contract modal handling
+  const contractModal = document.getElementById('contractModal');
+  const contractForm = document.getElementById('contractForm');
+
+  contractForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Gather all selected options
+    const formData = new FormData(contractForm);
+    let message = "Roteiro personalizado:\n\n";
+    let total = 500; // Base price
+    
+    formData.forEach((value, key) => {
+      const time = key.split('_')[1];
+      message += `${time}-${parseInt(time)+5}min: ${value}\n`;
+      
+      // Add prices based on options
+      if(value === 'beijar') total += 50;
+      if(value === 'oral') total += 100;
+    });
+
+    message += `\nTotal: R$ ${total.toFixed(2)}`;
+
+    // Send to WhatsApp
+    window.location.href = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
+  });
+
+  document.querySelectorAll('.post').forEach(post => {
+    post.addEventListener('mouseenter', () => {
+      post.querySelector('.post-content').style.maxHeight = '1000px';
+    });
+    
+    post.addEventListener('mouseleave', () => {
+      post.querySelector('.post-content').style.maxHeight = '0';
+    });
+  });
+
+  const backToTop = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  document.querySelectorAll('.highlight-circle video').forEach(video => {
+    video.addEventListener('mouseenter', () => {
+      video.play().catch(e => console.log('Playback failed:', e));
+    });
+    
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
+
+  document.querySelectorAll('.highlight-buy').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const highlight = e.target.closest('.highlight');
+      const video = highlight.dataset.video;
+      const title = highlight.querySelector('.highlight-text').textContent;
+      const price = highlight.querySelector('.highlight-price').textContent;
+      
+      // Show payment/confirmation modal here
+      const message = `Olá! Gostaria de comprar o vídeo completo "${title}" - ${price}`;
+      window.open(`https://wa.me/5512982572507?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  });
+
+  // Handle mobile menu
+  const navMenu = document.querySelector('.nav-menu');
+  let startY = 0;
+  let scrolling = false;
+
+  // Add touch handling for better mobile scrolling
+  window.addEventListener('touchstart', (e) => {
+    startY = e.touches[0].pageY;
+  });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!scrolling) {
+      const currentY = e.touches[0].pageY;
+      const direction = startY - currentY;
+      
+      if (Math.abs(direction) > 20) {
+        scrolling = true;
+        if (direction > 0) {
+          navMenu.style.transform = 'translateY(-100%)';
+        } else {
+          navMenu.style.transform = 'translateY(0)';
+        }
+      }
+    }
+  });
+
+  window.addEventListener('touchend', () => {
+    scrolling = false;
+    startY = 0;
+  });
+
+  // Add lazy loading for images
+  document.querySelectorAll('img').forEach(img => {
+    img.loading = 'lazy';
+  });
+
+  // Improve mobile video performance
+  document.querySelectorAll('video').forEach(video => {
+    video.setAttribute('playsinline', '');
+    video.setAttribute('preload', 'none');
+  });
+
+  function updateActiveMenu() {
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    const scrollPosition = window.scrollY + 100; // Offset for sticky header
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').slice(1) === currentSection) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveMenu);
+  window.addEventListener('load', updateActiveMenu);
+
+  // Add smooth scrolling for menu links
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').slice(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        const offset = 80; // Adjust for sticky header
+        const targetPosition = targetSection.offsetTop - offset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
