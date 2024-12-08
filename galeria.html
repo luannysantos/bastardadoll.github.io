@@ -3,19 +3,29 @@
 <head>
     <head>
         <base href="https://bastardadoll.github.io/">
-        <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Safada's SJC</title><style>
+        
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acompanhantes de luxo em São José dos Campos. Atendimento discreto e profissional 24h.">
+  <meta name="keywords" content="acompanhantes sjc, garotas de programa sjc, acompanhantes são josé dos campos, massagistas, trans sjc">
+  <meta name="author" content="Safada's SJC">
+  <title>Safada's SJC</title>
+  <style>
 :root {
   --primary: #ff1493;
   --secondary: #9400d3;
   --background: #111111;
-  --metallic-overlay: linear-gradient(
-    45deg,
-    rgba(40, 40, 40, 0.7),
-    rgba(20, 20, 20, 0.9),
-    rgba(40, 40, 40, 0.7)
-  );
   --card-bg: #222222;
   --text: #ffffff;
+  --metallic-gradient: 
+    linear-gradient(
+      135deg,
+      #080808 0%,
+      #1a1a1a 25%,
+      #222222 50%,
+      #1a1a1a 75%,
+      #080808 100%
+    );
 }
 
 * {
@@ -26,17 +36,12 @@
 
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
-  background: 
-    var(--metallic-overlay),
-    radial-gradient(
-      circle at center,
-      #2a2a2a 0%,
-      #1a1a1a 50%,
-      #111111 100%
-    );
+  background: var(--metallic-gradient);
   background-attachment: fixed;
+  background-size: 400% 400%;
   color: var(--text);
   line-height: 1.6;
+  animation: backgroundShift 15s ease infinite;
   position: relative;
 }
 
@@ -48,26 +53,20 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(
-      135deg,
-      rgba(255, 20, 147, 0.05) 0%,
-      transparent 50%,
-      rgba(148, 0, 211, 0.05) 100%
-    );
+    radial-gradient(circle at 50% 50%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(148, 0, 211, 0.1) 0%, transparent 50%);
   pointer-events: none;
-  animation: shimmer 15s infinite linear;
-  z-index: -1;
 }
 
-@keyframes shimmer {
+@keyframes backgroundShift {
   0% {
-    background-position: 0% 0%;
+    background-position: 0% 50%;
   }
   50% {
-    background-position: 100% 100%;
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 0%;
+    background-position: 0% 50%;
   }
 }
 
@@ -121,19 +120,15 @@ body::before {
   position: relative;
   min-height: 500px;
   padding-bottom: 70px;
-  background: linear-gradient(
-    145deg,
-    rgba(40, 40, 40, 0.95),
-    rgba(20, 20, 20, 0.95)
-  );
+  background: linear-gradient(135deg, #222222 0%, #282828 50%, #222222 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
   box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(255, 20, 147, 0.1);
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(255, 20, 147, 0.1);
   transform: translateY(20px);
   opacity: 0;
   animation: fadeInUp 0.5s ease forwards;
@@ -154,10 +149,7 @@ body::before {
 
 .escort-card:hover {
   transform: translateY(-5px);
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(255, 20, 147, 0.2);
-  border-color: rgba(255, 20, 147, 0.3);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
 }
 
 .escort-image {
@@ -457,14 +449,18 @@ body::before {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0, 0, 0, 0.97);
+  backdrop-filter: blur(10px);
   z-index: 1000;
-  backdrop-filter: blur(8px);
   overflow-y: auto;
 }
 
 .modal-content {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, #222222 0%, #282828 50%, #222222 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 20, 147, 0.2);
   max-width: 600px;
   width: 95%;
   margin: 2rem auto;
