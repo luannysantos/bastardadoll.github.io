@@ -710,12 +710,20 @@ body {
     font-size: 0.85rem;
   }
 }
+
+/* Active filter styles */
+.nav-link.active {
+  border-bottom: 2px solid var(--primary);
+}
 </style></head><body>
 <header class="header">
   <nav class="nav">
     <h1>Safada's SJC</h1>
     <button class="menu-toggle">☰</button>
     <div class="nav-links">
+      <a href="#" class="nav-link" data-filter="all">Todas</a>
+      <a href="#" class="nav-link" data-filter="mulheres">Mulheres</a>
+      <a href="#" class="nav-link" data-filter="trans">Trans</a>
     </div>
   </nav>
 </header>
@@ -796,7 +804,8 @@ body {
 <script>
 const state = {
   escorts: [],
-  selectedEscort: null
+  selectedEscort: null,
+  filter: 'all'
 };
 
 async function fetchEscorts() {
@@ -805,19 +814,19 @@ async function fetchEscorts() {
       id: 1,
       name: "Pollyana",
       age: 27,
-      category: "trans",
+      category: "mulheres", // Changed from "trans" to "mulheres"
       location: "Vila Maria - São José dos Campos - SP - BRASIL",
-      hasLocation: true,
+      hasLocation: true, 
       price: 300,
-      description: "Branca, 1.78m de altura, 73kg, ruiva com cabelos longos. Corpo definido, siliconada e rabuda. Trans com vagina, atendimento VIP e discreto.",
-      tags: ["trans", "ruiva", "siliconada"],
+      description: "Branca, 1.78m de altura, 73kg, ruiva com cabelos longos. Corpo definido, siliconada e rabuda. Atendimento VIP e discreto.",
+      tags: ["ruiva", "siliconada", "rabuda"], // Removed "trans" tag
       physical: {
         height: "1.78m",
         weight: "73kg",
         hair: "ruiva, longo",
         body: "definida, rabuda",
         breasts: "siliconada",
-        features: "possui vagina"
+        features: "possui vagina" // Updated to match category
       },
       services: ["massagem", "acompanhante", "pernoite"],
       availability: ["Todos os dias", "24h"],
@@ -918,7 +927,11 @@ async function fetchEscorts() {
 function renderEscorts() {
   const grid = document.getElementById('escortsGrid');
   
-  if (state.escorts.length === 0) {
+  const filteredEscorts = state.escorts.filter(escort => 
+    state.filter === 'all' || escort.category === state.filter
+  );
+
+  if (filteredEscorts.length === 0) {
     grid.innerHTML = `
       <div style="text-align: center; grid-column: 1/-1;">
         Nenhum resultado encontrado.
@@ -927,7 +940,7 @@ function renderEscorts() {
     return;
   }
   
-  grid.innerHTML = state.escorts.map(escort => `
+  grid.innerHTML = filteredEscorts.map(escort => `
     <article class="escort-card">
       <div class="escort-image">
         <svg width="100" height="100" viewBox="0 0 100 100">
@@ -1053,6 +1066,18 @@ document.querySelector('.close-modal').onclick = () => {
 document.querySelector('.menu-toggle').onclick = () => {
   document.querySelector('.nav-links').classList.toggle('active');
 };
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    state.filter = link.getAttribute('data-filter');
+    
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    
+    renderEscorts();
+  });
+});
 
 document.getElementById('location').addEventListener('change', (e) => {
   const outroLocalGroup = document.getElementById('outroLocalGroup');
