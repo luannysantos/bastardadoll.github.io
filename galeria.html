@@ -150,130 +150,115 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, rgba(255,20,147,0.15), rgba(148,0,211,0.15));
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
   padding: 1.5rem 1rem;
   border-radius: 12px;
   position: relative;
-  overflow: visible;
-  width: 100%;
-  box-shadow: 0 4px 20px rgba(255,20,147,0.2);
-  border: 2px solid rgba(255,20,147,0.1);
-  text-align: center;
+  border: 2px solid rgba(0,128,0,0.5);
+  box-shadow: 
+    0 0 15px rgba(218,165,32,0.2),
+    inset 0 0 10px rgba(192,192,192,0.3);
+  animation: priceBoxGlow 2s infinite;
+}
+
+.price-tag {
+  background: linear-gradient(45deg, #cc0000, #ff0000);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  transform: rotate(15deg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  animation: tagPulse 1.5s infinite;
+  z-index: 2;
+  font-weight: bold;
+  border: 1px solid #fff;
 }
 
 .original-price {
-  color: #888;
+  color: #cc0000;
   text-decoration: line-through;
-  font-size: 1.1rem;
-  position: relative;
-  animation: fadeInOut 2s infinite;
-  margin-bottom: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  text-shadow: 0 0 10px rgba(255,255,255,0.1);
-}
-
-.original-price::before {
-  content: 'De:';
-  font-size: 0.9rem;
-  color: #999;
-  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
   font-weight: bold;
-  text-transform: uppercase;
-  display: block;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  animation: shakePrice 5s infinite;
 }
 
 .new-price {
-  color: var(--secondary);
-  font-weight: bold;
+  background: linear-gradient(
+    180deg,
+    #c0c0c0,
+    #808080,
+    #c0c0c0,
+    #ffffff,
+    #c0c0c0
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   font-size: 1.8rem;
-  position: relative;
-  animation: pulsate 2s infinite;
-  text-shadow: 0 0 15px rgba(148,0,211,0.4);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.new-price::before {
-  content: 'Por hora apenas:';
-  font-size: 0.9rem;
-  color: var(--primary);
-  margin-bottom: 0.25rem;
   font-weight: bold;
-  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  animation: metallicShine 3s linear infinite;
+  padding: 0.5rem;
   letter-spacing: 1px;
-  display: block;
 }
 
-.new-price::after {
-  content: '/hora';
-  font-size: 0.9rem;
-  color: var(--primary);
-  margin-top: 0.25rem;
-  font-weight: normal;
-  display: block;
+.countdown-timer {
+  background: rgba(255,255,255,0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #008000;
+  margin-bottom: 1rem;
+  animation: timerPulse 2s infinite;
 }
 
-/* Add festive animations */
-@keyframes pulsate {
-  0% {
-    transform: scale(1);
-    text-shadow: 0 0 15px rgba(148,0,211,0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    text-shadow: 0 0 25px rgba(148,0,211,0.6), 0 0 35px rgba(255,20,147,0.4);
-  }
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 15px rgba(148,0,211,0.4);
-  }
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.7;
-  }
-}
-
-/* Make price tag more festive */
-.price-tag {
-  position: absolute;
-  right: -40px;
-  top: -15px;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  color: white;
-  padding: 6px 15px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  transform: rotate(15deg);
-  animation: swing 3s infinite;
-  box-shadow: 0 2px 15px rgba(255,20,147,0.5);
+.countdown-label {
+  color: #cc0000;
   font-weight: bold;
-  border: 2px solid rgba(255,255,255,0.2);
-  z-index: 2;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
 }
 
-@keyframes swing {
-  0% {
-    transform: rotate(15deg);
-  }
-  50% {
-    transform: rotate(25deg);
-  }
-  100% {
-    transform: rotate(15deg);
-  }
+.countdown-value {
+  color: #008000;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@keyframes priceBoxGlow {
+  0% { box-shadow: 0 0 15px rgba(218,165,32,0.2); }
+  50% { box-shadow: 0 0 25px rgba(218,165,32,0.4); }
+  100% { box-shadow: 0 0 15px rgba(218,165,32,0.2); }
+}
+
+@keyframes tagPulse {
+  0% { transform: rotate(15deg) scale(1); }
+  50% { transform: rotate(15deg) scale(1.15); }
+  100% { transform: rotate(15deg) scale(1); }
+}
+
+@keyframes metallicShine {
+  0% { filter: brightness(100%); }
+  50% { filter: brightness(130%); }
+  100% { filter: brightness(100%); }
+}
+
+@keyframes shakePrice {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes timerPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 }
 
 /* Responsive adjustments */
@@ -826,11 +811,12 @@ function renderEscorts() {
           `).join('')}
         </div>
         <div class="escort-price">
-          <div class="promotion-banner">Promoção Limitada!</div>
-          <div class="original-price">
-            R$ 500,00
-            <span class="price-tag">-40%</span>
+          <div class="countdown-timer">
+            <div class="countdown-label">Promoção termina em:</div>
+            <div class="countdown-value" data-countdown="2024-12-25T23:59:59"></div>
           </div>
+          <span class="price-tag">-40%</span>
+          <div class="original-price">R$ 500,00</div>
           <div class="new-price">R$ ${escort.price.toLocaleString('pt-BR')}</div>
         </div>
       </div>
@@ -853,10 +839,13 @@ function showEscortDetails(id) {
     <p style="margin-bottom: 1rem;"><strong>Localização:</strong> ${escort.location}</p>
     <p style="margin-bottom: 1rem;"><strong>${escort.hasLocation ? 'Possui local próprio' : 'Não possui local próprio'}</strong></p>
     <div class="escort-price" style="justify-content: center;">
-      <div class="promotion-banner">Promoção Limitada!</div>
+      <div class="countdown-timer">
+        <div class="countdown-label">Promoção termina em:</div>
+        <div class="countdown-value" data-countdown="2024-12-25T23:59:59"></div>
+      </div>
+      <span class="price-tag">-40%</span>
       <div class="original-price" style="font-size: 1.2rem;">
         R$ 500,00
-        <span class="price-tag">-40%</span>
       </div>
       <div class="new-price" style="font-size: 1.8rem;">
         R$ ${escort.price.toLocaleString('pt-BR')}
@@ -963,7 +952,31 @@ formInputs.forEach(input => {
   });
 });
 
+// Countdown functionality
+function updateCountdowns() {
+  const countdowns = document.querySelectorAll('[data-countdown]');
+  
+  countdowns.forEach(element => {
+    const targetDate = new Date(element.dataset.countdown);
+    const now = new Date();
+    const difference = targetDate - now;
+    
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      
+      element.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+      element.innerHTML = 'Promoção encerrada!';
+    }
+  });
+}
+
 // Inicialização
+setInterval(updateCountdowns, 1000);
+updateCountdowns(); // Initial call
 fetchEscorts();
 </script>
 </body></html>
