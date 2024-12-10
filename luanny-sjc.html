@@ -154,19 +154,10 @@
         }
 
         .accordion-content.active {
-            max-height: 500px;
+            max-height: 1000px; /* Increased from 500px to 1000px to accommodate more content */
             opacity: 1;
             padding: 25px;
             line-height: 1.6;
-        }
-
-        .accordion-content ul {
-            list-style-position: inside;
-            margin-top: 10px;
-        }
-
-        .accordion-content li {
-            margin-bottom: 10px;
         }
 
         .gallery {
@@ -417,6 +408,7 @@
                 const content = button.nextElementSibling;
                 const span = button.querySelector('span');
                 
+                // Close other panels
                 document.querySelectorAll('.accordion-content').forEach(panel => {
                     if (panel !== content) {
                         panel.classList.remove('active');
@@ -425,12 +417,14 @@
                     }
                 });
                 
+                // Reset other arrows
                 document.querySelectorAll('.accordion-button span').forEach(arrow => {
                     if (arrow !== span) {
                         arrow.classList.remove('rotate');
                     }
                 });
 
+                // Toggle current panel
                 if (content.classList.contains('active')) {
                     content.classList.remove('active');
                     content.style.maxHeight = '0';
@@ -438,7 +432,8 @@
                     span.classList.remove('rotate');
                 } else {
                     content.classList.add('active');
-                    content.style.maxHeight = content.scrollHeight + 'px';
+                    // Set max-height to a large value to ensure content is fully visible
+                    content.style.maxHeight = content.scrollHeight + 50 + 'px'; // Added 50px buffer
                     content.style.opacity = '1';
                     span.classList.add('rotate');
                 }
