@@ -18,6 +18,23 @@
             padding: 20px;
         }
 
+        @keyframes shimmer {
+            0% { box-shadow: 0 0 10px #FFD700; }
+            50% { box-shadow: 0 0 20px #FFD700, 0 0 30px #B8860B; }
+            100% { box-shadow: 0 0 10px #FFD700; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .profile-container {
             max-width: 600px;
             margin: 0 auto;
@@ -48,12 +65,19 @@
             overflow: hidden;
             border: 3px solid #FFD700;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            animation: shimmer 3s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
         }
 
         .profile-pic svg {
             width: 80%;
             height: 80%;
             fill: #8B0000;
+            animation: rotate 20s linear infinite;
         }
 
         .accordion-button {
@@ -69,14 +93,51 @@
             justify-content: space-between;
             align-items: center;
             color: #8B0000;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accordion-button:hover {
+            transform: translateX(10px);
+            background: linear-gradient(to right, #FFD700, #B8860B);
+        }
+
+        .accordion-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .accordion-button:hover::after {
+            left: 100%;
+        }
+
+        .accordion-button span {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-button span.rotate {
+            transform: rotate(180deg);
         }
 
         .accordion-content {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            opacity: 1;
             padding: 20px;
-            display: none;
-            background: #FFFAF0;
-            line-height: 1.6;
-            color: #444;
         }
 
         .accordion-content ul {
@@ -101,6 +162,7 @@
             border-radius: 10px;
             border: 2px solid #FFD700;
             box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
+            animation: shimmer 4s infinite;
         }
 
         .gallery-scroll {
@@ -110,25 +172,30 @@
         }
 
         .gallery-item {
+            background: none;
+            border: 3px solid #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
             min-width: 200px;
             height: 200px;
-            background: linear-gradient(135deg, #8B0000, #DC143C);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FFD700;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
             cursor: pointer;
-            font-weight: bold;
-            border: 2px solid #FFD700;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(139, 0, 0, 0.4);
-            border: 2px solid #4169E1;
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::before {
+            z-index: 2;
         }
 
         .gallery-nav {
@@ -146,6 +213,25 @@
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .gallery-nav button:not(:disabled)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .gallery-nav button:not(:disabled):hover::before {
+            left: 100%;
         }
 
         .gallery-nav button:hover {
@@ -170,6 +256,7 @@
         h1 {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             color: #FFD700;
+            animation: pulse 2s infinite;
         }
 
         @media (max-width: 480px) {
@@ -249,14 +336,21 @@
             <h2>Galeria de Fotos</h2>
             <div class="gallery-container">
                 <div class="gallery-scroll" id="photosGallery">
-                    <div class="gallery-item">Foto 1</div>
-                    <div class="gallery-item">Foto 2</div>
-                    <div class="gallery-item">Foto 3</div>
-                    <div class="gallery-item">Foto 4</div>
-                    <div class="gallery-item">Foto 5</div>
-                    <div class="gallery-item">Foto 6</div>
-                    <div class="gallery-item">Foto 7</div>
-                    <div class="gallery-item">Foto 8</div>
+                    <div class="gallery-item">
+                        <img src="https://bastardadoll.github.io/luanny-5.jpg" alt="Luanny Photo 5">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://bastardadoll.github.io/luanny-4.jpg" alt="Luanny Photo 4">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://bastardadoll.github.io/luanny-3.jpg" alt="Luanny Photo 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://bastardadoll.github.io/luanny-2.jpg" alt="Luanny Photo 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://bastardadoll.github.io/luanny-1.jpg" alt="Luanny Photo 1">
+                    </div>
                 </div>
                 <div class="gallery-nav">
                     <button onclick="prevSlide('photosGallery')" id="photoPrev">Anterior</button>
@@ -290,7 +384,9 @@
                 
                 document.querySelectorAll('.accordion-content').forEach(panel => {
                     if (panel !== content) {
-                        panel.style.display = 'none';
+                        panel.classList.remove('active');
+                        panel.style.maxHeight = '0';
+                        panel.style.opacity = '0';
                     }
                 });
                 
@@ -300,11 +396,15 @@
                     }
                 });
 
-                if (content.style.display === 'block') {
-                    content.style.display = 'none';
+                if (content.classList.contains('active')) {
+                    content.classList.remove('active');
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
                     span.classList.remove('rotate');
                 } else {
-                    content.style.display = 'block';
+                    content.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.opacity = '1';
                     span.classList.add('rotate');
                 }
             });
@@ -320,6 +420,7 @@
             const gallery = document.getElementById(galleryId);
             const itemWidth = gallery.children[0].offsetWidth + 10; // Including gap
             const translation = -galleries[galleryId].currentIndex * itemWidth;
+            gallery.style.transition = 'transform 0.5s ease-in-out';
             gallery.style.transform = `translateX(${translation}px)`;
 
             // Update buttons state
