@@ -69,35 +69,36 @@ body {
 
 .about-section {
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 20px auto;
+  padding: 0 15px;
 }
 
 .about-container {
   background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
+  border-radius: 15px;
+  padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .about-nav {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .nav-button {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  white-space: nowrap;
   background: rgba(255, 255, 255, 0.05);
   border: none;
-  padding: 12px 24px;
   border-radius: 30px;
   color: var(--text-light);
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 16px;
   font-weight: 500;
 }
 
@@ -116,6 +117,7 @@ body {
 }
 
 .content-section {
+  padding: 15px;
   display: none;
   opacity: 0;
   transform: translateY(20px);
@@ -129,31 +131,30 @@ body {
 }
 
 .content-section h3 {
-  color: var(--primary-color);
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
 .content-section p {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 5px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 .stats-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 15px 0;
 }
 
 .stat-item {
+  padding: 8px 12px;
+  font-size: 14px;
   display: flex;
   align-items: center;
   gap: 10px;
   background: rgba(255, 255, 255, 0.05);
-  padding: 10px 15px;
   border-radius: 8px;
 }
 
@@ -224,125 +225,48 @@ body {
 }
 
 .profile {
-  flex: 1;
-  min-width: 280px;
-  max-width: 800px;
-  width: 100%;
+  padding: 15px;
+  max-width: 100%;
   margin: 0 auto;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 25px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: flex;
-  flex-direction: column;
-}
-
-.profile:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
-.profile-header {
-  position: relative;
-  padding: 20px 0;
-}
-
-.profile-header h2 {
-  color: var(--primary-color);
-  margin: 0;
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.profile-header p {
-  color: var(--text-muted);
-  margin: 5px 0;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.profile-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-}
-
-.profile-description {
-  flex: 1;
-  min-height: 120px;
-  display: flex;
-  align-items: center;
-  color: #e0e0e0;
-  font-size: 17px;
-  line-height: 1.9;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  text-align: justify;
 }
 
 .scroll-container {
   position: relative;
   overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  margin: 30px 0;
+  margin: 15px 0;
+  border-radius: 12px;
 }
 
 .scroll-content {
   display: flex;
-  animation: autoScroll 25s linear infinite;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.scroll-content:hover {
-  animation-play-state: paused;
+.scroll-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .image-box {
-  position: relative;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  border-radius: 12px;
   overflow: hidden;
-  min-width: 100%;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.image-box::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent 80%, rgba(0,0,0,0.3));
-  pointer-events: none;
 }
 
 .profile-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
   transition: transform 0.3s ease;
 }
 
 .image-box:hover .profile-image {
   transform: scale(1.05);
-}
-
-@keyframes autoScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-500%); }
 }
 
 .instructions {
@@ -394,6 +318,61 @@ body {
   opacity: 0.8;
 }
 
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.scroll-prev {
+  left: 10px;
+}
+
+.scroll-next {
+  right: 10px;
+}
+
+.scroll-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
+
 @media (max-width: 1024px) {
   .site-header {
     margin: 15px auto 40px;
@@ -435,37 +414,25 @@ body {
 }
 
 @media (max-width: 480px) {
-  .site-header h1 {
-    font-size: 28px;
-  }
-
   .profile {
-    min-width: 240px;
-    padding: 20px;
+    padding: 10px;
   }
-
+  
   .image-box {
-    height: 350px;
+    height: 300px;
   }
-
-  .profile-description {
-    font-size: 14px;
-    padding: 12px;
-    line-height: 1.6;
+  
+  .instructions {
+    font-size: 12px;
   }
-
-  .schedule-btn {
-    padding: 12px 20px;
-    font-size: 14px;
-  }
-
+  
   .location {
     font-size: 12px;
   }
-
-  .modal-content {
-    margin: 10px;
-    padding: 20px 15px;
+  
+  .schedule-btn {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 
   #modalTitle {
@@ -494,25 +461,8 @@ body {
 }
 
 @media (max-width: 320px) {
-  .site-header h1 {
-    font-size: 24px;
-  }
-
-  .profile {
-    padding: 15px;
-  }
-
   .image-box {
-    height: 300px;
-  }
-
-  .profile-header h2 {
-    font-size: 22px;
-  }
-
-  .form-control, .service-option {
-    padding: 10px 12px;
-    font-size: 13px;
+    height: 250px;
   }
 }
 
@@ -808,15 +758,9 @@ body {
     <div class="profile-section">
       <!-- Luanny's Profile -->
       <div class="profile">
-        <div class="profile-header">
-          <h2>Momentos Especiais</h2>
-          <p>Experiências Únicas</p>
-        </div>
-        <div class="profile-description">
-          Um ambiente acolhedor e discreto para momentos únicos e especiais. Conte comigo para realizar suas fantasias e desejos com total segurança e discrição. Aqui você encontra o espaço perfeito para ser você mesmo, sem julgamentos.
-        </div>
-        <p class="instructions">Passe o mouse para pausar a rolagem automática</p>
         <div class="scroll-container">
+          <button class="scroll-arrow scroll-prev">←</button>
+          <button class="scroll-arrow scroll-next">→</button>
           <div class="scroll-content">
             <div class="image-box">
               <img src="luanny-1.jpg" alt="Luanny 1" class="profile-image">
@@ -833,11 +777,10 @@ body {
             <div class="image-box">
               <img src="luanny-5.jpg" alt="Luanny 5" class="profile-image">
             </div>
-            <div class="image-box">
-              <img src="luanny-1.jpg" alt="Luanny 1" class="profile-image">
-            </div>
           </div>
+          <div class="scroll-dots"></div>
         </div>
+        <p class="instructions">Passe o mouse para pausar a rolagem automática</p>
         <div class="profile-contact">
           <div class="location">
             <svg width="24" height="24" viewBox="0 0 24 24">
@@ -1040,29 +983,82 @@ ${formData.outroLocal ? `Especificação do local: ${formData.outroLocal}` : ''}
 
 // Add smooth scrolling and improved modal behavior
 document.addEventListener('DOMContentLoaded', () => {
-  // Smooth scroll for all links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
+  const scrollContainers = document.querySelectorAll('.scroll-container');
+  
+  scrollContainers.forEach(container => {
+    const content = container.querySelector('.scroll-content');
+    const prevBtn = container.querySelector('.scroll-prev');
+    const nextBtn = container.querySelector('.scroll-next');
+    const dotsContainer = container.querySelector('.scroll-dots');
+    const slides = content.querySelectorAll('.image-box');
+    
+    // Create pagination dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => scrollToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+    
+    // Navigation functions
+    const scrollToSlide = (index) => {
+      const slideWidth = slides[0].offsetWidth;
+      content.scrollTo({
+        left: slideWidth * index,
         behavior: 'smooth'
       });
+      updateDots(index);
+    };
+    
+    const updateDots = (index) => {
+      container.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    };
+    
+    // Event listeners for buttons
+    prevBtn.addEventListener('click', () => {
+      const currentIndex = Math.round(content.scrollLeft / slides[0].offsetWidth);
+      const newIndex = Math.max(currentIndex - 1, 0);
+      scrollToSlide(newIndex);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      const currentIndex = Math.round(content.scrollLeft / slides[0].offsetWidth);
+      const newIndex = Math.min(currentIndex + 1, slides.length - 1);
+      scrollToSlide(newIndex);
+    });
+    
+    // Update dots on scroll
+    content.addEventListener('scroll', () => {
+      const index = Math.round(content.scrollLeft / slides[0].offsetWidth);
+      updateDots(index);
+    });
+    
+    // Touch handling
+    let touchStartX = 0;
+    let scrollStartX = 0;
+    
+    content.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      scrollStartX = content.scrollLeft;
+      content.style.scrollBehavior = 'auto';
+    });
+    
+    content.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      const diff = touchStartX - touch.clientX;
+      content.scrollLeft = scrollStartX + diff;
+    });
+    
+    content.addEventListener('touchend', () => {
+      content.style.scrollBehavior = 'smooth';
+      const slideWidth = slides[0].offsetWidth;
+      const index = Math.round(content.scrollLeft / slideWidth);
+      scrollToSlide(index);
     });
   });
-
-  // Close modal on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
-  });
 });
-
-window.onclick = function(event) {
-  const modal = document.getElementById('scheduleModal');
-  if (event.target === modal) {
-    closeModal();
-  }
-}
 </script>
 </body></html>
