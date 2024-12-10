@@ -157,7 +157,7 @@
             position: relative;
             overflow: hidden;
             margin: 20px 0;
-            padding: 10px;
+            padding: 0;
             background: rgba(255, 250, 240, 0.9);
             border-radius: 10px;
             border: 2px solid #FFD700;
@@ -168,16 +168,15 @@
         .gallery-scroll {
             display: flex;
             transition: transform 0.5s ease;
-            gap: 10px;
+            gap: 0;
         }
 
         .gallery-item {
-            background: none;
-            border: 3px solid #FFD700;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-            min-width: 200px;
-            height: 200px;
-            cursor: pointer;
+            flex: 0 0 100%;
+            min-width: 100%;
+            height: 300px;
+            border: none;
+            box-shadow: none;
             position: relative;
             overflow: hidden;
         }
@@ -186,16 +185,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 6px;
+            border-radius: 0;
             transition: transform 0.3s ease;
         }
 
         .gallery-item:hover img {
             transform: scale(1.1);
-        }
-
-        .gallery-item::before {
-            z-index: 2;
         }
 
         .gallery-nav {
@@ -418,66 +413,80 @@
 
         function updateGallery(galleryId) {
             const gallery = document.getElementById(galleryId);
-            const itemWidth = gallery.children[0].offsetWidth + 10; // Including gap
-            const translation = -galleries[galleryId].currentIndex * itemWidth;
+            const items = gallery.children;
+            const itemWidth = gallery.parentElement.offsetWidth;
+            
+            // Calculate translation
+            let translation = -galleries[galleryId].currentIndex * itemWidth;
+            
+            // Apply transform
             gallery.style.transition = 'transform 0.5s ease-in-out';
             gallery.style.transform = `translateX(${translation}px)`;
-
-            // Update buttons state
-            const prevButton = document.getElementById(galleryId === 'photosGallery' ? 'photoPrev' : 'videoPrev');
-            const nextButton = document.getElementById(galleryId === 'photosGallery' ? 'photoNext' : 'videoNext');
             
-            prevButton.disabled = galleries[galleryId].currentIndex === 0;
-            nextButton.disabled = galleries[galleryId].currentIndex >= gallery.children.length - 1;
+            // Handle infinite scroll transition
+            if (galleries[galleryId].currentIndex >= items.length) {
+                setTimeout(() => {
+                    gallery.style.transition = 'none';
+                    galleries[galleryId].currentIndex = 0;
+                    gallery.style.transform = 'translateX(0)';
+                }, 500);
+            }
+            
+            if (galleries[galleryId].currentIndex < 0) {
+                setTimeout(() => {
+                    gallery.style.transition = 'none';
+                    galleries[galleryId].currentIndex = items.length - 1;
+                    translation = -galleries[galleryId].currentIndex * itemWidth;
+                    gallery.style.transform = `translateX(${translation}px)`;
+                }, 500);
+            }
         }
 
         function nextSlide(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            if (galleries[galleryId].currentIndex < gallery.children.length - 1) {
-                galleries[galleryId].currentIndex++;
-                updateGallery(galleryId);
-            }
+            galleries[galleryId].currentIndex++;
+            updateGallery(galleryId);
         }
 
         function prevSlide(galleryId) {
-            if (galleries[galleryId].currentIndex > 0) {
-                galleries[galleryId].currentIndex--;
-                updateGallery(galleryId);
-            }
+            galleries[galleryId].currentIndex--;
+            updateGallery(galleryId);
         }
 
-        // Auto-scroll functionality
+        // Update auto-scroll functionality
         function startAutoScroll() {
             setInterval(() => {
                 Object.keys(galleries).forEach(galleryId => {
                     if (galleries[galleryId].autoScroll) {
-                        const gallery = document.getElementById(galleryId);
-                        if (galleries[galleryId].currentIndex >= gallery.children.length - 1) {
-                            galleries[galleryId].currentIndex = 0;
-                        } else {
-                            galleries[galleryId].currentIndex++;
-                        }
+                        galleries[galleryId].currentIndex++;
                         updateGallery(galleryId);
                     }
                 });
-            }, 4000); // Changed from 3000 to 4000 milliseconds
+            }, 4000);
         }
 
-        // Initialize galleries
-        Object.keys(galleries).forEach(galleryId => {
-            updateGallery(galleryId);
+        // Initialize galleries and event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            Object.keys(galleries).forEach(galleryId => {
+                const gallery = document.getElementById(galleryId);
+                
+                // Clone first and last items for smooth infinite scroll
+                const firstClone = gallery.firstElementChild.cloneNode(true);
+                const lastClone = gallery.lastElementChild.cloneNode(true);
+                gallery.appendChild(firstClone);
+                gallery.insertBefore(lastClone, gallery.firstElementChild);
+                
+                updateGallery(galleryId);
+                
+                // Pause auto-scroll on hover
+                gallery.parentElement.addEventListener('mouseenter', () => {
+                    galleries[galleryId].autoScroll = false;
+                });
+                gallery.parentElement.addEventListener('mouseleave', () => {
+                    galleries[galleryId].autoScroll = true;
+                });
+            });
             
-            // Pause auto-scroll on hover
-            const gallery = document.getElementById(galleryId);
-            gallery.parentElement.addEventListener('mouseenter', () => {
-                galleries[galleryId].autoScroll = false;
-            });
-            gallery.parentElement.addEventListener('mouseleave', () => {
-                galleries[galleryId].autoScroll = true;
-            });
+            startAutoScroll();
         });
-
-        // Start auto-scroll
-        startAutoScroll();
     </script>
 </body></html>
