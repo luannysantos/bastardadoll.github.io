@@ -2,7 +2,6 @@
 <html lang="pt-br">
 <head>
         <base href="https://bastardadoll.github.io/">
- 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luanny - Perfil</title>
@@ -128,26 +127,50 @@
         }
 
         .accordion-content {
-            transition: all 0.3s ease-in-out;
+            height: auto;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
             padding: 0 20px;
-            white-space: normal;
-            word-wrap: break-word;
+            background: #FFFAF0;
         }
 
         .accordion-content.active {
-            max-height: 1000px;
+            height: auto;
+            max-height: 100%;
             opacity: 1;
-            padding: 15px;
-            overflow: visible;
+            padding: 20px;
+        }
+
+        .accordion-content h3 {
+            color: #8B0000;
+            margin: 15px 0 10px;
+            font-size: 1.1em;
         }
 
         .accordion-content p, 
         .accordion-content ul {
             margin-bottom: 15px;
             line-height: 1.5;
+        }
+
+        .characteristics {
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .characteristics li {
+            margin: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .characteristics li::before {
+            content: '•';
+            color: #8B0000;
+            position: absolute;
+            left: 0;
         }
 
         .gallery {
@@ -296,6 +319,56 @@
             font-size: 1.6em;
         }
 
+        /* Add these styles to the existing CSS */
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8B0000;
+            color: #FFD700;
+            text-align: center;
+            line-height: 20px;
+            font-size: 14px;
+            cursor: help;
+            margin: 0 4px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .info-icon:hover {
+            background: #DC143C;
+            transform: scale(1.1);
+        }
+
+        .info-icon[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(139, 0, 0, 0.9);
+            color: #FFD700;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            width: max-content;
+            max-width: 300px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid #FFD700;
+        }
+
+        .cta {
+            margin-top: 20px;
+            padding: 10px;
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: #FFD700;
+            border-radius: 5px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
         @media (max-width: 480px) {
             body {
                 padding: 5px; /* Reduced padding */
@@ -368,7 +441,25 @@
             <span>▼</span>
         </button>
         <div class="accordion-content">
-            <p>Olá, eu sou a Luanny, uma mulher trans autêntica e sensual, pronta para proporcionar experiências inesquecíveis. Minha história de vida, marcada pela superação e autodescoberta, me trouxe a confiança e a empatia que hoje uso para criar momentos únicos e prazerosos. Acredito na conexão genuína, no respeito mútuo e na liberdade de explorar a intimidade de maneira aberta e segura.</p>
+            <p>Olá, eu sou a Luanny, uma trans <span class="info-icon" data-tooltip="Ser uma pessoa trans, pra mim, no meu ponto de vista; é ter ciência que não posso ser uma mulher cis, jamais. nasci em uma fazenda no mato grosso do sul, sem tv, nem luz elétrica; eu pensava apenas ser mãe. entendo hoje que talvez inconscientemente me fez acreditar que poderia gerar um filho e ser a mãe que eu não tive.">ⓘ</span> cheia de autenticidade, carisma e sensualidade. Minha jornada como trans me trouxe força, empatia e uma visão ampla sobre desejos e conexões humanas.</p>
+            
+            <p>Sou apaixonada por explorar novas experiências e criar momentos únicos com quem busca algo especial e inesquecível.</p>
+            
+            <ul class="characteristics">
+                <li>Pele clara, não possuo silicone</li>
+                <li>34 anos, 1.77m de altura e corpo definido</li>
+                <li>19 centímetros de dote</li>
+            </ul>
+
+            <p>Sou Pansexual <span class="info-icon" data-tooltip="Pansexualidade é a atração romântica, emocional e/ou sexual por pessoas independentemente de seu gênero">ⓘ</span>, sempre pronta para proporcionar uma experiência que vai além do físico. Gosto de explorar a sensualidade e os desejos de maneira segura e consensual, incluindo práticas mais intensas e fetiches, como o universo BDSM. Respeito e cumplicidade são pilares em tudo o que faço.</p>
+
+            <h3>O que me atrai</h3>
+            <p>Tenho uma atração natural por pessoas que sabem o que querem, sejam elas homens, mulheres ou casais. A confiança, o respeito mútuo e a capacidade de se expressar livremente são qualidades que admiro. Valorizo conexões genuínas, onde há espaço para a troca de fantasias, desejos e até mesmo momentos de intimidade emocional.</p>
+
+            <h3>Minha atuação</h3>
+            <p>Além de proporcionar experiências inesquecíveis, estou sempre aberta a adaptar meus serviços para atender diferentes expectativas e preferências. Prezo por um ambiente discreto e acolhedor, onde você pode ser quem realmente é, sem julgamentos. Se você está buscando momentos de prazer, seja em encontros intensos ou para explorar fantasias, estou aqui para te receber de braços abertos.</p>
+
+            <p class="cta">Se interessou? Vamos conversar! Estou pronta para te conhecer melhor e criar juntos uma experiência que será única para nós.</p>
         </div>
 
         <button class="accordion-button">
@@ -459,30 +550,27 @@
                 const content = button.nextElementSibling;
                 const span = button.querySelector('span');
                 
+                // Close other panels
                 document.querySelectorAll('.accordion-content').forEach(panel => {
                     if (panel !== content) {
                         panel.classList.remove('active');
-                        panel.style.maxHeight = '0';
+                        panel.style.maxHeight = null;
                         panel.style.opacity = '0';
-                    }
-                });
-                
-                document.querySelectorAll('.accordion-button span').forEach(arrow => {
-                    if (arrow !== span) {
-                        arrow.classList.remove('rotate');
+                        const otherSpan = panel.previousElementSibling.querySelector('span');
+                        otherSpan.classList.remove('rotate');
                     }
                 });
 
+                // Toggle current panel
+                content.classList.toggle('active');
+                span.classList.toggle('rotate');
+                
                 if (content.classList.contains('active')) {
-                    content.classList.remove('active');
-                    content.style.maxHeight = '0';
-                    content.style.opacity = '0';
-                    span.classList.remove('rotate');
-                } else {
-                    content.classList.add('active');
-                    content.style.maxHeight = content.scrollHeight + 1000 + 'px'; // Add extra space
+                    content.style.maxHeight = '100%';
                     content.style.opacity = '1';
-                    span.classList.add('rotate');
+                } else {
+                    content.style.maxHeight = null;
+                    content.style.opacity = '0';
                 }
             });
         });
