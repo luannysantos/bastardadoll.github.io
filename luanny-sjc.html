@@ -35,6 +35,20 @@
             to { transform: rotate(360deg); }
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pageLoad {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         .profile-container {
             max-width: 600px;
             margin: 0 auto;
@@ -43,6 +57,7 @@
             box-shadow: 0 8px 16px rgba(139, 0, 0, 0.3);
             overflow: hidden;
             border: 2px solid #FFD700;
+            animation: pageLoad 0.8s ease-out;
         }
 
         .profile-header {
@@ -82,7 +97,7 @@
 
         .accordion-button {
             width: 100%;
-            padding: 15px;
+            padding: 20px;
             background: linear-gradient(to right, #FFFAF0, #FFD700);
             border: none;
             border-bottom: 1px solid #8B0000;
@@ -96,11 +111,14 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
         }
 
         .accordion-button:hover {
-            transform: translateX(10px);
-            background: linear-gradient(to right, #FFD700, #B8860B);
+            transform: translateX(15px);
+            background: linear-gradient(to right, #FFD700, #DC143C);
+            color: #FFFAF0;
         }
 
         .accordion-button::after {
@@ -127,17 +145,19 @@
         }
 
         .accordion-content {
-            transition: all 0.3s ease-in-out;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             max-height: 0;
             opacity: 0;
             overflow: hidden;
             padding: 0 20px;
+            background: linear-gradient(to right, #FFFAF0, rgba(255, 215, 0, 0.1));
         }
 
         .accordion-content.active {
             max-height: 500px;
             opacity: 1;
-            padding: 20px;
+            padding: 25px;
+            line-height: 1.6;
         }
 
         .accordion-content ul {
@@ -157,13 +177,13 @@
             position: relative;
             overflow: hidden;
             margin: 20px 0;
-            padding: 0;
-            background: rgba(255, 250, 240, 0.9);
+            padding: 10px;
+            background: rgba(139, 0, 0, 0.05);
             border-radius: 10px;
             border: 2px solid #FFD700;
             box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
             animation: shimmer 4s infinite;
-            height: 70vh; /* Add fixed height relative to viewport */
+            height: 80vh; /* Increased height for better viewing */
         }
 
         .gallery-scroll {
@@ -174,8 +194,11 @@
 
         .gallery-item {
             flex: 0 0 100%;
-            min-width: 100%;
-            height: 100%;  /* Changed from fixed 300px */
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.05);
             border: none;
             box-shadow: none;
             position: relative;
@@ -184,11 +207,13 @@
         }
 
         .gallery-item img {
-            width: 100%;
-            height: 100%;
+            max-height: 100%;
+            width: auto;
+            max-width: 100%;
             object-fit: contain; /* Changed from cover to contain */
-            border-radius: 0;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-in; /* Added fadeIn animation */
         }
 
         .gallery-item:hover img {
@@ -196,18 +221,24 @@
         }
 
         .gallery-nav {
+            position: absolute;
+            width: 100%;
+            bottom: 20px;
+            left: 0;
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 20px;
+            z-index: 10;
         }
 
         .gallery-nav button {
-            background: #8B0000;
+            padding: 10px 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            background: rgba(139, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
             border: 2px solid #FFD700;
             color: #FFD700;
-            padding: 8px 15px;
-            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -232,6 +263,8 @@
         }
 
         .gallery-nav button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
             background: #DC143C;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
@@ -459,6 +492,31 @@
             updateGallery(galleryId);
         }
 
+        // Add touch support for mobile devices
+        function addTouchSupport() {
+            const galleries = document.querySelectorAll('.gallery-container');
+            galleries.forEach(gallery => {
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                gallery.addEventListener('touchstart', e => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+
+                gallery.addEventListener('touchend', e => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const galleryId = gallery.querySelector('.gallery-scroll').id;
+                    
+                    if (touchStartX - touchEndX > 50) {
+                        nextSlide(galleryId);
+                    }
+                    if (touchStartX - touchEndX < -50) {
+                        prevSlide(galleryId);
+                    }
+                });
+            });
+        }
+
         // Update auto-scroll functionality
         function startAutoScroll() {
             setInterval(() => {
@@ -493,6 +551,7 @@
                 });
             });
             
+            addTouchSupport();
             startAutoScroll();
         });
     </script>
