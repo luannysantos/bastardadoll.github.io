@@ -2,11 +2,13 @@
 <html lang="pt-br">
 <head>
     <head>
-        <a href="https://wa.me/5512988590324">
+    <a href="https://wa.me/5512988590324">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Campanha de doação de alimentos para pessoas carentes - Asilo Santo Antônio">
     <meta name="theme-color" content="#25D366">
+    <meta property="og:title" content="Pode Ajudar? - Doações para Pessoas Carentes">
+    <meta property="og:description" content="Campanha de doação de alimentos organizada pela voluntária Jô. Ajude-nos a fazer a diferença!">
     <title>Pode Ajudar? - Doações para Pessoas Carentes</title>
     <style>
         * {
@@ -243,7 +245,7 @@
     <script>
         function createSnowflakes() {
             const snowflakeCharacters = ['❄', '❅', '❆'];
-            const numberOfSnowflakes = Math.min(window.innerWidth / 50, 10); 
+            const numberOfSnowflakes = Math.min(window.innerWidth / 50, 5); 
             
             const existingSnowflakes = document.querySelectorAll('.snowflake');
             existingSnowflakes.forEach(snowflake => snowflake.remove());
@@ -274,8 +276,7 @@
             try {
                 const snowflakes = document.querySelectorAll('.snowflake');
                 snowflakes.forEach(snowflake => {
-                    const rect = snowflake.getBoundingClientRect();
-                    if (rect.bottom > window.innerHeight + 100) {
+                    if (snowflake.offsetTop > window.innerHeight) {
                         snowflake.remove();
                     }
                 });
@@ -300,9 +301,9 @@
             <div class="ways-to-help">
                 <h2>Como você pode ajudar:</h2>
                 <ul>
-                    <li>Doando alimentos</li>
-                    <li>Contribuir com um valor via PIX</li>
-                    <li>Doar uma cesta básica completa</li>
+                    <li>Doando alimentos não perecíveis</li>
+                    <li>Contribuindo com um valor via PIX</li>
+                    <li>Doando uma cesta básica completa</li>
                 </ul>
             </div>
             
