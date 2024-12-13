@@ -2,689 +2,795 @@
 <html lang="pt-br">
 <head>
     <base href="https://bastardadoll.github.io/">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luanny - Perfil</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
-            padding: 5px;
-        }
-
-        @keyframes shimmer {
-            0% { box-shadow: 0 0 10px #FFD700; }
-            50% { box-shadow: 0 0 20px #FFD700, 0 0 30px #B8860B; }
-            100% { box-shadow: 0 0 10px #FFD700; }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .profile-container {
-            max-width: 100%;
-            margin: 5px;
-            background: #FFFAF0;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(139, 0, 0, 0.3);
-            overflow: hidden;
-            border: 2px solid #FFD700;
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-header {
-            background: linear-gradient(45deg, #8B0000, #DC143C);
-            padding: 20px;
-            text-align: center;
-            color: #FFD700;
-            border-bottom: 3px solid #FFD700;
-        }
-
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto;
-            background: #FFD700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 3px solid #FFD700;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-            animation: shimmer 3s infinite;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.1);
-        }
-
-        .profile-pic svg {
-            width: 80%;
-            height: 80%;
-            fill: #8B0000;
-            animation: rotate 20s linear infinite;
-        }
-
-        .accordion-button {
-            width: 100%;
-            padding: 10px;
-            background: linear-gradient(to right, #FFFAF0, #FFD700);
-            border: none;
-            border-bottom: 1px solid #8B0000;
-            text-align: left;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #8B0000;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .accordion-button:hover {
-            transform: translateX(10px);
-            background: linear-gradient(to right, #FFD700, #B8860B);
-        }
-
-        .accordion-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
-            transition: 0.5s;
-        }
-
-        .accordion-button:hover::after {
-            left: 100%;
-        }
-
-        .accordion-button span {
-            transition: transform 0.3s ease;
-            transform: rotate(0deg);
-        }
-
-        .accordion-button span.rotate {
-            transform: rotate(180deg);
-        }
-
-        .accordion-content {
-            height: 0;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            padding: 0 20px;
-            background: #FFFAF0;
-        }
-
-        .accordion-content.active {
-            height: auto;
-            max-height: 2000px;
-            opacity: 1;
-            padding: 20px;
-        }
-
-        .accordion-content h3 {
-            color: #8B0000;
-            margin: 15px 0 10px;
-            font-size: 1.1em;
-        }
-
-        .accordion-content p, 
-        .accordion-content ul {
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .characteristics {
-            list-style: none;
-            padding: 10px 0;
-        }
-
-        .characteristics li {
-            margin: 5px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .characteristics li::before {
-            content: '•';
-            color: #8B0000;
-            position: absolute;
-            left: 0;
-        }
-
-        .gallery {
-            padding: 5px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gallery-container {
-            position: relative;
-            overflow: hidden;
-            margin: 5px 0;
-            padding: 0;
-            background: rgba(255, 250, 240, 0.9);
-            border-radius: 10px;
-            border: 2px solid #FFD700;
-            box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
-            animation: shimmer 4s infinite;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .gallery-scroll {
-            flex: 1;
-            height: 100%;
-            display: flex;
-            transition: transform 0.5s ease;
-            gap: 0;
-        }
-
-        .gallery-item {
-            min-width: 100%;
-            height: 100%;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            border: 2px solid #FFD700;
-        }
-
-        .gallery-item img {
-            max-height: 100%;
-            max-width: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 215, 0, 0.2),
-                transparent
-            );
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translate(-100%, -100%); }
-            100% { transform: translate(100%, 100%); }
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(139, 0, 0, 0.4);
-            border: 2px solid #4169E1;
-        }
-
-        .gallery-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        .gallery-nav button {
-            background: #8B0000;
-            border: 2px solid #FFD700;
-            color: #FFD700;
-            padding: 6px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .gallery-nav button:not(:disabled)::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
-            transition: 0.5s;
-            z-index: -1;
-        }
-
-        .gallery-nav button:not(:disabled):hover::before {
-            left: 100%;
-        }
-
-        .gallery-nav button:hover {
-            background: #DC143C;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .gallery-nav button:disabled {
-            background: #A9A9A9;
-            border: 2px solid #D3D3D3;
-            cursor: not-allowed;
-        }
-
-        h2 {
-            color: #8B0000;
-            margin: 10px 0 5px;
-            text-align: center;
-            font-size: 1.1em;
-            text-shadow: 1px 1px 2px #FFD700;
-        }
-
-        h1 {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: #FFD700;
-            animation: pulse 2s infinite;
-            font-size: 1.6em;
-        }
-
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #8B0000;
-            color: #FFD700;
-            text-align: center;
-            line-height: 20px;
-            font-size: 14px;
-            cursor: help;
-            margin: 0 4px;
-            position: relative;
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .info-icon:hover {
-            background: #DC143C;
-            transform: scale(1.1);
-        }
-
-        .info-icon[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(139, 0, 0, 0.95);
-            color: #FFD700;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            width: max-content;
-            max-width: 300px;
-            z-index: 9999;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            border: 1px solid #FFD700;
-            white-space: normal;
-            pointer-events: none;
-        }
-
-        .cta {
-            margin-top: 20px;
-            padding: 10px;
-            background: linear-gradient(135deg, #8B0000, #DC143C);
-            color: #FFD700;
-            border-radius: 5px;
-            text-align: center;
-            animation: pulse 2s infinite;
-        }
-
-        .accordion-content p,
-        .accordion-content ul {
-            text-align: justify;
-            padding: 10px 0;
-            font-size: 1em;
-            line-height: 1.6;
-        }
-
-        .accordion-content h3 {
-            margin: 20px 0 10px;
-            color: #8B0000;
-            font-size: 1.2em;
-        }
-
-        .section-divider {
-            border-top: 1px solid rgba(139, 0, 0, 0.2);
-            margin: 20px 0;
-        }
-
-        .gallery-item img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            margin: auto;
-            display: block;
-        }
-
-        @media (max-width: 480px) {
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luanny - Perfil</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+    
             body {
-                padding: 5px; 
-            }
-
-            .profile-container {
-                margin: 5px;
-                border-radius: 8px;
-            }
-            
-            .profile-pic {
-                width: 100px; 
-                height: 100px;
-            }
-
-            .accordion-button {
-                padding: 10px; 
-                font-size: 0.9em;
-            }
-
-            .accordion-content {
-                padding: 10px;
-            }
-
-            .accordion-content p,
-            .accordion-content ul {
-                font-size: 0.95em;
-                line-height: 1.5;
-                text-align: left;
-            }
-
-            .gallery {
+                background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
                 padding: 5px;
             }
-
-            .gallery-container {
-                height: 60vh; 
+    
+            @keyframes shimmer {
+                0% { box-shadow: 0 0 10px #FFD700; }
+                50% { box-shadow: 0 0 20px #FFD700, 0 0 30px #B8860B; }
+                100% { box-shadow: 0 0 10px #FFD700; }
             }
-
+    
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+    
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+    
+            .profile-container {
+                max-width: 100%;
+                margin: 5px;
+                background: #FFFAF0;
+                border-radius: 15px;
+                box-shadow: 0 8px 16px rgba(139, 0, 0, 0.3);
+                overflow: hidden;
+                border: 2px solid #FFD700;
+                position: relative;
+                z-index: 1;
+            }
+    
+            .profile-header {
+                background: linear-gradient(45deg, #8B0000, #DC143C);
+                padding: 20px;
+                text-align: center;
+                color: #FFD700;
+                border-bottom: 3px solid #FFD700;
+            }
+    
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin: 0 auto;
+                background: #FFD700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                border: 3px solid #FFD700;
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+                animation: shimmer 3s infinite;
+                transition: transform 0.3s ease;
+            }
+    
+            .profile-pic:hover {
+                transform: scale(1.1);
+            }
+    
+            .profile-pic svg {
+                width: 80%;
+                height: 80%;
+                fill: #8B0000;
+                animation: rotate 20s linear infinite;
+            }
+    
+            .accordion-button {
+                width: 100%;
+                padding: 10px;
+                background: linear-gradient(to right, #FFFAF0, #FFD700);
+                border: none;
+                border-bottom: 1px solid #8B0000;
+                text-align: left;
+                font-weight: bold;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: #8B0000;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .accordion-button:hover {
+                transform: translateX(10px);
+                background: linear-gradient(to right, #FFD700, #B8860B);
+            }
+    
+            .accordion-button::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+                transition: 0.5s;
+            }
+    
+            .accordion-button:hover::after {
+                left: 100%;
+            }
+    
+            .accordion-button span {
+                transition: transform 0.3s ease;
+                transform: rotate(0deg);
+            }
+    
+            .accordion-button span.rotate {
+                transform: rotate(180deg);
+            }
+    
+            .accordion-content {
+                height: 0;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: all 0.3s ease-in-out;
+                padding: 0 20px;
+                background: #FFFAF0;
+            }
+    
+            .accordion-content.active {
+                height: auto;
+                max-height: none;
+                opacity: 1;
+                padding: 20px;
+            }
+    
+            .accordion-content h3 {
+                color: #8B0000;
+                margin: 20px 0 10px;
+                font-size: 1.2em;
+            }
+    
+            .accordion-content ul.characteristics {
+                list-style: none;
+                padding: 15px 0;
+            }
+    
+            .accordion-content ul.characteristics li {
+                padding: 5px 0;
+                padding-left: 20px;
+                position: relative;
+            }
+    
+            .accordion-content ul.characteristics li::before {
+                content: '•';
+                color: #8B0000;
+                position: absolute;
+                left: 0;
+            }
+    
+            .accordion-content p {
+                margin-bottom: 15px;
+                line-height: 1.6;
+            }
+    
+            .accordion-content ul {
+                margin: 15px 0;
+                padding-left: 20px;
+            }
+    
+            .accordion-content ul li {
+                margin-bottom: 10px;
+            }
+    
+            .section-divider {
+                border-top: 1px solid rgba(139, 0, 0, 0.2);
+                margin: 20px 0;
+            }
+    
+            .gallery {
+                padding: 5px;
+                position: relative;
+                z-index: 1;
+            }
+    
+            .gallery-container {
+                position: relative;
+                overflow: hidden;
+                margin: 5px 0;
+                padding: 0;
+                background: rgba(255, 250, 240, 0.9);
+                border-radius: 10px;
+                border: 2px solid #FFD700;
+                box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
+                animation: shimmer 4s infinite;
+                height: 70vh;
+                display: flex;
+                flex-direction: column;
+            }
+    
+            .gallery-scroll {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                transition: transform 0.5s ease;
+                gap: 0;
+            }
+    
+            .gallery-item {
+                min-width: 100%;
+                height: 100%;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                border-radius: 8px;
+                flex-shrink: 0;
+                transition: transform 0.3s ease;
+                cursor: pointer;
+                border: 2px solid #FFD700;
+            }
+    
+            .gallery-item img {
+                max-height: 100%;
+                max-width: 100%;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
+    
+            .gallery-item:hover img {
+                transform: scale(1.05);
+            }
+    
+            .gallery-item::before {
+                content: '';
+                position: absolute;
+                top: -100%;
+                left: -100%;
+                width: 300%;
+                height: 300%;
+                background: linear-gradient(
+                    45deg,
+                    transparent,
+                    rgba(255, 215, 0, 0.2),
+                    transparent
+                );
+                animation: shine 3s infinite;
+            }
+    
+            @keyframes shine {
+                0% { transform: translate(-100%, -100%); }
+                100% { transform: translate(100%, 100%); }
+            }
+    
+            .gallery-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(139, 0, 0, 0.4);
+                border: 2px solid #4169E1;
+            }
+    
             .gallery-nav {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
                 margin-top: 5px;
             }
-
+    
             .gallery-nav button {
+                background: #8B0000;
+                border: 2px solid #FFD700;
+                color: #FFD700;
                 padding: 6px 12px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+            }
+    
+            .gallery-nav button:not(:disabled)::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+                transition: 0.5s;
+                z-index: -1;
+            }
+    
+            .gallery-nav button:not(:disabled):hover::before {
+                left: 100%;
+            }
+    
+            .gallery-nav button:hover {
+                background: #DC143C;
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+    
+            .gallery-nav button:disabled {
+                background: #A9A9A9;
+                border: 2px solid #D3D3D3;
+                cursor: not-allowed;
+            }
+    
+            h2 {
+                color: #8B0000;
+                margin: 10px 0 5px;
+                text-align: center;
+                font-size: 1.1em;
+                text-shadow: 1px 1px 2px #FFD700;
+            }
+    
+            h1 {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                color: #FFD700;
+                animation: pulse 2s infinite;
+                font-size: 1.6em;
+            }
+    
+            .info-icon {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #8B0000;
+                color: #FFD700;
+                text-align: center;
+                line-height: 20px;
+                font-size: 14px;
+                cursor: help;
+                margin-left: 5px;
+                position: relative;
+            }
+    
+            .info-icon:hover::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(139, 0, 0, 0.95);
+                color: #FFD700;
+                padding: 10px;
+                border-radius: 5px;
                 font-size: 0.9em;
+                width: max-content;
+                max-width: 300px;
+                z-index: 9999;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                border: 1px solid #FFD700;
             }
-        }
-    </style>
-</head>
-<body>
-    <div class="profile-container">
-        <div class="profile-header">
-            <div class="profile-pic">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
+    
+            .cta {
+                margin-top: 20px;
+                padding: 10px;
+                background: linear-gradient(135deg, #8B0000, #DC143C);
+                color: #FFD700;
+                border-radius: 5px;
+                text-align: center;
+                animation: pulse 2s infinite;
+            }
+    
+            .accordion-content p,
+            .accordion-content ul {
+                text-align: justify;
+                padding: 10px 0;
+                font-size: 1em;
+                line-height: 1.6;
+            }
+    
+            @media (max-width: 480px) {
+                body {
+                    padding: 5px; 
+                }
+    
+                .profile-container {
+                    margin: 5px;
+                    border-radius: 8px;
+                }
+                
+                .profile-pic {
+                    width: 100px; 
+                    height: 100px;
+                }
+    
+                .accordion-button {
+                    padding: 10px; 
+                    font-size: 0.9em;
+                }
+    
+                .accordion-content {
+                    padding: 10px;
+                }
+    
+                .accordion-content p,
+                .accordion-content ul {
+                    font-size: 0.95em;
+                    line-height: 1.5;
+                    text-align: left;
+                }
+    
+                .gallery {
+                    padding: 5px;
+                }
+    
+                .gallery-container {
+                    height: 60vh; 
+                }
+    
+                .gallery-nav {
+                    margin-top: 5px;
+                }
+    
+                .gallery-nav button {
+                    padding: 6px 12px;
+                    font-size: 0.9em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-pic">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h1>Luanny</h1>
             </div>
-            <h1>Luanny</h1>
-        </div>
-
-        <button class="accordion-button">
-            Sobre Mim
-            <span>▼</span>
-        </button>
-        <div class="accordion-content">
-            <p>Olá, eu sou a Luanny, uma mulher trans cheia de autenticidade, carisma e sensualidade. Minha jornada me trouxe resiliência, empatia e uma compreensão profunda sobre desejos, conexões humanas e as diferenças que nos tornam únicos.</p>
-            
-            <p>Tenho 34 anos, 1,77m de altura e um corpo bem cuidado. Sou pansexual e estou sempre pronta para explorar a sensualidade e os desejos de maneira segura, consensual e respeitosa. Valorizo conexões genuínas que permitem a troca de fantasias e momentos únicos de intimidade e cumplicidade.</p>
-        </div>
-
-        <button class="accordion-button">
-            Minha Visão
-            <span>▼</span>
-        </button>
-        <div class="accordion-content">
-            <p>Meu objetivo é proporcionar experiências que vão além do físico, criando momentos de conforto, cumplicidade e descobertas. Quero que cada pessoa que me conhece se sinta livre para ser quem realmente é, sem julgamentos. Respeito e discrição são os pilares de todas as minhas interações.</p>
-        </div>
-
-        <button class="accordion-button">
-            Valores que Guio Minha Vida
-            <span>▼</span>
-        </button>
-        <div class="accordion-content">
-            <ul>
-                <li><strong>Respeito:</strong> Compreendo e respeito os limites de cada pessoa.</li>
-                <li><strong>Discrição:</strong> Privacidade e sigilo estão garantidos em todas as interações.</li>
-                <li><strong>Autenticidade:</strong> Prezo por momentos reais e sinceros.</li>
-                <li><strong>Empatia:</strong> Estou aqui para ouvir, entender e proporcionar experiências significativas.</li>
-                <li><strong>Consenso:</strong> Cada interação é baseada em acordos claros e seguros.</li>
-            </ul>
-        </div>
-
-        <button class="accordion-button">
-            História Pessoal
-            <span>▼</span>
-        </button>
-        <div class="accordion-content">
-            <p>Nasci em 4 de novembro de 1990, no Mato Grosso do Sul. Hoje, moro em São José dos Campos, SP, e sou grata pelas experiências que moldaram minha identidade e minha trajetória.</p>
-            <p>Minha infância foi marcada por desafios familiares, crescendo entre meus avós e tios. Apesar das dificuldades, aprendi a ser resiliente e independente desde cedo. Minha avó foi minha maior fonte de amor incondicional, e sua partida deixou um vazio, mas também muitas lições preciosas.</p>
-            <p>Desde os 13 anos, moro sozinha, e essa jornada me ajudou a descobrir minha força interior e meu potencial. Cresci observando o mundo ao meu redor, aprendendo sobre papéis de gênero, comportamento humano e a beleza da diversidade.</p>
-        </div>
-
-        <button class="accordion-button">
-            Minhas Fotos
-            <span>▼</span>
-        </button>
-        <div class="accordion-content">
-            <div class="gallery">
-                <h2>Galeria de Fotos</h2>
-                <div class="gallery-container">
-                    <div class="gallery-scroll" id="photosGallery">
-                        <div class="gallery-item">
-                            <img src="https://bastardadoll.github.io/luanny-5.jpg" alt="Luanny Photo 5">
+    
+            <button class="accordion-button">
+                <span class="button-text">Sobre Mim</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Olá, eu sou a Luanny, uma mulher trans <span class="info-icon" data-tooltip="Uma pessoa que se identifica com um gênero diferente daquele designado no nascimento">ⓘ</span> cheia de autenticidade, carisma e sensualidade. Minha jornada como trans me trouxe força, empatia e uma visão ampla sobre desejos e conexões humanas.</p>
+    
+                <p>Sou apaixonada por explorar novas experiências e criar momentos únicos com quem busca algo especial e inesquecível.</p>
+    
+                <ul class="characteristics">
+                    <li><strong>Pele clara, não possuo silicone</strong></li>
+                    <li><strong>34 anos, 1.77m de altura e corpo definido</strong></li>
+                    <li><strong>19 centímetros de dote</strong></li>
+                    <li><strong>Sou Pansexual <span class="info-icon" data-tooltip="Pessoa que sente atração por outras independentemente do gênero">ⓘ</span></strong>, sempre pronta para proporcionar uma experiência que vai além do físico. Gosto de explorar a sensualidade e os desejos de maneira segura e consensual, incluindo práticas mais intensas e fetiches, como o universo BDSM. Respeito e cumplicidade são pilares em tudo o que faço.</li>
+                </ul>
+    
+                <h3>O que me atrai</h3>
+                <p>Tenho uma atração natural por pessoas que sabem o que querem, sejam elas homens, mulheres ou casais. A confiança, o respeito mútuo e a capacidade de se expressar livremente são qualidades que admiro. Valorizo conexões genuínas, onde há espaço para a troca de fantasias, desejos e até mesmo momentos de intimidade emocional.</p>
+    
+                <h3>Minha atuação</h3>
+                <p>Além de proporcionar experiências inesquecíveis, estou sempre aberta a adaptar meus serviços para atender diferentes expectativas e preferências. Prezo por um ambiente discreto e acolhedor, onde você pode ser quem realmente é, sem julgamentos. Se você está buscando momentos de prazer, seja em encontros intensos ou para explorar fantasias, estou aqui para te receber de braços abertos.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Minha Visão</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Meu objetivo é transformar cada encontro em uma experiência memorável, oferecendo não apenas prazer físico, mas também momentos de cumplicidade, descoberta e conforto. Quero que cada pessoa que me conhece sinta-se livre para ser quem realmente é, sem julgamentos, encontrando em mim uma parceira para explorar fantasias e desejos com total respeito e discrição.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Valores</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Meus valores são baseados na verdade, compreensão das diferenças e coragem para mudar e evoluir. Já explorei várias religiões, como Candomblé, Umbanda, Espiritismo, Catolicismo e algumas igrejas evangélicas, como a IURD e a CCB, onde aprendi a tocar flauta transversal. Apesar de ser cética em relação à política, acredito na importância de lutar por justiça social e igualdade.
+                </p>
+                <ul>
+                    <li><strong>Respeito:</strong> Compreendo e respeito os limites de cada pessoa.</li>
+                    <li><strong>Discrição:</strong> Privacidade e sigilo estão garantidos em todas as interações.</li>
+                    <li><strong>Autenticidade:</strong> Prezo por momentos reais e sinceros.</li>
+                    <li><strong>Empatia:</strong> Estou aqui para ouvir, entender e proporcionar experiências significativas.</li>
+                    <li><strong>Consenso:</strong> Cada interação é baseada em acordos claros e seguros.</li>
+                </ul>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Meu Objetivo</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Meu objetivo é oferecer mais do que um encontro: é criar uma experiência completa, que atenda tanto os desejos quanto as expectativas emocionais e sensoriais de quem me procura. Quero ser lembrada não apenas pela minha presença, mas pela capacidade de tornar momentos especiais e marcantes</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Contexto Familiar</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Minha família sempre foi um ponto sensível na minha vida. Cresci com meus avós e tios, já que minha relação com minha mãe era complicada. Apesar disso, entendo as dificuldades que ela enfrentou e não a julgo. A minha avó foi a pessoa que mais me demonstrou amor incondicional, e sua partida deixou um vazio enorme. Desde os 13 anos moro sozinha, após desentendimentos familiares, o que me ajudou a desenvolver minha independência e resiliência.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Educação e Carreira</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Sou uma aprendiz dedicada em várias áreas, como programação (HTML, CSS, JavaScript, PHP, MySQL, Python), Excel, copywriting e design de imagens e vídeos. Atualmente, trabalho em projetos pessoais, incluindo o Orby Chat, uma plataforma inclusiva de chat, e também um projeto de conteúdo adulto que estou desenvolvendo com uma parceira. Meu objetivo é crescer profissionalmente, melhorar meus projetos e criar algo que impacte positivamente outras pessoas.
+                </p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Interesses e Hobbies</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Gosto de fazer caminhadas e atividades ao ar livre, que me ajudam a relaxar e refletir. Sou apaixonada por livros e alguns dos que mais marcaram minha vida são:</p>
+                
+                <ul>
+                    <li><strong>Como Me Tornei Estúpido</strong> Desejo encontrar um equilíbrio entre me adaptar às expectativas e manter minha essência.</li>
+                    <li><strong>Moby Dick</strong> Quero sempre lembrar que perseguir algo cegamente pode custar mais do que vale, e que é importante equilibrar paixão e razão.</li>
+                    <li><strong>Como Fazer Amigos e Influenciar Pessoas</strong> Desejo aplicar técnicas de influência para fortalecer amizades e parcerias, especialmente em meus projetos pessoais e profissionais.</li>
+                    <li><strong>A Menina que Roubava Livros</strong> Quero valorizar mais as pequenas coisas, como o poder das palavras e das histórias para inspirar mudanças.</li>
+                    <li><strong>O Livro dos Espíritos</strong> Desejo alcançar uma compreensão mais ampla da vida e das minhas ações, buscando viver de forma mais ética e consciente.</li>
+                    <li><strong>Uma Biografia de Bob Marley</strong> Quero aplicar a simplicidade e persistência em minha vida, especialmente na luta por justiça e igualdade.</li>
+                    <li><strong>A Revolução dos Bichos</strong> Quero ser mais crítico em relação às lideranças e entender melhor as dinâmicas de poder ao meu redor.</li>
+                    <li><strong>As 48 Leis do Poder</strong> Desejo usar esse conhecimento para me posicionar melhor em situações desafiadoras, mas sem perder minhas circunstâncias.</li>
+                    <li><strong>O Milagre da Manhã</strong> Quero continuar disciplinado e usar essa energia para organizar meus projetos e alcançar meus objetivos.</li>
+                    <li><strong>Drácula</strong> Quero aceitar minhas sombras e aprender a usá-las como força, ao invés de fraqueza.</li>
+                    <li><strong>Harry Potter e a Pedra Filosofal</strong> Desejo ser mais aberto a explorar novos caminhos e acreditar na minha força, mesmo quando tudo parece desafiador.</li>
+                    <li><strong>Sapiens: Uma Breve História da Humanidade</strong> Quero entender melhor meu papel na sociedade e como posso contribuir para um futuro mais consciente e justo.</li>
+                    <li><strong>O Maravilhoso Mundo de Oz</strong> Quero lembrar que minha força, inteligência e amor já existem em mim, e que é importante acreditar nas minhas capacidades.</li>
+                </ul>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Valores e Crenças</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Meus valores são baseados na verdade, compreensão das diferenças e coragem para mudar e evoluir. Já explorei várias religiões, como Candomblé, Umbanda, Espiritismo, Catolicismo e algumas igrejas evangélicas, como a IURD e a CCB, onde aprendi a tocar flauta transversal. Apesar de ser cética em relação à política, acredito na importância de lutar por justiça social e igualdade.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Saúde e Bem-estar</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Minha saúde mental é uma prioridade. Enfrento os desafios escrevendo e analisando tudo que acontece na minha vida, buscando sempre uma visão imparcial. Prefiro exercícios leves em casa ou ao ar livre, como caminhadas, que me ajudam a manter o equilíbrio.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Relacionamentos</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Estou solteira e, no momento, não desejo estar em um relacionamento. Prefiro focar em mim e nos meus projetos. Valorizo muito amizades sinceras, que respeitem quem eu sou, e tenho pessoas ao meu redor que me fazem bem e me apoiam.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Aspirações e Sonhos</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Tenho muitos sonhos e metas. Quero transformar meus projetos em algo grande, que faça a diferença na vida das pessoas. Quero aprender e explorar mais áreas criativas, além de continuar crescendo como pessoa e profissional. Lugares que sonho visitar incluem a Grécia, Rússia e Alemanha.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Estilo de Vida</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Minha rotina é voltada aos meus projetos e reflexões pessoais. Não gosto de cidades grandes demais, mas também evito lugares muito isolados. Idealizo viver em um lugar tranquilo, com acesso a serviços e um pouco de movimento, onde eu possa me sentir em paz.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Comunicação e Personalidade</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Sou reflexiva e determinada. Gosto de me comunicar de forma verdadeira e autêntica, priorizando conexões significativas. Encaro desafios com calma e análise, sempre buscando aprender com cada situação.
+                </p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">História de Vida</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Nasci em 4 de novembro de 1990, no Mato Grosso do Sul. Hoje, moro em São José dos Campos, SP, e sou grata pelas experiências que moldaram minha identidade e minha trajetória.</p>
+                <p>Minha infância foi marcada por desafios familiares, crescendo entre meus avós e tios. Apesar das dificuldades, aprendi a ser resiliente e independente desde cedo. Minha avó foi minha maior fonte de amor incondicional, e sua partida deixou um vazio, mas também muitas lições preciosas.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Contribuições e Impacto</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <p>Busco contribuir para a criação de uma comunidade de pessoas que compartilham meus valores e crenças, e que buscam viver experiências autênticas e significativas. Quero que cada pessoa que me conhece se sinta livre para ser quem realmente é, sem julgamentos.</p>
+                <p>Apoiar minorias, especialmente a comunidade LGBTTQIAPN+, é algo que me motiva. Quero usar minha história e meus projetos para inspirar outras pessoas a se aceitarem, a crescerem e a se sentirem incluídas. Meu maior sonho é fazer a diferença, promovendo empatia e compreensão.</p>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Minhas Fotos</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="gallery">
+                    <h2>Galeria de Fotos</h2>
+                    <div class="gallery-container">
+                        <div class="gallery-scroll" id="photosGallery">
+                            <div class="gallery-item">
+                                <img src="https://bastardadoll.github.io/luanny-5.jpg" alt="Luanny Photo 5">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://bastardadoll.github.io/luanny-4.jpg" alt="Luanny Photo 4">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://bastardadoll.github.io/luanny-3.jpg" alt="Luanny Photo 3">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://bastardadoll.github.io/luanny-2.jpg" alt="Luanny Photo 2">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://bastardadoll.github.io/luanny-1.jpg" alt="Luanny Photo 1">
+                            </div>
                         </div>
-                        <div class="gallery-item">
-                            <img src="https://bastardadoll.github.io/luanny-4.jpg" alt="Luanny Photo 4">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://bastardadoll.github.io/luanny-3.jpg" alt="Luanny Photo 3">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://bastardadoll.github.io/luanny-2.jpg" alt="Luanny Photo 2">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://bastardadoll.github.io/luanny-1.jpg" alt="Luanny Photo 1">
+                        <div class="gallery-nav">
+                            <button onclick="prevSlide('photosGallery')" id="photoPrev">Anterior</button>
+                            <button onclick="nextSlide('photosGallery')" id="photoNext">Próximo</button>
                         </div>
                     </div>
-                    <div class="gallery-nav">
-                        <button onclick="prevSlide('photosGallery')" id="photoPrev">Anterior</button>
-                        <button onclick="nextSlide('photosGallery')" id="photoNext">Próximo</button>
+                </div>
+            </div>
+    
+            <button class="accordion-button">
+                <span class="button-text">Meus Vídeos</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="gallery">
+                    <h2>Galeria de Vídeos</h2>
+                    <div class="gallery-container">
+                        <div class="gallery-scroll" id="videosGallery">
+                            <div class="gallery-item">Vídeo 1</div>
+                            <div class="gallery-item">Vídeo 2</div>
+                            <div class="gallery-item">Vídeo 3</div>
+                            <div class="gallery-item">Vídeo 4</div>
+                            <div class="gallery-item">Vídeo 5</div>
+                        </div>
+                        <div class="gallery-nav">
+                            <button onclick="prevSlide('videosGallery')" id="videoPrev">Anterior</button>
+                            <button onclick="nextSlide('videosGallery')" id="videoNext">Próximo</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <button class="accordion-button">
-            Meus Vídeos
-            <span>▼</span>
-        </button>
-        <div class="accordion-content">
-            <div class="gallery">
-                <h2>Galeria de Vídeos</h2>
-                <div class="gallery-container">
-                    <div class="gallery-scroll" id="videosGallery">
-                        <div class="gallery-item">Vídeo 1</div>
-                        <div class="gallery-item">Vídeo 2</div>
-                        <div class="gallery-item">Vídeo 3</div>
-                        <div class="gallery-item">Vídeo 4</div>
-                        <div class="gallery-item">Vídeo 5</div>
-                    </div>
-                    <div class="gallery-nav">
-                        <button onclick="prevSlide('videosGallery')" id="videoPrev">Anterior</button>
-                        <button onclick="nextSlide('videosGallery')" id="videoNext">Próximo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.querySelectorAll('.accordion-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const span = button.querySelector('span');
-                
-                const isActive = content.classList.contains('active');
-                
-                document.querySelectorAll('.accordion-content').forEach(panel => {
-                    panel.classList.remove('active');
-                    const otherSpan = panel.previousElementSibling.querySelector('span');
-                    otherSpan.style.transform = 'rotate(0deg)';
-                });
-
-                if (!isActive) {
-                    content.classList.add('active');
-                    span.style.transform = 'rotate(180deg)';
-                }
-            });
-        });
-
-        const galleries = {
-            photosGallery: { currentIndex: 0, autoScroll: true },
-            videosGallery: { currentIndex: 0, autoScroll: true }
-        };
-
-        function updateGallery(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            const container = gallery.parentElement;
-            const itemWidth = container.offsetWidth; 
-            const translation = -galleries[galleryId].currentIndex * itemWidth;
-            gallery.style.transition = 'transform 0.5s ease-in-out';
-            gallery.style.transform = `translateX(${translation}px)`;
-
-            const prevButton = document.getElementById(galleryId === 'photosGallery' ? 'photoPrev' : 'videoPrev');
-            const nextButton = document.getElementById(galleryId === 'photosGallery' ? 'photoNext' : 'videoNext');
-            
-            prevButton.disabled = galleries[galleryId].currentIndex === 0;
-            nextButton.disabled = galleries[galleryId].currentIndex >= gallery.children.length - 1;
-        }
-
-        function nextSlide(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            if (galleries[galleryId].currentIndex < gallery.children.length - 1) {
-                galleries[galleryId].currentIndex++;
-                updateGallery(galleryId);
-            }
-        }
-
-        function prevSlide(galleryId) {
-            if (galleries[galleryId].currentIndex > 0) {
-                galleries[galleryId].currentIndex--;
-                updateGallery(galleryId);
-            }
-        }
-
-        function addSwipeSupport(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            gallery.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-            }, false);
-
-            gallery.addEventListener('touchmove', (e) => {
-                touchEndX = e.touches[0].clientX;
-            }, false);
-
-            gallery.addEventListener('touchend', () => {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        nextSlide(galleryId);
-                    } else {
-                        prevSlide(galleryId);
-                    }
-                }
-            }, false);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            addSwipeSupport('photosGallery');
-            addSwipeSupport('videosGallery');
-            
-            window.addEventListener('resize', () => {
-                Object.keys(galleries).forEach(galleryId => {
-                    updateGallery(galleryId);
-                });
-            });
-        });
-
-        function startAutoScroll() {
-            setInterval(() => {
-                Object.keys(galleries).forEach(galleryId => {
-                    if (galleries[galleryId].autoScroll) {
-                        const gallery = document.getElementById(galleryId);
-                        if (galleries[galleryId].currentIndex >= gallery.children.length - 1) {
-                            galleries[galleryId].currentIndex = 0;
-                        } else {
-                            galleries[galleryId].currentIndex++;
+    
+        <script>
+            document.querySelectorAll('.accordion-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const span = button.querySelector('span.arrow');
+                    
+                    // Toggle current accordion
+                    content.classList.toggle('active');
+                    span.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    
+                    // Close other accordions
+                    document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                        if (otherContent !== content && otherContent.classList.contains('active')) {
+                            otherContent.classList.remove('active');
+                            const otherSpan = otherContent.previousElementSibling.querySelector('span.arrow');
+                            otherSpan.style.transform = 'rotate(0deg)';
                         }
-                        updateGallery(galleryId);
-                    }
+                    });
                 });
-            }, 4000); 
-        }
-
-        Object.keys(galleries).forEach(galleryId => {
-            updateGallery(galleryId);
-            
-            const gallery = document.getElementById(galleryId);
-            gallery.parentElement.addEventListener('mouseenter', () => {
-                galleries[galleryId].autoScroll = false;
             });
-            gallery.parentElement.addEventListener('mouseleave', () => {
-                galleries[galleryId].autoScroll = true;
+    
+            const galleries = {
+                photosGallery: { currentIndex: 0, autoScroll: true },
+                videosGallery: { currentIndex: 0, autoScroll: true }
+            };
+    
+            function updateGallery(galleryId) {
+                const gallery = document.getElementById(galleryId);
+                const container = gallery.parentElement;
+                const itemWidth = container.offsetWidth; 
+                const translation = -galleries[galleryId].currentIndex * itemWidth;
+                gallery.style.transition = 'transform 0.5s ease-in-out';
+                gallery.style.transform = `translateX(${translation}px)`;
+    
+                const prevButton = document.getElementById(galleryId === 'photosGallery' ? 'photoPrev' : 'videoPrev');
+                const nextButton = document.getElementById(galleryId === 'photosGallery' ? 'photoNext' : 'videoNext');
+                
+                prevButton.disabled = galleries[galleryId].currentIndex === 0;
+                nextButton.disabled = galleries[galleryId].currentIndex >= gallery.children.length - 1;
+            }
+    
+            function nextSlide(galleryId) {
+                const gallery = document.getElementById(galleryId);
+                if (galleries[galleryId].currentIndex < gallery.children.length - 1) {
+                    galleries[galleryId].currentIndex++;
+                    updateGallery(galleryId);
+                }
+            }
+    
+            function prevSlide(galleryId) {
+                if (galleries[galleryId].currentIndex > 0) {
+                    galleries[galleryId].currentIndex--;
+                    updateGallery(galleryId);
+                }
+            }
+    
+            function addSwipeSupport(galleryId) {
+                const gallery = document.getElementById(galleryId);
+                let touchStartX = 0;
+                let touchEndX = 0;
+    
+                gallery.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                }, false);
+    
+                gallery.addEventListener('touchmove', (e) => {
+                    touchEndX = e.touches[0].clientX;
+                }, false);
+    
+                gallery.addEventListener('touchend', () => {
+                    const swipeThreshold = 50;
+                    const diff = touchStartX - touchEndX;
+    
+                    if (Math.abs(diff) > swipeThreshold) {
+                        if (diff > 0) {
+                            nextSlide(galleryId);
+                        } else {
+                            prevSlide(galleryId);
+                        }
+                    }
+                }, false);
+            }
+    
+            window.addEventListener('DOMContentLoaded', () => {
+                addSwipeSupport('photosGallery');
+                addSwipeSupport('videosGallery');
+                
+                window.addEventListener('resize', () => {
+                    Object.keys(galleries).forEach(galleryId => {
+                        updateGallery(galleryId);
+                    });
+                });
             });
-        });
-
-        startAutoScroll();
-    </script>
-</body>
-</html>
+    
+            function startAutoScroll() {
+                setInterval(() => {
+                    Object.keys(galleries).forEach(galleryId => {
+                        if (galleries[galleryId].autoScroll) {
+                            const gallery = document.getElementById(galleryId);
+                            if (galleries[galleryId].currentIndex >= gallery.children.length - 1) {
+                                galleries[galleryId].currentIndex = 0;
+                            } else {
+                                galleries[galleryId].currentIndex++;
+                            }
+                            updateGallery(galleryId);
+                        }
+                    });
+                }, 4000); 
+            }
+    
+            Object.keys(galleries).forEach(galleryId => {
+                updateGallery(galleryId);
+                
+                const gallery = document.getElementById(galleryId);
+                gallery.parentElement.addEventListener('mouseenter', () => {
+                    galleries[galleryId].autoScroll = false;
+                });
+                gallery.parentElement.addEventListener('mouseleave', () => {
+                    galleries[galleryId].autoScroll = true;
+                });
+            });
+    
+            startAutoScroll();
+        </script>
+    </body>
+    </html>
