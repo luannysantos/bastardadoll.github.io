@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-        <base href="https://bastardadoll.github.io/">
+    <base href="https://bastardadoll.github.io/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luanny - Perfil</title>
@@ -43,6 +43,8 @@
             box-shadow: 0 8px 16px rgba(139, 0, 0, 0.3);
             overflow: hidden;
             border: 2px solid #FFD700;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-header {
@@ -120,6 +122,7 @@
 
         .accordion-button span {
             transition: transform 0.3s ease;
+            transform: rotate(0deg);
         }
 
         .accordion-button span.rotate {
@@ -127,18 +130,18 @@
         }
 
         .accordion-content {
-            height: auto;
+            height: 0;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition: opacity 0.3s ease, max-height 0.3s ease;
+            transition: all 0.3s ease-in-out;
             padding: 0 20px;
             background: #FFFAF0;
         }
 
         .accordion-content.active {
             height: auto;
-            max-height: 100%;
+            max-height: 2000px;
             opacity: 1;
             padding: 20px;
         }
@@ -175,6 +178,8 @@
 
         .gallery {
             padding: 5px;
+            position: relative;
+            z-index: 1;
         }
 
         .gallery-container {
@@ -319,7 +324,6 @@
             font-size: 1.6em;
         }
 
-        /* Add these styles to the existing CSS */
         .info-icon {
             display: inline-block;
             width: 20px;
@@ -334,6 +338,7 @@
             margin: 0 4px;
             position: relative;
             transition: all 0.3s ease;
+            z-index: 100;
         }
 
         .info-icon:hover {
@@ -347,16 +352,18 @@
             bottom: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(139, 0, 0, 0.9);
+            background: rgba(139, 0, 0, 0.95);
             color: #FFD700;
             padding: 10px;
             border-radius: 5px;
             font-size: 0.9em;
             width: max-content;
             max-width: 300px;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 9999;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             border: 1px solid #FFD700;
+            white-space: normal;
+            pointer-events: none;
         }
 
         .cta {
@@ -493,51 +500,57 @@
         </div>
 
         <button class="accordion-button">
-            Minha Missão
+            Minhas Fotos
             <span>▼</span>
         </button>
         <div class="accordion-content">
-            <p>Minha missão é proporcionar satisfação, conforto e prazer, celebrando a diversidade e a liberdade de expressão. Como mulher trans, represento a autenticidade e a força da nossa comunidade, mostrando que todos têm o direito de viver e explorar seus desejos sem medo ou culpa.</p>
-        </div>
-
-        <div class="gallery">
-            <h2>Galeria de Fotos</h2>
-            <div class="gallery-container">
-                <div class="gallery-scroll" id="photosGallery">
-                    <div class="gallery-item">
-                        <img src="https://bastardadoll.github.io/luanny-5.jpg" alt="Luanny Photo 5">
+            <div class="gallery">
+                <h2>Galeria de Fotos</h2>
+                <div class="gallery-container">
+                    <div class="gallery-scroll" id="photosGallery">
+                        <div class="gallery-item">
+                            <img src="https://bastardadoll.github.io/luanny-5.jpg" alt="Luanny Photo 5">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://bastardadoll.github.io/luanny-4.jpg" alt="Luanny Photo 4">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://bastardadoll.github.io/luanny-3.jpg" alt="Luanny Photo 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://bastardadoll.github.io/luanny-2.jpg" alt="Luanny Photo 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://bastardadoll.github.io/luanny-1.jpg" alt="Luanny Photo 1">
+                        </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://bastardadoll.github.io/luanny-4.jpg" alt="Luanny Photo 4">
+                    <div class="gallery-nav">
+                        <button onclick="prevSlide('photosGallery')" id="photoPrev">Anterior</button>
+                        <button onclick="nextSlide('photosGallery')" id="photoNext">Próximo</button>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://bastardadoll.github.io/luanny-3.jpg" alt="Luanny Photo 3">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://bastardadoll.github.io/luanny-2.jpg" alt="Luanny Photo 2">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://bastardadoll.github.io/luanny-1.jpg" alt="Luanny Photo 1">
-                    </div>
-                </div>
-                <div class="gallery-nav">
-                    <button onclick="prevSlide('photosGallery')" id="photoPrev">Anterior</button>
-                    <button onclick="nextSlide('photosGallery')" id="photoNext">Próximo</button>
                 </div>
             </div>
+        </div>
 
-            <h2>Galeria de Vídeos</h2>
-            <div class="gallery-container">
-                <div class="gallery-scroll" id="videosGallery">
-                    <div class="gallery-item">Vídeo 1</div>
-                    <div class="gallery-item">Vídeo 2</div>
-                    <div class="gallery-item">Vídeo 3</div>
-                    <div class="gallery-item">Vídeo 4</div>
-                    <div class="gallery-item">Vídeo 5</div>
-                </div>
-                <div class="gallery-nav">
-                    <button onclick="prevSlide('videosGallery')" id="videoPrev">Anterior</button>
-                    <button onclick="nextSlide('videosGallery')" id="videoNext">Próximo</button>
+        <button class="accordion-button">
+            Meus Vídeos
+            <span>▼</span>
+        </button>
+        <div class="accordion-content">
+            <div class="gallery">
+                <h2>Galeria de Vídeos</h2>
+                <div class="gallery-container">
+                    <div class="gallery-scroll" id="videosGallery">
+                        <div class="gallery-item">Vídeo 1</div>
+                        <div class="gallery-item">Vídeo 2</div>
+                        <div class="gallery-item">Vídeo 3</div>
+                        <div class="gallery-item">Vídeo 4</div>
+                        <div class="gallery-item">Vídeo 5</div>
+                    </div>
+                    <div class="gallery-nav">
+                        <button onclick="prevSlide('videosGallery')" id="videoPrev">Anterior</button>
+                        <button onclick="nextSlide('videosGallery')" id="videoNext">Próximo</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -550,27 +563,20 @@
                 const content = button.nextElementSibling;
                 const span = button.querySelector('span');
                 
-                // Close other panels
+                // Toggle current panel
+                const isActive = content.classList.contains('active');
+                
+                // First close all panels
                 document.querySelectorAll('.accordion-content').forEach(panel => {
-                    if (panel !== content) {
-                        panel.classList.remove('active');
-                        panel.style.maxHeight = null;
-                        panel.style.opacity = '0';
-                        const otherSpan = panel.previousElementSibling.querySelector('span');
-                        otherSpan.classList.remove('rotate');
-                    }
+                    panel.classList.remove('active');
+                    const otherSpan = panel.previousElementSibling.querySelector('span');
+                    otherSpan.style.transform = 'rotate(0deg)';
                 });
 
-                // Toggle current panel
-                content.classList.toggle('active');
-                span.classList.toggle('rotate');
-                
-                if (content.classList.contains('active')) {
-                    content.style.maxHeight = '100%';
-                    content.style.opacity = '1';
-                } else {
-                    content.style.maxHeight = null;
-                    content.style.opacity = '0';
+                // Then open the clicked panel if it wasn't active
+                if (!isActive) {
+                    content.classList.add('active');
+                    span.style.transform = 'rotate(180deg)';
                 }
             });
         });
