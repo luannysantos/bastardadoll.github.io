@@ -159,20 +159,30 @@
       }
     
       .menu-toggle {
-        display: block;
-        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
+        background-size: 200% 100%;
+        animation: metallicShine 3s linear infinite;
         border: 2px solid var(--accent-color);
-        color: var(--accent-color);
-        padding: 0.5rem;
-        border-radius: 4px;
+        color: var(--background-color);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
         cursor: pointer;
         transition: all 0.3s ease;
+        font-size: 1.5rem;
         z-index: 1001;
+        position: relative;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       }
     
       .menu-toggle:hover {
-        background: var(--accent-color);
-        color: var(--background-color);
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        background-position: right center;
       }
     
       nav {
@@ -181,29 +191,48 @@
         top: 90px;
         left: 0;
         width: 100%;
-        background: var(--background-color);
+        background: linear-gradient(135deg, var(--background-color), var(--primary-color));
         padding: var(--spacing-unit);
-        border-top: 1px solid var(--accent-color);
-        border-bottom: 1px solid var(--accent-color);
+        border-top: 2px solid var(--secondary-color);
+        border-bottom: 2px solid var(--secondary-color);
         flex-direction: column;
         align-items: center;
         gap: var(--spacing-unit);
         z-index: 1000;
+        box-shadow: 0 4px 15px var(--shadow-color);
       }
     
       nav.active {
         display: flex;
+        animation: slideDown 0.3s ease-out;
       }
     
       nav a {
         width: 100%;
         text-align: center;
         padding: calc(var(--spacing-unit) * 0.75);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 8px;
+        background: linear-gradient(90deg, 
+          transparent 0%, 
+          rgba(255,255,255,0.05) 50%, 
+          transparent 100%
+        );
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
       }
     
-      nav a:last-child {
-        border-bottom: none;
+      nav a:hover {
+        background: linear-gradient(90deg,
+          var(--primary-color) 0%,
+          var(--accent-color) 50%,
+          var(--primary-color) 100%
+        );
+        border: 1px solid var(--secondary-color);
+        transform: translateX(10px);
+        color: var(--secondary-color);
       }
     
       main {
@@ -407,6 +436,17 @@
         }
       }
     
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
       @media print {
         header, .menu-toggle { 
           display: none; 
@@ -426,7 +466,19 @@
         }
     
         nav {
-          margin-top: 0;
+          top: 80px;
+          padding: calc(var(--spacing-unit) * 0.5);
+        }
+        
+        nav a {
+          padding: calc(var(--spacing-unit) * 0.5);
+          font-size: 0.9rem;
+        }
+        
+        .menu-toggle {
+          width: 35px;
+          height: 35px;
+          font-size: 1.2rem;
         }
       }
     
@@ -453,6 +505,18 @@
     
         .gallery-item {
           min-width: 0;
+        }
+      }
+    
+      @media (max-width: 480px) {
+        nav {
+          top: 70px;
+        }
+        
+        .menu-toggle {
+          width: 30px;
+          height: 30px;
+          font-size: 1rem;
         }
       }
     
@@ -608,11 +672,11 @@
         <nav>
           <a href="#sobre">Sobre</a>
           <a href="#busco">O que busco</a>
-          <a href="#naocurto">O que não curto</a>
-          <a href="#fast-foda">FAST-FODA | LOCAIS E FACILITAÇÕES</a>
+          <a href="#naocurto">O que n&#xe3;o curto</a>
+          <a href="#fast-foda">FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</a>
           <a href="#fotos">Fotos</a>
           <a href="#gifs">GIFs</a>
-          <a href="#inspiracoes">Inspirações</a>
+          <a href="#inspiracoes">Inspira&#xe7;&#xf5;es</a>
         </nav>
       </header>
     
@@ -640,14 +704,14 @@
           <div class="content-section">
             <div class="option-box">
               <h3>Homens ativos e decididos</h3>
-              <p>Preferência por homens experientes e determinados, acima de 35 anos.</p>
+              <p>Prefer&#xea;ncia por homens experientes e determinados, acima de 35 anos.</p>
             </div>
             <div class="option-box">
               <h3>Sigilo garantido</h3>
               <p>Encontros discretos e sigilosos, mantendo sua privacidade sempre em primeiro lugar.</p>
             </div>
             <div class="option-box">
-              <h3>Local e horário</h3>
+              <h3>Local e hor&#xe1;rio</h3>
               <p>Encontros no seu carro, preferencialmente durante a noite/madrugada.</p>
             </div>
             <div class="option-box">
@@ -658,7 +722,7 @@
         </section>
     
         <section id="naocurto">
-          <h2>O que não curto</h2>
+          <h2>O que n&#xe3;o curto</h2>
           <div class="content-section">
             <div class="warning-text">
               <p>TOLER&#xc2;NCIA ZERO</p>
@@ -673,13 +737,13 @@
         </section>
     
         <section id="fast-foda">
-          <h2>FAST-FODA | LOCAIS E FACILITAÇÕES</h2>
+          <h2>FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</h2>
           <div class="content-section">
             <div class="option-box">
-              <h3>Praça</h3>
-              <img src="praca.svg" alt="Praça local" class="location-img">
-              <p>Local discreto próximo à residência, ideal para encontros rápidos durante a madrugada.</p>
-              <a href="https://maps.google.com/?q=praça+central+sao+jose+dos+campos" class="map-button">
+              <h3>Pra&#xe7;a</h3>
+              <img src="praca.svg" alt="Pra&#xe7;a local" class="location-img">
+              <p>Local discreto pr&#xf3;ximo &#xe0; resid&#xea;ncia, ideal para encontros r&#xe1;pidos durante a madrugada.</p>
+              <a href="https://maps.google.com/?q=pra&#xe7;a+central+sao+jose+dos+campos" class="map-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
@@ -690,7 +754,7 @@
             <div class="option-box">
               <h3>Viaduto</h3>
               <img src="viaduto.svg" alt="Viaduto local" class="location-img">
-              <p>Ambiente coberto e discreto, perfeito para encontros rápidos.</p>
+              <p>Ambiente coberto e discreto, perfeito para encontros r&#xe1;pidos.</p>
               <a href="https://maps.google.com/?q=viaduto+dutra+sao+jose+dos+campos" class="map-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -700,9 +764,9 @@
             </div>
     
             <div class="option-box">
-              <h3>Rodoviária Nova</h3>
-              <img src="rodoviaria.svg" alt="Rodoviária local" class="location-img">
-              <p>Área discreta atrás da rodoviária, local estratégico para encontros.</p>
+              <h3>Rodovi&#xe1;ria Nova</h3>
+              <img src="rodoviaria.svg" alt="Rodovi&#xe1;ria local" class="location-img">
+              <p>&#xc1;rea discreta atr&#xe1;s da rodovi&#xe1;ria, local estrat&#xe9;gico para encontros.</p>
               <a href="https://maps.google.com/?q=rodoviaria+nova+sao+jose+dos+campos" class="map-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -712,9 +776,9 @@
             </div>
     
             <div class="option-box">
-              <h3>Estádio Martins Pereira</h3>
-              <img src="estadio.svg" alt="Estádio local" class="location-img">
-              <p>Área reservada atrás do estádio, ideal para encontros discretos.</p>
+              <h3>Est&#xe1;dio Martins Pereira</h3>
+              <img src="estadio.svg" alt="Est&#xe1;dio local" class="location-img">
+              <p>&#xc1;rea reservada atr&#xe1;s do est&#xe1;dio, ideal para encontros discretos.</p>
               <a href="https://maps.google.com/?q=estadio+martins+pereira+sao+jose+dos+campos" class="map-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -731,10 +795,10 @@
           <h2>Galeria de Fotos</h2>
           <div class="gallery-grid">
             <article class="gallery-item">
-              <img src="imagem-1.jpg" alt="Momento íntimo">
+              <img src="imagem-1.jpg" alt="Momento &#xed;ntimo">
               <div class="gallery-content">
                 <h3>Encontros Discretos</h3>
-                <p>Momentos únicos em ambiente reservado, proporcionando experiências intensas e memoráveis com total sigilo e discrição. Local estratégico para encontros rápidos e seguros, sempre respeitando suas preferências e limites.</p>
+                <p>Momentos &#xfa;nicos em ambiente reservado, proporcionando experi&#xea;ncias intensas e memor&#xe1;veis com total sigilo e discri&#xe7;&#xe3;o. Local estrat&#xe9;gico para encontros r&#xe1;pidos e seguros, sempre respeitando suas prefer&#xea;ncias e limites.</p>
                 <div class="tags">
                   <span class="tag">Discreto</span>
                   <span class="tag">Noturno</span>
@@ -743,7 +807,7 @@
                 <ul class="sentiment-list">
                   <li>Ambiente reservado</li>
                   <li>Sigilo absoluto</li>
-                  <li>Experiência única</li>
+                  <li>Experi&#xea;ncia &#xfa;nica</li>
                 </ul>
               </div>
             </article>
@@ -757,7 +821,7 @@
               <img src="gif-1.gif" alt="Momento especial">
               <div class="gallery-content">
                 <h3>Momentos Especiais</h3>
-                <p>Registros autênticos de encontros discretos e prazerosos. Cada momento é único e pensado para sua satisfação total, mantendo sempre o sigilo e respeito que você merece.</p>
+                <p>Registros aut&#xea;nticos de encontros discretos e prazerosos. Cada momento &#xe9; &#xfa;nico e pensado para sua satisfa&#xe7;&#xe3;o total, mantendo sempre o sigilo e respeito que voc&#xea; merece.</p>
                 <div class="tags">
                   <span class="tag">Intenso</span>
                   <span class="tag">Sigiloso</span>
@@ -765,7 +829,7 @@
                 </div>
                 <ul class="sentiment-list">
                   <li>Prazer garantido</li>
-                  <li>Discrição total</li>
+                  <li>Discri&#xe7;&#xe3;o total</li>
                   <li>Sem compromisso</li>
                 </ul>
               </div>
@@ -774,15 +838,15 @@
         </section>
     
         <section id="inspiracoes">
-          <h2>Inspirações</h2>
+          <h2>Inspira&#xe7;&#xf5;es</h2>
           <div class="gallery-grid">
             <article class="gallery-item">
               <div class="video-container">
                 <iframe src="https://www.xvideos.com/embedframe/ultaovha37e" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
               </div>
               <div class="gallery-content">
-                <h3>Experiências Únicas</h3>
-                <p>Uma amostra do que podemos explorar juntos em nossos encontros. Deixe sua imaginação fluir e realize seus desejos mais intensos em um ambiente discreto e seguro, sempre respeitando limites e preferências.</p>
+                <h3>Experi&#xea;ncias &#xda;nicas</h3>
+                <p>Uma amostra do que podemos explorar juntos em nossos encontros. Deixe sua imagina&#xe7;&#xe3;o fluir e realize seus desejos mais intensos em um ambiente discreto e seguro, sempre respeitando limites e prefer&#xea;ncias.</p>
                 <div class="tags">
                   <span class="tag">Intenso</span>
                   <span class="tag">Sigiloso</span>
@@ -791,7 +855,7 @@
                 <ul class="sentiment-list">
                   <li>Encontros marcantes</li>
                   <li>Sigilo absoluto</li>
-                  <li>Momentos inesquecíveis</li>
+                  <li>Momentos inesquec&#xed;veis</li>
                 </ul>
               </div>
             </article>
@@ -802,31 +866,26 @@
       <script>document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('nav');
-    
       const toggleMenu = () => {
         const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
         menuToggle.setAttribute('aria-expanded', !isExpanded);
         nav.classList.toggle('active');
         menuToggle.innerHTML = isExpanded ? '&#9776;' : '&#10005;';
       };
-    
       const closeMenu = () => {
         nav.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.innerHTML = '&#9776;';
       };
-    
       menuToggle.addEventListener('click', e => {
         e.stopPropagation();
         toggleMenu();
       });
-    
       document.addEventListener('click', e => {
         if (!e.target.closest('header')) {
           closeMenu();
         }
       });
-    
       document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', () => {
           closeMenu();
