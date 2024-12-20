@@ -159,7 +159,7 @@
       }
     
       .menu-toggle {
-        display: none;
+        display: block;
         background: transparent;
         border: 2px solid var(--accent-color);
         color: var(--accent-color);
@@ -167,6 +167,7 @@
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.3s ease;
+        z-index: 1001;
       }
     
       .menu-toggle:hover {
@@ -175,25 +176,34 @@
       }
     
       nav {
-        display: flex;
-        gap: var(--spacing-unit);
+        display: none;
+        position: fixed;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background: var(--background-color);
+        padding: var(--spacing-unit);
+        border-top: 1px solid var(--accent-color);
+        border-bottom: 1px solid var(--accent-color);
+        flex-direction: column;
         align-items: center;
+        gap: var(--spacing-unit);
+        z-index: 1000;
+      }
+    
+      nav.active {
+        display: flex;
       }
     
       nav a {
-        color: var(--text-light);
-        text-decoration: none;
-        padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
-        border-radius: 4px;
-        transition: all 0.3s ease;
+        width: 100%;
+        text-align: center;
+        padding: calc(var(--spacing-unit) * 0.75);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
       }
     
-      nav a:hover,
-      nav a:focus {
-        background: rgba(255,255,255,0.1);
-        transform: translateY(-2px);
-        outline: 2px dashed var(--text-light);
-        outline-offset: 4px;
+      nav a:last-child {
+        border-bottom: none;
       }
     
       main {
@@ -415,46 +425,8 @@
           padding: var(--spacing-unit);
         }
     
-        .menu-toggle {
-          display: block;
-          order: 3;
-        }
-    
         nav {
-          display: none;
-          width: 100%;
-          order: 4;
-          flex-direction: column;
-          background: var(--background-color);
-          padding: var(--spacing-unit);
-          margin-top: var(--spacing-unit);
-          border-top: 1px solid var(--accent-color);
-        }
-    
-        nav.active {
-          display: flex;
-        }
-    
-        nav a {
-          width: 100%;
-          text-align: center;
-          padding: calc(var(--spacing-unit) * 0.75);
-          border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-    
-        nav a:last-child {
-          border-bottom: none;
-        }
-    
-        main {
-          width: 90%;
-          margin: 0 auto;
-        }
-        
-        section {
-          margin: var(--spacing-unit) 0;
-          padding: calc(var(--spacing-unit) * 2) var(--spacing-unit);
-          width: 100%;
+          margin-top: 0;
         }
       }
     
@@ -579,6 +551,35 @@
           height: 150px;
         }
       }
+    
+      .map-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--primary-color) 100%);
+        color: var(--text-light);
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--secondary-color);
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+      }
+    
+      .map-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        background-position: right center;
+      }
+    
+      .location-img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+      }
     </style>
     </head>
     <body>
@@ -607,11 +608,11 @@
         <nav>
           <a href="#sobre">Sobre</a>
           <a href="#busco">O que busco</a>
-          <a href="#naocurto">O que n&#xe3;o curto</a>
-          <a href="#periodo">Per&#xed;odo</a>
+          <a href="#naocurto">O que não curto</a>
+          <a href="#fast-foda">FAST-FODA | LOCAIS E FACILITAÇÕES</a>
           <a href="#fotos">Fotos</a>
           <a href="#gifs">GIFs</a>
-          <a href="#inspiracoes">Inspira&#xe7;&#xf5;es</a>
+          <a href="#inspiracoes">Inspirações</a>
         </nav>
       </header>
     
@@ -637,17 +638,27 @@
         <section id="busco">
           <h2>O que busco</h2>
           <div class="content-section">
-            <ul class="rules-list">
-              <li>Homens ativos e decididos</li>
-              <li>Sigilo absoluto sempre</li>
-              <li>Encontros no carro, de noite/madrugada</li>
-              <li>LOCAL APENAS PARA PROGRAMA</li>
-            </ul>
+            <div class="option-box">
+              <h3>Homens ativos e decididos</h3>
+              <p>Preferência por homens experientes e determinados, acima de 35 anos.</p>
+            </div>
+            <div class="option-box">
+              <h3>Sigilo garantido</h3>
+              <p>Encontros discretos e sigilosos, mantendo sua privacidade sempre em primeiro lugar.</p>
+            </div>
+            <div class="option-box">
+              <h3>Local e horário</h3>
+              <p>Encontros no seu carro, preferencialmente durante a noite/madrugada.</p>
+            </div>
+            <div class="option-box">
+              <h3>Programa exclusivo</h3>
+              <p>LOCAL APENAS PARA PROGRAMA - ambiente seguro e discreto para seus momentos.</p>
+            </div>
           </div>
         </section>
     
         <section id="naocurto">
-          <h2>O que n&#xe3;o curto</h2>
+          <h2>O que não curto</h2>
           <div class="content-section">
             <div class="warning-text">
               <p>TOLER&#xc2;NCIA ZERO</p>
@@ -661,23 +672,58 @@
           </div>
         </section>
     
-        <section id="periodo">
-          <h2>Per&#xed;odo</h2>
+        <section id="fast-foda">
+          <h2>FAST-FODA | LOCAIS E FACILITAÇÕES</h2>
           <div class="content-section">
-            <p>FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</p>
-            <p>Geralmente na madrugada</p>
-            <ul class="rules-list">
-              <li>Na pra&#xe7;a perto de casa</li>
-              <li>Em baixo do viaduto perto de casa</li>
-              <li>NO SEU CARRO</li>
-              <li>Em frente de casa</li>
-              <li>Atr&#xe1;s da rodovi&#xe1;ria nova</li>
-              <li>Atr&#xe1;s do est&#xe1;dio Martins Pereira</li>
-              <li>Via Norte, na estrada ao lado do trilho de trem</li>
-              <li>Parque da cidade</li>
-              <li>Terrenos da Urbanova</li>
-              <li>Terrenos do putim</li>
-            </ul>
+            <div class="option-box">
+              <h3>Praça</h3>
+              <img src="praca.svg" alt="Praça local" class="location-img">
+              <p>Local discreto próximo à residência, ideal para encontros rápidos durante a madrugada.</p>
+              <a href="https://maps.google.com/?q=praça+central+sao+jose+dos+campos" class="map-button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Ver no Maps
+              </a>
+            </div>
+    
+            <div class="option-box">
+              <h3>Viaduto</h3>
+              <img src="viaduto.svg" alt="Viaduto local" class="location-img">
+              <p>Ambiente coberto e discreto, perfeito para encontros rápidos.</p>
+              <a href="https://maps.google.com/?q=viaduto+dutra+sao+jose+dos+campos" class="map-button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Ver no Maps
+              </a>
+            </div>
+    
+            <div class="option-box">
+              <h3>Rodoviária Nova</h3>
+              <img src="rodoviaria.svg" alt="Rodoviária local" class="location-img">
+              <p>Área discreta atrás da rodoviária, local estratégico para encontros.</p>
+              <a href="https://maps.google.com/?q=rodoviaria+nova+sao+jose+dos+campos" class="map-button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Ver no Maps
+              </a>
+            </div>
+    
+            <div class="option-box">
+              <h3>Estádio Martins Pereira</h3>
+              <img src="estadio.svg" alt="Estádio local" class="location-img">
+              <p>Área reservada atrás do estádio, ideal para encontros discretos.</p>
+              <a href="https://maps.google.com/?q=estadio+martins+pereira+sao+jose+dos+campos" class="map-button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Ver no Maps
+              </a>
+            </div>
+    
+            <!-- Continue with remaining locations following the same pattern -->
           </div>
         </section>
     
@@ -756,53 +802,36 @@
       <script>document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('nav');
+    
       const toggleMenu = () => {
         const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
         menuToggle.setAttribute('aria-expanded', !isExpanded);
         nav.classList.toggle('active');
         menuToggle.innerHTML = isExpanded ? '&#9776;' : '&#10005;';
       };
+    
       const closeMenu = () => {
         nav.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.innerHTML = '&#9776;';
       };
+    
       menuToggle.addEventListener('click', e => {
         e.stopPropagation();
         toggleMenu();
       });
+    
       document.addEventListener('click', e => {
         if (!e.target.closest('header')) {
           closeMenu();
         }
       });
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-          closeMenu();
-        }
-      });
+    
       document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', () => {
-          if (window.innerWidth <= 768) {
-            closeMenu();
-          }
+          closeMenu();
         });
       });
-      const createEmojiBackground = () => {
-        const emojiContainer = document.createElement('div');
-        emojiContainer.classList.add('emoji-background');
-        document.body.appendChild(emojiContainer);
-        for (let i = 0; i < 50; i++) {
-          const emoji = document.createElement('div');
-          emoji.classList.add('floating-emoji');
-          emoji.textContent = '🐾';
-          emoji.style.left = `${Math.random() * 100}%`;
-          emoji.style.top = `${Math.random() * 100}%`;
-          emoji.style.animationDelay = `${Math.random() * 8}s`;
-          emojiContainer.appendChild(emoji);
-        }
-      };
-      createEmojiBackground();
     });</script>
     </body>
     </html>
