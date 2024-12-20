@@ -160,6 +160,7 @@
         position: relative;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        margin-right: 1rem;
       }
     
       .menu-toggle:hover {
@@ -171,33 +172,33 @@
       nav {
         display: none;
         position: fixed;
-        top: 120px;
-        left: 0;
-        width: 100%;
+        top: 100px; /* Adjust to match header height */
+        right: 0; /* Change from left to right */
+        width: 250px; /* Fixed width instead of 100% */
         background: linear-gradient(135deg, var(--background-color), var(--primary-color));
         padding: var(--spacing-unit);
-        border-top: 2px solid var(--secondary-color);
-        border-bottom: 2px solid var(--secondary-color);
+        border: 2px solid var(--secondary-color);
+        border-radius: 0 0 0 8px;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch; /* Change from center */
         gap: var(--spacing-unit);
-        z-index: 1000;
-        box-shadow: 0 4px 15px var(--shadow-color);
+        z-index: 999;
+        box-shadow: -4px 4px 15px var(--shadow-color);
       }
     
       nav.active {
         display: flex;
-        animation: slideDown 0.3s ease-out;
+        animation: slideIn 0.3s ease-out;
       }
     
       nav a {
         width: 100%;
-        text-align: center;
-        padding: calc(var(--spacing-unit) * 0.75);
+        text-align: left; /* Change from center */
+        padding: 0.75rem 1rem;
         color: var(--text-light);
         text-decoration: none;
         font-weight: 600;
-        border-radius: 8px;
+        border-radius: 4px;
         background: linear-gradient(90deg, 
           transparent 0%, 
           rgba(255,255,255,0.05) 50%, 
@@ -213,9 +214,21 @@
           var(--accent-color) 50%,
           var(--primary-color) 100%
         );
-        border: 1px solid var(--secondary-color);
-        transform: translateX(10px);
+        border-color: var(--secondary-color);
+        transform: translateX(-5px);
         color: var(--secondary-color);
+        padding-left: 1.5rem;
+      }
+    
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
     
       main {
@@ -419,17 +432,6 @@
         }
       }
     
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    
       @media print {
         header, .menu-toggle { 
           display: none; 
@@ -451,10 +453,11 @@
         nav {
           top: 100px;
           padding: calc(var(--spacing-unit) * 0.5);
+          width: 200px;
         }
         
         nav a {
-          padding: calc(var(--spacing-unit) * 0.5);
+          padding: 0.5rem 0.75rem;
           font-size: 0.9rem;
         }
         
@@ -472,6 +475,7 @@
       @media (max-width: 480px) {
         nav {
           top: 90px;
+          width: 180px;
         }
         
         .menu-toggle {
@@ -882,6 +886,28 @@
       </main>
     
       <script>document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      let isMenuOpen = false;
+    
+      menuToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        nav.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isMenuOpen);
+        // Update menu icon
+        menuToggle.innerHTML = isMenuOpen ? '×' : '☰';
+      });
+    
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !menuToggle.contains(e.target) && isMenuOpen) {
+          isMenuOpen = false;
+          nav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.innerHTML = '☰';
+        }
+      });
+    
       function createFloatingEmoji() {
         const emojis = ['🐾', '⚡', '💦', '🫦', '👅', '👃🏻'];
         const emoji = document.createElement('div');
