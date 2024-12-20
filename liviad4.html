@@ -197,24 +197,16 @@
       }
     
       main {
-        padding-top: 90px;
         width: 85%;
-        max-width: 1200px;
-        margin: 0 auto 0 0;
-        padding-right: 0;
+        padding-top: 90px;
+        margin: 0;
         position: relative;
       }
     
       section {
-        background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(139,0,0,0.1));
-        border: 1px solid var(--accent-color);
-        padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
-        margin: calc(var(--spacing-unit) * 2) 0; 
-        border-radius: 12px;
-        box-shadow: 0 4px 6px var(--shadow-color);
         width: 100%;
-        position: relative; 
-        left: 0; 
+        max-width: calc(100vw - 15%);
+        margin: var(--spacing-unit) 0;
       }
     
       section h2 {
@@ -466,16 +458,29 @@
         }
       }
     
-      @media (max-width: 480px) {
+      @media (max-width: 450px) {
         main {
-          width: 95%;
-          margin: 0 auto;
-          padding: 0 10px;
+          width: 85%;
+          padding: 0;
         }
-        
+    
+        body {
+          padding-right: 15%;
+        }
+    
         section {
           width: 100%;
-          margin: var(--spacing-unit) 0; 
+          margin: var(--spacing-unit) 0;
+          max-width: calc(100vw - 15%);
+        }
+    
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: var(--spacing-unit);
+        }
+    
+        .gallery-item {
+          min-width: 0;
         }
       }
     
@@ -514,6 +519,65 @@
       /* Ensure proper spacing below video */
       .gallery-item .video-container + .gallery-content {
         padding-top: 1rem;
+      }
+    
+      .option-box {
+        background: linear-gradient(135deg, rgba(139,0,0,0.2), rgba(26,26,26,0.9));
+        border: 1px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    
+      .option-box h3 {
+        color: var(--secondary-color);
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+    
+      .option-box p {
+        color: var(--text-light);
+        font-size: 1rem;
+      }
+    
+      .gif-preview {
+        background: linear-gradient(135deg, var(--primary-color), var(--background-color));
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px 8px 0 0;
+      }
+    
+      .gif-label {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    
+      .option-tags {
+        display: flex;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+    
+      .option-tag {
+        background: var(--primary-color);
+        color: var(--text-light);
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        border: 1px solid var(--accent-color);
+      }
+    
+      @media (max-width: 768px) {
+        .option-box {
+          padding: 1rem;
+        }
+      
+        .gif-preview {
+          height: 150px;
+        }
       }
     </style>
     </head>
@@ -555,13 +619,18 @@
         <section id="sobre">
           <h2>Sobre</h2>
           <div class="content-section">
-            <p>EU SOU APENAS PASSIVA</p>
-            <p>Prefiro chupar e deixar meter.</p>
-            <p>HOMENS ATIVOS DECIDIDOS</p>
-            <p>Idade superior a 35 anos</p>
-            <p>N&#xc3;O CURTO BEIJOS NA BOCA</p>
-            <p>Sigilo absoluto sempre</p>
-            <p>FA&#xc7;O SEM CAPA</p>
+            <div class="option-box">
+              <h3>Sigilo</h3>
+              <p>Local para encontros r&#xe1;pidos e discretos. Sigilo sempre.</p>
+            </div>
+            <div class="option-box">
+              <h3>Noturno</h3>
+              <p>Encontros noturnos em locais estrat&#xe9;gicos para sua privacidade.</p>
+            </div>
+            <div class="option-box">
+              <h3>Casual</h3>
+              <p>Ambiente seguro para momentos casuais e sem compromisso.</p>
+            </div>
           </div>
         </section>
     
@@ -616,19 +685,19 @@
           <h2>Galeria de Fotos</h2>
           <div class="gallery-grid">
             <article class="gallery-item">
-              <img src="https://via.placeholder.com/400x300" alt="Encontro discreto">
+              <img src="imagem-1.jpg" alt="Momento íntimo">
               <div class="gallery-content">
-                <h3>Momentos Exclusivos</h3>
-                <p>Registros especiais dos nossos encontros mais íntimos. Cada foto transmite sensualidade e mistério, mantendo sempre a discrição que você merece.</p>
+                <h3>Encontros Discretos</h3>
+                <p>Momentos únicos em ambiente reservado, proporcionando experiências intensas e memoráveis com total sigilo e discrição. Local estratégico para encontros rápidos e seguros, sempre respeitando suas preferências e limites.</p>
                 <div class="tags">
-                  <span class="tag">Sensual</span>
                   <span class="tag">Discreto</span>
                   <span class="tag">Noturno</span>
+                  <span class="tag">Casual</span>
                 </div>
                 <ul class="sentiment-list">
                   <li>Ambiente reservado</li>
-                  <li>Momentos únicos</li>
-                  <li>Sensualidade garantida</li>
+                  <li>Sigilo absoluto</li>
+                  <li>Experiência única</li>
                 </ul>
               </div>
             </article>
@@ -639,19 +708,19 @@
           <h2>Galeria de GIFs</h2>
           <div class="gallery-grid">
             <article class="gallery-item">
-              <img src="https://media.giphy.com/media/example1.gif" alt="GIF exemplo 1">
+              <img src="gif-1.gif" alt="Momento especial">
               <div class="gallery-content">
                 <h3>Momentos Especiais</h3>
-                <p>Uma prévia dos nossos encontros mais intensos e marcantes. Cada GIF revela um pouco da química e da intensidade que podemos vivenciar juntos.</p>
+                <p>Registros autênticos de encontros discretos e prazerosos. Cada momento é único e pensado para sua satisfação total, mantendo sempre o sigilo e respeito que você merece.</p>
                 <div class="tags">
-                  <span class="tag">Sensual</span>
-                  <span class="tag">Discreto</span>
-                  <span class="tag">Noturno</span>
+                  <span class="tag">Intenso</span>
+                  <span class="tag">Sigiloso</span>
+                  <span class="tag">Especial</span>
                 </div>
                 <ul class="sentiment-list">
-                  <li>Encontros reais</li>
-                  <li>Momentos únicos</li>
                   <li>Prazer garantido</li>
+                  <li>Discrição total</li>
+                  <li>Sem compromisso</li>
                 </ul>
               </div>
             </article>
@@ -667,7 +736,7 @@
               </div>
               <div class="gallery-content">
                 <h3>Experiências Únicas</h3>
-                <p>Um vislumbre das possibilidades que podemos explorar juntos. Deixe sua imaginação fluir e realize seus desejos mais intensos em um ambiente discreto e seguro.</p>
+                <p>Uma amostra do que podemos explorar juntos em nossos encontros. Deixe sua imaginação fluir e realize seus desejos mais intensos em um ambiente discreto e seguro, sempre respeitando limites e preferências.</p>
                 <div class="tags">
                   <span class="tag">Intenso</span>
                   <span class="tag">Sigiloso</span>
