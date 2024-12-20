@@ -22,23 +22,6 @@
         }
       }
     
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: repeating-linear-gradient(
-          45deg,
-          transparent 0,
-          transparent 40px,
-          rgba(255, 255, 255, 0.03) 40px,
-          rgba(255, 255, 255, 0.03) 80px
-        );
-      }
-    
       .emoji-background {
         position: fixed;
         top: 0;
@@ -102,16 +85,16 @@
       }
     
       header {
-        background: linear-gradient(135deg, var(--primary-color), var(--background-color));
-        padding: calc(var(--spacing-unit) * 1.5);
+        padding: calc(var(--spacing-unit) * 2);
+        background: linear-gradient(135deg, var(--primary-color), var(--background-color) 80%);
         position: fixed;
         width: 100%;
         z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0 4px 15px var(--shadow-color);
-        border-bottom: 1px solid var(--accent-color);
+        box-shadow: 0 4px 20px var(--shadow-color);
+        border-bottom: 2px solid var(--secondary-color);
         flex-wrap: wrap;
       }
     
@@ -188,7 +171,7 @@
       nav {
         display: none;
         position: fixed;
-        top: 90px;
+        top: 120px;
         left: 0;
         width: 100%;
         background: linear-gradient(135deg, var(--background-color), var(--primary-color));
@@ -237,7 +220,7 @@
     
       main {
         width: 85%;
-        padding-top: 90px;
+        padding-top: 120px;
         margin: 0;
         position: relative;
       }
@@ -466,7 +449,7 @@
         }
     
         nav {
-          top: 80px;
+          top: 100px;
           padding: calc(var(--spacing-unit) * 0.5);
         }
         
@@ -479,6 +462,26 @@
           width: 35px;
           height: 35px;
           font-size: 1.2rem;
+        }
+    
+        main {
+          padding-top: 100px;
+        }
+      }
+    
+      @media (max-width: 480px) {
+        nav {
+          top: 90px;
+        }
+        
+        .menu-toggle {
+          width: 30px;
+          height: 30px;
+          font-size: 1rem;
+        }
+    
+        main {
+          padding-top: 90px;
         }
       }
     
@@ -505,18 +508,6 @@
     
         .gallery-item {
           min-width: 0;
-        }
-      }
-    
-      @media (max-width: 480px) {
-        nav {
-          top: 70px;
-        }
-        
-        .menu-toggle {
-          width: 30px;
-          height: 30px;
-          font-size: 1rem;
         }
       }
     
@@ -647,6 +638,7 @@
     </style>
     </head>
     <body>
+      <div class="emoji-background"></div>
       <header>
         <div class="logo">
           <svg width="50" height="50" viewBox="0 0 50 50">
@@ -864,33 +856,24 @@
       </main>
     
       <script>document.addEventListener('DOMContentLoaded', () => {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      const toggleMenu = () => {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        nav.classList.toggle('active');
-        menuToggle.innerHTML = isExpanded ? '&#9776;' : '&#10005;';
-      };
-      const closeMenu = () => {
-        nav.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.innerHTML = '&#9776;';
-      };
-      menuToggle.addEventListener('click', e => {
-        e.stopPropagation();
-        toggleMenu();
-      });
-      document.addEventListener('click', e => {
-        if (!e.target.closest('header')) {
-          closeMenu();
-        }
-      });
-      document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-          closeMenu();
-        });
-      });
+      function createFloatingEmoji() {
+        const emojis = ['🐾', '⚡', '💦', '🫦', '👅', '👃🏻'];
+        const emoji = document.createElement('div');
+        emoji.className = 'floating-emoji';
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = Math.random() * 100 + 'vh';
+        emoji.style.animationDuration = Math.random() * 8 + 4 + 's';
+        emoji.style.animationDelay = Math.random() * 2 + 's';
+        document.querySelector('.emoji-background').appendChild(emoji);
+        setTimeout(() => {
+          emoji.remove();
+        }, 10000);
+      }
+      setInterval(createFloatingEmoji, 1000);
+      for (let i = 0; i < 10; i++) {
+        createFloatingEmoji();
+      }
     });</script>
     </body>
     </html>
