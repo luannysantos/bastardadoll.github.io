@@ -7,6 +7,56 @@
     <title>Livia D4 - Perfil</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;family=Source+Sans+Pro:wght@400;600&amp;display=swap" rel="stylesheet">
     <style>
+      @keyframes floatingEmoji {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.1;
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+          opacity: 0.2;
+        }
+        100% {
+          transform: translateY(0) rotate(360deg);
+          opacity: 0.1;
+        }
+      }
+    
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent 0,
+          transparent 40px,
+          rgba(255, 255, 255, 0.03) 40px,
+          rgba(255, 255, 255, 0.03) 80px
+        );
+      }
+    
+      .emoji-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2;
+        overflow: hidden;
+      }
+    
+      .floating-emoji {
+        position: absolute;
+        font-size: 20px;
+        opacity: 0.1;
+        animation: floatingEmoji 8s infinite ease-in-out;
+      }
+    
       :root {
         /* Updated metallic color palette */
         --background-color: #1a1a1a;  
@@ -45,6 +95,9 @@
         background: var(--background-color);
         font-size: var(--font-size-base);
         color: var(--text-light);
+        position: relative;
+        min-height: 100vh;
+        overflow-x: hidden;
       }
     
       header {
@@ -61,21 +114,34 @@
         flex-wrap: wrap;
       }
     
-      .logo svg {
+      .logo {
+        color: var(--text-light);
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 50px;
         height: 50px;
+      }
+    
+      .logo svg {
+        width: 100%;
+        height: 100%;
       }
     
       .logo svg circle {
         stroke: var(--secondary-color);
         stroke-width: 3;
         fill: transparent;
+        filter: drop-shadow(0 0 2px var(--shadow-color));
       }
     
       .logo svg text {
         fill: var(--accent-color);
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
+        text-shadow: 0 0 2px var(--shadow-color);
       }
     
       .titulo {
@@ -88,18 +154,7 @@
         -webkit-text-fill-color: transparent;
         background-size: 200% 100%;
         animation: metallicShine 3s linear infinite;
-      }
-    
-      .logo {
-        color: var(--text-light);
-        font-size: clamp(1.2rem, 2vw, 1.5rem);
-        transition: transform 0.3s ease;
-      }
-    
-      .logo:hover,
-      .logo:focus {
-        transform: scale(1.1);
-        outline: none;
+        white-space: nowrap; /* Prevents title from wrapping on smaller screens */
       }
     
       .menu-toggle {
@@ -142,17 +197,19 @@
     
       main {
         padding-top: 90px;
-        max-width: 1400px;
-        margin: 0 auto;
+        max-width: 85%; /* Change from 1400px to 85% */
+        margin: 0 auto 0 0; /* Change margin to align left instead of center */
+        padding-right: 15%; /* Add padding to ensure content doesn't touch the right edge */
       }
     
       section {
         background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(139,0,0,0.1));
         border: 1px solid var(--accent-color);
         padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
-        margin: calc(var(--spacing-unit) * 2);
+        margin: calc(var(--spacing-unit) * 2) 0; /* Remove right margin */
         border-radius: 12px;
         box-shadow: 0 4px 6px var(--shadow-color);
+        width: 100%; /* Ensure sections take full width of the main container */
       }
     
       section h2 {
@@ -391,26 +448,22 @@
         nav a:last-child {
           border-bottom: none;
         }
-      }
     
-      @media (max-width: 768px) {
-        .gallery-grid {
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        main {
+          max-width: 85%; /* Maintain the 85% width on smaller screens */
+          padding-right: 15%; /* Maintain the right padding */
         }
     
         section {
-          margin: var(--spacing-unit);
+          margin: var(--spacing-unit) 0; /* Adjust vertical margins, remove horizontal margins */
           padding: calc(var(--spacing-unit) * 2) var(--spacing-unit);
-        }
-    
-        .gallery-content {
-          padding: calc(var(--spacing-unit) * 0.75);
         }
       }
     
       @media (max-width: 480px) {
-        :root {
-          --spacing-unit: 1rem;
+        main {
+          max-width: 85%; /* Maintain the 85% width even on very small screens */
+          padding-right: 15%;
         }
     
         .gallery-item {
@@ -428,6 +481,13 @@
           animation: none !important;
         }
       }
+    
+      /* For very small screens, adjust font size if needed */
+      @media (max-width: 380px) {
+        .titulo {
+          font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+      }
     </style>
     </head>
     <body>
@@ -439,21 +499,28 @@
                 <stop offset="0%" style="stop-color:var(--secondary-color);stop-opacity:1"/>
                 <stop offset="100%" style="stop-color:var(--accent-color);stop-opacity:1"/>
               </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
             </defs>
-            <circle cx="25" cy="25" r="22" fill="none" stroke="url(#logoGradient)" stroke-width="3"/>
-            <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="var(--accent-color)" font-weight="bold">LOGO</text>
+            <circle cx="25" cy="25" r="22" fill="none" stroke="url(#logoGradient)" stroke-width="3" filter="url(#glow)"/>
+            <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="var(--accent-color)" font-weight="bold" filter="url(#glow)">L4</text>
           </svg>
         </div>
-        <h1 class="titulo">Minha Galeria</h1>
-        <button class="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">&#9776;</button>
+        <h1 class="titulo">Livia D4</h1>
+        <button class="menu-toggle" aria-label="Abrir menu de navega&#xe7;&#xe3;o" aria-expanded="false">&#x2630;</button>
         <nav>
           <a href="#sobre">Sobre</a>
           <a href="#busco">O que busco</a>
-          <a href="#naocurto">O que não curto</a>
-          <a href="#periodo">Período</a>
+          <a href="#naocurto">O que n&#xe3;o curto</a>
+          <a href="#periodo">Per&#xed;odo</a>
           <a href="#fotos">Fotos</a>
           <a href="#gifs">GIFs</a>
-          <a href="#inspiracoes">Inspirações</a>
+          <a href="#inspiracoes">Inspira&#xe7;&#xf5;es</a>
         </nav>
       </header>
     
@@ -465,9 +532,9 @@
             <p>Prefiro chupar e deixar meter.</p>
             <p>HOMENS ATIVOS DECIDIDOS</p>
             <p>Idade superior a 35 anos</p>
-            <p>NÃO CURTO BEIJOS NA BOCA</p>
+            <p>N&#xc3;O CURTO BEIJOS NA BOCA</p>
             <p>Sigilo absoluto sempre</p>
-            <p>FAÇO SEM CAPA</p>
+            <p>FA&#xc7;O SEM CAPA</p>
           </div>
         </section>
     
@@ -484,32 +551,32 @@
         </section>
     
         <section id="naocurto">
-          <h2>O que não curto</h2>
+          <h2>O que n&#xe3;o curto</h2>
           <div class="content-section">
             <div class="warning-text">
-              <p>TOLERÂNCIA ZERO</p>
+              <p>TOLER&#xc2;NCIA ZERO</p>
               <ul class="rules-list">
                 <li>Mentirosos</li>
                 <li>Indecisos</li>
                 <li>Narcisistas</li>
-                <li>Românticos</li>
+                <li>Rom&#xe2;nticos</li>
               </ul>
             </div>
           </div>
         </section>
     
         <section id="periodo">
-          <h2>Período</h2>
+          <h2>Per&#xed;odo</h2>
           <div class="content-section">
-            <p>FAST-FODA | LOCAIS E FACILITAÇÕES</p>
+            <p>FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</p>
             <p>Geralmente na madrugada</p>
             <ul class="rules-list">
-              <li>Na praça perto de casa</li>
+              <li>Na pra&#xe7;a perto de casa</li>
               <li>Em baixo do viaduto perto de casa</li>
               <li>NO SEU CARRO</li>
               <li>Em frente de casa</li>
-              <li>Atrás da rodoviária nova</li>
-              <li>Atrás do estádio Martins Pereira</li>
+              <li>Atr&#xe1;s da rodovi&#xe1;ria nova</li>
+              <li>Atr&#xe1;s do est&#xe1;dio Martins Pereira</li>
               <li>Via Norte, na estrada ao lado do trilho de trem</li>
               <li>Parque da cidade</li>
               <li>Terrenos da Urbanova</li>
@@ -525,14 +592,14 @@
               <img src="https://via.placeholder.com/400x300" alt="Encontro discreto">
               <div class="gallery-content">
                 <h3>Encontro Discreto</h3>
-                <p>Local seguro e discreto para encontros rápidos...</p>
+                <p>Local seguro e discreto para encontros r&#xe1;pidos...</p>
                 <div class="tags">
                   <span class="tag">Sigilo</span>
                   <span class="tag">Noturno</span>
                   <span class="tag">Casual</span>
                 </div>
                 <ul class="sentiment-list">
-                  <li>Discrição garantida</li>
+                  <li>Discri&#xe7;&#xe3;o garantida</li>
                   <li>Ambiente seguro</li>
                   <li>Rapidez e praticidade</li>
                 </ul>
@@ -548,7 +615,7 @@
               <img src="https://media.giphy.com/media/example1.gif" alt="GIF exemplo 1">
               <div class="gallery-content">
                 <h3>Momento Especial</h3>
-                <p>Uma demonstração sensual e discreta...</p>
+                <p>Uma demonstra&#xe7;&#xe3;o sensual e discreta...</p>
                 <div class="tags">
                   <span class="tag">Sensual</span>
                   <span class="tag">Discreto</span>
@@ -556,7 +623,7 @@
                 </div>
                 <ul class="sentiment-list">
                   <li>Prazer intenso</li>
-                  <li>Discrição total</li>
+                  <li>Discri&#xe7;&#xe3;o total</li>
                   <li>Rapidez</li>
                 </ul>
               </div>
@@ -565,15 +632,13 @@
         </section>
     
         <section id="inspiracoes">
-          <h2>Inspirações</h2>
+          <h2>Inspira&#xe7;&#xf5;es</h2>
           <div class="gallery-grid">
             <article class="gallery-item">
-              <video controls>
-                <source src="https://example.com/video1.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
+              <video controls><iframe src="https://www.xvideos.com/embedframe/ultaovha37e" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
               </video>
               <div class="gallery-content">
-                <h3>Inspiração Noturna</h3>
+                <h3>Inspira&#xe7;&#xe3;o Noturna</h3>
                 <p>Um encontro especial sob as estrelas...</p>
                 <div class="tags">
                   <span class="tag">Noite</span>
@@ -582,7 +647,7 @@
                 </div>
                 <ul class="sentiment-list">
                   <li>Liberdade</li>
-                  <li>Excitação</li>
+                  <li>Excita&#xe7;&#xe3;o</li>
                   <li>Adrenalina</li>
                 </ul>
               </div>
@@ -609,26 +674,23 @@
             menuToggle.innerHTML = '&#9776;';
           };
     
-          menuToggle.addEventListener('click', (e) => {
+          menuToggle.addEventListener('click', e => {
             e.stopPropagation();
             toggleMenu();
           });
     
-          // Close menu when clicking outside
-          document.addEventListener('click', (e) => {
+          document.addEventListener('click', e => {
             if (!e.target.closest('header')) {
               closeMenu();
             }
           });
     
-          // Close menu when window is resized
           window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
               closeMenu();
             }
           });
     
-          // Handle menu item clicks
           document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
               if (window.innerWidth <= 768) {
@@ -636,6 +698,24 @@
               }
             });
           });
+    
+          const createEmojiBackground = () => {
+            const emojiContainer = document.createElement('div');
+            emojiContainer.classList.add('emoji-background');
+            document.body.appendChild(emojiContainer);
+    
+            for (let i = 0; i < 50; i++) {
+              const emoji = document.createElement('div');
+              emoji.classList.add('floating-emoji');
+              emoji.textContent = '🐾';
+              emoji.style.left = `${Math.random() * 100}%`;
+              emoji.style.top = `${Math.random() * 100}%`;
+              emoji.style.animationDelay = `${Math.random() * 8}s`;
+              emojiContainer.appendChild(emoji);
+            }
+          };
+    
+          createEmojiBackground();
         });
       </script>
     </body>
