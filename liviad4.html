@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,621 +5,750 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livia D4 - Perfil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;family=Source+Sans+Pro:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-      :root {
-        /* Updated metallic color palette */
-        --background-color: #1a1a1a;  
-        --primary-color: #8B0000;     
-        --secondary-color: #FFD700;   
-        --accent-color: #C0C0C0;      
-        --header-gradient-start: #2d1934;
-        --header-gradient-end: #1a1a1a;
-        --text-light: #e0e0e0;
-        --shadow-color: rgba(0,0,0,0.6);
-        
-        /* Typography */
-        --font-size-base: clamp(14px, 1vw, 16px);
-        --font-size-h1: clamp(1.8rem, 4vw, 2.5rem);
-        --font-size-h2: clamp(1.5rem, 3vw, 2rem);
-        --font-size-h3: clamp(1.2rem, 2vw, 1.5rem);
-        
-        /* Spacing */
-        --spacing-unit: clamp(0.5rem, 2vw, 1rem);
-        --section-spacing: calc(var(--spacing-unit) * 3);
-        
-        /* Animations */
-        --transition-speed: 0.3s;
-        --hover-scale: 1.05;
-      }
-    
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-    
-      body {
-        font-family: 'Source Sans Pro', sans-serif;
-        line-height: 1.8;
-        background: var(--background-color);
-        font-size: var(--font-size-base);
-        color: var(--text-light);
-      }
-    
-      header {
-        background: linear-gradient(135deg, var(--primary-color), var(--background-color));
-        padding: var(--spacing-unit);
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 10px var(--shadow-color);
-      }
-    
-      .logo {
-        color: var(--text-light);
-        font-size: clamp(1.2rem, 2vw, 1.5rem);
-        transition: transform 0.3s ease;
-      }
-    
-      .logo svg circle {
-        stroke: var(--secondary-color);
-      }
-    
-      .logo svg text {
-        fill: var(--accent-color); 
-      }
-    
-      .logo:hover,
-      .logo:focus {
-        transform: scale(1.1);
-        outline: none;
-      }
-    
-      .titulo {
-        color: var(--text-light);
-        margin: 0 var(--spacing-unit);
-        font-size: clamp(1.4rem, 3vw, 1.8rem);
-        text-shadow: 2px 2px 4px var(--shadow-color);
-      }
-    
-      .menu-toggle {
-        color: var(--text-light);
-        cursor: pointer;
-        display: none;
-        font-size: clamp(1.2rem, 2vw, 1.5rem);
-        transition: transform 0.3s ease;
-        background: none;
-        border: none;
-        padding: 0.5rem;
-      }
-    
-      .menu-toggle:hover,
-      .menu-toggle:focus {
-        transform: scale(1.1);
-        outline: 2px dashed var(--text-light);
-        outline-offset: 4px;
-      }
-    
-      nav {
-        display: flex;
-        gap: var(--spacing-unit);
-      }
-    
-      nav a {
-        color: var(--text-light);
-        text-decoration: none;
-        padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
-        border-radius: 4px;
-        transition: all 0.3s ease;
-      }
-    
-      nav a:hover,
-      nav a:focus {
-        background: rgba(255,255,255,0.1);
-        transform: translateY(-2px);
-        outline: 2px dashed var(--text-light);
-        outline-offset: 4px;
-      }
-    
-      main {
-        padding-top: 90px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-    
-      section {
-        background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(139,0,0,0.1));
-        border: 1px solid var(--accent-color);
-        padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
-        margin: calc(var(--spacing-unit) * 2);
-        border-radius: 12px;
-        box-shadow: 0 4px 6px var(--shadow-color);
-      }
-    
-      section h2 {
-        color: var(--secondary-color);
-        margin-bottom: 1.5rem;
-        font-size: clamp(1.5rem, 4vw, 2rem);
-        position: relative;
-        padding-bottom: 0.5rem;
-        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 200% 100%;
-        animation: metallicShine 3s linear infinite;
-      }
-    
-      section h2::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: var(--primary-color);
-        border-radius: 2px;
-      }
-    
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: calc(var(--spacing-unit) * 2);
-        padding: var(--spacing-unit);
-      }
-    
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
-                  box-shadow var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-        background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(139,0,0,0.2));
-        border: 1px solid var(--accent-color);
-      }
-    
-      .gallery-item::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
-        opacity: 0;
-        transition: opacity var(--transition-speed) ease;
-      }
-    
-      .gallery-item:hover::after {
-        opacity: 1;
-      }
-    
-      .gallery-item img,
-      .gallery-item video {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-    
-      .gallery-item:hover img,
-      .gallery-item:hover video {
-        transform: scale(1.05);
-      }
-    
-      .gallery-content {
-        padding: calc(var(--spacing-unit) * 1.5);
-      }
-    
-      .gallery-content h3 {
-        color: var(--secondary-color);
-        margin-bottom: var(--spacing-unit);
-        font-size: clamp(1.1rem, 2vw, 1.3rem);
-      }
-    
-      .gallery-content p {
-        color: var(--accent-color);
-        margin-bottom: var(--spacing-unit);
-        line-height: 1.6;
-      }
-    
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: calc(var(--spacing-unit) * 0.5);
-        margin: var(--spacing-unit) 0;
-      }
-    
-      .tag {
-        background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--primary-color) 100%);
-        background-size: 200% 100%;
-        animation: metallicShine 3s linear infinite;
-        color: var(--accent-color);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
-        font-size: clamp(0.75rem, 1.5vw, 0.85rem);
-        transition: transform 0.3s ease;
-        border: 1px solid var(--secondary-color);
-      }
-    
-      .tag:hover {
-        background: var(--secondary-color);
-        color: var(--background-color);
-      }
-    
-      .sentiment-list {
-        list-style: none;
-        margin: var(--spacing-unit) 0;
-      }
-    
-      .sentiment-list li {
-        padding: calc(var(--spacing-unit) * 0.5) 0;
-        color: var(--accent-color);
-        position: relative;
-        padding-left: 1.5rem;
-      }
-    
-      .sentiment-list li::before {
-        content: '•';
-        position: absolute;
-        left: 0;
-        color: var(--secondary-color);
-      }
-    
-      .warning-text {
-        color: var(--secondary-color);
-        background: var(--primary-color);
-        font-weight: bold;
-        padding: 0.5rem;
-        border-left: 4px solid var(--accent-color);
-        margin: 1rem 0;
-      }
-    
-      .content-section {
-        background: rgba(255,255,255,0.05);
-        padding: 1rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-      }
-    
-      .content-section p {
-        margin-bottom: 0.5rem;
-      }
-    
-      .rules-list {
-        list-style: none;
-        padding: 0;
-      }
-    
-      .rules-list li {
-        margin: 0.5rem 0;
-        padding-left: 1.5rem;
-        position: relative;
-      }
-    
-      .rules-list li::before {
-        content: '•';
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-      }
-    
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity var(--transition-speed) ease,
-                  transform var(--transition-speed) ease;
-      }
-    
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    
-      @keyframes metallicShine {
-        0% {
-          background-position: -200% 0;
-        }
-        100% {
-          background-position: 200% 0;
-        }
-      }
-    
-      @media print {
-        header, .menu-toggle { 
-          display: none; 
-        }
-        main { 
-          padding-top: 0; 
-        }
-        section {
-          break-inside: avoid;
-          box-shadow: none;
-        }
-      }
-    
-      @media (max-width: 768px) {
-        .menu-toggle {
-          display: block;
-        }
-    
-        nav {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background: var(--header-gradient-end);
-          flex-direction: column;
-          padding: var(--spacing-unit);
-          animation: slideDown 0.3s ease;
-        }
-    
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-    
-        nav.active {
-          display: flex;
-        }
-    
-        section {
-          margin: var(--spacing-unit);
-          padding: calc(var(--spacing-unit) * 2) var(--spacing-unit);
-        }
-      }
-    
-      @media (max-width: 768px) {
-        .gallery-grid {
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        }
-    
-        section {
-          padding: var(--spacing-unit);
-        }
-    
-        .gallery-content {
-          padding: calc(var(--spacing-unit) * 0.75);
-        }
-      }
-    
-      @media (max-width: 480px) {
+        /* Updated color palette */
         :root {
-          --spacing-unit: 1rem;
+            --primary: #8B0000; /* Metallic red */
+            --primary-light: #DC143C; /* Lighter metallic red */
+            --text: #FFD700; /* Metallic gold */
+            --bg: #111111; /* Metallic black */
+            --bg-transparent: rgba(17,17,17,0.95);
+            --accent: #C0C0C0; /* Silver */
+            --accent-dark: #808080; /* Darker silver */
+          /* Base responsive typography */
+          --base-font: clamp(14px, 1vw + 10px, 18px);
+          --h1-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+          --h2-size: clamp(1.8rem, 3vw + 1rem, 2.8rem);
+          --h3-size: clamp(1.4rem, 2vw + 1rem, 2.2rem);
+          
+          /* Spacing variables */
+          --spacing-sm: clamp(0.5rem, 1vw, 1rem);
+          --spacing-md: clamp(1rem, 2vw, 2rem);
+          --spacing-lg: clamp(2rem, 4vw, 4rem);
+          
+          /* Container widths */
+          --container-max: 1200px;
+          --container-padding: clamp(1rem, 5vw, 5%);
         }
-    
+
+        /* Improved container layout */
+        .main-content {
+          margin-top: clamp(60px, 10vh, 80px);
+          padding: var(--spacing-md);
+          max-width: var(--container-max);
+          margin-left: auto;
+          margin-right: auto;
+          display: grid;
+          gap: var(--spacing-lg);
+        }
+
+        /* Enhanced section layouts */
+        .section {
+          display: grid;
+          gap: var(--spacing-md);
+          padding: var(--spacing-md);
+          border-radius: clamp(8px, 1.5vw, 15px);
+          background: linear-gradient(135deg, var(--bg-transparent) 0%, rgba(139,0,0,0.05) 100%);
+          border: 1px solid var(--primary);
+          box-shadow: 0 0 20px rgba(139,0,0,0.1);
+        }
+
+        /* Refined gallery grid */
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+          gap: var(--spacing-md);
+          padding: var(--spacing-sm);
+        }
+
+        /* Responsive breakpoints */
+        @media (max-width: 1200px) {
+          .main-content {
+            padding: var(--spacing-md) var(--container-padding);
+          }
+          
+          .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .header {
+            padding: var(--spacing-sm);
+          }
+          
+          .section {
+            margin: 0 calc(-1 * var(--spacing-sm));
+            border-radius: 0;
+          }
+          
+          .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+          }
+          
+          .gallery-item {
+            margin: 0 calc(-1 * var(--spacing-sm));
+            border-radius: 0;
+          }
+        }
+
+        @media (max-width: 480px) {
+          :root {
+            --base-font: 14px;
+          }
+          
+          .section {
+            padding: var(--spacing-sm);
+          }
+        }
+
+        /* Print styles */
+        @media print {
+          :root {
+            --base-font: 12pt;
+          }
+          
+          .main-content {
+            margin: 0;
+            padding: 2cm;
+          }
+          
+          .section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: var(--base-font);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Header styles update */
+        .header {
+            background: linear-gradient(135deg, var(--bg) 0%, rgba(139,0,0,0.15) 100%);
+            padding: clamp(0.5rem, 2vw, 2rem) clamp(1rem, 5vw, 5%);
+            position: fixed;
+            width: 90%; 
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(139,0,0,0.2);
+            box-sizing: border-box;
+            min-height: clamp(50px, 8vh, 80px);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            color: var(--text);
+            font-size: var(--h2-size);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: clamp(0.3rem, 1vw, 1rem);
+            text-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+
+        .logo:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: clamp(1rem, 2vw, 2rem);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: 0.3s;
+            padding: clamp(0.3rem, 1vw, 0.8rem);
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        /* Enhanced section styles */
+        .section {
+            animation: fadeScale 0.5s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 10px 20px rgba(139,0,0,0.2);
+            border-color: var(--text);
+        }
+
+        .section-title {
+            color: var(--text);
+            font-size: var(--h2-size);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
+            text-shadow: 0 0 5px rgba(255,215,0,0.2);
+        }
+
+        .section-content {
+            line-height: 1.6;
+        }
+
+        .section-content p {
+            transition: color 0.3s ease;
+        }
+
+        .section-content p:hover {
+            color: var(--primary-light);
+        }
+
+        .section-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .section-list li:before {
+            content: "•";
+            color: var(--primary-light);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Enhanced warning styles */
+        .warning {
+            background: linear-gradient(45deg, rgba(139,0,0,0.1), rgba(139,0,0,0.2));
+            animation: highlight 3s linear infinite;
+            background-size: 200% auto;
+            color: var(--primary);
+            font-weight: bold;
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px rgba(139,0,0,0.2);
+        }
+
+        /* Enhanced gallery items */
         .gallery-item {
-          margin-bottom: var(--spacing-unit);
+            animation: fadeIn 0.5s ease-out;
+            background: linear-gradient(135deg, var(--bg-transparent) 0%, rgba(139,0,0,0.05) 100%);
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(139,0,0,0.1);
+            border-radius: clamp(8px, 1.5vw, 12px);
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
-        
+
+        .gallery-item:hover {
+            border-color: var(--text);
+            box-shadow: 0 10px 20px rgba(139,0,0,0.2);
+        }
+
+        .media-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            background: rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .media-container img,
+        .media-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Enhanced content styling */
+        .gallery-content {
+            padding: var(--spacing-md);
+        }
+
+        .gallery-title {
+            color: var(--text);
+        }
+
+        .gallery-description {
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Tag styling */
         .tags {
-          flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: var(--spacing-sm);
         }
-      }
-    
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          animation: none !important;
+
+        .tag {
+            background: linear-gradient(45deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8em;
+            color: var(--text);
+            border: 1px solid var(--accent);
+            box-shadow: 0 2px 5px rgba(139,0,0,0.2);
+            transition: transform 0.2s ease;
         }
-      }
+
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Sentiment list styling */
+        .sentiment-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sentiment-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(139,0,0,0.2);
+            font-size: 0.9em;
+            color: var(--accent);
+        }
+
+        .sentiment-item:hover {
+            color: var(--text);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                margin: 0 calc(-1 * var(--spacing-sm));
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-content {
+                padding: var(--spacing-sm);
+            }
+            
+            .gallery-title {
+                font-size: 1.2rem;
+            }
+            
+            .gallery-description {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Enhanced animations */
+        @keyframes fadeScale {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes highlight {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
-    </head>
-    <body>
-      <header>
-        <div class="logo">
-          <svg width="40" height="40" viewBox="0 0 40 40">
-            <defs>
-              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#fff;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#ddd;stop-opacity:1"/>
-              </linearGradient>
-            </defs>
-            <circle cx="20" cy="20" r="18" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
-            <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" style="font-size: 12px;">LOGO</text>
-          </svg>
-        </div>
-        <h1 class="titulo">Minha Galeria</h1>
-        <button class="menu-toggle" aria-label="Abrir menu de navega&#xe7;&#xe3;o">&#x2630;</button>
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="logo">Lívia</a>
+        <button class="menu-toggle" aria-label="Toggle menu" onclick="handleMenuToggle()">
+            <i class="fas fa-bars"></i>
+        </button>
         <nav>
-          <a href="#sobre">Sobre</a>
-          <a href="#busco">O que busco</a>
-          <a href="#naocurto">O que n&#xe3;o curto</a>
-          <a href="#periodo">Per&#xed;odo</a>
-          <a href="#fotos">Fotos</a>
-          <a href="#gifs">GIFs</a>
-          <a href="#inspiracoes">Inspira&#xe7;&#xf5;es</a>
+            <ul id="menu">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#busco">O que busco</a></li>
+                <li><a href="#nao-curto">O que não curto</a></li>
+                <li><a href="#periodo">Período</a></li>
+                <li><a href="#local">Local</a></li>
+                <li><a href="#galerias">Galerias</a></li>
+            </ul>
         </nav>
-      </header>
-    
-      <main>
-        <section id="sobre">
-          <h2>Sobre</h2>
-          <div class="content-section">
-            <p>EU SOU APENAS PASSIVA</p>
-            <p>Prefiro chupar e deixar meter.</p>
-            <p>HOMENS ATIVOS DECIDIDOS</p>
-            <p>Idade superior a 35 anos</p>
-            <p>N&#xc3;O CURTO BEIJOS NA BOCA</p>
-            <p>Sigilo absoluto sempre</p>
-            <p>FA&#xc7;O SEM CAPA</p>
-          </div>
-        </section>
-    
-        <section id="busco">
-          <h2>O que busco</h2>
-          <div class="content-section">
-            <ul class="rules-list">
-              <li>Homens ativos e decididos</li>
-              <li>Sigilo absoluto sempre</li>
-              <li>Encontros no carro, de noite/madrugada</li>
-              <li>LOCAL APENAS PARA PROGRAMA</li>
-            </ul>
-          </div>
-        </section>
-    
-        <section id="naocurto">
-          <h2>O que n&#xe3;o curto</h2>
-          <div class="content-section">
-            <div class="warning-text">
-              <p>TOLER&#xc2;NCIA ZERO</p>
-              <ul class="rules-list">
-                <li>Mentirosos</li>
-                <li>Indecisos</li>
-                <li>Narcisistas</li>
-                <li>Rom&#xe2;nticos</li>
-              </ul>
+    </header>
+
+    <div class="main-content">
+        <div id="sobre" class="section">
+            <h2 class="section-title">Sobre</h2>
+            <div class="section-content">
+                <p>EU SOU APENAS PASSIVA<br>
+                Prefiro chupar e deixar meter.</p>
+                <p>HOMENS ATIVOS DECIDIDOS<br>
+                Idade superior a 35 anos</p>
+                <p>NÃO CURTO BEIJOS NA BOCA<br>
+                Sigilo absoluto sempre</p>
+                <p>FAÇO SEM CAPA</p>
+                <div class="warning">
+                    SEJA ESPECÍFICO, DIRETO E OBJETIVO
+                </div>
             </div>
-          </div>
-        </section>
-    
-        <section id="periodo">
-          <h2>Per&#xed;odo</h2>
-          <div class="content-section">
-            <p>FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</p>
-            <p>Geralmente na madrugada</p>
-            <ul class="rules-list">
-              <li>Na pra&#xe7;a perto de casa</li>
-              <li>Em baixo do viaduto perto de casa</li>
-              <li>NO SEU CARRO</li>
-              <li>Em frente de casa</li>
-              <li>Atr&#xe1;s da rodovi&#xe1;ria nova</li>
-              <li>Atr&#xe1;s do est&#xe1;dio Martins Pereira</li>
-              <li>Via Norte, na estrada ao lado do trilho de trem</li>
-              <li>Parque da cidade</li>
-              <li>Terrenos da Urbanova</li>
-              <li>Terrenos do putim</li>
-            </ul>
-          </div>
-        </section>
-    
-        <section id="fotos">
-          <h2>Galeria de Fotos</h2>
-          <div class="gallery-grid">
-            <article class="gallery-item">
-              <img src="https://via.placeholder.com/400x300" alt="Encontro discreto">
-              <div class="gallery-content">
-                <h3>Encontro Discreto</h3>
-                <p>Local seguro e discreto para encontros r&#xe1;pidos...</p>
-                <div class="tags">
-                  <span class="tag">Sigilo</span>
-                  <span class="tag">Noturno</span>
-                  <span class="tag">Casual</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Discri&#xe7;&#xe3;o garantida</li>
-                  <li>Ambiente seguro</li>
-                  <li>Rapidez e praticidade</li>
+        </div>
+        
+        <div id="busco" class="section">
+            <h2 class="section-title">O que busco</h2>
+            <div class="section-content">
+                <ul class="section-list">
+                    <li>Homens ativos e decididos</li>
+                    <li>Encontros discretos</li>
+                    <li>Pessoas diretas e objetivas</li>
+                    <li>Respeito mútuo</li>
+                    <li>Sigilo absoluto</li>
                 </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-    
-        <section id="gifs">
-          <h2>Galeria de GIFs</h2>
-          <div class="gallery-grid">
-            <article class="gallery-item">
-              <img src="https://media.giphy.com/media/example1.gif" alt="GIF exemplo 1">
-              <div class="gallery-content">
-                <h3>Momento Especial</h3>
-                <p>Uma demonstra&#xe7;&#xe3;o sensual e discreta...</p>
-                <div class="tags">
-                  <span class="tag">Sensual</span>
-                  <span class="tag">Discreto</span>
-                  <span class="tag">Noturno</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Prazer intenso</li>
-                  <li>Discri&#xe7;&#xe3;o total</li>
-                  <li>Rapidez</li>
+            </div>
+        </div>
+
+        <div id="nao-curto" class="section">
+            <h2 class="section-title">O que não curto</h2>
+            <div class="section-content">
+                <div class="warning">TOLERÂNCIA ZERO</div>
+                <ul class="section-list">
+                    <li>Mentirosos</li>
+                    <li>Indecisos</li>
+                    <li>Narcisistas</li>
+                    <li>Românticos</li>
+                    <li>Passivos</li>
                 </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-    
-        <section id="inspiracoes">
-          <h2>Inspira&#xe7;&#xf5;es</h2>
-          <div class="gallery-grid">
-            <article class="gallery-item">
-              <video controls>
-                <source src="https://example.com/video1.mp4" type="video/mp4">
-                Seu navegador n&#xe3;o suporta v&#xed;deos HTML5.
-              </video>
-              <div class="gallery-content">
-                <h3>Inspira&#xe7;&#xe3;o Noturna</h3>
-                <p>Um encontro especial sob as estrelas...</p>
-                <div class="tags">
-                  <span class="tag">Noite</span>
-                  <span class="tag">Aventura</span>
-                  <span class="tag">Casual</span>
+            </div>
+        </div>
+
+        <div id="periodo" class="section">
+            <h2 class="section-title">Período</h2>
+            <div class="section-content">
+                <p> Noite/Madrugada</p>
+                <p>LOCAL APENAS PARA PROGRAMA</p>
+            </div>
+        </div>
+
+        <div id="local" class="section">
+            <h2 class="section-title">Localização</h2>
+            <div class="section-content">
+                <p>Em São José dos Campos SP, meu local fica em frente a Dutra Km 146 sentido RJ.</p>
+                <div class="location-details">
+                    <h3>FAST-FODA | LOCAIS E FACILIDADES</h3>
+                    <ul class="location-list">
+                        <li class="location-item">Na praça perto de casa</li>
+                        <li class="location-item">Em baixo do viaduto perto de casa</li>
+                        <li class="location-item">NO SEU CARRO</li>
+                        <li class="location-item">Em frente de casa</li>
+                        <li class="location-item">Atrás da rodoviária nova</li>
+                        <li class="location-item">Atrás do estádio Martins Pereira</li>
+                        <li class="location-item">Via Norte, na estrada ao lado do trilho de trem</li>
+                        <li class="location-item">Parque da cidade</li>
+                        <li class="location-item">Terrenos da Urbanova</li>
+                        <li class="location-item">Terrenos do putim</li>
+                    </ul>
                 </div>
-                <ul class="sentiment-list">
-                  <li>Liberdade</li>
-                  <li>Excita&#xe7;&#xe3;o</li>
-                  <li>Adrenalina</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-      </main>
-    
-      <script>const fadeElements = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
+            </div>
+        </div>
+
+        <div id="galerias" class="section">
+            <h2 class="section-title">Galerias</h2>
+            <h3>Fotos</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="imagem-1.jpg" alt="Encontros Discretos" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Encontros Discretos</h3>
+                        <p class="gallery-description">Momentos únicos garantidos em ambiente discreto e seguro. Para homens decididos que buscam experiências sem compromisso e com sigilo total. Local próprio ou seu carro, sempre priorizando sua privacidade e satisfação.</p>
+                        <div class="tags">
+                            <span class="tag">Discreto</span>
+                            <span class="tag">Rápido</span>
+                            <span class="tag">Sigiloso</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Prazer intenso</li>
+                            <li class="sentiment-item">Discrição total</li>
+                            <li class="sentiment-item">Sem compromisso</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="imagem-2.jpg" alt="Encontros Discretos" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Encontros Discretos</h3>
+                        <p class="gallery-description">Momentos únicos garantidos em ambiente discreto e seguro. Para homens decididos que buscam experiências sem compromisso e com sigilo total. Local próprio ou seu carro, sempre priorizando sua privacidade e satisfação.</p>
+                        <div class="tags">
+                            <span class="tag">Discreto</span>
+                            <span class="tag">Rápido</span>
+                            <span class="tag">Sigiloso</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Prazer intenso</li>
+                            <li class="sentiment-item">Discrição total</li>
+                            <li class="sentiment-item">Sem compromisso</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="imagem-3.jpg" alt="Encontros Discretos" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Encontros Discretos</h3>
+                        <p class="gallery-description">Momentos únicos garantidos em ambiente discreto e seguro. Para homens decididos que buscam experiências sem compromisso e com sigilo total. Local próprio ou seu carro, sempre priorizando sua privacidade e satisfação.</p>
+                        <div class="tags">
+                            <span class="tag">Discreto</span>
+                            <span class="tag">Rápido</span>
+                            <span class="tag">Sigiloso</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Prazer intenso</li>
+                            <li class="sentiment-item">Discrição total</li>
+                            <li class="sentiment-item">Sem compromisso</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>GIFs</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="gif-1.gif" alt="Momentos Quentes" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Momentos Quentes</h3>
+                        <p class="gallery-description">Preview dos melhores momentos e posições preferidas. Demonstrações do que você pode esperar em nossos encontros discretos. Conteúdo exclusivo para maiores de 18 anos.</p>
+                        <div class="tags">
+                            <span class="tag">Hot</span>
+                            <span class="tag">Preview</span>
+                            <span class="tag">18+</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Intensidade</li>
+                            <li class="sentiment-item">Satisfação</li>
+                            <li class="sentiment-item">Exposição</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="gif-2.gif" alt="Momentos Quentes" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Momentos Quentes</h3>
+                        <p class="gallery-description">Preview dos melhores momentos e posições preferidas. Demonstrações do que você pode esperar em nossos encontros discretos. Conteúdo exclusivo para maiores de 18 anos.</p>
+                        <div class="tags">
+                            <span class="tag">Hot</span>
+                            <span class="tag">Preview</span>
+                            <span class="tag">18+</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Intensidade</li>
+                            <li class="sentiment-item">Satisfação</li>
+                            <li class="sentiment-item">Exposição</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="gif-3.gif" alt="Momentos Quentes" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Momentos Quentes</h3>
+                        <p class="gallery-description">Preview dos melhores momentos e posições preferidas. Demonstrações do que você pode esperar em nossos encontros discretos. Conteúdo exclusivo para maiores de 18 anos.</p>
+                        <div class="tags">
+                            <span class="tag">Hot</span>
+                            <span class="tag">Preview</span>
+                            <span class="tag">18+</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Intensidade</li>
+                            <li class="sentiment-item">Satisfação</li>
+                            <li class="sentiment-item">Exposição</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Inspirações</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <video src="https://video-url.com/video1" alt="Inspirações" onload="handleMediaLoad(this)" onerror="handleMediaError(this)" controls></video>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspirações</h3>
+                        <p class="gallery-description">Vídeos inspiradores que representam meu estilo e preferências. Seleção cuidadosa que demonstra o tipo de encontro que proporciono. Apenas referências visuais.</p>
+                        <div class="tags">
+                            <span class="tag">Inspiração</span>
+                            <span class="tag">Estilo</span>
+                            <span class="tag">Referência</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Criatividade</li>
+                            <li class="sentiment-item">Variedade</li>
+                            <li class="sentiment-item">Limitações</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <video src="https://video-url.com/video2" alt="Inspirações" onload="handleMediaLoad(this)" onerror="handleMediaError(this)" controls></video>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspirações</h3>
+                        <p class="gallery-description">Vídeos inspiradores que representam meu estilo e preferências. Seleção cuidadosa que demonstra o tipo de encontro que proporciono. Apenas referências visuais.</p>
+                        <div class="tags">
+                            <span class="tag">Inspiração</span>
+                            <span class="tag">Estilo</span>
+                            <span class="tag">Referência</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Criatividade</li>
+                            <li class="sentiment-item">Variedade</li>
+                            <li class="sentiment-item">Limitações</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <video src="https://video-url.com/video3" alt="Inspirações" onload="handleMediaLoad(this)" onerror="handleMediaError(this)" controls></video>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspirações</h3>
+                        <p class="gallery-description">Vídeos inspiradores que representam meu estilo e preferências. Seleção cuidadosa que demonstra o tipo de encontro que proporciono. Apenas referências visuais.</p>
+                        <div class="tags">
+                            <span class="tag">Inspiração</span>
+                            <span class="tag">Estilo</span>
+                            <span class="tag">Referência</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Criatividade</li>
+                            <li class="sentiment-item">Variedade</li>
+                            <li class="sentiment-item">Limitações</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function observeResize() {
+            const resizeObserver = new ResizeObserver(entries => {
+                entries.forEach(entry => {
+                    const width = entry.contentRect.width;
+                    const element = entry.target;
+                    
+                    // Adjust layout based on container width
+                    if (width < 768) {
+                        element.classList.add('mobile');
+                    } else {
+                        element.classList.remove('mobile');
+                    }
+                });
+            });
+
+            // Observe main content
+            const mainContent = document.querySelector('.main-content');
+            resizeObserver.observe(mainContent);
         }
-      });
-    }, {
-      threshold: 0.1
-    });
-    fadeElements.forEach(element => fadeObserver.observe(element));
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    const closeMenu = () => {
-      nav.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    };
-    menuToggle.addEventListener('click', event => {
-      event.stopPropagation();
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
-      nav.classList.toggle('active');
-    });
-    document.addEventListener('click', event => {
-      if (!event.target.closest('header')) {
-        closeMenu();
-      }
-    });
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const section = document.querySelector(this.getAttribute('href'));
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const elementPosition = section.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
+
+        function handleMenuToggle() {
+            const menu = document.getElementById('menu');
+            const header = document.querySelector('.header');
+            
+            if (window.innerWidth <= 768) {
+                menu.classList.toggle('show');
+                header.classList.toggle('menu-open');
+                
+                if (menu.classList.contains('show')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function handleMediaLoad(mediaElement) {
+            mediaElement.closest('.media-container').classList.add('loaded');
+        }
+
+        function handleMediaError(mediaElement) {
+            const container = mediaElement.closest('.media-container');
+            container.innerHTML = `
+                <div class="media-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Mídia indisponível</p>
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            observeResize();
+            
+            // Smooth scroll handling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(anchor.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = document.querySelector('.header').offsetHeight;
+                        const elementPosition = target.offsetTop;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        if (window.innerWidth <= 768) {
+                            handleMenuToggle();
+                        }
+                    }
+                });
+            });
         });
-        if (window.innerWidth <= 768) {
-          closeMenu();
-        }
-      });
-    });</script>
-    </body>
-    </html>
+    </script>
+</body></html>
