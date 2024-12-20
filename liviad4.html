@@ -7,21 +7,37 @@
     <title>Livia D4 - Perfil</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Base styles */
+        /* Enhanced typography */
+        :root {
+            --base-font: clamp(14px, 1vw + 10px, 18px);
+            --h1-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+            --h2-size: clamp(1.8rem, 3vw + 1rem, 2.8rem);
+            --h3-size: clamp(1.4rem, 2vw + 1rem, 2.2rem);
+            
+            /* New color variables */
+            --primary: #ff1493;
+            --primary-light: #ff69b4;
+            --text: #ffd1ea;
+            --bg: #1a0f1f;
+            --bg-transparent: rgba(26,15,31,0.95);
+        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: #1a0f1f;
-            color: #ffd1ea;
-            font-size: 16px; 
+            background: var(--bg);
+            color: var(--text);
+            font-size: var(--base-font);
             line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* Header styles */
         .header {
-            background: rgba(26,15,31,0.95);
-            padding: 1rem 5%;
+            background: var(--bg-transparent);
+            padding: clamp(0.5rem, 2vw, 2rem) clamp(1rem, 5vw, 5%);
             position: fixed;
             width: 90%; 
             top: 0;
@@ -29,27 +45,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #ff1493;
+            border-bottom: 2px solid var(--primary);
             box-sizing: border-box;
-            min-height: 60px;
+            min-height: clamp(50px, 8vh, 80px);
             backdrop-filter: blur(5px);
         }
 
         .logo {
-            color: #ff69b4;
-            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--primary-light);
+            font-size: var(--h2-size);
             font-weight: bold;
             text-decoration: none;
             transition: color 0.3s ease;
+            padding: clamp(0.3rem, 1vw, 1rem);
         }
 
         .logo:hover {
-            color: #ffd1ea;
+            color: var(--text);
         }
 
         .menu-toggle {
             display: none;
-            color: #ff69b4;
+            color: var(--primary-light);
             font-size: 1.5rem;
             background: none;
             border: none;
@@ -67,19 +84,21 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: clamp(1rem, 2vw, 2rem);
             margin: 0;
             padding: 0;
         }
 
         nav a {
-            color: #ff69b4;
+            color: var(--primary-light);
             text-decoration: none;
             transition: 0.3s;
+            padding: clamp(0.3rem, 1vw, 0.8rem);
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
         }
 
         nav a:hover {
-            color: #ffd1ea;
+            color: var(--text);
         }
 
         /* Main content */
@@ -91,23 +110,38 @@
             margin-right: auto;
         }
 
+        /* Enhanced section styles */
         .section {
-            background: rgba(26,15,31,0.95);
-            border: 2px solid #ff1493;
-            border-radius: clamp(8px, 2vw, 15px);
+            animation: fadeScale 0.5s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(135deg, var(--bg-transparent) 0%, rgba(255,20,147,0.05) 100%);
+            border: 2px solid var(--primary);
+            border-radius: clamp(8px, 1.5vw, 15px);
             padding: clamp(1rem, 3vw, 2.5rem);
-            margin-bottom: clamp(1rem, 4vw, 3rem);
+            margin-bottom: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,20,147,0.1);
         }
 
         .section-title {
-            color: #ff69b4;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            color: var(--primary-light);
+            font-size: var(--h2-size);
             margin-bottom: clamp(1rem, 3vw, 2rem);
         }
 
         .section-content {
             line-height: 1.6;
-            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .section-content p {
+            transition: color 0.3s ease;
+        }
+
+        .section-content p:hover {
+            color: var(--primary-light);
         }
 
         .section-list {
@@ -123,9 +157,22 @@
 
         .section-list li:before {
             content: "•";
-            color: #ff69b4;
+            color: var(--primary-light);
             position: absolute;
             left: 0;
+        }
+
+        /* Enhanced warning styles */
+        .warning {
+            background: linear-gradient(45deg, rgba(255,20,147,0.1), rgba(255,20,147,0.2));
+            animation: highlight 3s linear infinite;
+            background-size: 200% auto;
+            color: var(--primary);
+            font-weight: bold;
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
         }
 
         /* Gallery grid */
@@ -133,22 +180,35 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: clamp(1rem, 3vw, 2rem);
+            padding: clamp(0.5rem, 2vw, 1.5rem);
             margin-bottom: 3rem;
         }
 
+        /* Enhanced gallery items */
         .gallery-item {
-            background: rgba(255,20,147,0.1);
-            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            background: rgba(255,20,147,0.1);
+            border-radius: clamp(8px, 1.5vw, 12px);
             font-size: clamp(0.875rem, 2vw, 1rem);
+            padding: clamp(0.8rem, 2vw, 1.5rem);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255,20,147,0.2);
-            opacity: 0.9;
-            transform: translateY(-2px);
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,20,147,0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
         }
 
         .media-container {
@@ -168,7 +228,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ff69b4;
+            color: var(--primary-light);
             font-size: 2rem;
         }
 
@@ -177,9 +237,9 @@
         }
 
         .gallery-title {
-            color: #ff69b4;
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
-            margin-bottom: 1rem;
+            color: var(--primary-light);
+            font-size: var(--h3-size);
+            margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
         }
 
         .gallery-description {
@@ -187,6 +247,7 @@
             line-height: 1.6;
         }
 
+        /* Enhanced tags */
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -195,10 +256,17 @@
         }
 
         .tag {
-            background: rgba(255,20,147,0.2);
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, var(--primary) 0%, var(--primary-light) 100%);
+            background-size: 200% auto;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+        }
+
+        .tag:hover {
+            background-position: right center;
+            transform: translateY(-2px);
         }
 
         .sentiment-list {
@@ -211,17 +279,6 @@
             border-bottom: 1px solid rgba(255,20,147,0.2);
         }
 
-        .warning {
-            color: #ff1493;
-            font-weight: bold;
-            margin: 1rem 0;
-            padding: 1rem;
-            border: 2px solid #ff1493;
-            border-radius: 8px;
-            background: rgba(255,20,147,0.1);
-        }
-
-        /* Media container */
         /* Location styles */
         .location-details {
             background: rgba(255,20,147,0.1);
@@ -241,6 +298,22 @@
             border-bottom: 1px solid rgba(255,20,147,0.2);
         }
 
+        /* Enhanced animations */
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeScale {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes highlight {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
         /* Responsive styles */
         @media (max-width: 1200px) {
             .main-content {
@@ -255,7 +328,6 @@
         @media (max-width: 768px) {
             .header {
                 padding: 0.75rem 1rem;
-                width: calc(100% - 2rem);
             }
             
             .menu-toggle {
@@ -267,11 +339,11 @@
                 top: 60px;
                 left: 0;
                 width: 100%;
-                background: rgba(26,15,31,0.98);
+                background: var(--bg-transparent);
                 backdrop-filter: blur(10px);
                 flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
+                padding: clamp(1rem, 3vh, 2rem);
+                gap: clamp(1rem, 2vh, 1.5rem);
                 transform: translateY(-100%);
                 transition: transform 0.3s ease;
                 opacity: 0;
@@ -287,7 +359,7 @@
             nav li {
                 width: 100%;
                 text-align: center;
-                padding: 0.5rem 0;
+                padding: clamp(0.5rem, 1.5vh, 1rem) 0;
             }
 
             .main-content {
@@ -299,10 +371,16 @@
                 margin-left: -1rem;
                 margin-right: -1rem;
                 border-radius: 0;
+                margin-bottom: clamp(1.5rem, 4vw, 3rem);
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                margin: 0 -1rem;
+                border-radius: 0;
             }
         }
 
@@ -323,32 +401,20 @@
                 margin: 0.5rem -1rem;
                 border-radius: 0;
             }
-            
-            .gallery-item {
-                margin: 0 -1rem;
-                border-radius: 0;
-            }
         }
         
-        #galerias h3 {
-            color: #ff69b4;
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem;
-        }
-
-        /* Print styles */
         @media print {
-            .header {
-                position: static;
+            :root {
+                --base-font: 12pt;
             }
             
-            .main-content {
-                margin-top: 0;
-            }
-            
-            .menu-toggle,
             .gallery-grid {
-                display: none;
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
             }
         }
 
@@ -369,10 +435,10 @@
             to { opacity: 1; }
         }
     </style>
-</title)lívia></head>
+</head>
 <body>
     <header class="header">
-        <a href="/" class="logo">L&#xed;via</a>
+        <a href="/" class="logo">Lívia</a>
         <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
@@ -380,8 +446,8 @@
             <ul id="menu">
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#busco">O que busco</a></li>
-                <li><a href="#nao-curto">O que n&#xe3;o curto</a></li>
-                <li><a href="#periodo">Per&#xed;odo</a></li>
+                <li><a href="#nao-curto">O que não curto</a></li>
+                <li><a href="#periodo">Período</a></li>
                 <li><a href="#local">Local</a></li>
                 <li><a href="#galerias">Galerias</a></li>
             </ul>
@@ -396,11 +462,11 @@
                 Prefiro chupar e deixar meter.</p>
                 <p>HOMENS ATIVOS DECIDIDOS<br>
                 Idade superior a 35 anos</p>
-                <p>N&#xc3;O CURTO BEIJOS NA BOCA<br>
+                <p>NÃO CURTO BEIJOS NA BOCA<br>
                 Sigilo absoluto sempre</p>
-                <p>FA&#xc7;O SEM CAPA</p>
+                <p>FAÇO SEM CAPA</p>
                 <div class="warning">
-                    &#x26a0;&#xfe0f; SEJA ESPEC&#xcd;FICO, DIRETO E OBJETIVO
+                    SEJA ESPECÍFICO, DIRETO E OBJETIVO
                 </div>
             </div>
         </div>
@@ -412,47 +478,47 @@
                     <li>Homens ativos e decididos</li>
                     <li>Encontros discretos</li>
                     <li>Pessoas diretas e objetivas</li>
-                    <li>Respeito m&#xfa;tuo</li>
+                    <li>Respeito mútuo</li>
                     <li>Sigilo absoluto</li>
                 </ul>
             </div>
         </div>
 
         <div id="nao-curto" class="section">
-            <h2 class="section-title">O que n&#xe3;o curto</h2>
+            <h2 class="section-title">O que não curto</h2>
             <div class="section-content">
-                <div class="warning">TOLER&#xc2;NCIA ZERO</div>
+                <div class="warning">TOLERÂNCIA ZERO</div>
                 <ul class="section-list">
                     <li>Mentirosos</li>
                     <li>Indecisos</li>
                     <li>Narcisistas</li>
-                    <li>Rom&#xe2;nticos</li>
+                    <li>Românticos</li>
                     <li>Passivos</li>
                 </ul>
             </div>
         </div>
 
         <div id="periodo" class="section">
-            <h2 class="section-title">Per&#xed;odo</h2>
+            <h2 class="section-title">Período</h2>
             <div class="section-content">
-                <p>&#x1f319; Noite/Madrugada</p>
+                <p> Noite/Madrugada</p>
                 <p>LOCAL APENAS PARA PROGRAMA</p>
             </div>
         </div>
 
         <div id="local" class="section">
-            <h2 class="section-title">Localiza&#xe7;&#xe3;o</h2>
+            <h2 class="section-title">Localização</h2>
             <div class="section-content">
-                <p>Em S&#xe3;o Jos&#xe9; dos Campos SP, meu local fica em frente a Dutra Km 146 sentido RJ.</p>
+                <p>Em São José dos Campos SP, meu local fica em frente a Dutra Km 146 sentido RJ.</p>
                 <div class="location-details">
-                    <h3>FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</h3>
+                    <h3>FAST-FODA | LOCAIS E FACILIDADES</h3>
                     <ul class="location-list">
-                        <li class="location-item">Na pra&#xe7;a perto de casa</li>
+                        <li class="location-item">Na praça perto de casa</li>
                         <li class="location-item">Em baixo do viaduto perto de casa</li>
                         <li class="location-item">NO SEU CARRO</li>
                         <li class="location-item">Em frente de casa</li>
-                        <li class="location-item">Atr&#xe1;s da rodovi&#xe1;ria nova</li>
-                        <li class="location-item">Atr&#xe1;s do est&#xe1;dio Martins Pereira</li>
+                        <li class="location-item">Atrás da rodoviária nova</li>
+                        <li class="location-item">Atrás do estádio Martins Pereira</li>
                         <li class="location-item">Via Norte, na estrada ao lado do trilho de trem</li>
                         <li class="location-item">Parque da cidade</li>
                         <li class="location-item">Terrenos da Urbanova</li>
@@ -472,16 +538,16 @@
                     </div>
                     <div class="gallery-content">
                         <h3 class="gallery-title">Encontro Discreto</h3>
-                        <p class="gallery-description">Encontros discretos e r&#xe1;pidos para momentos de prazer intenso. Local seguro e privado, ideal para quem busca sigilo absoluto. Experi&#xea;ncia &#xfa;nica garantida para homens ativos e decididos que sabem o que querem.</p>
+                        <p class="gallery-description">Encontros discretos e rápidos para momentos de prazer intenso. Local seguro e privado, ideal para quem busca sigilo absoluto. Experiência única garantida para homens ativos e decididos que sabem o que querem.</p>
                         <div class="tags">
                             <span class="tag">Discreto</span>
-                            <span class="tag">R&#xe1;pido</span>
+                            <span class="tag">Rápido</span>
                             <span class="tag">Sigiloso</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Prazer intenso</li>
-                            <li class="sentiment-item">&#x2705; Discri&#xe7;&#xe3;o total</li>
-                            <li class="sentiment-item">&#x274c; Sem compromisso</li>
+                            <li class="sentiment-item"> Prazer intenso</li>
+                            <li class="sentiment-item"> Discrição total</li>
+                            <li class="sentiment-item"> Sem compromisso</li>
                         </ul>
                     </div>
                 </div>
@@ -491,16 +557,16 @@
                     </div>
                     <div class="gallery-content">
                         <h3 class="gallery-title">Encontro Discreto</h3>
-                        <p class="gallery-description">Encontros discretos e r&#xe1;pidos para momentos de prazer intenso. Local seguro e privado, ideal para quem busca sigilo absoluto. Experi&#xea;ncia &#xfa;nica garantida para homens ativos e decididos que sabem o que querem.</p>
+                        <p class="gallery-description">Encontros discretos e rápidos para momentos de prazer intenso. Local seguro e privado, ideal para quem busca sigilo absoluto. Experiência única garantida para homens ativos e decididos que sabem o que querem.</p>
                         <div class="tags">
                             <span class="tag">Discreto</span>
-                            <span class="tag">R&#xe1;pido</span>
+                            <span class="tag">Rápido</span>
                             <span class="tag">Sigiloso</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Prazer intenso</li>
-                            <li class="sentiment-item">&#x2705; Discri&#xe7;&#xe3;o total</li>
-                            <li class="sentiment-item">&#x274c; Sem compromisso</li>
+                            <li class="sentiment-item"> Prazer intenso</li>
+                            <li class="sentiment-item"> Discrição total</li>
+                            <li class="sentiment-item"> Sem compromisso</li>
                         </ul>
                     </div>
                 </div>
@@ -510,16 +576,16 @@
                     </div>
                     <div class="gallery-content">
                         <h3 class="gallery-title">Encontro Discreto</h3>
-                        <p class="gallery-description">Encontros discretos e r&#xe1;pidos para momentos de prazer intenso. Local seguro e privado, ideal para quem busca sigilo absoluto. Experi&#xea;ncia &#xfa;nica garantida para homens ativos e decididos que sabem o que querem.</p>
+                        <p class="gallery-description">Encontros discretos e rápidos para momentos de prazer intenso. Local seguro e privado, ideal para quem busca sigilo absoluto. Experiência única garantida para homens ativos e decididos que sabem o que querem.</p>
                         <div class="tags">
                             <span class="tag">Discreto</span>
-                            <span class="tag">R&#xe1;pido</span>
+                            <span class="tag">Rápido</span>
                             <span class="tag">Sigiloso</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Prazer intenso</li>
-                            <li class="sentiment-item">&#x2705; Discri&#xe7;&#xe3;o total</li>
-                            <li class="sentiment-item">&#x274c; Sem compromisso</li>
+                            <li class="sentiment-item"> Prazer intenso</li>
+                            <li class="sentiment-item"> Discrição total</li>
+                            <li class="sentiment-item"> Sem compromisso</li>
                         </ul>
                     </div>
                 </div>
@@ -533,16 +599,16 @@
                     </div>
                     <div class="gallery-content">
                         <h3 class="gallery-title">Momentos Quentes</h3>
-                        <p class="gallery-description">Previews dos melhores momentos e posi&#xe7;&#xf5;es preferidas. Demonstra&#xe7;&#xf5;es do que voc&#xea; pode esperar em nossos encontros discretos. Conte&#xfa;do exclusivo para maiores de 18 anos.</p>
+                        <p class="gallery-description">Previews dos melhores momentos e posições preferidas. Demonstrações do que você pode esperar em nossos encontros discretos. Conteúdo exclusivo para maiores de 18 anos.</p>
                         <div class="tags">
                             <span class="tag">Hot</span>
                             <span class="tag">Preview</span>
                             <span class="tag">18+</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Intensidade</li>
-                            <li class="sentiment-item">&#x2705; Satisfa&#xe7;&#xe3;o</li>
-                            <li class="sentiment-item">&#x274c; Exposi&#xe7;&#xe3;o</li>
+                            <li class="sentiment-item"> Intensidade</li>
+                            <li class="sentiment-item"> Satisfação</li>
+                            <li class="sentiment-item"> Exposição</li>
                         </ul>
                     </div>
                 </div>
@@ -552,16 +618,16 @@
                     </div>
                     <div class="gallery-content">
                         <h3 class="gallery-title">Momentos Quentes</h3>
-                        <p class="gallery-description">Previews dos melhores momentos e posi&#xe7;&#xf5;es preferidas. Demonstra&#xe7;&#xf5;es do que voc&#xea; pode esperar em nossos encontros discretos. Conte&#xfa;do exclusivo para maiores de 18 anos.</p>
+                        <p class="gallery-description">Previews dos melhores momentos e posições preferidas. Demonstrações do que você pode esperar em nossos encontros discretos. Conteúdo exclusivo para maiores de 18 anos.</p>
                         <div class="tags">
                             <span class="tag">Hot</span>
                             <span class="tag">Preview</span>
                             <span class="tag">18+</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Intensidade</li>
-                            <li class="sentiment-item">&#x2705; Satisfa&#xe7;&#xe3;o</li>
-                            <li class="sentiment-item">&#x274c; Exposi&#xe7;&#xe3;o</li>
+                            <li class="sentiment-item"> Intensidade</li>
+                            <li class="sentiment-item"> Satisfação</li>
+                            <li class="sentiment-item"> Exposição</li>
                         </ul>
                     </div>
                 </div>
@@ -571,39 +637,39 @@
                     </div>
                     <div class="gallery-content">
                         <h3 class="gallery-title">Momentos Quentes</h3>
-                        <p class="gallery-description">Previews dos melhores momentos e posi&#xe7;&#xf5;es preferidas. Demonstra&#xe7;&#xf5;es do que voc&#xea; pode esperar em nossos encontros discretos. Conte&#xfa;do exclusivo para maiores de 18 anos.</p>
+                        <p class="gallery-description">Previews dos melhores momentos e posições preferidas. Demonstrações do que você pode esperar em nossos encontros discretos. Conteúdo exclusivo para maiores de 18 anos.</p>
                         <div class="tags">
                             <span class="tag">Hot</span>
                             <span class="tag">Preview</span>
                             <span class="tag">18+</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Intensidade</li>
-                            <li class="sentiment-item">&#x2705; Satisfa&#xe7;&#xe3;o</li>
-                            <li class="sentiment-item">&#x274c; Exposi&#xe7;&#xe3;o</li>
+                            <li class="sentiment-item"> Intensidade</li>
+                            <li class="sentiment-item"> Satisfação</li>
+                            <li class="sentiment-item"> Exposição</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <h3>Inspira&#xe7;&#xf5;es</h3>
+            <h3>Inspirações</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <div class="media-container">
                         <div class="media-placeholder"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="gallery-content">
-                        <h3 class="gallery-title">Refer&#xea;ncias</h3>
-                        <p class="gallery-description">V&#xed;deos inspiradores que representam meu estilo e prefer&#xea;ncias. Conte&#xfa;do selecionado para demonstrar o tipo de encontro que proporciono. Apenas refer&#xea;ncias visuais, sem compromisso de replica&#xe7;&#xe3;o exata.</p>
+                        <h3 class="gallery-title">Referências</h3>
+                        <p class="gallery-description">Vídeos inspiradores que representam meu estilo e preferências. Conteúdo selecionado para demonstrar o tipo de encontro que proporciono. Apenas referências visuais, sem compromisso de replicação exata.</p>
                         <div class="tags">
-                            <span class="tag">Inspira&#xe7;&#xe3;o</span>
+                            <span class="tag">Inspiração</span>
                             <span class="tag">Estilo</span>
-                            <span class="tag">Refer&#xea;ncia</span>
+                            <span class="tag">Referência</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Criatividade</li>
-                            <li class="sentiment-item">&#x2705; Variedade</li>
-                            <li class="sentiment-item">&#x274c; Limita&#xe7;&#xf5;es</li>
+                            <li class="sentiment-item"> Criatividade</li>
+                            <li class="sentiment-item"> Variedade</li>
+                            <li class="sentiment-item"> Limitações</li>
                         </ul>
                     </div>
                 </div>
@@ -612,17 +678,17 @@
                         <div class="media-placeholder"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="gallery-content">
-                        <h3 class="gallery-title">Refer&#xea;ncias</h3>
-                        <p class="gallery-description">V&#xed;deos inspiradores que representam meu estilo e prefer&#xea;ncias. Conte&#xfa;do selecionado para demonstrar o tipo de encontro que proporciono. Apenas refer&#xea;ncias visuais, sem compromisso de replica&#xe7;&#xe3;o exata.</p>
+                        <h3 class="gallery-title">Referências</h3>
+                        <p class="gallery-description">Vídeos inspiradores que representam meu estilo e preferências. Conteúdo selecionado para demonstrar o tipo de encontro que proporciono. Apenas referências visuais, sem compromisso de replicação exata.</p>
                         <div class="tags">
-                            <span class="tag">Inspira&#xe7;&#xe3;o</span>
+                            <span class="tag">Inspiração</span>
                             <span class="tag">Estilo</span>
-                            <span class="tag">Refer&#xea;ncia</span>
+                            <span class="tag">Referência</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Criatividade</li>
-                            <li class="sentiment-item">&#x2705; Variedade</li>
-                            <li class="sentiment-item">&#x274c; Limita&#xe7;&#xf5;es</li>
+                            <li class="sentiment-item"> Criatividade</li>
+                            <li class="sentiment-item"> Variedade</li>
+                            <li class="sentiment-item"> Limitações</li>
                         </ul>
                     </div>
                 </div>
@@ -631,17 +697,17 @@
                         <div class="media-placeholder"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="gallery-content">
-                        <h3 class="gallery-title">Refer&#xea;ncias</h3>
-                        <p class="gallery-description">V&#xed;deos inspiradores que representam meu estilo e prefer&#xea;ncias. Conte&#xfa;do selecionado para demonstrar o tipo de encontro que proporciono. Apenas refer&#xea;ncias visuais, sem compromisso de replica&#xe7;&#xe3;o exata.</p>
+                        <h3 class="gallery-title">Referências</h3>
+                        <p class="gallery-description">Vídeos inspiradores que representam meu estilo e preferências. Conteúdo selecionado para demonstrar o tipo de encontro que proporciono. Apenas referências visuais, sem compromisso de replicação exata.</p>
                         <div class="tags">
-                            <span class="tag">Inspira&#xe7;&#xe3;o</span>
+                            <span class="tag">Inspiração</span>
                             <span class="tag">Estilo</span>
-                            <span class="tag">Refer&#xea;ncia</span>
+                            <span class="tag">Referência</span>
                         </div>
                         <ul class="sentiment-list">
-                            <li class="sentiment-item">&#x2705; Criatividade</li>
-                            <li class="sentiment-item">&#x2705; Variedade</li>
-                            <li class="sentiment-item">&#x274c; Limita&#xe7;&#xf5;es</li>
+                            <li class="sentiment-item"> Criatividade</li>
+                            <li class="sentiment-item"> Variedade</li>
+                            <li class="sentiment-item"> Limitações</li>
                         </ul>
                     </div>
                 </div>
@@ -649,50 +715,74 @@
         </div>
     </div>
 
-    <script>function toggleMenu() {
-  const menu = document.getElementById('menu');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const header = document.querySelector('.header');
-  menu.classList.toggle('show');
-  if (menu.classList.contains('show')) {
-    menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-    document.body.style.overflow = 'hidden';
-  } else {
-    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    document.body.style.overflow = '';
-  }
-}
-window.addEventListener('resize', () => {
-  const menu = document.getElementById('menu');
-  const menuToggle = document.querySelector('.menu-toggle');
-  if (window.innerWidth > 768 && menu.classList.contains('show')) {
-    menu.classList.remove('show');
-    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    document.body.style.overflow = '';
-  }
-});
-document.addEventListener('click', e => {
-  const menu = document.getElementById('menu');
-  const menuToggle = document.querySelector('.menu-toggle');
-  if (!menu.contains(e.target) && !menuToggle.contains(e.target) && menu.classList.contains('show')) {
-    menu.classList.remove('show');
-    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    document.body.style.overflow = '';
-  }
-});
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const menu = document.getElementById('menu');
-    const menuToggle = document.querySelector('.menu-toggle');
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-    if (window.innerWidth <= 768) {
-      menu.classList.remove('show');
-      menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-      document.body.style.overflow = '';
-    }
-  });
-});</script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const header = document.querySelector('.header');
+            
+            menu.classList.toggle('show');
+            
+            if (menu.classList.contains('show')) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+                document.body.style.overflow = 'hidden';
+                
+                const overlay = document.createElement('div');
+                overlay.classList.add('menu-overlay');
+                overlay.style.backdropFilter = 'blur(5px)';
+                document.body.appendChild(overlay);
+                
+                overlay.addEventListener('click', () => {
+                    toggleMenu();
+                });
+            } else {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = '';
+                
+                const overlay = document.querySelector('.menu-overlay');
+                if (overlay) {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => overlay.remove(), 300);
+                }
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = document.querySelector('.header').offsetHeight;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    if (window.innerWidth <= 768) {
+                        toggleMenu();
+                    }
+                }
+            });
+        });
+    </script>
 </body></html>
