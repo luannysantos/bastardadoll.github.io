@@ -98,6 +98,7 @@
         position: relative;
         min-height: 100vh;
         overflow-x: hidden;
+        padding-right: 15%;
       }
     
       header {
@@ -197,19 +198,22 @@
     
       main {
         padding-top: 90px;
-        max-width: 85%; /* Change from 1400px to 85% */
-        margin: 0 auto 0 0; /* Change margin to align left instead of center */
-        padding-right: 15%; /* Add padding to ensure content doesn't touch the right edge */
+        width: 85%; 
+        margin: 0 auto 0 0;
+        padding-right: 0; 
+        position: relative; 
       }
     
       section {
         background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(139,0,0,0.1));
         border: 1px solid var(--accent-color);
         padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
-        margin: calc(var(--spacing-unit) * 2) 0; /* Remove right margin */
+        margin: calc(var(--spacing-unit) * 2) 0; 
         border-radius: 12px;
         box-shadow: 0 4px 6px var(--shadow-color);
-        width: 100%; /* Ensure sections take full width of the main container */
+        width: 100%;
+        position: relative; 
+        left: 0; 
       }
     
       section h2 {
@@ -450,28 +454,26 @@
         }
     
         main {
-          max-width: 85%; /* Maintain the 85% width on smaller screens */
-          padding-right: 15%; /* Maintain the right padding */
+          width: 85%; 
+          padding-right: 0; 
         }
     
         section {
-          margin: var(--spacing-unit) 0; /* Adjust vertical margins, remove horizontal margins */
+          margin: var(--spacing-unit) 0; 
           padding: calc(var(--spacing-unit) * 2) var(--spacing-unit);
+          width: 100%; 
         }
       }
     
       @media (max-width: 480px) {
         main {
-          max-width: 85%; /* Maintain the 85% width even on very small screens */
-          padding-right: 15%;
-        }
-    
-        .gallery-item {
-          margin-bottom: var(--spacing-unit);
+          width: 85%; 
+          padding-right: 0; 
         }
         
-        .tags {
-          flex-wrap: wrap;
+        section {
+          width: 100%;
+          margin: var(--spacing-unit) 0; 
         }
       }
     
@@ -487,6 +489,29 @@
         .titulo {
           font-size: clamp(1.5rem, 3vw, 2rem);
         }
+      }
+    
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+      }
+    
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 12px 12px 0 0;
+      }
+    
+      /* Ensure proper spacing below video */
+      .gallery-item .video-container + .gallery-content {
+        padding-top: 1rem;
       }
     </style>
     </head>
@@ -512,15 +537,15 @@
           </svg>
         </div>
         <h1 class="titulo">Livia D4</h1>
-        <button class="menu-toggle" aria-label="Abrir menu de navega&#xe7;&#xe3;o" aria-expanded="false">&#x2630;</button>
+        <button class="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">&#x2630;</button>
         <nav>
           <a href="#sobre">Sobre</a>
           <a href="#busco">O que busco</a>
-          <a href="#naocurto">O que n&#xe3;o curto</a>
-          <a href="#periodo">Per&#xed;odo</a>
+          <a href="#naocurto">O que não curto</a>
+          <a href="#periodo">Período</a>
           <a href="#fotos">Fotos</a>
           <a href="#gifs">GIFs</a>
-          <a href="#inspiracoes">Inspira&#xe7;&#xf5;es</a>
+          <a href="#inspiracoes">Inspirações</a>
         </nav>
       </header>
     
@@ -532,9 +557,9 @@
             <p>Prefiro chupar e deixar meter.</p>
             <p>HOMENS ATIVOS DECIDIDOS</p>
             <p>Idade superior a 35 anos</p>
-            <p>N&#xc3;O CURTO BEIJOS NA BOCA</p>
+            <p>NÃO CURTO BEIJOS NA BOCA</p>
             <p>Sigilo absoluto sempre</p>
-            <p>FA&#xc7;O SEM CAPA</p>
+            <p>FAÇO SEM CAPA</p>
           </div>
         </section>
     
@@ -551,32 +576,32 @@
         </section>
     
         <section id="naocurto">
-          <h2>O que n&#xe3;o curto</h2>
+          <h2>O que não curto</h2>
           <div class="content-section">
             <div class="warning-text">
-              <p>TOLER&#xc2;NCIA ZERO</p>
+              <p>TOLERÂNCIA ZERO</p>
               <ul class="rules-list">
                 <li>Mentirosos</li>
                 <li>Indecisos</li>
                 <li>Narcisistas</li>
-                <li>Rom&#xe2;nticos</li>
+                <li>Românticos</li>
               </ul>
             </div>
           </div>
         </section>
     
         <section id="periodo">
-          <h2>Per&#xed;odo</h2>
+          <h2>Período</h2>
           <div class="content-section">
-            <p>FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</p>
+            <p>FAST-FODA | LOCAIS E FACILITAÇÕES</p>
             <p>Geralmente na madrugada</p>
             <ul class="rules-list">
-              <li>Na pra&#xe7;a perto de casa</li>
+              <li>Na praça perto de casa</li>
               <li>Em baixo do viaduto perto de casa</li>
               <li>NO SEU CARRO</li>
               <li>Em frente de casa</li>
-              <li>Atr&#xe1;s da rodovi&#xe1;ria nova</li>
-              <li>Atr&#xe1;s do est&#xe1;dio Martins Pereira</li>
+              <li>Atrás da rodoviária nova</li>
+              <li>Atrás do estádio Martins Pereira</li>
               <li>Via Norte, na estrada ao lado do trilho de trem</li>
               <li>Parque da cidade</li>
               <li>Terrenos da Urbanova</li>
@@ -592,14 +617,14 @@
               <img src="https://via.placeholder.com/400x300" alt="Encontro discreto">
               <div class="gallery-content">
                 <h3>Encontro Discreto</h3>
-                <p>Local seguro e discreto para encontros r&#xe1;pidos...</p>
+                <p>Local seguro e discreto para encontros rápidos...</p>
                 <div class="tags">
                   <span class="tag">Sigilo</span>
                   <span class="tag">Noturno</span>
                   <span class="tag">Casual</span>
                 </div>
                 <ul class="sentiment-list">
-                  <li>Discri&#xe7;&#xe3;o garantida</li>
+                  <li>Discrição garantida</li>
                   <li>Ambiente seguro</li>
                   <li>Rapidez e praticidade</li>
                 </ul>
@@ -615,7 +640,7 @@
               <img src="https://media.giphy.com/media/example1.gif" alt="GIF exemplo 1">
               <div class="gallery-content">
                 <h3>Momento Especial</h3>
-                <p>Uma demonstra&#xe7;&#xe3;o sensual e discreta...</p>
+                <p>Uma demonstração sensual e discreta...</p>
                 <div class="tags">
                   <span class="tag">Sensual</span>
                   <span class="tag">Discreto</span>
@@ -623,7 +648,7 @@
                 </div>
                 <ul class="sentiment-list">
                   <li>Prazer intenso</li>
-                  <li>Discri&#xe7;&#xe3;o total</li>
+                  <li>Discrição total</li>
                   <li>Rapidez</li>
                 </ul>
               </div>
@@ -632,13 +657,14 @@
         </section>
     
         <section id="inspiracoes">
-          <h2>Inspira&#xe7;&#xf5;es</h2>
+          <h2>Inspirações</h2>
           <div class="gallery-grid">
             <article class="gallery-item">
-              <video controls><iframe src="https://www.xvideos.com/embedframe/ultaovha37e" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
-              </video>
+              <div class="video-container">
+                <iframe src="https://www.xvideos.com/embedframe/ultaovha37e" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+              </div>
               <div class="gallery-content">
-                <h3>Inspira&#xe7;&#xe3;o Noturna</h3>
+                <h3>Inspiração Noturna</h3>
                 <p>Um encontro especial sob as estrelas...</p>
                 <div class="tags">
                   <span class="tag">Noite</span>
@@ -647,7 +673,7 @@
                 </div>
                 <ul class="sentiment-list">
                   <li>Liberdade</li>
-                  <li>Excita&#xe7;&#xe3;o</li>
+                  <li>Excitação</li>
                   <li>Adrenalina</li>
                 </ul>
               </div>
@@ -656,67 +682,56 @@
         </section>
       </main>
     
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const menuToggle = document.querySelector('.menu-toggle');
-          const nav = document.querySelector('nav');
-    
-          const toggleMenu = () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            nav.classList.toggle('active');
-            menuToggle.innerHTML = isExpanded ? '&#9776;' : '&#10005;';
-          };
-    
-          const closeMenu = () => {
-            nav.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            menuToggle.innerHTML = '&#9776;';
-          };
-    
-          menuToggle.addEventListener('click', e => {
-            e.stopPropagation();
-            toggleMenu();
-          });
-    
-          document.addEventListener('click', e => {
-            if (!e.target.closest('header')) {
-              closeMenu();
-            }
-          });
-    
-          window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-              closeMenu();
-            }
-          });
-    
-          document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-              if (window.innerWidth <= 768) {
-                closeMenu();
-              }
-            });
-          });
-    
-          const createEmojiBackground = () => {
-            const emojiContainer = document.createElement('div');
-            emojiContainer.classList.add('emoji-background');
-            document.body.appendChild(emojiContainer);
-    
-            for (let i = 0; i < 50; i++) {
-              const emoji = document.createElement('div');
-              emoji.classList.add('floating-emoji');
-              emoji.textContent = '🐾';
-              emoji.style.left = `${Math.random() * 100}%`;
-              emoji.style.top = `${Math.random() * 100}%`;
-              emoji.style.animationDelay = `${Math.random() * 8}s`;
-              emojiContainer.appendChild(emoji);
-            }
-          };
-    
-          createEmojiBackground();
+      <script>document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      const toggleMenu = () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        nav.classList.toggle('active');
+        menuToggle.innerHTML = isExpanded ? '&#9776;' : '&#10005;';
+      };
+      const closeMenu = () => {
+        nav.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.innerHTML = '&#9776;';
+      };
+      menuToggle.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+      document.addEventListener('click', e => {
+        if (!e.target.closest('header')) {
+          closeMenu();
+        }
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          closeMenu();
+        }
+      });
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            closeMenu();
+          }
         });
-      </script>
+      });
+      const createEmojiBackground = () => {
+        const emojiContainer = document.createElement('div');
+        emojiContainer.classList.add('emoji-background');
+        document.body.appendChild(emojiContainer);
+        for (let i = 0; i < 50; i++) {
+          const emoji = document.createElement('div');
+          emoji.classList.add('floating-emoji');
+          emoji.textContent = '🐾';
+          emoji.style.left = `${Math.random() * 100}%`;
+          emoji.style.top = `${Math.random() * 100}%`;
+          emoji.style.animationDelay = `${Math.random() * 8}s`;
+          emojiContainer.appendChild(emoji);
+        }
+      };
+      createEmojiBackground();
+    });</script>
     </body>
     </html>
