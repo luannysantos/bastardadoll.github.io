@@ -862,6 +862,7 @@
         <section id="inspiracoes">
           <h2>Inspira&#xe7;&#xf5;es</h2>
           <div class="gallery-grid">
+            <!-- Existing video item -->
             <article class="gallery-item">
               <div class="video-container">
                 <iframe src="https://www.xvideos.com/embedframe/ultaovha37e" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
@@ -881,6 +882,68 @@
                 </ul>
               </div>
             </article>
+    
+            <!-- New video item -->
+            <article class="gallery-item">
+              <div class="video-container">
+                <iframe src="https://www.xvideos.com/embedframe/uubleate5ab" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+              </div>
+              <div class="gallery-content">
+                <h3>Momentos Intensos</h3>
+                <p>Mais uma demonstra&#xe7;&#xe3;o do n&#xed;vel de prazer e satisfa&#xe7;&#xe3;o que voc&#xea; pode experimentar. Encontros memor&#xe1;veis em um ambiente seguro e discreto, onde seus desejos s&#xe3;o prioridade.</p>
+                <div class="tags">
+                  <span class="tag">Prazeroso</span>
+                  <span class="tag">Discreto</span>
+                  <span class="tag">&#xda;nico</span>
+                </div>
+                <ul class="sentiment-list">
+                  <li>Total privacidade</li>
+                  <li>Experi&#xea;ncia inesquec&#xed;vel</li>
+                  <li>Satisfa&#xe7;&#xe3;o garantida</li>
+                </ul>
+              </div>
+            </article>
+    
+            <!-- New video item added as per the plan -->
+            <article class="gallery-item">
+              <div class="video-container">
+                <iframe src="https://www.xvideos.com/embedframe/ihfofbme6c0" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+              </div>
+              <div class="gallery-content">
+                <h3>Momentos Especiais</h3>
+                <p>Mais uma demonstra&#xe7;&#xe3;o do tipo de experi&#xea;ncia que voc&#xea; pode desfrutar. Encontros &#xfa;nicos em ambiente discreto e acolhedor, sempre priorizando seu prazer e privacidade.</p>
+                <div class="tags">
+                  <span class="tag">Exclusivo</span>
+                  <span class="tag">Sigiloso</span>
+                  <span class="tag">Intenso</span>
+                </div>
+                <ul class="sentiment-list">
+                  <li>M&#xe1;xima discri&#xe7;&#xe3;o</li>
+                  <li>Momentos &#xfa;nicos</li>
+                  <li>Prazer garantido</li>
+                </ul>
+              </div>
+            </article>
+            
+            <article class="gallery-item">
+              <div class="video-container">
+                <iframe src="https://www.xvideos.com/embedframe/hvkkccde2df" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+              </div>
+              <div class="gallery-content">
+                <h3>Momentos &#xcd;ntimos</h3>
+                <p>Mais uma demonstra&#xe7;&#xe3;o de prazer e intimidade que voc&#xea; pode experimentar. Encontros especiais em ambiente seguro e acolhedor, proporcionando momentos inesquec&#xed;veis com total discri&#xe7;&#xe3;o.</p>
+                <div class="tags">
+                  <span class="tag">Especial</span>
+                  <span class="tag">&#xcd;ntimo</span>
+                  <span class="tag">Discreto</span>
+                </div>
+                <ul class="sentiment-list">
+                  <li>Total privacidade</li>
+                  <li>Experi&#xea;ncia &#xfa;nica</li>
+                  <li>Prazer garantido</li>
+                </ul>
+              </div>
+            </article>
           </div>
         </section>
       </main>
@@ -889,17 +952,13 @@
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('nav');
       let isMenuOpen = false;
-    
       menuToggle.addEventListener('click', () => {
         isMenuOpen = !isMenuOpen;
         nav.classList.toggle('active');
         menuToggle.setAttribute('aria-expanded', isMenuOpen);
-        // Update menu icon
         menuToggle.innerHTML = isMenuOpen ? '×' : '☰';
       });
-    
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
+      document.addEventListener('click', e => {
         if (!nav.contains(e.target) && !menuToggle.contains(e.target) && isMenuOpen) {
           isMenuOpen = false;
           nav.classList.remove('active');
@@ -907,7 +966,6 @@
           menuToggle.innerHTML = '☰';
         }
       });
-    
       function createFloatingEmoji() {
         const emojis = ['🐾', '⚡', '💦', '🫦', '👅', '👃🏻'];
         const emoji = document.createElement('div');
