@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <base href="https://wa.me/">
+    <base href="https://bastardadoll.github.io/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Acompanhantes de luxo em S&#xe3;o Jos&#xe9; dos Campos. Atendimento discreto e profissional 24h.">
     <meta name="keywords" content="acompanhantes sjc, garotas de programa sjc, acompanhantes s&#xe3;o jos&#xe9; dos campos, massagistas, trans sjc">
     <meta name="author" content="Safada&apos;s SJC">
     <title>Safada&apos;s SJC</title>
-    <style>
+    
+<style>
   :root {
     --primary: #ff1493;
     --secondary: #9400d3;
@@ -159,6 +160,19 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .escort-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .escort-card:hover .escort-image img {
+    transform: scale(1.05);
   }
   
   .escort-details {
@@ -378,26 +392,35 @@
   }
   
   @media (max-width: 320px) {
-    .escort-price {
-      padding: 1rem 0.6rem;
-      margin: 0.6rem auto;
+    .escort-details {
+      padding: 1rem;
     }
     
-    .price-tag {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.6rem;
+    .escort-name {
+      font-size: 1.1rem;
     }
     
-    .countdown-timer {
-      padding: 0.25rem 0.5rem;
+    .escort-tag {
+      font-size: 0.75rem;
     }
     
-    .countdown-label {
-      font-size: 0.7rem;
+    .modal-content {
+      padding: 1rem;
     }
     
-    .countdown-value {
-      font-size: 0.8rem;
+    .form-group {
+      margin-bottom: 1rem;
+    }
+  
+    .escort-card {
+      min-height: 400px;
+      padding-bottom: 55px;
+    }
+    
+    .card-booking-btn {
+      bottom: 12px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
     }
   }
   
@@ -770,255 +793,273 @@
   .nav-link.active {
     border-bottom: 2px solid var(--primary);
   }
-  </style></head><body>
-  <header class="header">
-    <nav class="nav">
-      <h1>Safada&apos;s SJC</h1>
-      <button class="menu-toggle">&#x2630;</button>
-      <div class="nav-links">
-        <a href="#" class="nav-link" data-filter="all">Todas</a>
-        <a href="#" class="nav-link" data-filter="mulheres">Mulheres</a>
-        <a href="#" class="nav-link" data-filter="trans">Trans</a>
-      </div>
-    </nav>
-  </header>
-  
-  <main class="container">
-    <section class="escorts-grid" id="escortsGrid">
-      <div class="loading">
-        <div class="loading-spinner"></div>
-      </div>
-    </section>
-  </main>
-  
-  <div class="modal" id="escortModal">
-    <div class="modal-content">
-      <button class="close-modal">&#xd7;</button>
-      <div id="modalContent"></div>
-      <form id="bookingForm" class="booking-form">
-        <h3 style="color: var(--primary); margin-bottom: 1rem;">Agendar Hor&#xe1;rio</h3>
-        
-        <div class="form-group">
-          <label for="nickname">Apelido:</label>
-          <input type="text" id="nickname" class="form-control" required>
-          <div class="validation-message">Por favor, insira seu apelido.</div>
-        </div>
-        
-        <div class="form-group">
-          <label for="age">Idade:</label>
-          <input type="number" id="age" class="form-control" min="18" required>
-          <div class="validation-message">Por favor, insira sua idade (m&#xed;nimo 18 anos).</div>
-        </div>
-        
-        <div class="form-group">
-          <label for="date">Data Desejada:</label>
-          <input type="date" id="date" class="form-control" required>
-          <div class="validation-message">Por favor, selecione uma data.</div>
-        </div>
-        
-        <div class="form-group">
-          <label for="time">Hor&#xe1;rio Desejado:</label>
-          <input type="time" id="time" class="form-control" required>
-          <div class="validation-message">Por favor, selecione um hor&#xe1;rio.</div>
-        </div>
-        
-        <div class="form-group">
-          <label for="location">Local do Atendimento:</label>
-          <select id="location" class="service-option" required>
-            <option value>Selecione o local...</option>
-            <optgroup label="Mot&#xe9;is Centro">
-              <option value="hotel_albertino">Hotel Albertino</option>
-              <option value="hotel_joabi">Hotel Joabi</option>
-              <option value="hotel_liberdade">Hotel Liberdade</option>
-              <option value="luma_hotel">Luma Hotel</option>
-            </optgroup>
-            <optgroup label="Outros Mot&#xe9;is">
-              <option value="motel_1001">1001 Motel</option>
-              <option value="motel_bellatrix">Motel Bellatrix</option>
-              <option value="motel_corpo_alma">Motel Corpo e Alma</option>
-              <option value="hotel_if">Hotel IF</option>
-              <option value="motel_orion">Motel &#xd3;rion</option>
-              <option value="motel_point">Motel Point</option>
-            </optgroup>
-            <option value="carro">Rapidinha no Carro</option>
-            <option value="outro">Outro (especificar na mensagem)</option>
-          </select>
-          <div class="validation-message">Por favor, selecione o local.</div>
-        </div>
-  
-        <div class="form-group" id="outroLocalGroup" style="display: none;">
-          <label for="outroLocal">Especifique o local:</label>
-          <textarea id="outroLocal" class="service-option" rows="3"></textarea>
-        </div>
-  
-        <button type="submit" class="submit-btn">Enviar Agendamento</button>
-      </form>
+</style></head><body>
+<header class="header">
+  <nav class="nav">
+    <h1>Safada&apos;s SJC</h1>
+    <button class="menu-toggle">&#x2630;</button>
+    <div class="nav-links">
+      <a href="#" class="nav-link" data-filter="all">Todas</a>
+      <a href="#" class="nav-link" data-filter="mulheres">Mulheres</a>
+      <a href="#" class="nav-link" data-filter="trans">Trans</a>
     </div>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="escorts-grid" id="escortsGrid">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="escortModal">
+  <div class="modal-content">
+    <button class="close-modal">&#xd7;</button>
+    <div id="modalContent"></div>
+    <form id="bookingForm" class="booking-form">
+      <h3 style="color: var(--primary); margin-bottom: 1rem;">Agendar Hor&#xe1;rio</h3>
+      
+      <div class="form-group">
+        <label for="nickname">Apelido:</label>
+        <input type="text" id="nickname" class="form-control" required>
+        <div class="validation-message">Por favor, insira seu apelido.</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="age">Idade:</label>
+        <input type="number" id="age" class="form-control" min="18" required>
+        <div class="validation-message">Por favor, insira sua idade (m&#xed;nimo 18 anos).</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="date">Data Desejada:</label>
+        <input type="date" id="date" class="form-control" required>
+        <div class="validation-message">Por favor, selecione uma data.</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="time">Hor&#xe1;rio Desejado:</label>
+        <input type="time" id="time" class="form-control" required>
+        <div class="validation-message">Por favor, selecione um hor&#xe1;rio.</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="location">Local do Atendimento:</label>
+        <select id="location" class="service-option" required>
+          <option value>Selecione o local...</option>
+          <optgroup label="Mot&#xe9;is Centro">
+            <option value="hotel_albertino">Hotel Albertino</option>
+            <option value="hotel_joabi">Hotel Joabi</option>
+            <option value="hotel_liberdade">Hotel Liberdade</option>
+            <option value="luma_hotel">Luma Hotel</option>
+          </optgroup>
+          <optgroup label="Outros Mot&#xe9;is">
+            <option value="motel_1001">1001 Motel</option>
+            <option value="motel_bellatrix">Motel Bellatrix</option>
+            <option value="motel_corpo_alma">Motel Corpo e Alma</option>
+            <option value="hotel_if">Hotel IF</option>
+            <option value="motel_orion">Motel &#xd3;rion</option>
+            <option value="motel_point">Motel Point</option>
+          </optgroup>
+          <option value="carro">Rapidinha no Carro</option>
+          <option value="outro">Outro (especificar na mensagem)</option>
+        </select>
+        <div class="validation-message">Por favor, selecione o local.</div>
+      </div>
+
+      <div class="form-group" id="outroLocalGroup" style="display: none;">
+        <label for="outroLocal">Especifique o local:</label>
+        <textarea id="outroLocal" class="service-option" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar Agendamento</button>
+    </form>
   </div>
-  
-  <script>const state = {
-    escorts: [{
-      id: 1,
-      name: "Pollyana",
-      age: 27,
-      category: "mulheres",
-      location: "Vila Maria - São José dos Campos - SP - BRASIL",
-      hasLocation: true,
-      price: 300,
-      description: "Branca, 1.78m de altura, 73kg, ruiva com cabelos longos. Corpo definido, siliconada e rabuda. Atendimento VIP e discreto. Sou uma acompanhante de alto nível que oferece uma experiência única e inesquecível. Realizo suas fantasias com muito prazer e sensualidade. Ambiente limpo, climatizado e discreto. Atendo cavalheiros, casais e mulheres. Fotos reais e atuais.",
-      tags: ["ruiva", "siliconada", "rabuda"],
-      physical: {
-        height: "1.78m",
-        weight: "73kg",
-        hair: "ruiva, longo",
-        body: "definida, rabuda",
-        breasts: "siliconada",
-        features: "possui vagina"
-      },
-      services: ["massagem", "acompanhante", "pernoite"],
-      availability: ["Todos os dias", "24h"],
-      whatsapp: "5512981225848"
-    }, {
-      id: 2,
-      name: "Luanny",
-      age: 29,
-      category: "trans",
-      location: "Vila São Pedro - São José dos Campos - SP - BRASIL",
-      hasLocation: true,
-      price: 300,
-      description: "Branca, 1.77m de altura, 64kg, loira com cabelos longos. Seios pequenos e raba pequena arredondada. Trans com 19cm de dote, atendimento premium. Proporciono momentos de prazer intenso com muito carinho e dedicação. Ambiente limpo, climatizado e reservado. Realizo diversas fantasias com discrição absoluta. Atendimento diferenciado para pessoas exigentes.",
-      tags: ["trans", "loira", "19cm"],
-      physical: {
-        height: "1.77m",
-        weight: "64kg",
-        hair: "loira, longo",
-        body: "raba pequena arredondada",
-        breasts: "pequenos",
-        features: "19cm de dote"
-      },
-      services: ["massagem", "acompanhante", "pernoite"],
-      availability: ["Todos os dias", "24h"],
-      whatsapp: "5512982572507"
-    }, {
-      id: 3,
-      name: "Mel",
-      age: 29,
-      category: "trans",
-      location: "Vila São Pedro - São José dos Campos - SP - BRASIL",
-      hasLocation: true,
-      price: 300,
-      description: "Branca, 1.74m de altura, 67kg, morena com cabelos longos. Seios pequenos e raba pequena arredondada. Trans com 18cm de dote, atendimento especial. Proporciono momentos únicos de prazer com muito carinho e sensualidade. Ambiente climatizado, limpo e discreto. Realizo suas fantasias com total sigilo e profissionalismo. Atendimento personalizado de alto nível.",
-      tags: ["trans", "morena", "18cm"],
-      physical: {
-        height: "1.74m",
-        weight: "67kg",
-        hair: "morena, longo",
-        body: "raba pequena arredondada",
-        breasts: "pequenos",
-        features: "18cm de dote"
-      },
-      services: ["massagem", "acompanhante", "pernoite"],
-      availability: ["Todos os dias", "24h"],
-      whatsapp: "5512982557720"
-    }, {
-      id: 4,
-      name: "Mayara",
-      age: 25,
-      category: "mulheres",
-      location: "Zona norte - São José dos Campos - SP - BRASIL",
-      hasLocation: false,
-      price: 300,
-      description: "Branca, 1.60m de altura, 64kg, morena com cabelos longos. Seios pequenos e rabuda. Atendimento de alto nível. Ofereço momentos de prazer intenso com muito carinho e dedicação. Realizo suas fantasias com sensualidade e discrição. Sou carinhosa, educada e muito safada. Atendimento VIP para pessoas exigentes. Ambiente limpo e climatizado.",
-      tags: ["morena", "rabuda", "seios pequenos"],
-      physical: {
-        height: "1.60m",
-        weight: "64kg",
-        hair: "morena, longo",
-        body: "rabuda",
-        breasts: "pequenos",
-        features: "possui vagina"
-      },
-      services: ["massagem", "acompanhante", "pernoite"],
-      availability: ["Todos os dias", "24h"],
-      whatsapp: "5512982509756"
-    }, {
-      id: 5,
-      name: "Pamela",
-      age: 25,
-      category: "mulheres",
-      location: "Vila Maria - São José dos Campos - SP - BRASIL",
-      hasLocation: false,
-      price: 300,
-      description: "Branca, 1.66m de altura, 62kg, morena com cabelos longos. Seios pequenos e rabuda. Atendimento exclusivo. Proporciono momentos inesquecíveis de prazer com muito carinho e dedicação. Realizo suas fantasias com total discrição e profissionalismo. Sou meiga, educada e muito sensual. Atendimento premium para pessoas exigentes. Local limpo e climatizado.",
-      tags: ["morena", "rabuda", "seios pequenos"],
-      physical: {
-        height: "1.66m",
-        weight: "62kg",
-        hair: "morena, longo",
-        body: "rabuda",
-        breasts: "pequenos",
-        features: "possui vagina"
-      },
-      services: ["massagem", "acompanhante", "pernoite"],
-      availability: ["Todos os dias", "24h"],
-      whatsapp: "5512982094926"
-    }],
-    selectedEscort: null,
-    filter: 'all'
-  };
-  async function fetchEscorts() {
-    renderEscorts();
-  }
-  function renderEscorts() {
-    const grid = document.getElementById('escortsGrid');
-    const filteredEscorts = state.escorts.filter(escort => state.filter === 'all' || escort.category === state.filter);
-    if (filteredEscorts.length === 0) {
-      grid.innerHTML = `
+</div>
+
+<script>
+const state = {
+  escorts: [{
+    id: 1,
+    name: "Pollyana",
+    age: 27,
+    category: "mulheres",
+    imageUrl: "https://bastardadoll.github.io/pollyana.jpg",
+    location: "Vila Maria - São José dos Campos - SP - BRASIL",
+    hasLocation: true,
+    price: 300,
+    description: "Branca, 1.78m de altura, 73kg, ruiva com cabelos longos. Corpo definido, siliconada e rabuda. Atendimento VIP e discreto. Sou uma acompanhante de alto nível que oferece uma experiência única e inesquecível. Realizo suas fantasias com muito prazer e sensualidade. Ambiente limpo, climatizado e discreto. Atendo cavalheiros, casais e mulheres. Fotos reais e atuais.",
+    tags: ["ruiva", "siliconada", "rabuda"],
+    physical: {
+      height: "1.78m",
+      weight: "73kg",
+      hair: "ruiva, longo",
+      body: "definida, rabuda",
+      breasts: "siliconada",
+      features: "possui vagina"
+    },
+    services: ["massagem", "acompanhante", "pernoite"],
+    availability: ["Todos os dias", "24h"],
+    whatsapp: "5512981225848"
+  }, {
+    id: 2,
+    name: "Luanny",
+    age: 29,
+    category: "trans",
+    imageUrl: "https://bastardadoll.github.io/luanny-1.jpg",
+    location: "Vila São Pedro - São José dos Campos - SP - BRASIL",
+    hasLocation: true,
+    price: 300,
+    description: "Branca, 1.77m de altura, 64kg, loira com cabelos longos. Seios pequenos e raba pequena arredondada. Trans com 19cm de dote, atendimento premium. Proporciono momentos de prazer intenso com muito carinho e dedicação. Ambiente limpo, climatizado e reservado. Realizo diversas fantasias com discrição absoluta. Atendimento diferenciado para pessoas exigentes.",
+    tags: ["trans", "loira", "19cm"],
+    physical: {
+      height: "1.77m",
+      weight: "64kg",
+      hair: "loira, longo",
+      body: "raba pequena arredondada",
+      breasts: "pequenos",
+      features: "19cm de dote"
+    },
+    services: ["massagem", "acompanhante", "pernoite"],
+    availability: ["Todos os dias", "24h"],
+    whatsapp: "5512982572507"
+  }, {
+    id: 3,
+    name: "Mel",
+    age: 29,
+    category: "trans",
+    imageUrl: "https://bastardadoll.github.io/mel.jpg",
+    location: "Vila São Pedro - São José dos Campos - SP - BRASIL",
+    hasLocation: true,
+    price: 300,
+    description: "Branca, 1.74m de altura, 67kg, morena com cabelos longos. Seios pequenos e raba pequena arredondada. Trans com 18cm de dote, atendimento especial. Proporciono momentos únicos de prazer com muito carinho e sensualidade. Ambiente climatizado, limpo e discreto. Realizo suas fantasias com total sigilo e profissionalismo. Atendimento personalizado de alto nível.",
+    tags: ["trans", "morena", "18cm"],
+    physical: {
+      height: "1.74m",
+      weight: "67kg",
+      hair: "morena, longo",
+      body: "raba pequena arredondada",
+      breasts: "pequenos",
+      features: "18cm de dote"
+    },
+    services: ["massagem", "acompanhante", "pernoite"],
+    availability: ["Todos os dias", "24h"],
+    whatsapp: "5512982557720"
+  }, {
+    id: 4,
+    name: "Mayara",
+    age: 25,
+    category: "mulheres",
+    imageUrl: "https://bastardadoll.github.io/mayara-4.jpg",
+    location: "Zona norte - São José dos Campos - SP - BRASIL",
+    hasLocation: false,
+    price: 300,
+    description: "Branca, 1.60m de altura, 64kg, morena com cabelos longos. Seios pequenos e rabuda. Atendimento de alto nível. Ofereço momentos de prazer intenso com muito carinho e dedicação. Realizo suas fantasias com sensualidade e discrição. Sou carinhosa, educada e muito safada. Atendimento VIP para pessoas exigentes. Ambiente limpo e climatizado.",
+    tags: ["morena", "rabuda", "seios pequenos"],
+    physical: {
+      height: "1.60m",
+      weight: "64kg",
+      hair: "morena, longo",
+      body: "rabuda",
+      breasts: "pequenos",
+      features: "possui vagina"
+    },
+    services: ["massagem", "acompanhante", "pernoite"],
+    availability: ["Todos os dias", "24h"],
+    whatsapp: "5512982509756"
+  }, {
+    id: 5,
+    name: "Pamela",
+    age: 25,
+    category: "mulheres",
+    imageUrl: "https://bastardadoll.github.io/pamela.jpg",
+    location: "Vila Maria - São José dos Campos - SP - BRASIL",
+    hasLocation: false,
+    price: 300,
+    description: "Branca, 1.66m de altura, 62kg, morena com cabelos longos. Seios pequenos e rabuda. Atendimento exclusivo. Proporciono momentos inesquecíveis de prazer com muito carinho e dedicação. Realizo suas fantasias com total discrição e profissionalismo. Sou meiga, educada e muito sensual. Atendimento premium para pessoas exigentes. Local limpo e climatizado.",
+    tags: ["morena", "rabuda", "seios pequenos"],
+    physical: {
+      height: "1.66m",
+      weight: "62kg",
+      hair: "morena, longo",
+      body: "rabuda",
+      breasts: "pequenos",
+      features: "possui vagina"
+    },
+    services: ["massagem", "acompanhante", "pernoite"],
+    availability: ["Todos os dias", "24h"],
+    whatsapp: "5512982094926"
+  }],
+  selectedEscort: null,
+  filter: 'all'
+};
+
+async function fetchEscorts() {
+  renderEscorts();
+}
+
+function renderEscorts() {
+  const grid = document.getElementById('escortsGrid');
+  const filteredEscorts = state.escorts.filter(escort => state.filter === 'all' || escort.category === state.filter);
+  if (filteredEscorts.length === 0) {
+    grid.innerHTML = `
         <div style="text-align: center; grid-column: 1/-1;">
           Nenhum resultado encontrado.
         </div>
       `;
-      return;
-    }
-    grid.innerHTML = filteredEscorts.map(escort => `
-      <article class="escort-card">
-        <div class="escort-image">
-          <svg width="100" height="100" viewBox="0 0 100 100">
-            <circle cx="50" cy="40" r="25" fill="#666"/>
-            <circle cx="50" cy="100" r="45" fill="#666"/> 
-          </svg>
-        </div>
-        <div class="escort-details">
-          <h3 class="escort-name">${escort.name}, ${escort.age}</h3>
-          <p style="margin: 0.5rem 0;">${escort.location}</p>
-          <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #ddd;">${escort.description}</p>
-          <div class="escort-info">
-            ${escort.tags.map(tag => `
-              <span class="escort-tag">${tag}</span>
-            `).join('')}
-          </div>
-          <div class="escort-price">
-            <div class="countdown-timer">
-              <div class="countdown-label">Promoção termina em:</div>
-              <div class="countdown-value" data-countdown="2024-12-25T23:59:59"></div>
-            </div>
-            <span class="price-tag">-40%</span>
-            <div class="original-price">R$ 500,00</div>
-            <div class="new-price">R$ ${escort.price.toLocaleString('pt-BR')}</div>
-          </div>
-        </div>
-        <button onclick="showEscortDetails(${escort.id})" class="card-booking-btn">
-          Ver mais
-        </button>
-      </article>
-    `).join('');
+    return;
   }
-  function showEscortDetails(id) {
-    const escort = state.escorts.find(e => e.id === id);
-    state.selectedEscort = escort;
-    const modal = document.getElementById('escortModal');
-    const content = document.getElementById('modalContent');
-    content.innerHTML = `
+  grid.innerHTML = filteredEscorts.map(escort => {
+    const cardImageHtml = `
+        <div class="escort-image">
+          <img src="${escort.imageUrl}" 
+               alt="${escort.name}"
+               style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      `;
+    return `
+        <article class="escort-card">
+          ${cardImageHtml}
+          <div class="escort-details">
+            <h3 class="escort-name">${escort.name}, ${escort.age}</h3>
+            <p style="margin: 0.5rem 0;">${escort.location}</p>
+            <p style="margin: 0.5rem 0; font-size: 0.9rem; color: #ddd;">${escort.description}</p>
+            <div class="escort-info">
+              ${escort.tags.map(tag => `
+                <span class="escort-tag">${tag}</span>
+              `).join('')}
+            </div>
+            <div class="escort-price">
+              <div class="countdown-timer">
+                <div class="countdown-label">Promoção termina em:</div>
+                <div class="countdown-value" data-countdown="2024-12-25T23:59:59"></div>
+              </div>
+              <span class="price-tag">-40%</span>
+              <div class="original-price">R$ 500,00</div>
+              <div class="new-price">R$ ${escort.price.toLocaleString('pt-BR')}</div>
+            </div>
+          </div>
+          <button onclick="showEscortDetails(${escort.id})" class="card-booking-btn">
+            Ver mais
+          </button>
+        </article>
+      `;
+  }).join('');
+}
+
+function showEscortDetails(id) {
+  const escort = state.escorts.find(e => e.id === id);
+  state.selectedEscort = escort;
+  const modal = document.getElementById('escortModal');
+  const content = document.getElementById('modalContent');
+  content.innerHTML = `
+      <div class="escort-image" style="height: 400px; margin: -2rem -2rem 2rem -2rem; border-radius: 12px 12px 0 0;">
+        <img src="${escort.imageUrl}" 
+             alt="${escort.name}"
+             style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
       <h2 style="color: var(--primary); margin-bottom: 1rem;">${escort.name}, ${escort.age}</h2>
       <p style="margin-bottom: 1rem;">${escort.description}</p>
       <div style="margin-bottom: 1rem;">
@@ -1053,21 +1094,23 @@
         </button>
       </div>
     `;
-    document.getElementById('bookingForm').style.display = 'none';
-    document.getElementById('bookingForm').reset();
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  }
-  function showBookingForm() {
-    const form = document.getElementById('bookingForm');
-    const modalContent = document.getElementById('modalContent');
-    modalContent.style.display = 'none';
-    form.style.display = 'block';
-    form.classList.add('active');
-  }
-  function formatBookingMessage(formData) {
-    const escort = state.selectedEscort;
-    return `
+  document.getElementById('bookingForm').style.display = 'none';
+  document.getElementById('bookingForm').reset();
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function showBookingForm() {
+  const form = document.getElementById('bookingForm');
+  const modalContent = document.getElementById('modalContent');
+  modalContent.style.display = 'none';
+  form.style.display = 'block';
+  form.classList.add('active');
+}
+
+function formatBookingMessage(formData) {
+  const escort = state.selectedEscort;
+  return `
   *Novo Agendamento*
   -----------------
   Acompanhante: ${escort.name}
@@ -1077,79 +1120,88 @@
   Horário: ${formData.time}
   Local: ${formData.location === 'outro' ? formData.outroLocal : formData.location}
   `;
-  }
-  document.querySelector('.close-modal').onclick = () => {
-    const modal = document.getElementById('escortModal');
-    const modalContent = document.getElementById('modalContent');
-    const form = document.getElementById('bookingForm');
-    modal.style.display = 'none';
-    modalContent.style.display = 'block';
-    form.style.display = 'none';
-    form.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  };
-  document.querySelector('.menu-toggle').onclick = () => {
-    document.querySelector('.nav-links').classList.toggle('active');
-  };
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      state.filter = link.getAttribute('data-filter');
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      renderEscorts();
-    });
-  });
-  document.getElementById('location').addEventListener('change', e => {
-    const outroLocalGroup = document.getElementById('outroLocalGroup');
-    outroLocalGroup.style.display = e.target.value === 'outro' ? 'block' : 'none';
-  });
-  document.getElementById('bookingForm').addEventListener('submit', async e => {
+}
+
+document.querySelector('.close-modal').onclick = () => {
+  const modal = document.getElementById('escortModal');
+  const modalContent = document.getElementById('modalContent');
+  const form = document.getElementById('bookingForm');
+  modal.style.display = 'none';
+  modalContent.style.display = 'block';
+  form.style.display = 'none';
+  form.classList.remove('active');
+  document.body.style.overflow = 'auto';
+};
+
+document.querySelector('.menu-toggle').onclick = () => {
+  document.querySelector('.nav-links').classList.toggle('active');
+};
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', e => {
     e.preventDefault();
-    const submitBtn = e.target.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Processando...';
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    const formData = {
-      nickname: document.getElementById('nickname').value,
-      age: document.getElementById('age').value,
-      date: document.getElementById('date').value,
-      time: document.getElementById('time').value,
-      location: document.getElementById('location').value,
-      outroLocal: document.getElementById('outroLocal').value
-    };
-    const message = encodeURIComponent(formatBookingMessage(formData));
-    window.location.href = `https://wa.me/${state.selectedEscort.whatsapp}?text=${message}`;
+    state.filter = link.getAttribute('data-filter');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    renderEscorts();
   });
-  const formInputs = document.querySelectorAll('.form-control, .service-option');
-  formInputs.forEach(input => {
-    input.addEventListener('invalid', e => {
-      e.preventDefault();
-      input.parentElement.querySelector('.validation-message').style.display = 'block';
-    });
-    input.addEventListener('input', () => {
-      input.parentElement.querySelector('.validation-message').style.display = 'none';
-    });
+});
+
+document.getElementById('location').addEventListener('change', e => {
+  const outroLocalGroup = document.getElementById('outroLocalGroup');
+  outroLocalGroup.style.display = e.target.value === 'outro' ? 'block' : 'none';
+});
+
+document.getElementById('bookingForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const submitBtn = e.target.querySelector('.submit-btn');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Processando...';
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const formData = {
+    nickname: document.getElementById('nickname').value,
+    age: document.getElementById('age').value,
+    date: document.getElementById('date').value,
+    time: document.getElementById('time').value,
+    location: document.getElementById('location').value,
+    outroLocal: document.getElementById('outroLocal').value
+  };
+  const message = encodeURIComponent(formatBookingMessage(formData));
+  window.location.href = `https://wa.me/${state.selectedEscort.whatsapp}?text=${message}`;
+});
+
+const formInputs = document.querySelectorAll('.form-control, .service-option');
+formInputs.forEach(input => {
+  input.addEventListener('invalid', e => {
+    e.preventDefault();
+    input.parentElement.querySelector('.validation-message').style.display = 'block';
   });
-  function updateCountdowns() {
-    const countdowns = document.querySelectorAll('[data-countdown]');
-    countdowns.forEach(element => {
-      const targetDate = new Date(element.dataset.countdown);
-      const now = new Date();
-      const difference = targetDate - now;
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(difference % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-        const minutes = Math.floor(difference % (1000 * 60 * 60) / (1000 * 60));
-        const seconds = Math.floor(difference % (1000 * 60) / 1000);
-        element.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      } else {
-        element.innerHTML = 'Promoção encerrada!';
-      }
-    });
-  }
-  setInterval(updateCountdowns, 1000);
-  updateCountdowns();
-  fetchEscorts();</script>
-  </body></html>
+  input.addEventListener('input', () => {
+    input.parentElement.querySelector('.validation-message').style.display = 'none';
+  });
+});
+
+function updateCountdowns() {
+  const countdowns = document.querySelectorAll('[data-countdown]');
+  countdowns.forEach(element => {
+    const targetDate = new Date(element.dataset.countdown);
+    const now = new Date();
+    const difference = targetDate - now;
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(difference % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+      const minutes = Math.floor(difference % (1000 * 60 * 60) / (1000 * 60));
+      const seconds = Math.floor(difference % (1000 * 60) / 1000);
+      element.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+      element.innerHTML = 'Promoção encerrada!';
+    }
+  });
+}
+
+setInterval(updateCountdowns, 1000);
+updateCountdowns();
+fetchEscorts();
+</script>
+</body></html>
