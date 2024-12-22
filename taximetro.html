@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <base href="https://www.xvideos.com/">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tax&#xed;metro Digital</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                color: white;
+                overflow: hidden;
+                background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+            }
+        
+            .video-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                display: none;
+            }
+        
+            .video-container iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                pointer-events: none;
+            }
+        
+            .mini-display {
+                position: fixed;
+                top: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 15px;
+                font-size: 18px;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                border-radius: 0 0 0 10px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+        
+            .mini-display.show {
+                transform: translateY(0);
+            }
+        
+            .mini-display span {
+                margin: 0 10px;
+                font-family: 'Courier New', monospace;
+                font-size: 24px;
+                font-weight: bold;
+                text-shadow: 0 0 5px rgba(255,255,255,0.3);
+            }
+        
+            .stop-button {
+                padding: 5px 15px;
+                background-color: #ff4444;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                font-size: 14px;
+            }
+        
+            .stop-button:hover {
+                background-color: #cc0000;
+            }
+        
+            .container {
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 20px;
+                background-color: rgba(0, 0, 0, 0.8);
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                transition: transform 0.5s ease, opacity 0.5s ease;
+            }
+        
+            .container.hide {
+                transform: translateY(100%);
+                opacity: 0;
+                pointer-events: none;
+            }
+        
+            .final-screen {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                background: rgba(0, 0, 0, 0.9);
+                padding: 30px;
+                border-radius: 15px;
+                text-align: center;
+                opacity: 0;
+                transition: transform 0.5s ease, opacity 0.5s ease;
+                z-index: 1000;
+                min-width: 300px;
+            }
+        
+            .final-screen.show {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        
+            .final-screen h2 {
+                color: #4CAF50;
+                margin-bottom: 20px;
+            }
+        
+            .final-screen p {
+                font-size: 20px;
+                margin: 10px 0;
+            }
+        
+            .final-screen span {
+                font-weight: bold;
+                color: #4CAF50;
+            }
+        
+            .input-group {
+                margin-bottom: 20px;
+            }
+        
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-size: 18px;
+            }
+        
+            input {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+        
+            button {
+                width: 100%;
+                padding: 15px;
+                font-size: 18px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+        
+            button:hover {
+                background-color: #45a049;
+            }
+        
+            .hidden {
+                display: none;
+            }
+        
+            .background-animation {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -2;
+                background: linear-gradient(-45deg, #1a1a1a, #2c2c2c, #3c3c3c, #2c2c2c);
+                background-size: 400% 400%;
+                animation: gradientBG 15s ease infinite;
+            }
+        
+            @keyframes gradientBG {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+        </style>
+        </head>
+        <body>
+            <div class="background-animation"></div>
+            
+            <div class="video-container" id="videoContainer">
+                <iframe id="videoFrame" src="https://www.xvideos.com/embedframe/kkleepobe4d" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+        
+            <div class="mini-display" id="miniDisplay">
+                <span id="miniTimer">00:00</span>
+                <span id="miniTotal">R&#x24; 0,00</span>
+                <button class="stop-button" onclick="finalizarCorrida()">Finalizar</button>
+            </div>
+        
+            <div class="final-screen hidden" id="finalScreen">
+                <h2>Corrida Finalizada</h2>
+                <p>Dura&#xe7;&#xe3;o Total: <span id="finalDuration">00:00</span></p>
+                <p>Valor Total: <span id="finalTotal">R&#x24; 0,00</span></p>
+                <button onclick="resetApp()">Nova Corrida</button>
+            </div>
+        
+            <div class="container" id="mainContainer">
+                <div class="input-group">
+                    <label for="valor">Valor total do per&#xed;odo (R&#x24;):</label>
+                    <input type="number" id="valor" step="0.01" min="0" required>
+                </div>
+        
+                <div class="input-group">
+                    <label for="periodo">Tempo limite (minutos):</label>
+                    <input type="number" id="periodo" min="1" required>
+                </div>
+        
+                <button id="iniciar">Iniciar</button>
+            </div>
+        
+            <script>let timer;
+        let startTime;
+        let isRunning = false;
+        let valorTotal = 0;
+        let valorPorMinuto = 0;
+        let periodoLimite = 0;
+        let tempoExcedido = false;
+        function startVideo() {
+          const videoContainer = document.getElementById('videoContainer');
+          const videoFrame = document.getElementById('videoFrame');
+          videoContainer.style.display = 'block';
+          videoFrame.src = videoFrame.src + '?autoplay=1';
+        }
+        function finalizarCorrida() {
+          if (isRunning) {
+            clearInterval(timer);
+            isRunning = false;
+            const now = new Date();
+            const diff = now - startTime;
+            const minutes = Math.floor(diff / 60000);
+            let total;
+            if (minutes < periodoLimite) {
+              total = valorTotal;
+            } else {
+              const segundosTotais = diff / 1000;
+              const segundosExcedidos = segundosTotais - periodoLimite * 60;
+              total = valorTotal + segundosExcedidos * (valorPorMinuto / 60);
+            }
+            document.getElementById('finalDuration').textContent = document.getElementById('miniTimer').textContent;
+            document.getElementById('finalTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('finalScreen').classList.remove('hidden');
+            document.getElementById('finalScreen').classList.add('show');
+            document.getElementById('mainContainer').classList.add('hide');
+            document.getElementById('miniDisplay').classList.remove('show');
+            document.getElementById('videoContainer').style.display = 'none';
+          }
+        }
+        function resetApp() {
+          document.getElementById('finalScreen').classList.add('hidden');
+          document.getElementById('finalScreen').classList.remove('show');
+          document.getElementById('mainContainer').classList.remove('hide');
+          document.getElementById('miniDisplay').classList.remove('show');
+          document.getElementById('videoContainer').style.display = 'none';
+          document.getElementById('valor').value = '';
+          document.getElementById('periodo').value = '';
+          isRunning = false;
+          clearInterval(timer);
+          startTime = null;
+          valorTotal = 0;
+          valorPorMinuto = 0;
+          periodoLimite = 0;
+          tempoExcedido = false;
+        }
+        document.getElementById('iniciar').addEventListener('click', function () {
+          const valorInput = document.getElementById('valor').value;
+          const periodoInput = document.getElementById('periodo').value;
+          if (!valorInput || !periodoInput || valorInput <= 0 || periodoInput <= 0) {
+            alert('Por favor, preencha todos os campos corretamente com valores positivos.');
+            return;
+          }
+          valorTotal = parseFloat(valorInput);
+          periodoLimite = parseInt(periodoInput);
+          valorPorMinuto = valorTotal / periodoLimite;
+          startTime = new Date();
+          isRunning = true;
+          tempoExcedido = false;
+          document.getElementById('miniDisplay').classList.add('show');
+          document.getElementById('mainContainer').classList.add('hide');
+          startVideo();
+          if (timer) {
+            clearInterval(timer);
+          }
+          timer = setInterval(updateTimer, 1000);
+        });
+        function updateTimer() {
+          if (!isRunning || !startTime) return;
+          const now = new Date();
+          const diff = now - startTime;
+          const minutes = Math.floor(diff / 60000);
+          const seconds = Math.floor(diff % 60000 / 1000);
+          const timeStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+          document.getElementById('miniTimer').textContent = timeStr;
+          if (minutes >= periodoLimite && !tempoExcedido) {
+            tempoExcedido = true;
+            try {
+              const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+              const oscillator = audioContext.createOscillator();
+              const gainNode = audioContext.createGain();
+              oscillator.connect(gainNode);
+              gainNode.connect(audioContext.destination);
+              oscillator.type = 'sine';
+              oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
+              gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+              oscillator.start();
+              oscillator.stop(audioContext.currentTime + 1);
+            } catch (e) {
+              console.log('Audio alert failed:', e);
+            }
+          }
+          let total;
+          if (minutes >= periodoLimite) {
+            const segundosTotais = diff / 1000;
+            const segundosExcedidos = segundosTotais - periodoLimite * 60;
+            total = valorTotal + segundosExcedidos * (valorPorMinuto / 60);
+          } else {
+            total = minutes * valorPorMinuto + seconds / 60 * valorPorMinuto;
+          }
+          document.getElementById('miniTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }</script>
+        </body>
+        </html>
