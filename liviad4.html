@@ -4,1024 +4,916 @@
     <base href="https://bastardadoll.github.io/liviad4.html">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livia D4 - Perfil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;family=Source+Sans+Pro:wght@400;600&amp;display=swap" rel="stylesheet">
+    <title>L&#xed;via - Perfil Profissional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="frame-src &apos;self&apos; https://www.xvideos.com;">
     <style>
-      @keyframes floatingEmoji {
-        0% {
-          transform: translateY(0) rotate(0deg);
-          opacity: 0.1;
+        /* Base responsive typography */
+        :root {
+          --base-font: clamp(14px, 1vw + 10px, 18px);
+          --h1-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+          --h2-size: clamp(1.8rem, 3vw + 1rem, 2.8rem);
+          --h3-size: clamp(1.4rem, 2vw + 1rem, 2.2rem);
+          
+          /* Spacing variables */
+          --spacing-sm: clamp(0.5rem, 1vw, 1rem);
+          --spacing-md: clamp(1rem, 2vw, 2rem);
+          --spacing-lg: clamp(2rem, 4vw, 4rem);
+          
+          /* Container widths */
+          --container-max: 1200px;
+          --container-padding: clamp(1rem, 5vw, 5%);
+          /* Enhanced color palette */
+          --primary: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+          --primary-light: linear-gradient(135deg, #DC143C 0%, #FF4040 100%);
+          --text: #FFD700; 
+          --text-secondary: #D3D3D3; 
+          --text-dark: #1C1C1C; 
+          --bg: linear-gradient(180deg, #1C1C1C 0%, #2C2C2C 100%);
+          --bg-transparent: rgba(28,28,28,0.95);
+          --accent: linear-gradient(135deg, #C0C0C0 0%, #D3D3D3 100%);
+          --accent-dark: linear-gradient(135deg, #808080 0%, #A9A9A9 100%);
+          
+          /* Enhanced metallic shadows */
+          --shadow-sm: 0 2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(255,215,0,0.1);
+          --shadow-md: 0 4px 8px rgba(0,0,0,0.4), 0 2px 4px rgba(255,215,0,0.15);
+          --shadow-lg: 0 8px 16px rgba(0,0,0,0.5), 0 4px 8px rgba(255,215,0,0.2);
+
+          /* New paw styles */
+          --paw-pattern: '🐾';
+          --paw-size: clamp(20px, 3vw, 40px);
+          --paw-color: rgba(255, 215, 0, 0.1); /* Subtle gold color */
         }
-        50% {
-          transform: translateY(-20px) rotate(180deg);
-          opacity: 0.2;
+
+        /* Improved container layout */
+        .main-content {
+          margin-top: clamp(60px, 10vh, 80px);
+          padding: var(--spacing-md);
+          max-width: 85%; /* Change from var(--container-max) to percentage */
+          margin-left: 0; /* Change from auto to 0 */
+          margin-right: 15%; /* Change from auto to 15% */
+          display: grid;
+          gap: var(--spacing-lg);
         }
-        100% {
-          transform: translateY(0) rotate(360deg);
-          opacity: 0.1;
+
+        /* Add responsive adjustments */
+        @media (max-width: 768px) {
+          .main-content {
+            max-width: 100%; /* Full width on mobile */
+            margin-right: 0; /* No right margin on mobile */
+            padding: var(--spacing-md) var(--container-padding);
+          }
         }
-      }
-    
-      .emoji-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -2;
-        overflow: hidden;
-      }
-    
-      .floating-emoji {
-        position: absolute;
-        font-size: 20px;
-        opacity: 0.1;
-        animation: floatingEmoji 8s infinite ease-in-out;
-      }
-    
-      :root {
-        /* Updated metallic color palette */
-        --background-color: #1a1a1a;  
-        --primary-color: #8B0000;     
-        --secondary-color: #FFD700;   
-        --accent-color: #C0C0C0;      
-        --header-gradient-start: #2d1934;
-        --header-gradient-end: #1a1a1a;
-        --text-light: #e0e0e0;
-        --shadow-color: rgba(0,0,0,0.6);
-        
-        /* Typography */
-        --font-size-base: clamp(14px, 1vw, 16px);
-        --font-size-h1: clamp(1.8rem, 4vw, 2.5rem);
-        --font-size-h2: clamp(1.5rem, 3vw, 2rem);
-        --font-size-h3: clamp(1.2rem, 2vw, 1.5rem);
-        
-        /* Spacing */
-        --spacing-unit: clamp(0.5rem, 2vw, 1rem);
-        --section-spacing: calc(var(--spacing-unit) * 3);
-        
-        /* Animations */
-        --transition-speed: 0.3s;
-        --hover-scale: 1.05;
-      }
-    
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-    
-      body {
-        font-family: 'Source Sans Pro', sans-serif;
-        line-height: 1.8;
-        background: var(--background-color);
-        font-size: var(--font-size-base);
-        color: var(--text-light);
-        position: relative;
-        min-height: 100vh;
-        overflow-x: hidden;
-        padding-right: 15%;
-      }
-    
-      header {
-        padding: calc(var(--spacing-unit) * 2);
-        background: linear-gradient(135deg, var(--primary-color), var(--background-color) 80%);
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 4px 20px var(--shadow-color);
-        border-bottom: 2px solid var(--secondary-color);
-        flex-wrap: wrap;
-      }
-    
-      .logo {
-        color: var(--text-light);
-        font-size: clamp(1.2rem, 2vw, 1.5rem);
-        transition: transform 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-      }
-    
-      .logo svg {
-        width: 100%;
-        height: 100%;
-      }
-    
-      .logo svg circle {
-        stroke: var(--secondary-color);
-        stroke-width: 3;
-        fill: transparent;
-        filter: drop-shadow(0 0 2px var(--shadow-color));
-      }
-    
-      .logo svg text {
-        fill: var(--accent-color);
-        font-size: 12px;
-        font-weight: bold;
-        text-shadow: 0 0 2px var(--shadow-color);
-      }
-    
-      .titulo {
-        color: var(--secondary-color);
-        margin: 0 var(--spacing-unit);
-        font-size: var(--font-size-h1);
-        text-shadow: 2px 2px 4px var(--shadow-color);
-        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 200% 100%;
-        animation: metallicShine 3s linear infinite;
-        white-space: nowrap; /* Prevents title from wrapping on smaller screens */
-      }
-    
-      .menu-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
-        background-size: 200% 100%;
-        animation: metallicShine 3s linear infinite;
-        border: 2px solid var(--accent-color);
-        color: var(--background-color);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 1.5rem;
-        z-index: 1001;
-        position: relative;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        margin-right: 1rem;
-      }
-    
-      .menu-toggle:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        background-position: right center;
-      }
-    
-      nav {
-        display: none;
-        position: fixed;
-        top: 100px; /* Adjust to match header height */
-        right: 0; /* Change from left to right */
-        width: 250px; /* Fixed width instead of 100% */
-        background: linear-gradient(135deg, var(--background-color), var(--primary-color));
-        padding: var(--spacing-unit);
-        border: 2px solid var(--secondary-color);
-        border-radius: 0 0 0 8px;
-        flex-direction: column;
-        align-items: stretch; /* Change from center */
-        gap: var(--spacing-unit);
-        z-index: 999;
-        box-shadow: -4px 4px 15px var(--shadow-color);
-      }
-    
-      nav.active {
-        display: flex;
-        animation: slideIn 0.3s ease-out;
-      }
-    
-      nav a {
-        width: 100%;
-        text-align: left; /* Change from center */
-        padding: 0.75rem 1rem;
-        color: var(--text-light);
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: 4px;
-        background: linear-gradient(90deg, 
-          transparent 0%, 
-          rgba(255,255,255,0.05) 50%, 
-          transparent 100%
-        );
-        transition: all 0.3s ease;
-        border: 1px solid transparent;
-      }
-    
-      nav a:hover {
-        background: linear-gradient(90deg,
-          var(--primary-color) 0%,
-          var(--accent-color) 50%,
-          var(--primary-color) 100%
-        );
-        border-color: var(--secondary-color);
-        transform: translateX(-5px);
-        color: var(--secondary-color);
-        padding-left: 1.5rem;
-      }
-    
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
+
+        /* Enhanced section layouts */
+        .section {
+          width: 100%; /* Ensure sections don't overflow container */
+          box-sizing: border-box; /* Include padding in width calculation */
+          display: grid;
+          gap: var(--spacing-md);
+          padding: var(--spacing-md);
+          background: linear-gradient(135deg, rgba(28,28,28,0.95) 0%, rgba(44,44,44,0.95) 100%);
+          border: 2px solid transparent;
+          border-image: linear-gradient(135deg, #8B0000 0%, #DC143C 100%) 1;
+          box-shadow: var(--shadow-md);
+          transition: all 0.3s ease;
+          background-size: 200% auto;
+          animation: shimmer 15s linear infinite;
         }
-        to {
-          opacity: 1;
-          transform: translateX(0);
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-image: linear-gradient(135deg, #FFD700 0%, #FDB931 100%) 1;
         }
-      }
-    
-      main {
-        width: 85%;
-        padding-top: 140px; /* Increased from 120px */
-        margin: 0;
-        position: relative;
-      }
-    
-      section {
-        width: 100%;
-        max-width: calc(100vw - 15%);
-        margin: var(--spacing-unit) 0;
-      }
-    
-      section h2 {
-        color: var(--secondary-color);
-        margin-bottom: 1.5rem;
-        font-size: clamp(1.5rem, 4vw, 2rem);
-        position: relative;
-        padding-bottom: 0.5rem;
-        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 200% 100%;
-        animation: metallicShine 3s linear infinite;
-      }
-    
-      section h2::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: var(--primary-color);
-        border-radius: 2px;
-      }
-    
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: calc(var(--spacing-unit) * 2);
-        padding: var(--spacing-unit);
-      }
-    
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
-                  box-shadow var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-        background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(139,0,0,0.2));
-        border: 1px solid var(--accent-color);
-      }
-    
-      .gallery-item::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
-        opacity: 0;
-        transition: opacity var(--transition-speed) ease;
-      }
-    
-      .gallery-item:hover::after {
-        opacity: 1;
-      }
-    
-      .gallery-item img,
-      .gallery-item video {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-    
-      .gallery-item:hover img,
-      .gallery-item:hover video {
-        transform: scale(1.05);
-      }
-    
-      .gallery-content {
-        padding: calc(var(--spacing-unit) * 1.5);
-      }
-    
-      .gallery-content h3 {
-        color: var(--secondary-color);
-        margin-bottom: var(--spacing-unit);
-        font-size: clamp(1.1rem, 2vw, 1.3rem);
-      }
-    
-      .gallery-content p {
-        color: var(--accent-color);
-        margin-bottom: var(--spacing-unit);
-        line-height: 1.6;
-      }
-    
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: calc(var(--spacing-unit) * 0.5);
-        margin: var(--spacing-unit) 0;
-      }
-    
-      .tag {
-        background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--primary-color) 100%);
-        background-size: 200% 100%;
-        animation: metallicShine 3s linear infinite;
-        color: var(--accent-color);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
-        font-size: clamp(0.75rem, 1.5vw, 0.85rem);
-        transition: transform 0.3s ease;
-        border: 1px solid var(--secondary-color);
-      }
-    
-      .tag:hover {
-        background: var(--secondary-color);
-        color: var(--background-color);
-      }
-    
-      .sentiment-list {
-        list-style: none;
-        margin: var(--spacing-unit) 0;
-      }
-    
-      .sentiment-list li {
-        padding: calc(var(--spacing-unit) * 0.5) 0;
-        color: var(--accent-color);
-        position: relative;
-        padding-left: 1.5rem;
-      }
-    
-      .sentiment-list li::before {
-        content: '•';
-        position: absolute;
-        left: 0;
-        color: var(--secondary-color);
-      }
-    
-      .warning-text {
-        color: var(--secondary-color);
-        background: var(--primary-color);
-        font-weight: bold;
-        padding: 0.5rem;
-        border-left: 4px solid var(--accent-color);
-        margin: 1rem 0;
-      }
-    
-      .content-section {
-        background: rgba(255,255,255,0.05);
-        padding: 1rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-      }
-    
-      .content-section p {
-        margin-bottom: 0.5rem;
-      }
-    
-      .rules-list {
-        list-style: none;
-        padding: 0;
-      }
-    
-      .rules-list li {
-        margin: 0.5rem 0;
-        padding-left: 1.5rem;
-        position: relative;
-      }
-    
-      .rules-list li::before {
-        content: '•';
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-      }
-    
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity var(--transition-speed) ease,
-                  transform var(--transition-speed) ease;
-      }
-    
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    
-      @keyframes metallicShine {
-        0% {
-          background-position: -200% 0;
+
+        /* Enhanced header styling */
+        .header {
+            background: linear-gradient(180deg, rgba(28,28,28,0.98) 0%, rgba(44,44,44,0.95) 100%);
+            padding: clamp(0.5rem, 2vw, 2rem) clamp(1rem, 5vw, 5%);
+            width: 85%; /* Change from 90% to 85% */
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, #8B0000 0%, #DC143C 100%) 1;
+            box-shadow: var(--shadow-md);
+            min-height: clamp(50px, 8vh, 80px);
+            backdrop-filter: blur(5px);
         }
-        100% {
-          background-position: 200% 0;
+
+        @media (max-width: 768px) {
+          .header {
+            width: 100%; /* Full width on mobile */
+          }
         }
-      }
-    
-      @media print {
-        header, .menu-toggle { 
-          display: none; 
-        }
-        main { 
-          padding-top: 0; 
-        }
-        section {
-          break-inside: avoid;
-          box-shadow: none;
-        }
-      }
-    
-      @media (max-width: 768px) {
-        header {
-          padding: var(--spacing-unit);
-        }
-    
-        nav {
-          top: 100px;
-          padding: calc(var(--spacing-unit) * 0.5);
-          width: 200px;
-        }
-        
-        nav a {
-          padding: 0.5rem 0.75rem;
-          font-size: 0.9rem;
-        }
-        
-        .menu-toggle {
-          width: 35px;
-          height: 35px;
-          font-size: 1.2rem;
-        }
-    
-        main {
-          padding-top: 120px; /* Increased from 100px */
-        }
-      }
-    
-      @media (max-width: 480px) {
-        nav {
-          top: 90px;
-          width: 180px;
-        }
-        
-        .menu-toggle {
-          width: 30px;
-          height: 30px;
-          font-size: 1rem;
-        }
-    
-        main {
-          padding-top: 110px; /* Increased from 90px */
-        }
-      }
-    
-      @media (max-width: 450px) {
-        main {
-          width: 85%;
-          padding: 0;
-        }
-    
-        body {
-          padding-right: 15%;
-        }
-    
-        section {
-          width: 100%;
-          margin: var(--spacing-unit) 0;
-          max-width: calc(100vw - 15%);
-        }
-    
-        .gallery-grid {
-          grid-template-columns: 1fr;
-          gap: var(--spacing-unit);
-        }
-    
+
+        /* Enhanced gallery item styling */
         .gallery-item {
-          min-width: 0;
+            animation: fadeIn 0.5s ease-out;
+            background: linear-gradient(135deg, rgba(28,28,28,0.95) 0%, rgba(44,44,44,0.95) 100%);
+            border: 2px solid transparent;
+            border-image: linear-gradient(135deg, #C0C0C0 0%, #D3D3D3 100%) 1;
+            box-shadow: var(--shadow-sm);
+            background-size: 200% auto;
+            animation: shimmer 15s linear infinite;
         }
-      }
-    
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          animation: none !important;
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-image: linear-gradient(135deg, #FFD700 0%, #FDB931 100%) 1;
+            box-shadow: var(--shadow-md);
         }
-      }
-    
-      /* For very small screens, adjust font size if needed */
-      @media (max-width: 380px) {
-        .titulo {
-          font-size: clamp(1.5rem, 3vw, 2rem);
+
+        /* Enhanced tag styling */
+        .tag {
+            background: linear-gradient(45deg, #8B0000 0%, #DC143C 100%);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8em;
+            transition: transform 0.2s ease;
+            color: #FFD700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(255,215,0,0.2);
         }
-      }
-    
-      .video-container {
-        position: relative;
-        width: 100%;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-        height: 0;
-        overflow: hidden;
-      }
-    
-      .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 12px 12px 0 0;
-      }
-    
-      /* Ensure proper spacing below video */
-      .gallery-item .video-container + .gallery-content {
-        padding-top: 1rem;
-      }
-    
-      .option-box {
-        background: linear-gradient(135deg, rgba(139,0,0,0.2), rgba(26,26,26,0.9));
-        border: 1px solid var(--accent-color);
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-      }
-    
-      .option-box h3 {
-        color: var(--secondary-color);
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-      }
-    
-      .option-box p {
-        color: var(--text-light);
-        font-size: 1rem;
-      }
-    
-      .gif-preview {
-        background: linear-gradient(135deg, var(--primary-color), var(--background-color));
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px 8px 0 0;
-      }
-    
-      .gif-label {
-        color: var(--secondary-color);
-        font-size: 1.2rem;
-        font-weight: bold;
-      }
-    
-      .option-tags {
-        display: flex;
-        gap: 0.5rem;
-        margin: 1rem 0;
-      }
-    
-      .option-tag {
-        background: var(--primary-color);
-        color: var(--text-light);
-        padding: 0.3rem 0.8rem;
-        border-radius: 15px;
-        font-size: 0.9rem;
-        border: 1px solid var(--accent-color);
-      }
-    
-      @media (max-width: 768px) {
-        .option-box {
-          padding: 1rem;
+
+        .tag:hover {
+            background: linear-gradient(45deg, #DC143C 0%, #FF4040 100%);
+            box-shadow: var(--shadow-md);
         }
-      
-        .gif-preview {
-          height: 150px;
+
+        /* Enhanced warning styling */
+        .warning {
+            background: linear-gradient(45deg, rgba(139,0,0,0.2), rgba(220,20,60,0.3));
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #8B0000 0%, #DC143C 100%) 1;
+            box-shadow: var(--shadow-md);
+            color: #FFD700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
-      }
-    
-      .map-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--primary-color) 100%);
-        color: var(--text-light);
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--secondary-color);
-        border-radius: 20px;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        margin-top: 0.5rem;
-      }
-    
-      .map-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        background-position: right center;
-      }
-    
-      .location-img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 0.5rem;
-      }
-    </style>
-    </head>
-    <body>
-      <div class="emoji-background"></div>
-      <header>
-        <div class="logo">
-          <svg width="50" height="50" viewBox="0 0 50 50">
-            <defs>
-              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:var(--secondary-color);stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:var(--accent-color);stop-opacity:1"/>
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <circle cx="25" cy="25" r="22" fill="none" stroke="url(#logoGradient)" stroke-width="3" filter="url(#glow)"/>
-            <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="var(--accent-color)" font-weight="bold" filter="url(#glow)">L4</text>
-          </svg>
-        </div>
-        <h1 class="titulo">Livia D4</h1>
-        <button class="menu-toggle" aria-label="Abrir menu de navega&#xe7;&#xe3;o" aria-expanded="false">&#x2630;</button>
-        <nav>
-          <a href="#quem-e">Quem &#xe9; Livia?</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#busco">O que busco</a>
-          <a href="#naocurto">O que n&#xe3;o curto</a>
-          <a href="#fast-foda">FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</a>
-          <a href="#fotos">Fotos</a>
-          <a href="#gifs">GIFs</a>
-          <a href="#inspiracoes">Inspira&#xe7;&#xf5;es</a>
-        </nav>
-      </header>
-    
-      <main>
-        <section id="quem-e">
-          <h2>Quem &#xe9; Livia?</h2>
-          <div class="content-section">
-            <div class="option-box">
-              <h3>Trans Passiva</h3>
-              <p>Apenas passiva, prefiro chupar e deixar meter. Atendo homens ativos decididos acima de 35 anos.</p>
-            </div>
-    
-            <div class="option-box">
-              <h3>Encontros Discretos</h3>
-              <p>Sigilo absoluto garantido. Encontros casuais e sem compromisso, sempre com total discri&#xe7;&#xe3;o.</p>
-            </div>
-    
-            <div class="option-box">
-              <h3>Facilitadora</h3>
-              <p>Experi&#xea;ncia em proporcionar momentos &#xfa;nicos e prazerosos, sempre respeitando limites e prefer&#xea;ncias.</p>
-            </div>
-    
-            <div class="option-box">
-              <h3>Profissional</h3>
-              <p>Atendimento profissional e objetivo, sem rodeios ou formalidades desnecess&#xe1;rias.</p>
-            </div>
-          </div>
-        </section>
-    
-        <section id="sobre">
-          <h2>Sobre</h2>
-          <div class="content-section">
-            <div class="option-box">
-              <h3>Sigilo</h3>
-              <p>Local para encontros r&#xe1;pidos e discretos. Sigilo sempre.</p>
-            </div>
-            <div class="option-box">
-              <h3>Noturno</h3>
-              <p>Encontros noturnos em locais estrat&#xe9;gicos para sua privacidade.</p>
-            </div>
-            <div class="option-box">
-              <h3>Casual</h3>
-              <p>Ambiente seguro para momentos casuais e sem compromisso.</p>
-            </div>
-          </div>
-        </section>
-    
-        <section id="busco">
-          <h2>O que busco</h2>
-          <div class="content-section">
-            <div class="option-box">
-              <h3>Homens ativos e decididos</h3>
-              <p>Prefer&#xea;ncia por homens experientes e determinados, acima de 35 anos.</p>
-            </div>
-            <div class="option-box">
-              <h3>Sigilo garantido</h3>
-              <p>Encontros discretos e sigilosos, mantendo sua privacidade sempre em primeiro lugar.</p>
-            </div>
-            <div class="option-box">
-              <h3>Local e hor&#xe1;rio</h3>
-              <p>Encontros no seu carro, preferencialmente durante a noite/madrugada.</p>
-            </div>
-            <div class="option-box">
-              <h3>Programa exclusivo</h3>
-              <p>LOCAL APENAS PARA PROGRAMA - ambiente seguro e discreto para seus momentos.</p>
-            </div>
-          </div>
-        </section>
-    
-        <section id="naocurto">
-          <h2>O que n&#xe3;o curto</h2>
-          <div class="content-section">
-            <div class="warning-text">
-              <p>TOLER&#xc2;NCIA ZERO</p>
-              <ul class="rules-list">
-                <li>Mentirosos</li>
-                <li>Indecisos</li>
-                <li>Narcisistas</li>
-                <li>Rom&#xe2;nticos</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-    
-        <section id="fast-foda">
-          <h2>FAST-FODA | LOCAIS E FACILITA&#xc7;&#xd5;ES</h2>
-          <div class="content-section">
-            <div class="option-box">
-              <h3>Pra&#xe7;a</h3>
-              <img src="praca.svg" alt="Pra&#xe7;a local" class="location-img">
-              <p>Local discreto pr&#xf3;ximo &#xe0; resid&#xea;ncia, ideal para encontros r&#xe1;pidos durante a madrugada.</p>
-              <a href="https://maps.google.com/?q=pra&#xe7;a+central+sao+jose+dos+campos" class="map-button">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                Ver no Maps
-              </a>
-            </div>
-    
-            <div class="option-box">
-              <h3>Viaduto</h3>
-              <img src="viaduto.svg" alt="Viaduto local" class="location-img">
-              <p>Ambiente coberto e discreto, perfeito para encontros r&#xe1;pidos.</p>
-              <a href="https://maps.google.com/?q=viaduto+dutra+sao+jose+dos+campos" class="map-button">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                Ver no Maps
-              </a>
-            </div>
-    
-            <div class="option-box">
-              <h3>Rodovi&#xe1;ria Nova</h3>
-              <img src="rodoviaria.svg" alt="Rodovi&#xe1;ria local" class="location-img">
-              <p>&#xc1;rea discreta atr&#xe1;s da rodovi&#xe1;ria, local estrat&#xe9;gico para encontros.</p>
-              <a href="https://maps.google.com/?q=rodoviaria+nova+sao+jose+dos+campos" class="map-button">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                Ver no Maps
-              </a>
-            </div>
-    
-            <div class="option-box">
-              <h3>Est&#xe1;dio Martins Pereira</h3>
-              <img src="estadio.svg" alt="Est&#xe1;dio local" class="location-img">
-              <p>&#xc1;rea reservada atr&#xe1;s do est&#xe1;dio, ideal para encontros discretos.</p>
-              <a href="https://maps.google.com/?q=estadio+martins+pereira+sao+jose+dos+campos" class="map-button">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                Ver no Maps
-              </a>
-            </div>
-    
-            <!-- Continue with remaining locations following the same pattern -->
-          </div>
-        </section>
-    
-        <section id="fotos">
-          <h2>Galeria de Fotos</h2>
-          <div class="gallery-grid">
-            <article class="gallery-item">
-              <img src="imagem-1.jpg" alt="Momento &#xed;ntimo">
-              <div class="gallery-content">
-                <h3>Encontros Discretos</h3>
-                <p>Momentos &#xfa;nicos em ambiente reservado, proporcionando experi&#xea;ncias intensas e memor&#xe1;veis com total sigilo e discri&#xe7;&#xe3;o. Local estrat&#xe9;gico para encontros r&#xe1;pidos e seguros, sempre respeitando suas prefer&#xea;ncias e limites.</p>
-                <div class="tags">
-                  <span class="tag">Discreto</span>
-                  <span class="tag">Noturno</span>
-                  <span class="tag">Casual</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Ambiente reservado</li>
-                  <li>Sigilo absoluto</li>
-                  <li>Experi&#xea;ncia &#xfa;nica</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-    
-        <section id="gifs">
-          <h2>Galeria de GIFs</h2>
-          <div class="gallery-grid">
-            <article class="gallery-item">
-              <img src="gif-1.gif" alt="Momento especial">
-              <div class="gallery-content">
-                <h3>Momentos Especiais</h3>
-                <p>Registros aut&#xea;nticos de encontros discretos e prazerosos. Cada momento &#xe9; &#xfa;nico e pensado para sua satisfa&#xe7;&#xe3;o total, mantendo sempre o sigilo e respeito que voc&#xea; merece.</p>
-                <div class="tags">
-                  <span class="tag">Intenso</span>
-                  <span class="tag">Sigiloso</span>
-                  <span class="tag">Especial</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Prazer garantido</li>
-                  <li>Discri&#xe7;&#xe3;o total</li>
-                  <li>Sem compromisso</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-    
-        <section id="inspiracoes">
-          <h2>Inspira&#xe7;&#xf5;es</h2>
-          <div class="gallery-grid">
-            <!-- Existing video item -->
-            <article class="gallery-item">
-              <div class="video-container">
-                <iframe src="https://www.xvideos.com/embedframe/ultaovha37e" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
-              </div>
-              <div class="gallery-content">
-                <h3>Experi&#xea;ncias &#xda;nicas</h3>
-                <p>Uma amostra do que podemos explorar juntos em nossos encontros. Deixe sua imagina&#xe7;&#xe3;o fluir e realize seus desejos mais intensos em um ambiente discreto e seguro, sempre respeitando limites e prefer&#xea;ncias.</p>
-                <div class="tags">
-                  <span class="tag">Intenso</span>
-                  <span class="tag">Sigiloso</span>
-                  <span class="tag">Especial</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Encontros marcantes</li>
-                  <li>Sigilo absoluto</li>
-                  <li>Momentos inesquec&#xed;veis</li>
-                </ul>
-              </div>
-            </article>
-    
-            <!-- New video item -->
-            <article class="gallery-item">
-              <div class="video-container">
-                <iframe src="https://www.xvideos.com/embedframe/uubleate5ab" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
-              </div>
-              <div class="gallery-content">
-                <h3>Momentos Intensos</h3>
-                <p>Mais uma demonstra&#xe7;&#xe3;o do n&#xed;vel de prazer e satisfa&#xe7;&#xe3;o que voc&#xea; pode experimentar. Encontros memor&#xe1;veis em um ambiente seguro e discreto, onde seus desejos s&#xe3;o prioridade.</p>
-                <div class="tags">
-                  <span class="tag">Prazeroso</span>
-                  <span class="tag">Discreto</span>
-                  <span class="tag">&#xda;nico</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Total privacidade</li>
-                  <li>Experi&#xea;ncia inesquec&#xed;vel</li>
-                  <li>Satisfa&#xe7;&#xe3;o garantida</li>
-                </ul>
-              </div>
-            </article>
-            <article class="gallery-item">
-              <div class="video-container">
-                <iframe src="https://www.xvideos.com/embedframe/utmchkof64c" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
-              </div>
-              <div class="gallery-content">
-                <h3>Momentos Intensos</h3>
-                <p>Mais uma demonstra&#xe7;&#xe3;o do n&#xed;vel de prazer e satisfa&#xe7;&#xe3;o que voc&#xea; pode experimentar. Encontros memor&#xe1;veis em um ambiente seguro e discreto, onde seus desejos s&#xe3;o prioridade.</p>
-                <div class="tags">
-                  <span class="tag">Prazeroso</span>
-                  <span class="tag">Discreto</span>
-                  <span class="tag">&#xda;nico</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Total privacidade</li>
-                  <li>Experi&#xea;ncia inesquec&#xed;vel</li>
-                  <li>Satisfa&#xe7;&#xe3;o garantida</li>
-                </ul>
-              </div>
-            </article>
-            <article class="gallery-item">
-              <div class="video-container">
-                <iframe src="https://www.xvideos.com/embedframe/uteeftm8d90" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
-              </div>
-              <div class="gallery-content">
-                <h3>Momentos Intensos</h3>
-                <p>Mais uma demonstra&#xe7;&#xe3;o do n&#xed;vel de prazer e satisfa&#xe7;&#xe3;o que voc&#xea; pode experimentar. Encontros memor&#xe1;veis em um ambiente seguro e discreto, onde seus desejos s&#xe3;o prioridade.</p>
-                <div class="tags">
-                  <span class="tag">Prazeroso</span>
-                  <span class="tag">Discreto</span>
-                  <span class="tag">&#xda;nico</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>Total privacidade</li>
-                  <li>Experi&#xea;ncia inesquec&#xed;vel</li>
-                  <li>Satisfa&#xe7;&#xe3;o garantida</li>
-                </ul>
-              </div>
-            </article>
-    
-            <!-- New video item added as per the plan -->
-            <article class="gallery-item">
-              <div class="video-container">
-                <iframe src="https://www.xvideos.com/embedframe/ihfofbme6c0" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
-              </div>
-              <div class="gallery-content">
-                <h3>Momentos Especiais</h3>
-                <p>Mais uma demonstra&#xe7;&#xe3;o do tipo de experi&#xea;ncia que voc&#xea; pode desfrutar. Encontros &#xfa;nicos em ambiente discreto e acolhedor, sempre priorizando seu prazer e privacidade.</p>
-                <div class="tags">
-                  <span class="tag">Exclusivo</span>
-                  <span class="tag">Sigiloso</span>
-                  <span class="tag">Intenso</span>
-                </div>
-                <ul class="sentiment-list">
-                  <li>M&#xe1;xima discri&#xe7;&#xe3;o</li>
-                  <li>Momentos &#xfa;nicos</li>
-                  <li>Prazer garantido</li>
-                </ul>
-              </div>
-            </article>
+
+        /* Add metallic text effects */
+        .section-title, .gallery-title {
+            background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Enhanced animations */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Enhanced typography */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: var(--base-font);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent 0,
+                    transparent calc(var(--paw-size) * 2),
+                    var(--paw-color) calc(var(--paw-size) * 2),
+                    var(--paw-color) calc(var(--paw-size) * 4)
+                );
+            animation: pawScroll 60s linear infinite;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: var(--paw-pattern);
+            position: fixed;
+            font-size: var(--paw-size);
+            opacity: 0.1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, var(--paw-size));
+            grid-template-rows: repeat(auto-fill, var(--paw-size));
+            animation: pawFade 10s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Logo styles */
+        .logo {
+            color: var(--text);
+            font-size: var(--h2-size);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: clamp(0.3rem, 1vw, 1rem);
+        }
+
+        .logo:hover {
+            color: var(--accent);
+        }
+
+        /* Menu toggle styles */
+        .menu-toggle {
+            display: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: clamp(1rem, 2vw, 2rem);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--text);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            text-decoration: none;
+            transition: 0.3s;
+            padding: clamp(0.3rem, 1vw, 0.8rem);
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Enhanced section styles */
+        .section-content p,
+        .section-list li,
+        .gallery-description,
+        .sentiment-item {
+          color: var(--text);
+          text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .section-content p:hover {
+            color: var(--accent);
+        }
+
+        .section-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .section-list li:before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Enhanced gallery grid */
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+          gap: var(--spacing-md);
+          padding: var(--spacing-sm);
+        }
+
+        /* Responsive breakpoints */
+        @media (max-width: 1200px) {
+          .main-content {
+            padding: var(--spacing-md) var(--container-padding);
+          }
+          
+          .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .header {
+            padding: var(--spacing-sm);
+          }
+          
+          .section {
+            margin: 0 calc(-1 * var(--spacing-sm));
+            border-radius: 0;
+          }
+          
+          .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+          }
+          
+          .gallery-item {
+            margin: 0 calc(-1 * var(--spacing-sm));
+            border-radius: 0;
+          }
+        }
+
+        @media (max-width: 480px) {
+          :root {
+            --base-font: 14px;
+          }
+          
+          .section {
+            padding: var(--spacing-sm);
+          }
+        }
+
+        /* Print styles */
+        @media print {
+          :root {
+            --base-font: 12pt;
+          }
+          
+          .main-content {
+            margin: 0;
+            padding: 2cm;
+          }
+          
+          .section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+        }
+        
+        /* Refined media container */
+        .media-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            background: rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .media-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .media-container:not(.loaded) {
+            background: linear-gradient(135deg, rgba(28,28,28,0.95) 0%, rgba(44,44,44,0.95) 100%);
+        }
+
+        /* Enhanced content styling */
+        .gallery-content {
+            padding: var(--spacing-md);
+            color: var(--text);
+        }
+
+        .gallery-description {
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Tag styling */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Sentiment list styling */
+        .sentiment-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sentiment-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(139,0,0,0.2);
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
             
-            <article class="gallery-item">
-              <div class="video-container">
-                <iframe src="https://www.xvideos.com/embedframe/hvkkccde2df" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
-              </div>
-              <div class="gallery-content">
-                <h3>Momentos &#xcd;ntimos</h3>
-                <p>Mais uma demonstra&#xe7;&#xe3;o de prazer e intimidade que voc&#xea; pode experimentar. Encontros especiais em ambiente seguro e acolhedor, proporcionando momentos inesquec&#xed;veis com total discri&#xe7;&#xe3;o.</p>
-                <div class="tags">
-                  <span class="tag">Especial</span>
-                  <span class="tag">&#xcd;ntimo</span>
-                  <span class="tag">Discreto</span>
+            .gallery-item {
+                margin: 0 calc(-1 * var(--spacing-sm));
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-content {
+                padding: var(--spacing-sm);
+            }
+            
+            .gallery-title {
+                font-size: 1.2rem;
+            }
+            
+            .gallery-description {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Enhanced animations */
+        @keyframes fadeScale {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes highlight {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* New keyframes for paw animations */
+        @keyframes pawScroll {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: calc(var(--paw-size) * 4) calc(var(--paw-size) * 4);
+            }
+        }
+
+        @keyframes pawFade {
+            0% {
+                opacity: 0.05;
+            }
+            100% {
+                opacity: 0.15;
+            }
+        }
+        
+        /* Gallery title styling */
+        .gallery-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="logo">L&#xed;via</a>
+        <button class="menu-toggle" aria-label="Toggle menu" onclick="handleMenuToggle()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul id="menu">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#busco">O que busco</a></li>
+                <li><a href="#nao-curto">O que n&#xe3;o curto</a></li>
+                <li><a href="#periodo">Per&#xed;odo</a></li>
+                <li><a href="#local">Local</a></li>
+                <li><a href="#galerias">Galerias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div id="sobre" class="section">
+            <h2 class="section-title">Sobre</h2>
+            <div class="section-content">
+                <p>EU SOU APENAS PASSIVA<br>
+                Prefiro chupar e deixar meter.</p>
+                <p>HOMENS ATIVOS DECIDIDOS<br>
+                Idade superior a 35 anos</p>
+                <p>N&#xc3;O CURTO BEIJOS NA BOCA<br>
+                Sigilo absoluto sempre</p>
+                <p>FA&#xc7;O SEM CAPA</p>
+                <div class="warning">
+                    SEJA ESPEC&#xcd;FICO, DIRETO E OBJETIVO
                 </div>
-                <ul class="sentiment-list">
-                  <li>Total privacidade</li>
-                  <li>Experi&#xea;ncia &#xfa;nica</li>
-                  <li>Prazer garantido</li>
+            </div>
+        </div>
+        
+        <div id="busco" class="section">
+            <h2 class="section-title">O que busco</h2>
+            <div class="section-content">
+                <ul class="section-list">
+                    <li>Homens ativos e decididos</li>
+                    <li>Encontros discretos</li>
+                    <li>Pessoas diretas e objetivas</li>
+                    <li>Respeito m&#xfa;tuo</li>
+                    <li>Sigilo absoluto</li>
                 </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-      </main>
-    
-      <script>document.addEventListener('DOMContentLoaded', () => {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      let isMenuOpen = false;
-      menuToggle.addEventListener('click', () => {
-        isMenuOpen = !isMenuOpen;
-        nav.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', isMenuOpen);
-        menuToggle.innerHTML = isMenuOpen ? '×' : '☰';
-      });
-      document.addEventListener('click', e => {
-        if (!nav.contains(e.target) && !menuToggle.contains(e.target) && isMenuOpen) {
-          isMenuOpen = false;
-          nav.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          menuToggle.innerHTML = '☰';
+            </div>
+        </div>
+
+        <div id="nao-curto" class="section">
+            <h2 class="section-title">O que n&#xe3;o curto</h2>
+            <div class="section-content">
+                <div class="warning">TOLER&#xc2;NCIA ZERO</div>
+                <ul class="section-list">
+                    <li>Mentirosos</li>
+                    <li>Indecisos</li>
+                    <li>Narcisistas</li>
+                    <li>Rom&#xe2;nticos</li>
+                    <li>Passivos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="periodo" class="section">
+            <h2 class="section-title">Per&#xed;odo</h2>
+            <div class="section-content">
+                <p> Noite/Madrugada</p>
+                <p>LOCAL APENAS PARA PROGRAMA</p>
+            </div>
+        </div>
+
+        <div id="local" class="section">
+            <h2 class="section-title">Localiza&#xe7;&#xe3;o</h2>
+            <div class="section-content">
+                <p>Em S&#xe3;o Jos&#xe9; dos Campos SP, meu local fica em frente a Dutra Km 146 sentido RJ.</p>
+                <div class="location-details">
+                    <h3>FAST-FODA | LOCAIS E FACILIDADES</h3>
+                    <ul class="location-list">
+                        <li class="location-item">Na pra&#xe7;a perto de casa</li>
+                        <li class="location-item">Em baixo do viaduto perto de casa</li>
+                        <li class="location-item">NO SEU CARRO</li>
+                        <li class="location-item">Em frente de casa</li>
+                        <li class="location-item">Atr&#xe1;s da rodovi&#xe1;ria nova</li>
+                        <li class="location-item">Atr&#xe1;s do est&#xe1;dio Martins Pereira</li>
+                        <li class="location-item">Via Norte, na estrada ao lado do trilho de trem</li>
+                        <li class="location-item">Parque da cidade</li>
+                        <li class="location-item">Terrenos da Urbanova</li>
+                        <li class="location-item">Terrenos do putim</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="galerias" class="section">
+            <h2 class="section-title">Galerias</h2>
+            <h3>Fotos</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="imagem-1.jpg" alt="Encontros Discretos" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Encontros Discretos</h3>
+                        <p class="gallery-description">Momentos &#xfa;nicos garantidos em ambiente discreto e seguro. Para homens decididos que buscam experi&#xea;ncias sem compromisso e com sigilo total. Local pr&#xf3;prio ou seu carro, sempre priorizando sua privacidade e satisfa&#xe7;&#xe3;o.</p>
+                        <div class="tags">
+                            <span class="tag">Discreto</span>
+                            <span class="tag">R&#xe1;pido</span>
+                            <span class="tag">Sigiloso</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Prazer intenso</li>
+                            <li class="sentiment-item">Discri&#xe7;&#xe3;o total</li>
+                            <li class="sentiment-item">Sem compromisso</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="imagem-2.jpg" alt="Encontros Discretos" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Encontros Discretos</h3>
+                        <p class="gallery-description">Momentos &#xfa;nicos garantidos em ambiente discreto e seguro. Para homens decididos que buscam experi&#xea;ncias sem compromisso e com sigilo total. Local pr&#xf3;prio ou seu carro, sempre priorizando sua privacidade e satisfa&#xe7;&#xe3;o.</p>
+                        <div class="tags">
+                            <span class="tag">Discreto</span>
+                            <span class="tag">R&#xe1;pido</span>
+                            <span class="tag">Sigiloso</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Prazer intenso</li>
+                            <li class="sentiment-item">Discri&#xe7;&#xe3;o total</li>
+                            <li class="sentiment-item">Sem compromisso</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="imagem-3.jpg" alt="Encontros Discretos" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Encontros Discretos</h3>
+                        <p class="gallery-description">Momentos &#xfa;nicos garantidos em ambiente discreto e seguro. Para homens decididos que buscam experi&#xea;ncias sem compromisso e com sigilo total. Local pr&#xf3;prio ou seu carro, sempre priorizando sua privacidade e satisfa&#xe7;&#xe3;o.</p>
+                        <div class="tags">
+                            <span class="tag">Discreto</span>
+                            <span class="tag">R&#xe1;pido</span>
+                            <span class="tag">Sigiloso</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Prazer intenso</li>
+                            <li class="sentiment-item">Discri&#xe7;&#xe3;o total</li>
+                            <li class="sentiment-item">Sem compromisso</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>GIFs</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="gif-1.gif" alt="Momentos Quentes" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Momentos Quentes</h3>
+                        <p class="gallery-description">Preview dos melhores momentos e posi&#xe7;&#xf5;es preferidas. Demonstra&#xe7;&#xf5;es do que voc&#xea; pode esperar em nossos encontros discretos. Conte&#xfa;do exclusivo para maiores de 18 anos.</p>
+                        <div class="tags">
+                            <span class="tag">Hot</span>
+                            <span class="tag">Preview</span>
+                            <span class="tag">18+</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Intensidade</li>
+                            <li class="sentiment-item">Satisfa&#xe7;&#xe3;o</li>
+                            <li class="sentiment-item">Exposi&#xe7;&#xe3;o</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="gif-2.gif" alt="Momentos Quentes" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Momentos Quentes</h3>
+                        <p class="gallery-description">Preview dos melhores momentos e posi&#xe7;&#xf5;es preferidas. Demonstra&#xe7;&#xf5;es do que voc&#xea; pode esperar em nossos encontros discretos. Conte&#xfa;do exclusivo para maiores de 18 anos.</p>
+                        <div class="tags">
+                            <span class="tag">Hot</span>
+                            <span class="tag">Preview</span>
+                            <span class="tag">18+</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Intensidade</li>
+                            <li class="sentiment-item">Satisfa&#xe7;&#xe3;o</li>
+                            <li class="sentiment-item">Exposi&#xe7;&#xe3;o</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <img src="gif-3.gif" alt="Momentos Quentes" onload="handleMediaLoad(this)" onerror="handleMediaError(this)">
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Momentos Quentes</h3>
+                        <p class="gallery-description">Preview dos melhores momentos e posi&#xe7;&#xf5;es preferidas. Demonstra&#xe7;&#xf5;es do que voc&#xea; pode esperar em nossos encontros discretos. Conte&#xfa;do exclusivo para maiores de 18 anos.</p>
+                        <div class="tags">
+                            <span class="tag">Hot</span>
+                            <span class="tag">Preview</span>
+                            <span class="tag">18+</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Intensidade</li>
+                            <li class="sentiment-item">Satisfa&#xe7;&#xe3;o</li>
+                            <li class="sentiment-item">Exposi&#xe7;&#xe3;o</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Inspira&#xe7;&#xf5;es</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <iframe src="https://www.xvideos.com/embedframe/kkleepobe4d" frameborder="0" width="100%" height="100%" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay" loading="lazy"></iframe>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspira&#xe7;&#xe3;o #1</h3>
+                        <p class="gallery-description">Um jovem casal apaixonado se entrega ao prazer ao ar livre, sem perceber que s&#xe3;o observados. O voyeur silencioso se aproxima e, para surpresa do casal, &#xe9; convidado a participar do momento &#xed;ntimo. O que era uma simples espiada se transforma em uma experi&#xea;ncia inesquec&#xed;vel de prazer compartilhado, onde o perigo da exposi&#xe7;&#xe3;o apenas intensifica o desejo. Uma fantasia que combina adrenalina e &#xea;xtase.</p>
+                        <div class="tags">
+                            <span class="tag">Voyeur</span>
+                            <span class="tag">Ao ar livre</span>
+                            <span class="tag">Surpresa</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Espontaneidade</li>
+                            <li class="sentiment-item">Adrenalina</li>
+                            <li class="sentiment-item">Participa&#xe7;&#xe3;o</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <iframe src="https://www.xvideos.com/embedframe/uubleate5ab" frameborder="0" width="100%" height="100%" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay" loading="lazy"></iframe>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspira&#xe7;&#xe3;o #2</h3>
+                        <p class="gallery-description">Uma noite &#xe9;pica no cinema adulto transformou-se em uma maratona de prazer oral intenso. Com habilidade e dedica&#xe7;&#xe3;o excepcional, proporcionei momentos &#xfa;nicos para mais de 20 homens diferentes, demonstrando minha experi&#xea;ncia em receber e dar prazer. Cada encontro foi &#xfa;nico e especial, marcado pela discri&#xe7;&#xe3;o do ambiente e pela intensidade das sensa&#xe7;&#xf5;es compartilhadas. Uma demonstra&#xe7;&#xe3;o de resist&#xea;ncia e satisfa&#xe7;&#xe3;o m&#xfa;tua.</p>
+                        <div class="tags">
+                            <span class="tag">Grupal</span>
+                            <span class="tag">Cinema</span>
+                            <span class="tag">Oral</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Intensidade</li>
+                            <li class="sentiment-item">Experi&#xea;ncia</li>
+                            <li class="sentiment-item">Resist&#xea;ncia</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <iframe src="https://www.xvideos.com/embedframe/ihfofbme6c0" frameborder="0" width="100%" height="100%" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay" loading="lazy"></iframe>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspira&#xe7;&#xe3;o #3</h3>
+                        <p class="gallery-description">Em uma noite selvagem, uma esposa safada transforma-se em uma receptora insaci&#xe1;vel de prazer, ansiosa para satisfazer todos os presentes. Com uma determina&#xe7;&#xe3;o impressionante, ela aceita cada homem que se apresenta, demonstrando seu talento &#xfa;nico em proporcionar prazer m&#xe1;ximo. Uma noite memor&#xe1;vel onde limites s&#xe3;o testados e desejos s&#xe3;o realizados sem restri&#xe7;&#xf5;es.</p>
+                        <div class="tags">
+                            <span class="tag">Inspira&#xe7;&#xe3;o</span>
+                            <span class="tag">Estilo</span>
+                            <span class="tag">Refer&#xea;ncia</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Criatividade</li>
+                            <li class="sentiment-item">Variedade</li>
+                            <li class="sentiment-item">Limita&#xe7;&#xf5;es</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <iframe src="https://www.xvideos.com/embedframe/hvkkccde2df" frameborder="0" width="100%" height="100%" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay" loading="lazy"></iframe>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspira&#xe7;&#xe3;o #4</h3>
+                        <p class="gallery-description">Em uma noite selvagem, uma esposa safada transforma-se em uma receptora insaci&#xe1;vel de prazer, ansiosa para satisfazer todos os presentes. Com uma determina&#xe7;&#xe3;o impressionante, ela aceita cada homem que se apresenta, demonstrando seu talento &#xfa;nico em proporcionar prazer m&#xe1;ximo. Uma noite memor&#xe1;vel onde limites s&#xe3;o testados e desejos s&#xe3;o realizados sem restri&#xe7;&#xf5;es.</p>
+                        <div class="tags">
+                            <span class="tag">Inspira&#xe7;&#xe3;o</span>
+                            <span class="tag">Estilo</span>
+                            <span class="tag">Refer&#xea;ncia</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Criatividade</li>
+                            <li class="sentiment-item">Variedade</li>
+                            <li class="sentiment-item">Limita&#xe7;&#xf5;es</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <iframe src="https://www.xvideos.com/embedframe/utmchkof64c" frameborder="0" width="100%" height="100%" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay" loading="lazy"></iframe>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspira&#xe7;&#xe3;o #5</h3>
+                        <p class="gallery-description">Uma explora&#xe7;&#xe3;o dos limites do prazer, onde uma participante dedicada se entrega completamente em uma demonstra&#xe7;&#xe3;o impressionante de submiss&#xe3;o e habilidade oral. Enquanto satisfaz seus parceiros em m&#xfa;ltiplas posi&#xe7;&#xf5;es, ela demonstra sua capacidade &#xfa;nica de proporcionar prazer m&#xe1;ximo, culminando em um final inesquec&#xed;vel onde nada &#xe9; desperdi&#xe7;ado. Uma exibi&#xe7;&#xe3;o memor&#xe1;vel de dedica&#xe7;&#xe3;o total ao prazer.</p>
+                        <div class="tags">
+                            <span class="tag">Inspira&#xe7;&#xe3;o</span>
+                            <span class="tag">Estilo</span>
+                            <span class="tag">Refer&#xea;ncia</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Criatividade</li>
+                            <li class="sentiment-item">Variedade</li>
+                            <li class="sentiment-item">Limita&#xe7;&#xf5;es</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="media-container">
+                        <iframe src="https://www.xvideos.com/embedframe/uteeftm8d90" frameborder="0" width="100%" height="100%" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay" loading="lazy"></iframe>
+                    </div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Inspira&#xe7;&#xe3;o #6</h3>
+                        <p class="gallery-description">Uma demonstra&#xe7;&#xe3;o intensa de domina&#xe7;&#xe3;o e prazer anal sem limites. Com for&#xe7;a e determina&#xe7;&#xe3;o, o parceiro dominante satisfaz seus desejos mais profundos, preenchendo completamente sua submissa parceira at&#xe9; o cl&#xed;max explosivo. Um encontro memor&#xe1;vel que representa a entrega total ao prazer carnal em sua forma mais crua e intensa.</p>
+                        <div class="tags">
+                            <span class="tag">Inspira&#xe7;&#xe3;o</span>
+                            <span class="tag">Estilo</span>
+                            <span class="tag">Refer&#xea;ncia</span>
+                        </div>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">Criatividade</li>
+                            <li class="sentiment-item">Variedade</li>
+                            <li class="sentiment-item">Limita&#xe7;&#xf5;es</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>function observeResize() {
+  const root = document.documentElement;
+  const width = window.innerWidth;
+  const size = Math.min(Math.max(width * 0.03, 20), 40);
+  root.style.setProperty('--paw-size', `${size}px`);
+  window.addEventListener('resize', observeResize);
+}
+function handleMenuToggle() {
+  const menu = document.getElementById('menu');
+  const header = document.querySelector('.header');
+  if (window.innerWidth <= 768) {
+    menu.classList.toggle('show');
+    header.classList.toggle('menu-open');
+    if (menu.classList.contains('show')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+}
+function handleMediaLoad(mediaElement) {
+  mediaElement.closest('.media-container').classList.add('loaded');
+}
+function handleMediaError(mediaElement) {
+  const container = mediaElement.closest('.media-container');
+  if (container) {
+    container.innerHTML = `
+                    <div class="media-error">
+                        <i class="fas fa-exclamation-circle" style="color: #FFD700;"></i>
+                        <p style="color: #FFD700; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Mídia indisponível</p>
+                    </div>
+                `;
+  }
+}
+function numberInspirationItems() {
+  const h3Elements = document.querySelectorAll('#galerias h3');
+  let inspirationHeading = null;
+  h3Elements.forEach(h3 => {
+    if (h3.textContent.includes('Inspirações')) {
+      inspirationHeading = h3;
+    }
+  });
+  if (inspirationHeading) {
+    const galleryGrid = inspirationHeading.nextElementSibling;
+    if (galleryGrid && galleryGrid.classList.contains('gallery-grid')) {
+      const items = galleryGrid.querySelectorAll('.gallery-item');
+      items.forEach((item, index) => {
+        const title = item.querySelector('.gallery-title');
+        if (title) {
+          title.textContent = `Inspiração #${index + 1}`;
         }
       });
-      function createFloatingEmoji() {
-        const emojis = ['🐾', '⚡', '💦', '🫦', '👅', '👃🏻'];
-        const emoji = document.createElement('div');
-        emoji.className = 'floating-emoji';
-        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.top = Math.random() * 100 + 'vh';
-        emoji.style.animationDuration = Math.random() * 8 + 4 + 's';
-        emoji.style.animationDelay = Math.random() * 2 + 's';
-        document.querySelector('.emoji-background').appendChild(emoji);
-        setTimeout(() => {
-          emoji.remove();
-        }, 10000);
-      }
-      setInterval(createFloatingEmoji, 1000);
-      for (let i = 0; i < 10; i++) {
-        createFloatingEmoji();
-      }
-    });</script>
-    </body>
-    </html>
+    }
+  }
+}
+function initializeVideoContainers() {
+  const videoContainers = document.querySelectorAll('.media-container iframe');
+  videoContainers.forEach(container => {
+    container.closest('.media-container').classList.add('loading');
+    container.addEventListener('load', () => {
+      container.closest('.media-container').classList.remove('loading');
+      container.closest('.media-container').classList.add('loaded');
+    });
+    container.addEventListener('error', () => {
+      const mediaContainer = container.closest('.media-container');
+      mediaContainer.innerHTML = `
+                        <div class="media-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Video não disponível</p>
+                        </div>
+                    `;
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  numberInspirationItems();
+  initializeVideoContainers();
+});</script>
+</body>
+</html>
