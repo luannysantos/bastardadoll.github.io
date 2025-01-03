@@ -543,6 +543,7 @@ function submitContract() {
   const requiredFields = {
     'userName': 'Nome',
     'userAge': 'Idade',
+    'location': 'Local',
     'meetTime': 'Horário'
   };
   for (const [id, label] of Object.entries(requiredFields)) {
@@ -562,6 +563,7 @@ function submitContract() {
     name: document.getElementById('userName').value.trim(),
     age: age,
     time: document.getElementById('meetTime').value,
+    location: document.getElementById('location').value,
     instructions: document.getElementById('specialInstructions').value.trim(),
     services: [...document.querySelectorAll('input[name="services"]:checked')].map(cb => cb.value),
     positions: [...document.querySelectorAll('input[name="positions"]:checked')].map(cb => cb.value),
@@ -576,26 +578,28 @@ function submitContract() {
     alert('Por favor selecione pelo menos uma posição');
     return;
   }
-  const message = `*CONTRATO DE ENCONTRO SSC*
---------------------------
-*DADOS BÁSICOS*
-👤 Nome: ${formData.name}
-📅 Idade: ${formData.age}
-⏰ Horário: ${formData.time}
+  const message = `🔒 *CONTRATO SIGILOSO DE SERVIÇO*
+━━━━━━━━━━━━━━━━━━━━
+👤 *DADOS PESSOAIS*
+Nome: ${formData.name}
+Idade: ${formData.age} anos
+Horário: ${formData.time}
+Local: ${formData.location}
 
-*SERVIÇOS SELECIONADOS*
+🔥 *SERVIÇOS ESCOLHIDOS*
 ${formData.services.map(s => `• ${s}`).join('\n')}
 
-*POSIÇÕES DESEJADAS*
+💫 *POSIÇÕES DESEJADAS* 
 ${formData.positions.map(p => `• ${p}`).join('\n')}
 
-*ROLEPLAY*
+🎭 *ROLEPLAY SOLICITADO*
 ${formData.roleplay.map(r => `• ${r}`).join('\n')}
 
-${formData.fetishes.length ? `*FETICHES*\n${formData.fetishes.map(f => `• ${f}`).join('\n')}\n` : ''}
+${formData.fetishes.length ? `⚡ *FETICHES ADICIONAIS*\n${formData.fetishes.map(f => `• ${f}`).join('\n')}\n` : ''}
 
-${formData.instructions ? `*INSTRUÇÕES ESPECIAIS*\n${formData.instructions}` : ''}
---------------------------`;
+${formData.instructions ? `📝 *INSTRUÇÕES ESPECIAIS*\n${formData.instructions}\n` : ''}
+━━━━━━━━━━━━━━━━━━━━
+💋 _Lívia Saco's_`;
   const encodedMessage = encodeURIComponent(message);
   window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
 }
