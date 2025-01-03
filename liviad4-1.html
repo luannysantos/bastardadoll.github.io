@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <base href=".">
@@ -193,7 +194,6 @@
     .submit-contract:hover {
         background: #ff69b4;
     }
-    
     .option-group {
         margin: 1rem 0;
         padding: 1rem;
@@ -257,12 +257,15 @@
         padding: 8px;
         border-radius: 4px;
         font-size: 12px;
-        width: auto;
-        white-space: nowrap;
+        width: 200px;
+        text-align: justify;
+        word-wrap: break-word;
         z-index: 100;
-        left: 24px;
-        top: -5px;
-        margin-left: 0;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 8px;
+        box-sizing: border-box;
     }
     
     .info-icon:hover .info-tooltip {
@@ -286,12 +289,101 @@
     
     @media (max-width: 768px) {
         .profile-container {
-            margin: 1rem;
-            padding: 1rem;
+            margin: 0.5rem;
+            padding: 0.5rem;
+            width: 95%;
         }
-    
+
         .profile-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
+        }
+        
+        .profile-subtitle {
+            font-size: 1rem;
+        }
+        
+        .emoji-title {
+            font-size: 1.4rem;
+        }
+        
+        .section-content {
+            font-size: 0.9rem;
+        }
+        
+        .rule-item {
+            font-size: 0.9rem;
+            padding-right: 25px;
+        }
+        
+        .sub-rule {
+            font-size: 0.85rem;
+            margin-left: 1rem;
+        }
+        
+        .info-tooltip {
+            width: 160px;
+            font-size: 11px;
+            padding: 6px;
+            text-align: justify;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+        }
+        
+        .form-control {
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .submit-contract, 
+        .toggle-contract,
+        .programa {
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        .option-subgroup {
+            margin: 0.8rem 0 0.8rem 1rem;
+            padding: 0.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .profile-container {
+            margin: 0.3rem;
+            padding: 0.3rem;
+            width: 98%;
+        }
+        
+        .profile-title {
+            font-size: 1.5rem;
+        }
+        
+        .profile-subtitle {
+            font-size: 0.9rem;
+        }
+        
+        .emoji-title {
+            font-size: 1.2rem;
+        }
+        
+        .info-tooltip {
+            width: 140px;
+            font-size: 10px;
+            padding: 4px;
+            text-align: justify;
+        }
+        
+        .form-control {
+            font-size: 0.8rem;
+        }
+        
+        .submit-contract, 
+        .toggle-contract,
+        .programa {
+            font-size: 0.9rem;
         }
     }
     </style>
@@ -330,7 +422,7 @@
 
         <div class="profile-section">
             <div class="emoji-title">&#x1f319; Fast-Foda de Madrugada</div>
-            <div class="rule-item">N&#xe3;o me desloco at&#xe9; voc&#xea;<span class="info-icon">i<span class="info-tooltip">Voc&#xea; providencia o transporte</span></span></div>
+            <div class="rule-item">N&#xe3;o me desloco at&#xe9; voc&#xea;<span class="info-icon">i<span class="info-tooltip">Voc&#xea;s providencia o transporte</span></span></div>
             <div class="rule-item">Me pega em casa e me deixa em casa<span class="info-icon">i<span class="info-tooltip">Busca e leva de volta</span></span></div>
             <div class="rule-item">T&#xe1; de carro?<span class="info-icon">i<span class="info-tooltip">Locais para carro</span></span></div>
             <div class="sub-rule">Em frente de casa<span class="info-icon">i<span class="info-tooltip">Local seguro e discreto</span></span></div>
@@ -422,7 +514,7 @@
                             </div>
                             <div>
                                 <input type="checkbox" id="facefuck" name="services" value="Facefuck">
-                                <label for="facefuck">Facefuck<span class="info-icon">i<span class="info-tooltip">Voc&#xea; controla o ritmo</span></span></label>
+                                <label for="facefuck">Facefuck<span class="info-icon">i<span class="info-tooltip">Voc&#xea;s controla o ritmo</span></span></label>
                             </div>
                             <div>
                                 <input type="checkbox" id="oral_balls" name="services" value="Oral nas Bolas">
