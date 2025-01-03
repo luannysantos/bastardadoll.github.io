@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <base href=".">
@@ -113,7 +112,22 @@
     .toggle-contract:hover {
         background: #ff1493;
     }
+    .programa {
+        width: 100%;
+        padding: 1rem;
+        background: #ff69b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
     
+    .programa:hover {
+        background: #ff1493;
+    }
     .contract-form {
         display: none;
         padding: 1rem;
@@ -125,22 +139,21 @@
     }
     
     .form-group {
-        margin-bottom: 1rem;
-    }
-    
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #ff69b4;
+        margin-bottom: 1.5rem;
+        padding: 0.8rem;
+        border: 1px solid rgba(255,20,147,0.2);
+        border-radius: 8px;
+        background: rgba(255,20,147,0.03);
     }
     
     .form-control {
         width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ff69b4;
-        border-radius: 5px;
-        background: rgba(255,20,147,0.05);
+        padding: 0.8rem;
+        border: 2px solid rgba(255,20,147,0.4);
+        border-radius: 8px;
+        background: rgba(45,0,24,0.8);
         color: #ffd1ea;
+        font-size: 1rem;
     }
     
     .form-control:focus {
@@ -152,6 +165,17 @@
     .form-control option {
         background: #2d0018;
         color: #ffd1ea;
+    }
+    
+    select.form-control {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FF69B4%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.7rem top 50%;
+        background-size: 0.65rem auto;
+        padding-right: 2rem;
     }
     
     .submit-contract {
@@ -210,6 +234,41 @@
         border-bottom: 1px solid rgba(255,20,147,0.3);
     }
     
+    .info-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #ff69b4;
+        color: white;
+        font-size: 12px;
+        margin-left: 5px;
+        cursor: help;
+        position: relative;
+    }
+    
+    .info-tooltip {
+        display: none;
+        position: absolute;
+        background: rgba(255,20,147,0.9);
+        color: white;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        width: auto;
+        white-space: nowrap;
+        z-index: 100;
+        left: 24px;
+        top: -5px;
+        margin-left: 0;
+    }
+    
+    .info-icon:hover .info-tooltip {
+        display: block;
+    }
+    
     @keyframes slideDown {
         from { opacity: 0; transform: translateY(-20px); }
         to { opacity: 1; transform: translateY(0); }
@@ -245,178 +304,209 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f43e; Postura Passiva</div>
-                <div class="rule-item">Chupo</div>
-                <div class="rule-item">Deixo meter</div>
+                <div class="emoji-title"> Postura Passiva</div>
+                <div class="rule-item">Na minha Boca<span class="info-icon">i<span class="info-tooltip">Boca para seu prazer total</span></span></div>
+                <div class="sub-rule">Chupo com ou sem camisinha<span class="info-icon">i<span class="info-tooltip">Sem restri&#xe7;&#xf5;es de prote&#xe7;&#xe3;o</span></span></div>
+                <div class="sub-rule">Pode foder minha garganta<span class="info-icon">i<span class="info-tooltip">Garganta profunda &#xe0; vontade</span></span></div>
+                <div class="sub-rule">Pode gozar na minha boca<span class="info-icon">i<span class="info-tooltip">Todo seu gozo na minha boca</span></span></div>
+                <div class="sub-rule">Pode gozar na minha garganta<span class="info-icon">i<span class="info-tooltip">Engole direto na garganta</span></span></div>
+                <div class="sub-rule">Engulo porra<span class="info-icon">i<span class="info-tooltip">Sempre engulo tudo sem desperd&#xed;cio</span></span></div>
+                <div class="rule-item">Na minha raba<span class="info-icon">i<span class="info-tooltip">Raba para seu prazer total</span></span></div>
+                <div class="sub-rule">Pode mete com ou sem camisinha<span class="info-icon">i<span class="info-tooltip">Sua escolha usar ou n&#xe3;o camisinha</span></span></div>
+                <div class="sub-rule">Pode gozar dentro<span class="info-icon">i<span class="info-tooltip">Aceito toda sua porra dentro</span></span></div>
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f454; Perfil Aceito</div>
-                <div class="rule-item">Homens Ativos Decididos</div>
-                <div class="rule-item">Idade superior a 35 anos</div>
-                <div class="rule-item">N&#xe3;o me importo com:</div>
-                <div class="sub-rule">Tamanho do pau</div>
-                <div class="sub-rule">Depilado/Pentelhos</div>
-                <div class="sub-rule">Porte f&#xed;sico</div>
-                <div class="sub-rule">Cor da pele</div>
+                <div class="emoji-title"> Perfil Aceito</div>
+                <div class="rule-item">Homens Ativos Decididos<span class="info-icon">i<span class="info-tooltip">Machos decididos e dominantes</span></span></div>
+                <div class="rule-item">Idade superior a 35 anos<span class="info-icon">i<span class="info-tooltip">Idade m&#xed;nima 35 anos</span></span></div>
+                <div class="rule-item">N&#xe3;o me importo com:<span class="info-icon">i<span class="info-tooltip">Caracter&#xed;sticas f&#xed;sicas irrelevantes</span></span></div>
+                <div class="sub-rule">Tamanho do pau<span class="info-icon">i<span class="info-tooltip">Tamanho n&#xe3;o importa</span></span></div>
+                <div class="sub-rule">Depilado/Pentelhos<span class="info-icon">i<span class="info-tooltip">Com ou sem pelos &#xe9; indiferente</span></span></div>
+                <div class="sub-rule">Porte f&#xed;sico<span class="info-icon">i<span class="info-tooltip">Qualquer tipo f&#xed;sico aceito</span></span></div>
+                <div class="sub-rule">Cor da pele<span class="info-icon">i<span class="info-tooltip">Todas etnias bem-vindas</span></span></div>
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f30c; Fast-Foda de Madrugada</div>
-                <div class="rule-item">Fa&#xe7;o no seu carro</div>
-                <div class="sub-rule">N&#xe3;o me desloco at&#xe9; voc&#xea;</div>
-                <div class="sub-rule">Me pega em casa e me deixa em casa</div>
-                <div class="rule-item">Na pra&#xe7;a perto de casa</div>
-                <div class="rule-item">Em baixo do viaduto perto de casa</div>
+                <div class="emoji-title"> Fast-Foda de Madrugada</div>
+                <div class="rule-item">N&#xe3;o me desloco at&#xe9; voc&#xea;<span class="info-icon">i<span class="info-tooltip">Voc&#xea; providencia o transporte</span></span></div>
+                <div class="rule-item">Me pega em casa e me deixa em casa<span class="info-icon">i<span class="info-tooltip">Busca e leva de volta</span></span></div>
+                <div class="rule-item">T&#xe1; de carro?<span class="info-icon">i<span class="info-tooltip">Locais para carro</span></span></div>
+                <div class="sub-rule">Em frente de casa<span class="info-icon">i<span class="info-tooltip">Local seguro e discreto</span></span></div>
+                <div class="sub-rule">Atr&#xe1;s da rodovi&#xe1;ria nova<span class="info-icon">i<span class="info-tooltip">Local afastado e seguro</span></span></div>
+                <div class="sub-rule">Atr&#xe1;s do est&#xe1;dio Martins Pereira<span class="info-icon">i<span class="info-tooltip">Local isolado &#xe0; noite</span></span></div>
+                <div class="sub-rule">Parque da cidade<span class="info-icon">i<span class="info-tooltip">Local escuro e discreto</span></span></div>
+                <div class="sub-rule">Via Norte, na estrada ao lado do trilho de trem<span class="info-icon">i<span class="info-tooltip">Estrada isolada</span></span></div>
+                <div class="sub-rule">Mirante da Urbanova<span class="info-icon">i<span class="info-tooltip">Vista da cidade &#xe0; noite</span></span></div>
+                <div class="sub-rule">Terrenos do putim<span class="info-icon">i<span class="info-tooltip">Terrenos abandonados</span></span></div>
+                <div class="rule-item">T&#xe1; de ap&#xea; ou moto?<span class="info-icon">i<span class="info-tooltip">Op&#xe7;&#xf5;es sem carro</span></span></div>
+                <div class="sub-rule">Na pra&#xe7;a perto de casa<span class="info-icon">i<span class="info-tooltip">Pra&#xe7;a escura e vazia</span></span></div>
+                <div class="sub-rule">Em baixo do viaduto perto de casa<span class="info-icon">i<span class="info-tooltip">Local coberto e escuro</span></span></div>
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x274c; N&#xc3;O &#xc9; N&#xc3;O</div>
-                <div class="rule-item">N&#xe3;o saio com flex ou passivos</div>
-                <div class="rule-item">N&#xe3;o me beije</div>
-                <div class="rule-item">N&#xe3;o me toque</div>
-                <div class="rule-item">N&#xe3;o me chupe</div>
-                <div class="rule-item">N&#xe3;o queira me dar</div>
-                <div class="rule-item">N&#xe3;o vou em motel para sexo gr&#xe1;tis</div>
+                <div class="emoji-title"> N&#xc3;O &#xc9; N&#xc3;O</div>
+                <div class="rule-item">N&#xe3;o saio com flex ou passivos<span class="info-icon">i<span class="info-tooltip">Apenas machos ativos</span></span></div>
+                <div class="rule-item">N&#xe3;o me beije<span class="info-icon">i<span class="info-tooltip">N&#xe3;o beijo na boca</span></span></div>
+                <div class="rule-item">N&#xe3;o me toque<span class="info-icon">i<span class="info-tooltip">Sem toques ou car&#xed;cias</span></span></div>
+                <div class="rule-item">N&#xe3;o me chupe<span class="info-icon">i<span class="info-tooltip">N&#xe3;o fa&#xe7;o oral em voc&#xea;</span></span></div>
+                <div class="rule-item">N&#xe3;o queira me dar<span class="info-icon">i<span class="info-tooltip">S&#xf3; passiva, nunca ativa</span></span></div>
+                <div class="rule-item">N&#xe3;o vou em motel para sexo gr&#xe1;tis<span class="info-icon">i<span class="info-tooltip">Motel apenas com pagamento</span></span></div>
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f92c; Toler&#xe2;ncia Zero</div>
-                <div class="rule-item">Mentirosos</div>
-                <div class="rule-item">Indecisos</div>
-                <div class="rule-item">Narcisistas</div>
-                <div class="rule-item">Rom&#xe2;nticos</div>
-                <div class="sub-rule">Dispenso elogios e cantadas</div>
-                <div class="sub-rule">Quer me elogiar? Faz um Pix</div>
+                <div class="emoji-title"> Toler&#xe2;ncia Zero</div>
+                <div class="rule-item">Mentirosos<span class="info-icon">i<span class="info-tooltip">Zero toler&#xe2;ncia com mentiras</span></span></div>
+                <div class="rule-item">Indecisos<span class="info-icon">i<span class="info-tooltip">Seja direto e decidido</span></span></div>
+                <div class="rule-item">Narcisistas<span class="info-icon">i<span class="info-tooltip">N&#xe3;o gosto de exibicionismo</span></span></div>
+                <div class="rule-item">Rom&#xe2;nticos<span class="info-icon">i<span class="info-tooltip">Sem romantismo</span></span></div>
+                <div class="sub-rule">Dispenso elogios e cantadas<span class="info-icon">i<span class="info-tooltip">N&#xe3;o quero elogios vazios</span></span></div>
+                <div class="sub-rule">Quer me elogiar? Faz um Pix<span class="info-icon">i<span class="info-tooltip">Prefiro compensa&#xe7;&#xe3;o financeira</span></span></div>
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f3e0; Programa Especial</div>
-                <div class="rule-item">Beijo na boca</div>
-                <div class="rule-item">Fa&#xe7;o ativa</div>
-                <div class="rule-item">Deixo me tocar</div>
-                <div class="rule-item">Deixo me chupar</div>
-                <div class="rule-item">Fa&#xe7;o 69</div>
-                <div class="rule-item">Talvez eu possa gozar</div>
+                <div class="emoji-title"> Programa No Meu Local</div>
+                <div class="rule-item">Beijo na boca<span class="info-icon">i<span class="info-tooltip">Beijos permitidos no programa</span></span></div>
+                <div class="rule-item">Fa&#xe7;o ativa<span class="info-icon">i<span class="info-tooltip">Posso ser ativa no programa</span></span></div>
+                <div class="rule-item">Deixo me tocar<span class="info-icon">i<span class="info-tooltip">Permito toques no programa</span></span></div>
+                <div class="rule-item">Deixo me chupar<span class="info-icon">i<span class="info-tooltip">Aceito oral no programa</span></span></div>
+                <div class="rule-item">Fa&#xe7;o 69<span class="info-icon">i<span class="info-tooltip">69 dispon&#xed;vel no programa</span></span></div>
+                <div class="rule-item">Talvez eu possa gozar<span class="info-icon">i<span class="info-tooltip">Posso gozar no programa</span></span></div><br>
+                <button class="programa" type="button">Agendar Programa</button>
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f608; Fetiches</div>
-                <div class="rule-item warning">N&#xe3;o tolero chuva marrom &#x1f922;</div>
-                <div class="rule-item">Chuva prata OK</div>
-                <div class="rule-item">Sempre impec&#xe1;vel - n&#xed;vel hidrofilia</div>
+                <div class="emoji-title"> Fetiches</div>
+                <div class="rule-item warning">N&#xe3;o tolero chuva marrom <span class="info-icon">i<span class="info-tooltip">N&#xe3;o fa&#xe7;o scat</span></span></div>
+                <div class="rule-item">Chuva prata<span class="info-icon">i<span class="info-tooltip">Aceito golden shower</span></span></div>
+                <div class="rule-item">Humilha&#xe7;&#xe3;o verbal<span class="info-icon">i<span class="info-tooltip">Aceito humilha&#xe7;&#xe3;o verbal</span></span></div>
+                <div class="rule-item">Cuspes<span class="info-icon">i<span class="info-tooltip">Pode cuspir &#xe0; vontade</span></span></div>
+                <div class="rule-item">Esperma<span class="info-icon">i<span class="info-tooltip">Aceito porra onde quiser</span></span></div>
+                <div class="rule-item">Dep&#xf3;sito de porra<span class="info-icon">i<span class="info-tooltip">Aceito porra dentro</span></span></div>
+                <div class="rule-item">Sigilo Absoluto<span class="info-icon">i<span class="info-tooltip">Sua identidade protegida</span></span></div>
             </div>
     
             <div class="contract-section">
-                <button class="toggle-contract" onclick="toggleContract()">&#x1f449; CRIAR CONTRATO DE ENCONTRO &#x1f448;</button>
+                <button class="toggle-contract" onclick="toggleContract()">Contrato De Encontro Casual</button>
                 <div class="contract-form" id="contractForm">
                     <form id="sscContract">
-                        <div class="section-header">&#x1f4dd; Informa&#xe7;&#xf5;es B&#xe1;sicas</div>
+                        <div class="section-header"> Informa&#xe7;&#xf5;es B&#xe1;sicas</div>
                         <div class="option-group">
                             <div class="form-group">
-                                <label>Seu Nome:</label>
+                                <label>Seu Nome:<span class="info-icon">i<span class="info-tooltip">Seu nome fict&#xed;cio</span></span></label>
                                 <input type="text" class="form-control" id="userName" required>
                             </div>
                             
                             <div class="form-group">
-                                <label>Sua Idade:</label>
+                                <label>Sua Idade:<span class="info-icon">i<span class="info-tooltip">Idade m&#xed;nima 35 anos</span></span></label>
                                 <input type="number" class="form-control" id="userAge" min="35" required>
                             </div>
                         </div>
     
-                        <div class="section-header">&#x1f51e; Servi&#xe7;os Desejados</div>
+                        <div class="section-header"> Servi&#xe7;os Desejados</div>
                         <div class="option-group">
                             <div class="option-subgroup">
-                                <label>Uso da Boca:</label>
+                                <label>Uso da Boca: <span class="info-icon">i<span class="info-tooltip">Escolha como usar minha boca</span></span></label>
                                 <div>
-                                    <input type="checkbox" id="oral_regular" name="services" value="Oral Regular">
-                                    <label for="oral_regular">Oral Regular</label>
+                                    <input type="checkbox" id="oral_regular" name="services" value="Boquete">
+                                    <label for="oral_regular">Boquete<span class="info-icon">i<span class="info-tooltip">Oral completo</span></span></label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="oral_deep" name="services" value="Oral Profundo">
-                                    <label for="oral_deep">Oral Profundo</label>
+                                    <input type="checkbox" id="oral_regular" name="services" value="Boquete">
+                                    <label for="oral_regular">Mamada<span class="info-icon">i<span class="info-tooltip">Apenas com a boca</span></span></label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="garganta_profunda" name="services" value="Garganta Profunda">
+                                    <label for="garganta_profunda">Garganta Profunda<span class="info-icon">i<span class="info-tooltip">Todo pau na garganta</span></span></label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="facefuck" name="services" value="Facefuck">
+                                    <label for="facefuck">Facefuck<span class="info-icon">i<span class="info-tooltip">Voc&#xea; controla o ritmo</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="oral_balls" name="services" value="Oral nas Bolas">
-                                    <label for="oral_balls">Oral nas Bolas</label>
+                                    <label for="oral_balls">Oral nas Bolas<span class="info-icon">i<span class="info-tooltip">Oral nas bolas tamb&#xe9;m</span></span></label>
                                 </div>
                             </div>
     
                             <div class="option-subgroup">
-                                <label>Uso da Raba:</label>
+                                <label>Uso da Raba: <span class="info-icon">i<span class="info-tooltip">Como usar minha raba</span></span></label>
                                 <div>
-                                    <input type="checkbox" id="anal_regular" name="services" value="Anal Regular">
-                                    <label for="anal_regular">Anal Regular</label>
+                                    <input type="checkbox" id="anal_regular" name="services" value="Mete sem camisinha">
+                                    <label for="anal_regular">Mete sem camisinha<span class="info-icon">i<span class="info-tooltip">Sem preservativo</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="anal_deep" name="services" value="Anal Profundo">
-                                    <label for="anal_deep">Anal Profundo</label>
+                                    <label for="anal_deep">Anal Profundo<span class="info-icon">i<span class="info-tooltip">Metida profunda</span></span></label>
                                 </div>
                             </div>
                         </div>
     
-                        <div class="section-header">&#x1f3ad; Posi&#xe7;&#xf5;es</div>
+                        <div class="section-header"> Posi&#xe7;&#xf5;es</div>
                         <div class="option-group">
                             <div class="option-subgroup">
+                                <label>Posi&#xe7;&#xf5;es: <span class="info-icon">i<span class="info-tooltip">Posi&#xe7;&#xf5;es dispon&#xed;veis</span></span></label>
                                 <div>
                                     <input type="checkbox" id="pos_4" name="positions" value="De Quatro">
-                                    <label for="pos_4">De Quatro</label>
+                                    <label for="pos_4">De Quatro<span class="info-icon">i<span class="info-tooltip">De quatro como cadela</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="pos_papai" name="positions" value="Papai e Mam&#xe3;e">
-                                    <label for="pos_papai">Papai e Mam&#xe3;e</label>
+                                    <label for="pos_papai">Papai e Mam&#xe3;e<span class="info-icon">i<span class="info-tooltip">Papai e mam&#xe3;e cl&#xe1;ssico</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="pos_colo" name="positions" value="Sentada no Colo">
-                                    <label for="pos_colo">Sentada no Colo</label>
+                                    <label for="pos_colo">Sentada no Colo<span class="info-icon">i<span class="info-tooltip">Cavalgada no colo</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="pos_lado" name="positions" value="De Lado">
-                                    <label for="pos_lado">De Lado</label>
+                                    <label for="pos_lado">De Lado<span class="info-icon">i<span class="info-tooltip">Penetra&#xe7;&#xe3;o lateral</span></span></label>
                                 </div>
                             </div>
                         </div>
     
-                        <div class="section-header">&#x1f47e; Roleplay</div>
+                        <div class="section-header"> Roleplay</div>
                         <div class="option-group">
                             <div class="option-subgroup">
+                                <label>Roleplay: <span class="info-icon">i<span class="info-tooltip">Op&#xe7;&#xf5;es de interpreta&#xe7;&#xe3;o e submiss&#xe3;o</span></span></label>
                                 <div>
                                     <input type="checkbox" id="rp_boneca" name="roleplay" value="Boneca">
-                                    <label for="rp_boneca">Boneca Submissa</label>
+                                    <label for="rp_boneca">Boneca Submissa<span class="info-icon">i<span class="info-tooltip">Comportamento submisso</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="rp_pet" name="roleplay" value="Pet">
-                                    <label for="rp_pet">Pet (Cadela)</label>
+                                    <label for="rp_pet">Cadela<span class="info-icon">i<span class="info-tooltip">De quatro sem falar</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="rp_objeto" name="roleplay" value="Objeto">
-                                    <label for="rp_objeto">Objeto de Prazer</label>
+                                    <label for="rp_objeto">Objeto de Prazer<span class="info-icon">i<span class="info-tooltip">Uso livre do corpo</span></span></label>
                                 </div>
                             </div>
                         </div>
     
-                        <div class="section-header">&#x1f608; Fetiches (Opcionais)</div>
+                        <div class="section-header"> Fetiches (Opcionais)</div>
                         <div class="option-group">
                             <div class="option-subgroup">
+                                <label>Fetiches: <span class="info-icon">i<span class="info-tooltip">Pr&#xe1;ticas especiais dispon&#xed;veis</span></span></label>
                                 <div>
                                     <input type="checkbox" id="fet_piss" name="fetishes" value="Chuva Dourada">
-                                    <label for="fet_piss">Chuva Dourada</label>
+                                    <label for="fet_piss">Chuva Dourada<span class="info-icon">i<span class="info-tooltip">Golden shower</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="fet_feet" name="fetishes" value="P&#xe9;s">
-                                    <label for="fet_feet">P&#xe9;s</label>
+                                    <label for="fet_feet">P&#xe9;s<span class="info-icon">i<span class="info-tooltip">Fetiches com p&#xe9;s</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="fet_dominacao" name="fetishes" value="Domina&#xe7;&#xe3;o Leve">
-                                    <label for="fet_dominacao">Domina&#xe7;&#xe3;o Leve</label>
+                                    <label for="fet_dominacao">Domina&#xe7;&#xe3;o Leve<span class="info-icon">i<span class="info-tooltip">Domina&#xe7;&#xe3;o leve</span></span></label>
                                 </div>
                             </div>
                         </div>
     
-                        <div class="section-header">&#x1f4cd; Detalhes do Encontro</div>
+                        <div class="section-header"> Detalhes do Encontro</div>
                         <div class="option-group">
                             <div class="form-group">
-                                <label>Local:</label>
+                                <label>Local: <span class="info-icon">i<span class="info-tooltip">Local do encontro</span></span></label>
                                 <select class="form-control" id="location" required>
                                     <option value>Selecione...</option>
                                     <option value="carro">Seu Carro</option>
@@ -426,12 +516,12 @@
                             </div>
     
                             <div class="form-group">
-                                <label>Hor&#xe1;rio Preferido (20:00-04:00):</label>
+                                <label>Hor&#xe1;rio Preferido (20:00-04:00): <span class="info-icon">i<span class="info-tooltip">Hor&#xe1;rio entre 20h-04h</span></span></label>
                                 <input type="time" class="form-control" id="meetTime" min="20:00" max="04:00" required>
                             </div>
     
                             <div class="form-group">
-                                <label>Instru&#xe7;&#xf5;es Especiais:</label>
+                                <label>Instru&#xe7;&#xf5;es Especiais: <span class="info-icon">i<span class="info-tooltip">Instru&#xe7;&#xf5;es adicionais</span></span></label>
                                 <textarea class="form-control" id="specialInstructions" rows="3" placeholder="Alguma solicita&#xe7;&#xe3;o especial?"></textarea>
                             </div>
                         </div>
@@ -443,48 +533,88 @@
         </div>
     
         <script>function toggleContract() {
-      const form = document.getElementById('contractForm');
-      form.classList.toggle('show');
+  const form = document.getElementById('contractForm');
+  form.classList.toggle('show');
+  if (!form.classList.contains('show')) {
+    document.getElementById('sscContract').reset();
+  }
+}
+function submitContract() {
+  const requiredFields = {
+    'userName': 'Nome',
+    'userAge': 'Idade',
+    'meetTime': 'Horário'
+  };
+  for (const [id, label] of Object.entries(requiredFields)) {
+    const field = document.getElementById(id);
+    if (!field.value.trim()) {
+      alert(`Por favor preencha o campo ${label}`);
+      field.focus();
+      return;
     }
-    function submitContract() {
-      const name = document.getElementById('userName').value;
-      const age = document.getElementById('userAge').value;
-      const location = document.getElementById('location').value;
-      const time = document.getElementById('meetTime').value;
-      const instructions = document.getElementById('specialInstructions').value;
-      const services = [...document.querySelectorAll('input[name="services"]:checked')].map(cb => cb.value);
-      const positions = [...document.querySelectorAll('input[name="positions"]:checked')].map(cb => cb.value);
-      const roleplay = [...document.querySelectorAll('input[name="roleplay"]:checked')].map(cb => cb.value);
-      const fetishes = [...document.querySelectorAll('input[name="fetishes"]:checked')].map(cb => cb.value);
-      if (!location) {
-        alert('Por favor selecione um local!');
-        return;
-      }
-      const message = `*CONTRATO DE ENCONTRO SSC*
-    --------------------------
-    *DADOS BÁSICOS*
-    Nome: ${name}
-    Idade: ${age}
-    Local: ${location}
-    Horário: ${time}
-    
-    *SERVIÇOS SELECIONADOS*
-    ${services.join('\n')}
-    
-    *POSIÇÕES DESEJADAS*
-    ${positions.join('\n')}
-    
-    *ROLEPLAY*
-    ${roleplay.join('\n')}
-    
-    *FETICHES*
-    ${fetishes.join('\n')}
-    
-    *INSTRUÇÕES ESPECIAIS*
-    ${instructions}
-    --------------------------`;
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
-    }</script>
+  }
+  const age = parseInt(document.getElementById('userAge').value);
+  if (age < 35) {
+    alert('Você precisa ter no mínimo 35 anos');
+    return;
+  }
+  const formData = {
+    name: document.getElementById('userName').value.trim(),
+    age: age,
+    time: document.getElementById('meetTime').value,
+    instructions: document.getElementById('specialInstructions').value.trim(),
+    services: [...document.querySelectorAll('input[name="services"]:checked')].map(cb => cb.value),
+    positions: [...document.querySelectorAll('input[name="positions"]:checked')].map(cb => cb.value),
+    roleplay: [...document.querySelectorAll('input[name="roleplay"]:checked')].map(cb => cb.value),
+    fetishes: [...document.querySelectorAll('input[name="fetishes"]:checked')].map(cb => cb.value)
+  };
+  if (!formData.services.length) {
+    alert('Por favor selecione pelo menos um serviço');
+    return;
+  }
+  if (!formData.positions.length) {
+    alert('Por favor selecione pelo menos uma posição');
+    return;
+  }
+  const message = `*CONTRATO DE ENCONTRO SSC*
+--------------------------
+*DADOS BÁSICOS*
+👤 Nome: ${formData.name}
+📅 Idade: ${formData.age}
+⏰ Horário: ${formData.time}
+
+*SERVIÇOS SELECIONADOS*
+${formData.services.map(s => `• ${s}`).join('\n')}
+
+*POSIÇÕES DESEJADAS*
+${formData.positions.map(p => `• ${p}`).join('\n')}
+
+*ROLEPLAY*
+${formData.roleplay.map(r => `• ${r}`).join('\n')}
+
+${formData.fetishes.length ? `*FETICHES*\n${formData.fetishes.map(f => `• ${f}`).join('\n')}\n` : ''}
+
+${formData.instructions ? `*INSTRUÇÕES ESPECIAIS*\n${formData.instructions}` : ''}
+--------------------------`;
+  const encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
+}
+document.getElementById('userAge').addEventListener('input', function (e) {
+  const age = parseInt(e.target.value);
+  if (age < 35) {
+    e.target.setCustomValidity('Idade mínima é 35 anos');
+  } else {
+    e.target.setCustomValidity('');
+  }
+});
+document.getElementById('meetTime').addEventListener('input', function (e) {
+  const time = e.target.value;
+  const [hours] = time.split(':').map(Number);
+  if (hours < 20 && hours > 4) {
+    e.target.setCustomValidity('Horário deve ser entre 20:00 e 04:00');
+  } else {
+    e.target.setCustomValidity('');
+  }
+});</script>
     </body>
     </html>
