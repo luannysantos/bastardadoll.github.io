@@ -483,9 +483,85 @@
             font-size: 1rem;
         }
     }
+    
+    #password-verification {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.98);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: white;
+    }
+
+    #password-verification h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #ff69b4;
+        text-align: center;
+    }
+
+    #password-verification p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    #password-verification input {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        border: 2px solid #ff69b4;
+        border-radius: 8px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        width: 200px;
+    }
+
+    #password-verification button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #ff69b4;
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    #password-verification button:hover {
+        background: #ff1493;
+    }
+
+    @media (max-width: 480px) {
+        #password-verification h2 {
+            font-size: 1.5rem;
+        }
+        
+        #password-verification p {
+            font-size: 1rem;
+        }
+        
+        #password-verification input,
+        #password-verification button {
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+    }
     </style>
     </head>
     <body>
+        <div id="password-verification" style="display: none;">
+            <h2>&#xc1;rea Restrita</h2>
+            <p>Por favor insira a senha para acessar:</p>
+            <input type="password" id="password-input" placeholder="Senha">
+            <button onclick="verifyPassword()">Entrar</button>
+        </div>
         <div id="age-verification">
             <h2>Aviso de Conte&#xfa;do Adulto</h2>
             <p>Este site cont&#xe9;m material adulto expl&#xed;cito. Voc&#xea; confirma que tem mais de 18 anos e deseja continuar?</p>
@@ -501,7 +577,7 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f444; Postura Passiva</div>
+                <div class="emoji-title">&#x1f440; Postura Passiva</div>
                 <div class="rule-item">Na minha Boca<span class="info-icon">i<span class="info-tooltip">Boca para seu prazer total</span></span></div>
                 <div class="sub-rule">Chupo com ou sem camisinha<span class="info-icon">i<span class="info-tooltip">Sem restri&#xe7;&#xf5;es de prote&#xe7;&#xe3;o</span></span></div>
                 <div class="sub-rule">Pode foder minha garganta<span class="info-icon">i<span class="info-tooltip">Garganta profunda &#xe0; vontade</span></span></div>
@@ -514,7 +590,7 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f465; Perfil Aceito</div>
+                <div class="emoji-title">&#x1f474; Perfil Aceito</div>
                 <div class="rule-item">Homens Ativos Decididos<span class="info-icon">i<span class="info-tooltip">Machos decididos e dominantes</span></span></div>
                 <div class="rule-item">Idade superior a 35 anos<span class="info-icon">i<span class="info-tooltip">Idade m&#xed;nima 35 anos</span></span></div>
                 <div class="rule-item">N&#xe3;o me importo com:<span class="info-icon">i<span class="info-tooltip">Caracter&#xed;sticas f&#xed;sicas irrelevantes</span></span></div>
@@ -525,8 +601,8 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f319; Fast-Foda de Madrugada</div>
-                <div class="rule-item">N&#xe3;o me desloco at&#xe9; voc&#xea;<span class="info-icon">i<span class="info-tooltip">Voc&#xea;s providencia o transporte</span></span></div>
+                <div class="emoji-title">&#x2744;&#xfe0f; Fast-Foda de Madrugada</div>
+                <div class="rule-item">N&#xe3;o me desloco at&#xe9; voc&#xea;<span class="info-icon">i<span class="info-tooltip">Voc&#xea; providencia o transporte</span></span></div>
                 <div class="rule-item">Me pega em casa e me deixa em casa<span class="info-icon">i<span class="info-tooltip">Busca e leva de volta</span></span></div>
                 <div class="rule-item">T&#xe1; de carro?<span class="info-icon">i<span class="info-tooltip">Locais para carro</span></span></div>
                 <div class="sub-rule">Em frente de casa<span class="info-icon">i<span class="info-tooltip">Local seguro e discreto</span></span></div>
@@ -552,7 +628,7 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x26d4;  Toler&#xe2;ncia Zero</div>
+                <div class="emoji-title">&#x26a0;&#xfe0f;  Toler&#xe2;ncia Zero</div>
                 <div class="rule-item">Mentirosos<span class="info-icon">i<span class="info-tooltip">Zero toler&#xe2;ncia com mentiras</span></span></div>
                 <div class="rule-item">Indecisos<span class="info-icon">i<span class="info-tooltip">Seja direto e decidido</span></span></div>
                 <div class="rule-item">Narcisistas<span class="info-icon">i<span class="info-tooltip">N&#xe3;o gosto de exibicionismo</span></span></div>
@@ -562,7 +638,7 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f4b0; Programa No Meu Local</div>
+                <div class="emoji-title">&#x1f4b8; Programa No Meu Local</div>
                 <div class="rule-item">Beijo na boca<span class="info-icon">i<span class="info-tooltip">Beijos permitidos no programa</span></span></div>
                 <div class="rule-item">Fa&#xe7;o ativa<span class="info-icon">i<span class="info-tooltip">Posso ser ativa no programa</span></span></div>
                 <div class="rule-item">Deixo me tocar<span class="info-icon">i<span class="info-tooltip">Permito toques no programa</span></span></div>
@@ -612,7 +688,7 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x2b50; Fetiches</div>
+                <div class="emoji-title">&#x2b50;&#xfe0f; Fetiches</div>
                 <div class="rule-item warning">N&#xe3;o tolero chuva marrom <span class="info-icon">i<span class="info-tooltip">N&#xe3;o fa&#xe7;o scat</span></span></div>
                 <div class="rule-item">Chuva prata<span class="info-icon">i<span class="info-tooltip">Aceito golden shower</span></span></div>
                 <div class="rule-item">Humilha&#xe7;&#xe3;o verbal<span class="info-icon">i<span class="info-tooltip">Aceito humilha&#xe7;&#xe3;o verbal</span></span></div>
@@ -778,6 +854,7 @@
             <script>function verifyAge(isAdult) {
   if (isAdult) {
     document.getElementById('age-verification').style.display = 'none';
+    document.getElementById('password-verification').style.display = 'flex';
     localStorage.setItem('ageVerified', 'true');
   } else {
     window.location.href = 'https://www.google.com';
@@ -786,6 +863,11 @@
 window.onload = function () {
   if (localStorage.getItem('ageVerified') === 'true') {
     document.getElementById('age-verification').style.display = 'none';
+    if (localStorage.getItem('passwordVerified') !== 'true') {
+      document.getElementById('password-verification').style.display = 'flex';
+    } else {
+      document.getElementById('password-verification').style.display = 'none';
+    }
   }
 };
 function toggleProgram() {
@@ -857,7 +939,16 @@ document.getElementById('meetTime').addEventListener('input', function (e) {
   } else {
     e.target.setCustomValidity('');
   }
-});</script>
+});
+function verifyPassword() {
+  const password = document.getElementById('password-input').value;
+  if (password === 'liviad4') {
+    document.getElementById('password-verification').style.display = 'none';
+  } else {
+    alert('Senha incorreta!');
+    document.getElementById('password-input').value = '';
+  }
+}</script>
         </div>
     
     </body>
