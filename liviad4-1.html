@@ -637,7 +637,8 @@ function submitContract() {
   const requiredFields = {
     'userName': 'Nome',
     'userAge': 'Idade',
-    'meetTime': 'Horário'
+    'meetTime': 'Horário',
+    'location': 'Local'
   };
   for (const [id, label] of Object.entries(requiredFields)) {
     const field = document.getElementById(id);
@@ -656,6 +657,7 @@ function submitContract() {
     name: document.getElementById('userName').value.trim(),
     age: age,
     time: document.getElementById('meetTime').value,
+    location: document.getElementById('location').value,
     instructions: document.getElementById('specialInstructions').value.trim(),
     services: [...document.querySelectorAll('input[name="services"]:checked')].map(cb => cb.value),
     positions: [...document.querySelectorAll('input[name="positions"]:checked')].map(cb => cb.value),
@@ -676,6 +678,7 @@ function submitContract() {
 👤 Nome: ${formData.name}
 📅 Idade: ${formData.age}
 ⏰ Horário: ${formData.time}
+📍 Local: ${formData.location}
 
 *SERVIÇOS SELECIONADOS*
 ${formData.services.map(s => `• ${s}`).join('\n')}
