@@ -69,7 +69,7 @@
     }
     
     .rule-item:before {
-        content: "→";
+        content: "•";
         position: absolute;
         left: 0;
         color: #ff69b4;
@@ -78,6 +78,16 @@
     .sub-rule {
         margin-left: 2rem;
         opacity: 0.9;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .sub-rule::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #ff69b4;
+        margin-right: 0.5rem;
     }
     
     .warning {
@@ -514,9 +524,9 @@
             </div>
     
             <div class="profile-section">
-                <div class="emoji-title">&#x1f465; Perfil Aceito</div>
-                <div class="rule-item">Homens Ativos Decididos<span class="info-icon">i<span class="info-tooltip">Seja específico, direto e objetivo</span></span></div>
-                <div class="rule-item">Pessoas Decididas<span class="info-icon">i<span class="info-tooltip">Na dúvida, não faça; não está errado quem desconfia.</span></span></div>
+                <div class="emoji-title"> Perfil Aceito</div>
+                <div class="rule-item">Homens Ativos<span class="info-icon">i<span class="info-tooltip">Seja espec&#xed;fico, direto e objetivo</span></span></div>
+                <div class="rule-item">Pessoas Decididas<span class="info-icon">i<span class="info-tooltip">Na d&#xfa;vida, n&#xe3;o fa&#xe7;a; n&#xe3;o est&#xe1; errado quem desconfia.</span></span></div>
                 <div class="rule-item">N&#xe3;o me importo com:<span class="info-icon">i<span class="info-tooltip">Caracter&#xed;sticas f&#xed;sicas irrelevantes</span></span></div>
                 <div class="sub-rule">Tamanho do pau<span class="info-icon">i<span class="info-tooltip">Tamanho n&#xe3;o importa</span></span></div>
                 <div class="sub-rule">Depilado/Pentelhos<span class="info-icon">i<span class="info-tooltip">Com ou sem pelos &#xe9; indiferente</span></span></div>
@@ -524,29 +534,29 @@
                 <div class="sub-rule">Cor da pele<span class="info-icon">i<span class="info-tooltip">Todas etnias bem-vindas</span></span></div>
                 <br>
                 
-                <div class="emoji-title">&#x26d4;  Toler&#xe2;ncia Zero</div>
+                <div class="emoji-title"> Toler&#xe2;ncia Zero</div>
                 <div class="rule-item">Mentirosos<span class="info-icon">i<span class="info-tooltip">Zero toler&#xe2;ncia com mentiras</span></span></div>
                 <div class="rule-item">Indecisos<span class="info-icon">i<span class="info-tooltip">Seja direto e decidido</span></span></div>
                 <div class="rule-item">Narcisistas<span class="info-icon">i<span class="info-tooltip">N&#xe3;o gosto de exibicionismo</span></span></div>
                 <div class="rule-item">Rom&#xe2;nticos<span class="info-icon">i<span class="info-tooltip">Sem romantismo</span></span></div>
                 <div class="sub-rule">Dispenso elogios e cantadas<span class="info-icon">i<span class="info-tooltip">N&#xe3;o quero elogios vazios</span></span></div>
                 <div class="sub-rule">Quer me elogiar? Faz um Pix<span class="info-icon">i<span class="info-tooltip">Prefiro compensa&#xe7;&#xe3;o financeira</span></span></div>
-            </div>
-    
-            <div class="profile-section">
-                <div class="emoji-title">&#x1f4b0; Programa No Meu Local</div>
+                <br>
+                <div class="emoji-title"> Sobre Meu Atendimento</div>
                 <div class="rule-item">Beijo na boca<span class="info-icon">i<span class="info-tooltip">Beijos permitidos no programa</span></span></div>
                 <div class="rule-item">Fa&#xe7;o ativa<span class="info-icon">i<span class="info-tooltip">Posso ser ativa no programa</span></span></div>
                 <div class="rule-item">Deixo me tocar<span class="info-icon">i<span class="info-tooltip">Permito toques no programa</span></span></div>
                 <div class="rule-item">Deixo me chupar<span class="info-icon">i<span class="info-tooltip">Aceito oral no programa</span></span></div>
                 <div class="rule-item">Fa&#xe7;o 69<span class="info-icon">i<span class="info-tooltip">69 dispon&#xed;vel no programa</span></span></div>
-                <div class="rule-item">Talvez eu possa gozar<span class="info-icon">i<span class="info-tooltip">Posso gozar no programa</span></span></div><br>
+                <div class="rule-item">Talvez eu possa gozar<span class="info-icon">i<span class="info-tooltip">Posso gozar no programa</span></span></div>
+            </div>
+
                 <button class="programa" type="button" onclick="toggleProgram()">Agendar Programa</button>
                 <div class="program-form" id="programForm">
                     <form id="programContract">
-                        <div class="section-header">Dura&#xe7;&#xe3;o e Valores</div>
+                        <div class="section-header">Servi&#xe7;os e Valores</div>
                         <div class="form-group">
-                            <label>Escolha o Tempo:</label>
+                            <label>Escolha Servi&#xe7;o e Tempo:</label>
                             <select class="form-control" id="programDuration" required>
                                 <option value>Selecione o tempo do programa...</option>
                                 <option value="quick">Rapidinha (20min) - R&#x24; 100,00</option>
@@ -655,5 +665,6 @@ ${instructions ? `*INSTRUÇÕES ESPECIAIS*\n${instructions}\n` : ''}
   const encodedMessage = encodeURIComponent(message);
   window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
 }</script>
-</div></body>
+        </div>
+    </body>
 </html>
