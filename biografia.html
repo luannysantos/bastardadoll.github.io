@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <base href="." />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luanny Ravatche - Biografia</title>
+<style>
+    :root {
+        --primary: #8e44ad;
+        --secondary: #9b59b6;  
+        --accent: #d35400;
+        --bg: #f9f9f9;
+        --text: #2c3e50;
+    }
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--bg);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    h1 {
+        color: var(--primary);
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 3px solid var(--secondary);
+        padding-bottom: 1rem;
+    }
+    
+    h2 {
+        color: var(--secondary);
+        margin-top: 2rem;
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    blockquote {
+        border-left: 4px solid var(--accent);
+        padding-left: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        background: rgba(211, 84, 0, 0.1);
+        padding: 1rem;
+        border-radius: 0 8px 8px 0;
+    }
+    
+    .highlight {
+        background: linear-gradient(120deg, rgba(142,68,173,0.2) 0%, rgba(155,89,182,0.2) 100%);
+        padding: 0.2em;
+        border-radius: 3px;
+    }
+    
+    .section-divider {
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        margin: 2rem 0;
+        opacity: 0.7;
+    }
+    
+    .profile-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+    }
+    
+    .profile-icon {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 2rem;
+        display: block;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        transition: transform 0.3s ease;
+    }
+    
+    .profile-icon:hover {
+        transform: scale(1.05);
+    }
+    
+    .animated-gradient {
+        background: linear-gradient(270deg, var(--primary), var(--secondary), var(--accent));
+        background-size: 600% 600%;
+        animation: gradientShift 10s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+        0% { background-position: 0% 50% }
+        50% { background-position: 100% 50% }
+        100% { background-position: 0% 50% }
+    }
+    
+    .content {
+        font-size: 1.1em;
+        text-align: justify;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    ul li {
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    ul li:before {
+        content: "•";
+        color: var(--accent);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+    
+    /* Responsividade aprimorada */
+    @media (max-width: 900px) {
+        .container {
+            padding: 1.5rem;
+            max-width: 600px;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .container {
+            padding: 1rem;
+        }
+        
+        h1 {
+            font-size: 2em;
+            padding: 1rem;
+        }
+        
+        .profile-icon {
+            width: 120px;
+            height: 120px;
+        }
+    
+        .timeline-item {
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    
+        blockquote {
+            padding: 0.8rem;
+            font-size: 0.95em;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 1.8em;
+        }
+        
+        .content {
+            font-size: 1em;
+        }
+        
+        .profile-icon {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    
+    /* Melhorias de acessibilidade */
+    @media (prefers-reduced-motion: reduce) {
+        .timeline-item, .profile-icon {
+            transition: none;
+        }
+    }
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #1a1a1a;
+            --text: #f0f0f0;
+        }
+        
+        .timeline-item {
+            background: #2d2d2d;
+        }
+    }
+    </style></head><body>
+    <div class="container">
+        <div class="profile-header">
+            <svg class="profile-icon" viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:var(--primary);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:var(--secondary);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad)" stroke-width="2"/>
+                <text x="50" y="60" text-anchor="middle" fill="var(--primary)" font-size="24">LR</text>
+            </svg>
+            <h1>Luanny Ravatche</h1>
+        </div>
+    
+        <div class="content">
+            <div class="timeline-item">
+                <h2>Nascimento e Origens</h2>
+                <p>Nascida em 4 de novembro de 1990, no Mato Grosso do Sul, em meio a um contexto familiar complexo. Sua trajetória é marcada por força, resiliência e uma busca incessante por compreender a si mesma e o mundo ao seu redor.</p>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Infância e Família</h2>
+                <p>Viveu em uma fazenda no MS, um ambiente isolado mas repleto de aprendizados. Criada pelos avós e tios, vivenciou momentos de carinho e desafios. Sua avó foi uma figura de amor incondicional, cuja perda em 2024 marcou profundamente sua vida. Aos sete anos, mudou-se para Campo Grande com sua mãe e padrasto, iniciando uma nova fase de descobertas sobre sua identidade.</p>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Guerra Interna</h2>
+                <p>Enfrentou conflitos profundos entre:</p>
+                <ul>
+                    <li>O seu "Eu interno" - forma como se via e sentia</li>
+                    <li>A tradição familiar e suas expectativas</li>
+                    <li>Os dogmas religiosos e sua busca por liberdade</li>
+                </ul>
+                <blockquote>
+                    "Controlar é o dever individual? Não sei, mas sei que a humanidade, para evoluir, terá que aprender a por pra fora os seus monstros e conversar abertamente sobre eles."
+                </blockquote>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Descobertas e Transformações</h2>
+                <p>Sua jornada como mulher trans começou de maneira inconsciente, influenciada por suas vivências e pelo desejo de ser uma figura materna amorosa e acolhedora. Aos 13 anos, após desentendimentos familiares, decidiu morar sozinha, fortalecendo sua independência.</p>
+                <blockquote>
+                    "Uso como símbolo do meu trauma, semelhante à ideia do 'morcego para o Batman'. Não vou esconder quem sou porque alguém acha moralmente errado."
+                </blockquote>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Vida Adulta e Superação</h2>
+                <p>Transformou suas experiências com preconceito e transfobia em força para apoiar outros. Atua junto à comunidade LGBTQIAPN+ em São José dos Campos, especialmente através da ONG "Associação Transbordamos".</p>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Vida Profissional e Projetos</h2>
+                <p>Autodidata em programação, design gráfico, copywriting e edição de vídeos. Criadora do projeto <span class="highlight">Orby Chat</span>, uma plataforma inclusiva que celebra a diversidade.</p>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Reflexões e Valores</h2>
+                <p>Valoriza autenticidade e aprendizado contínuo. Sua espiritualidade é diversa, tendo explorado várias religiões. Mantém sua flauta da Congregação Cristã como símbolo de suas memórias.</p>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Gostos e Aspirações</h2>
+                <p>Apaixonada por literatura, encontra inspiração em obras como Moby Dick, A Revolução dos Bichos e Sapiens. Aprecia caminhadas, viagens e momentos de conexão com a natureza. Entre os destinos que deseja conhecer estão Grécia, Rússia e Alemanha.</p>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Perfil Psicológico</h2>
+                <p>Sua personalidade é um mosaico complexo marcado por:</p>
+                <ul>
+                    <li>Resiliência e determinação diante dos desafios</li>
+                    <li>Empatia e compreensão com o próximo</li>
+                    <li>Autenticidade e reflexão constante</li>
+                    <li>Criatividade e curiosidade natural</li>
+                    <li>Ceticismo construtivo sobre a sociedade</li>
+                </ul>
+                <blockquote>
+                    "Eu acho que eu sou muito mais que uma palavra, eu sou um ser humano em construção constante."
+                </blockquote>
+            </div>
+    
+            <div class="section-divider"></div>
+    
+            <div class="timeline-item">
+                <h2>Espírito de Liderança</h2>
+                <p>Como visionária, possui um instinto natural para liderar, principalmente em projetos que requerem inovação e inclusão. Sua capacidade de inspirar e motivar reflete sua crença no potencial humano.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+    
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+    
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.8s ease-out';
+            observer.observe(item);
+        });
+    });
+    </script>
+    </body>
+    </html>
