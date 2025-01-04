@@ -210,6 +210,12 @@
         background: rgba(255,20,147,0.02);
     }
     
+    .option-subgroup {
+        margin-top: 1.5rem;  
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,20,147,0.2);  
+    }
+    
     .option-subgroup label {
         display: block;
         margin-bottom: 0.5rem;
@@ -388,6 +394,26 @@
             font-size: 0.75rem;
         }
     }
+
+    .program-form {
+        display: none;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .program-form.show {
+        display: block;
+        animation: slideDown 0.5s ease;
+    }
+
+    .location-info {
+        padding: 1rem;
+        background: rgba(255,20,147,0.05);
+        border-radius: 8px;
+        margin: 1rem 0;
+        text-align: center;
+        line-height: 1.6;
+    }
     </style>
     </head>
     <body>
@@ -423,7 +449,7 @@
     
             <div class="profile-section">
                 <div class="emoji-title">&#x1f319; Fast-Foda de Madrugada</div>
-                <div class="rule-item">N&#xe3;o me desloco at&#xe9; voc&#xea;<span class="info-icon">i<span class="info-tooltip">Voc&#xea; providencia o transporte</span></span></div>
+                <div class="rule-item">N&#xe3;o me desloco at&#xe9; voc&#xea;<span class="info-icon">i<span class="info-tooltip">Voc&#xea;s providencia o transporte</span></span></div>
                 <div class="rule-item">Me pega em casa e me deixa em casa<span class="info-icon">i<span class="info-tooltip">Busca e leva de volta</span></span></div>
                 <div class="rule-item">T&#xe1; de carro?<span class="info-icon">i<span class="info-tooltip">Locais para carro</span></span></div>
                 <div class="sub-rule">Em frente de casa<span class="info-icon">i<span class="info-tooltip">Local seguro e discreto</span></span></div>
@@ -466,7 +492,46 @@
                 <div class="rule-item">Deixo me chupar<span class="info-icon">i<span class="info-tooltip">Aceito oral no programa</span></span></div>
                 <div class="rule-item">Fa&#xe7;o 69<span class="info-icon">i<span class="info-tooltip">69 dispon&#xed;vel no programa</span></span></div>
                 <div class="rule-item">Talvez eu possa gozar<span class="info-icon">i<span class="info-tooltip">Posso gozar no programa</span></span></div><br>
-                <button class="programa" type="button">Agendar Programa</button>
+                <button class="programa" type="button" onclick="toggleProgram()">Agendar Programa</button>
+                <div class="program-form" id="programForm">
+                    <form id="programContract">
+                        <div class="section-header">Dura&#xe7;&#xe3;o e Valores</div>
+                        <div class="form-group">
+                            <label>Escolha o Tempo:</label>
+                            <select class="form-control" id="programDuration" required>
+                                <option value>Selecione...</option>
+                                <option value="20">20 Minutos - R$ 100,00</option>
+                                <option value="40">40 Minutos - R$ 150,00</option> 
+                                <option value="60">60 Minutos - R$ 250,00</option>
+                                <option value="quickBoquete">Boquete (10-15min) - R$ 50,00</option>
+                                <option value="quick69">69 (10-15min) - R$ 70,00</option>
+                                <option value="quickGP">Garganta Profunda (10-15min) - R$ 80,00</option>
+                            </select>
+                        </div>
+                        <div class="section-header">Informa&#xe7;&#xf5;es Pessoais</div>
+                        <div class="form-group">
+                            <label>Seu Nome:</label>
+                            <input type="text" class="form-control" id="clientName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Idade:</label>
+                            <input type="number" class="form-control" id="clientAge" min="18" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Hor&#xe1;rio Desejado:</label>
+                            <input type="time" class="form-control" id="programTime" required>
+                        </div>
+                        <div class="section-header">Local do Atendimento</div>  
+                        <div class="option-group">
+                            <div class="location-info">
+                                Vila S&#xe3;o Pedro, pr&#xf3;ximo ao jardim paulista<br>
+                                Em frente a Dutra KM 146<br> 
+                                Local discreto, atendimento sem frescura
+                            </div>
+                        </div>
+                        <button type="button" onclick="submitProgram()" class="submit-contract">AGENDAR PROGRAMA</button>
+                    </form>
+                </div>
             </div>
     
             <div class="profile-section">
@@ -515,7 +580,7 @@
                                 </div>
                                 <div>
                                     <input type="checkbox" id="facefuck" name="services" value="Facefuck">
-                                    <label for="facefuck">Facefuck<span class="info-icon">i<span class="info-tooltip">Voc&#xea; controla o ritmo</span></span></label>
+                                    <label for="facefuck">Facefuck<span class="info-icon">i<span class="info-tooltip">Voc&#xea;s controla o ritmo</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="oral_balls" name="services" value="Oral nas Bolas">
@@ -565,11 +630,15 @@
                                 <label>Roleplay: <span class="info-icon">i<span class="info-tooltip">Op&#xe7;&#xf5;es de interpreta&#xe7;&#xe3;o e submiss&#xe3;o</span></span></label>
                                 <div>
                                     <input type="checkbox" id="rp_boneca" name="roleplay" value="Boneca">
-                                    <label for="rp_boneca">Boneca Submissa<span class="info-icon">i<span class="info-tooltip">Comportamento submisso</span></span></label>
+                                    <label for="rp_boneca">Boneca Submissa<span class="info-icon">i<span class="info-tooltip">Quieta e obediente</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="rp_pet" name="roleplay" value="Pet">
                                     <label for="rp_pet">Cadela<span class="info-icon">i<span class="info-tooltip">De quatro sem falar</span></span></label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="rp_interpretar" name="roleplay" value="Interpretar outra">
+                                    <label for="rp_interpretar">Interpretar outra<span class="info-icon">i<span class="info-tooltip">Use como se fosse uma mulher; podendo atender pelo nome dela</span></span></label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="rp_objeto" name="roleplay" value="Objeto">
@@ -583,16 +652,20 @@
                             <div class="option-subgroup">
                                 <label>Fetiches: <span class="info-icon">i<span class="info-tooltip">Pr&#xe1;ticas especiais dispon&#xed;veis</span></span></label>
                                 <div>
-                                    <input type="checkbox" id="fet_piss" name="fetishes" value="Chuva Dourada">
-                                    <label for="fet_piss">Chuva Dourada<span class="info-icon">i<span class="info-tooltip">Golden shower</span></span></label>
+                                    <input type="checkbox" id="fet_piss" name="fetishes" value="Mijar no corpo">
+                                    <label for="fet_piss">Mijar no corpo<span class="info-icon">i<span class="info-tooltip">Mijar no corpo</span></span></label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="fet_feet" name="fetishes" value="P&#xe9;s">
-                                    <label for="fet_feet">P&#xe9;s<span class="info-icon">i<span class="info-tooltip">Fetiches com p&#xe9;s</span></span></label>
+                                    <input type="checkbox" id="fet_piss_drink" name="fetishes" value="Beber Mijo">
+                                    <label for="fet_piss_drink">Beber Mijo<span class="info-icon">i<span class="info-tooltip">Beber Mijo</span></span></label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="fet_dominacao" name="fetishes" value="Domina&#xe7;&#xe3;o Leve">
-                                    <label for="fet_dominacao">Domina&#xe7;&#xe3;o Leve<span class="info-icon">i<span class="info-tooltip">Domina&#xe7;&#xe3;o leve</span></span></label>
+                                    <input type="checkbox" id="fet_dupla" name="fetishes" value="Eu e um amigo">
+                                    <label for="fet_dupla">Voc&#xea;s e mais outro amigo<span class="info-icon">i<span class="info-tooltip">Se seu amigo tiver +35 anos</span></span></label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="fet_tapas" name="fetishes" value="Tapas de Leve">
+                                    <label for="fet_tapas">Tapas de Leve<span class="info-icon">i<span class="info-tooltip">Tapas de Leve</span></span></label>
                                 </div>
                             </div>
                         </div>
@@ -624,94 +697,90 @@
                     </form>
                 </div>
             </div>
+
+            <script>
+                function toggleProgram() {
+                    const form = document.getElementById('programForm');
+                    form.classList.toggle('show');
+                    if (!form.classList.contains('show')) {
+                        document.getElementById('programContract').reset();
+                    }
+                }
+
+                function submitProgram() {
+                    const requiredFields = {
+                        'programDuration': 'Duração',
+                        'clientName': 'Nome', 
+                        'clientAge': 'Idade',
+                        'programTime': 'Horário'
+                    };
+                    
+                    for (const [id, label] of Object.entries(requiredFields)) {
+                        const field = document.getElementById(id);
+                        if (!field.value.trim()) {
+                            alert(`Por favor preencha o campo ${label}`);
+                            field.focus();
+                            return;
+                        }
+                    }
+
+                    const formData = {
+                        name: document.getElementById('clientName').value.trim(),
+                        age: document.getElementById('clientAge').value,
+                        time: document.getElementById('programTime').value,
+                        duration: document.getElementById('programDuration').value
+                    };
+
+                    const message = `*AGENDAMENTO DE PROGRAMA*
+                    --------------------------
+                    *DADOS DO CLIENTE*
+                    👤 Nome: ${formData.name}
+                    📅 Idade: ${formData.age}
+                    ⏰ Horário: ${formData.time}
+
+                    *SERVIÇO ESCOLHIDO*
+                    • ${document.getElementById('programDuration').options[document.getElementById('programDuration').selectedIndex].text}
+
+                    *LOCAL*
+                    📍 Vila São Pedro (próx. jardim paulista)
+                       Em frente a Dutra KM 146
+                    --------------------------`;
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
+                }
+
+                function toggleContract() {
+                    const form = document.getElementById('contractForm');
+                    form.classList.toggle('show');
+                    if (!form.classList.contains('show')) {
+                        document.getElementById('sscContract').reset();
+                    }
+                }
+
+                function submitContract() {
+                    // Add your submit contract logic here
+                }
+
+                document.getElementById('userAge').addEventListener('input', function (e) {
+                    const age = parseInt(e.target.value);
+                    if (age < 35) {
+                        e.target.setCustomValidity('Idade mínima é 35 anos');
+                    } else {
+                        e.target.setCustomValidity('');
+                    }
+                });
+
+                document.getElementById('meetTime').addEventListener('input', function (e) {
+                    const time = e.target.value;
+                    const [hours] = time.split(':').map(Number);
+                    if (hours < 20 && hours > 4) {
+                        e.target.setCustomValidity('Horário deve ser entre 20:00 e 04:00');
+                    } else {
+                        e.target.setCustomValidity('');
+                    }
+                });
+            </script>
         </div>
     
-        <script>function toggleContract() {
-  const form = document.getElementById('contractForm');
-  form.classList.toggle('show');
-  if (!form.classList.contains('show')) {
-    document.getElementById('sscContract').reset();
-  }
-}
-function submitContract() {
-  const requiredFields = {
-    'userName': 'Nome',
-    'userAge': 'Idade',
-    'meetTime': 'Horário',
-    'location': 'Local'
-  };
-  for (const [id, label] of Object.entries(requiredFields)) {
-    const field = document.getElementById(id);
-    if (!field.value.trim()) {
-      alert(`Por favor preencha o campo ${label}`);
-      field.focus();
-      return;
-    }
-  }
-  const age = parseInt(document.getElementById('userAge').value);
-  if (age < 35) {
-    alert('Você precisa ter no mínimo 35 anos');
-    return;
-  }
-  const formData = {
-    name: document.getElementById('userName').value.trim(),
-    age: age,
-    time: document.getElementById('meetTime').value,
-    location: document.getElementById('location').value,
-    instructions: document.getElementById('specialInstructions').value.trim(),
-    services: [...document.querySelectorAll('input[name="services"]:checked')].map(cb => cb.value),
-    positions: [...document.querySelectorAll('input[name="positions"]:checked')].map(cb => cb.value),
-    roleplay: [...document.querySelectorAll('input[name="roleplay"]:checked')].map(cb => cb.value),
-    fetishes: [...document.querySelectorAll('input[name="fetishes"]:checked')].map(cb => cb.value)
-  };
-  if (!formData.services.length) {
-    alert('Por favor selecione pelo menos um serviço');
-    return;
-  }
-  if (!formData.positions.length) {
-    alert('Por favor selecione pelo menos uma posição');
-    return;
-  }
-  const message = `*CONTRATO DE ENCONTRO SSC*
---------------------------
-*DADOS BÁSICOS*
-👤 Nome: ${formData.name}
-📅 Idade: ${formData.age}
-⏰ Horário: ${formData.time}
-📍 Local: ${formData.location}
-
-*SERVIÇOS SELECIONADOS*
-${formData.services.map(s => `• ${s}`).join('\n')}
-
-*POSIÇÕES DESEJADAS*
-${formData.positions.map(p => `• ${p}`).join('\n')}
-
-*ROLEPLAY*
-${formData.roleplay.map(r => `• ${r}`).join('\n')}
-
-${formData.fetishes.length ? `*FETICHES*\n${formData.fetishes.map(f => `• ${f}`).join('\n')}\n` : ''}
-
-${formData.instructions ? `*INSTRUÇÕES ESPECIAIS*\n${formData.instructions}` : ''}
---------------------------`;
-  const encodedMessage = encodeURIComponent(message);
-  window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
-}
-document.getElementById('userAge').addEventListener('input', function (e) {
-  const age = parseInt(e.target.value);
-  if (age < 35) {
-    e.target.setCustomValidity('Idade mínima é 35 anos');
-  } else {
-    e.target.setCustomValidity('');
-  }
-});
-document.getElementById('meetTime').addEventListener('input', function (e) {
-  const time = e.target.value;
-  const [hours] = time.split(':').map(Number);
-  if (hours < 20 && hours > 4) {
-    e.target.setCustomValidity('Horário deve ser entre 20:00 e 04:00');
-  } else {
-    e.target.setCustomValidity('');
-  }
-});</script>
     </body>
     </html>
