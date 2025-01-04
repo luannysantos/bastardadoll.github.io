@@ -414,9 +414,86 @@
         text-align: center;
         line-height: 1.6;
     }
+    
+    #age-verification {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.98);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: white;
+    }
+
+    #age-verification h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #ff69b4;
+        text-align: center;
+    }
+
+    #age-verification p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    #age-verification button {
+        padding: 1rem 2rem;
+        margin: 0.5rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #age-verification .yes-btn {
+        background: #ff69b4;
+        color: white;
+    }
+
+    #age-verification .no-btn {
+        background: #666;
+        color: white;
+    }
+
+    #age-verification button:hover {
+        opacity: 0.9;
+    }
+
+    @media (max-width: 480px) {
+        #age-verification h2 {
+            font-size: 1.5rem;
+        }
+        
+        #age-verification p {
+            font-size: 1rem;
+        }
+        
+        #age-verification button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
     </style>
     </head>
     <body>
+        <div id="age-verification">
+            <h2>Aviso de Conte&#xfa;do Adulto</h2>
+            <p>Este site cont&#xe9;m material adulto expl&#xed;cito. Voc&#xea; confirma que tem mais de 18 anos e deseja continuar?</p>
+            <div>
+                <button class="yes-btn" onclick="verifyAge(true)">Sim, sou maior de 18</button>
+                <button class="no-btn" onclick="verifyAge(false)">N&#xe3;o, sair do site</button>
+            </div>
+        </div>
         <div class="profile-container">
             <div class="profile-header">
                 <h1 class="profile-title">L&#xed;via Saco&apos;s</h1>
@@ -500,12 +577,12 @@
                             <label>Escolha o Tempo:</label>
                             <select class="form-control" id="programDuration" required>
                                 <option value>Selecione...</option>
-                                <option value="20">20 Minutos - R$ 100,00</option>
-                                <option value="40">40 Minutos - R$ 150,00</option> 
-                                <option value="60">60 Minutos - R$ 250,00</option>
-                                <option value="quickBoquete">Boquete (10-15min) - R$ 50,00</option>
-                                <option value="quick69">69 (10-15min) - R$ 70,00</option>
-                                <option value="quickGP">Garganta Profunda (10-15min) - R$ 80,00</option>
+                                <option value="20">20 Minutos - R&#x24; 100,00</option>
+                                <option value="40">40 Minutos - R&#x24; 150,00</option> 
+                                <option value="60">60 Minutos - R&#x24; 250,00</option>
+                                <option value="quickBoquete">Boquete (10-15min) - R&#x24; 50,00</option>
+                                <option value="quick69">69 (10-15min) - R&#x24; 70,00</option>
+                                <option value="quickGP">Garganta Profunda (10-15min) - R&#x24; 80,00</option>
                             </select>
                         </div>
                         <div class="section-header">Informa&#xe7;&#xf5;es Pessoais</div>
@@ -698,40 +775,48 @@
                 </div>
             </div>
 
-            <script>
-                function toggleProgram() {
-                    const form = document.getElementById('programForm');
-                    form.classList.toggle('show');
-                    if (!form.classList.contains('show')) {
-                        document.getElementById('programContract').reset();
-                    }
-                }
-
-                function submitProgram() {
-                    const requiredFields = {
-                        'programDuration': 'Duração',
-                        'clientName': 'Nome', 
-                        'clientAge': 'Idade',
-                        'programTime': 'Horário'
-                    };
-                    
-                    for (const [id, label] of Object.entries(requiredFields)) {
-                        const field = document.getElementById(id);
-                        if (!field.value.trim()) {
-                            alert(`Por favor preencha o campo ${label}`);
-                            field.focus();
-                            return;
-                        }
-                    }
-
-                    const formData = {
-                        name: document.getElementById('clientName').value.trim(),
-                        age: document.getElementById('clientAge').value,
-                        time: document.getElementById('programTime').value,
-                        duration: document.getElementById('programDuration').value
-                    };
-
-                    const message = `*AGENDAMENTO DE PROGRAMA*
+            <script>function verifyAge(isAdult) {
+  if (isAdult) {
+    document.getElementById('age-verification').style.display = 'none';
+    localStorage.setItem('ageVerified', 'true');
+  } else {
+    window.location.href = 'https://www.google.com';
+  }
+}
+window.onload = function () {
+  if (localStorage.getItem('ageVerified') === 'true') {
+    document.getElementById('age-verification').style.display = 'none';
+  }
+};
+function toggleProgram() {
+  const form = document.getElementById('programForm');
+  form.classList.toggle('show');
+  if (!form.classList.contains('show')) {
+    document.getElementById('programContract').reset();
+  }
+}
+function submitProgram() {
+  const requiredFields = {
+    'programDuration': 'Duração',
+    'clientName': 'Nome',
+    'clientAge': 'Idade',
+    'programTime': 'Horário'
+  };
+  for (const [id, label] of Object.entries(requiredFields)) {
+    const field = document.getElementById(id);
+    if (!field.value.trim()) {
+      alert(`Por favor preencha o campo ${label}`);
+      field.focus();
+      return;
+    }
+  }
+  const formData = {
+    name: document.getElementById('clientName').value.trim(),
+    age: document.getElementById('clientAge').value,
+    time: document.getElementById('programTime').value,
+    duration: document.getElementById('programDuration').value
+  };
+  const message = `*AGENDAMENTO DE PROGRAMA*
                     --------------------------
                     *DADOS DO CLIENTE*
                     👤 Nome: ${formData.name}
@@ -745,41 +830,34 @@
                     📍 Vila São Pedro (próx. jardim paulista)
                        Em frente a Dutra KM 146
                     --------------------------`;
-                    const encodedMessage = encodeURIComponent(message);
-                    window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
-                }
-
-                function toggleContract() {
-                    const form = document.getElementById('contractForm');
-                    form.classList.toggle('show');
-                    if (!form.classList.contains('show')) {
-                        document.getElementById('sscContract').reset();
-                    }
-                }
-
-                function submitContract() {
-                    // Add your submit contract logic here
-                }
-
-                document.getElementById('userAge').addEventListener('input', function (e) {
-                    const age = parseInt(e.target.value);
-                    if (age < 35) {
-                        e.target.setCustomValidity('Idade mínima é 35 anos');
-                    } else {
-                        e.target.setCustomValidity('');
-                    }
-                });
-
-                document.getElementById('meetTime').addEventListener('input', function (e) {
-                    const time = e.target.value;
-                    const [hours] = time.split(':').map(Number);
-                    if (hours < 20 && hours > 4) {
-                        e.target.setCustomValidity('Horário deve ser entre 20:00 e 04:00');
-                    } else {
-                        e.target.setCustomValidity('');
-                    }
-                });
-            </script>
+  const encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/5512982572507?text=${encodedMessage}`);
+}
+function toggleContract() {
+  const form = document.getElementById('contractForm');
+  form.classList.toggle('show');
+  if (!form.classList.contains('show')) {
+    document.getElementById('sscContract').reset();
+  }
+}
+function submitContract() {}
+document.getElementById('userAge').addEventListener('input', function (e) {
+  const age = parseInt(e.target.value);
+  if (age < 35) {
+    e.target.setCustomValidity('Idade mínima é 35 anos');
+  } else {
+    e.target.setCustomValidity('');
+  }
+});
+document.getElementById('meetTime').addEventListener('input', function (e) {
+  const time = e.target.value;
+  const [hours] = time.split(':').map(Number);
+  if (hours < 20 && hours > 4) {
+    e.target.setCustomValidity('Horário deve ser entre 20:00 e 04:00');
+  } else {
+    e.target.setCustomValidity('');
+  }
+});</script>
         </div>
     
     </body>
