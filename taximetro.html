@@ -274,103 +274,141 @@
             </div>
         
             <script>let timer;
-        let startTime;
-        let isRunning = false;
-        let valorTotal = 0;
-        let valorPorMinuto = 0;
-        let periodoLimite = 0;
-        let tempoExcedido = false;
-        function startVideo() {
-          const videoFrame = document.getElementById('videoFrame');
-          videoFrame.src = "https://www.xvideos.com/embedframe/cfppv7e4d?autoplay=1";
-          const videoContainer = document.getElementById('videoContainer');
-          videoContainer.style.display = 'block';
-        }
-        function finalizarCorrida() {
-          if (isRunning) {
-            clearInterval(timer);
-            isRunning = false;
-            const now = new Date();
-            const diff = now - startTime;
-            const minutes = Math.floor(diff / 60000);
-            let total;
-            if (minutes < periodoLimite) {
-              total = valorTotal;
-            } else {
-              const segundosTotais = diff / 1000;
-              const segundosExcedidos = segundosTotais - periodoLimite * 60;
-              total = valorTotal + segundosExcedidos * (valorPorMinuto / 60);
-            }
-            document.getElementById('finalDuration').textContent = document.getElementById('miniTimer').textContent;
-            document.getElementById('finalTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-            document.getElementById('finalScreen').classList.remove('hidden');
-            document.getElementById('finalScreen').classList.add('show');
-            document.getElementById('mainContainer').classList.add('hide');
-            document.getElementById('miniDisplay').classList.remove('show');
-            document.getElementById('videoContainer').style.display = 'none';
-            document.getElementById('videoFrame').src = '';
-          }
-        }
-        function resetApp() {
-          document.getElementById('finalScreen').classList.add('hidden');
-          document.getElementById('finalScreen').classList.remove('show');
-          document.getElementById('mainContainer').classList.remove('hide');
-          document.getElementById('miniDisplay').classList.remove('show');
-          document.getElementById('videoContainer').style.display = 'none';
-          document.getElementById('videoFrame').src = '';
-          document.getElementById('valor').value = '';
-          document.getElementById('periodo').value = '';
-          isRunning = false;
-          clearInterval(timer);
-          startTime = null;
-          valorTotal = 0;
-          valorPorMinuto = 0;
-          periodoLimite = 0;
-          tempoExcedido = false;
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('miniDisplay').classList.remove('show');
-        });
-        document.getElementById('iniciar').addEventListener('click', function () {
-          const valorInput = document.getElementById('valor').value;
-          const periodoInput = document.getElementById('periodo').value;
-          if (!valorInput || !periodoInput || valorInput <= 0 || periodoInput <= 0) {
-            alert('Por favor, preencha todos os campos corretamente com valores positivos.');
-            return;
-          }
-          valorTotal = parseFloat(valorInput);
-          periodoLimite = parseInt(periodoInput);
-          valorPorMinuto = valorTotal / periodoLimite;
-          startTime = new Date();
-          isRunning = true;
-          tempoExcedido = false;
-          document.getElementById('miniDisplay').classList.add('show');
-          document.getElementById('mainContainer').classList.add('hide');
-          startVideo();
-          if (timer) {
-            clearInterval(timer);
-          }
-          timer = setInterval(updateTimer, 1000);
-        });
-        function updateTimer() {
-          if (!isRunning || !startTime) return;
-          const now = new Date();
-          const diff = now - startTime;
-          const hours = Math.floor(diff / 3600000);
-          const minutes = Math.floor(diff % 3600000 / 60000);
-          const seconds = Math.floor(diff % 60000 / 1000);
-          const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-          document.getElementById('miniTimer').textContent = timeStr;
-          let total;
-          if (hours >= periodoLimite) {
-            const segundosTotais = diff / 1000;
-            const segundosExcedidos = segundosTotais - periodoLimite * 60;
-            total = valorTotal + segundosExcedidos * (valorPorMinuto / 60);
-          } else {
-            total = minutes * valorPorMinuto + seconds / 60 * valorPorMinuto;
-          }
-          document.getElementById('miniTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-        }
-        </script>
+let startTime;
+let isRunning = false;
+let valorTotal = 0;
+let valorPorMinuto = 0;
+let periodoLimite = 0;
+let tempoExcedido = false;
+function startVideo() {
+  const videoFrame = document.getElementById('videoFrame');
+  videoFrame.src = "https://www.xvideos.com/embedframe/cfppv7e4d?autoplay=1";
+  const videoContainer = document.getElementById('videoContainer');
+  videoContainer.style.display = 'block';
+}
+function finalizarCorrida() {
+  if (isRunning) {
+    clearInterval(timer);
+    isRunning = false;
+    clearStorage();
+    const now = new Date();
+    const diff = now - startTime;
+    const minutes = Math.floor(diff / 60000);
+    let total;
+    if (minutes < periodoLimite) {
+      total = valorTotal;
+    } else {
+      const segundosTotais = diff / 1000;
+      const segundosExcedidos = segundosTotais - periodoLimite * 60;
+      total = valorTotal + segundosExcedidos * (valorPorMinuto / 60);
+    }
+    document.getElementById('finalDuration').textContent = document.getElementById('miniTimer').textContent;
+    document.getElementById('finalTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    document.getElementById('finalScreen').classList.remove('hidden');
+    document.getElementById('finalScreen').classList.add('show');
+    document.getElementById('mainContainer').classList.add('hide');
+    document.getElementById('miniDisplay').classList.remove('show');
+    document.getElementById('videoContainer').style.display = 'none';
+    document.getElementById('videoFrame').src = '';
+  }
+}
+function resetApp() {
+  clearStorage();
+  document.getElementById('finalScreen').classList.add('hidden');
+  document.getElementById('finalScreen').classList.remove('show');
+  document.getElementById('mainContainer').classList.remove('hide');
+  document.getElementById('miniDisplay').classList.remove('show');
+  document.getElementById('videoContainer').style.display = 'none';
+  document.getElementById('videoFrame').src = '';
+  document.getElementById('valor').value = '';
+  document.getElementById('periodo').value = '';
+  isRunning = false;
+  clearInterval(timer);
+  startTime = null;
+  valorTotal = 0;
+  valorPorMinuto = 0;
+  periodoLimite = 0;
+  tempoExcedido = false;
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('miniDisplay').classList.remove('show');
+  loadFromStorage();
+});
+document.getElementById('iniciar').addEventListener('click', function () {
+  const valorInput = document.getElementById('valor').value;
+  const periodoInput = document.getElementById('periodo').value;
+  if (!valorInput || !periodoInput || valorInput <= 0 || periodoInput <= 0) {
+    alert('Por favor, preencha todos os campos corretamente com valores positivos.');
+    return;
+  }
+  valorTotal = parseFloat(valorInput);
+  periodoLimite = parseInt(periodoInput);
+  valorPorMinuto = valorTotal / periodoLimite;
+  startTime = new Date();
+  isRunning = true;
+  tempoExcedido = false;
+  document.getElementById('miniDisplay').classList.add('show');
+  document.getElementById('mainContainer').classList.add('hide');
+  startVideo();
+  if (timer) {
+    clearInterval(timer);
+  }
+  timer = setInterval(updateTimer, 1000);
+});
+function updateTimer() {
+  if (!isRunning || !startTime) return;
+  const now = new Date();
+  const diff = now - startTime;
+  const hours = Math.floor(diff / 3600000);
+  const minutes = Math.floor(diff % 3600000 / 60000);
+  const seconds = Math.floor(diff % 60000 / 1000);
+  const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  document.getElementById('miniTimer').textContent = timeStr;
+  let total;
+  if (hours >= periodoLimite) {
+    const segundosTotais = diff / 1000;
+    const segundosExcedidos = segundosTotais - periodoLimite * 60;
+    total = valorTotal + segundosExcedidos * (valorPorMinuto / 60);
+  } else {
+    total = minutes * valorPorMinuto + seconds / 60 * valorPorMinuto;
+  }
+  document.getElementById('miniTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+  saveToStorage();
+}
+function saveToStorage() {
+  if (isRunning) {
+    localStorage.setItem('taximetroData', JSON.stringify({
+      startTime: startTime.getTime(),
+      valorTotal,
+      periodoLimite,
+      valorPorMinuto,
+      isRunning
+    }));
+  }
+}
+function loadFromStorage() {
+  const savedData = localStorage.getItem('taximetroData');
+  if (savedData) {
+    const data = JSON.parse(savedData);
+    if (data.isRunning) {
+      startTime = new Date(data.startTime);
+      valorTotal = data.valorTotal;
+      periodoLimite = data.periodoLimite;
+      valorPorMinuto = data.valorPorMinuto;
+      isRunning = data.isRunning;
+      document.getElementById('miniDisplay').classList.add('show');
+      document.getElementById('mainContainer').classList.add('hide');
+      startVideo();
+      if (timer) {
+        clearInterval(timer);
+      }
+      timer = setInterval(updateTimer, 1000);
+    }
+  }
+}
+function clearStorage() {
+  localStorage.removeItem('taximetroData');
+}
+</script>
         </body>
         </html>
