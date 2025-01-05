@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <base href="https://www.xvideos.com/">
+    <base href="https://bastardadoll.github.io/">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Taxímetro Da Putaria</title>
@@ -280,6 +280,10 @@ let valorTotal = 0;
 let valorPorMinuto = 0;
 let periodoLimite = 0;
 let tempoExcedido = false;
+let alertaSound;
+let periodoSound;
+let alertaPlayed = false;
+let periodoPlayed = false;
 function startVideo() {
   const videoFrame = document.getElementById('videoFrame');
   videoFrame.src = "https://www.xvideos.com/embedframe/cfppv7e4d?autoplay=1";
@@ -329,6 +333,8 @@ function resetApp() {
   valorPorMinuto = 0;
   periodoLimite = 0;
   tempoExcedido = false;
+  alertaPlayed = false;
+  periodoPlayed = false;
 }
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('miniDisplay').classList.remove('show');
@@ -362,6 +368,15 @@ function updateTimer() {
   const hours = Math.floor(diff / 3600000);
   const minutes = Math.floor(diff % 3600000 / 60000);
   const seconds = Math.floor(diff % 60000 / 1000);
+  const timeUntilEnd = periodoLimite - minutes;
+  if (timeUntilEnd === 5 && !alertaPlayed && seconds === 0) {
+    alertaSound.play();
+    alertaPlayed = true;
+  }
+  if (minutes >= periodoLimite && !periodoPlayed && seconds === 0) {
+    periodoSound.play();
+    periodoPlayed = true;
+  }
   const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   document.getElementById('miniTimer').textContent = timeStr;
   let total;
@@ -382,7 +397,9 @@ function saveToStorage() {
       valorTotal,
       periodoLimite,
       valorPorMinuto,
-      isRunning
+      isRunning,
+      alertaPlayed,
+      periodoPlayed
     }));
   }
 }
@@ -396,6 +413,8 @@ function loadFromStorage() {
       periodoLimite = data.periodoLimite;
       valorPorMinuto = data.valorPorMinuto;
       isRunning = data.isRunning;
+      alertaPlayed = data.alertaPlayed || false;
+      periodoPlayed = data.periodoPlayed || false;
       document.getElementById('miniDisplay').classList.add('show');
       document.getElementById('mainContainer').classList.add('hide');
       startVideo();
@@ -409,6 +428,7 @@ function loadFromStorage() {
 function clearStorage() {
   localStorage.removeItem('taximetroData');
 }
-</script>
+alertaSound = new Audio('alerta.mp3');
+periodoSound = new Audio('periodo.mp3');</script>
         </body>
         </html>
