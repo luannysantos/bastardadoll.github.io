@@ -520,7 +520,7 @@
             
             let message = `Olá! Gostaria de fazer o seguinte pedido:\n\nNome: *${nome}*\n\n`;
             cart.forEach(item => {
-                message += `${item.quantity} - ${item.name} (${item.size})${item.extraBorda ? ' com borda recheada' : ''} - R$ ${(item.price * item.quantity).toFixed(2)} \n`;
+                message += `${item.quantity} - ${item.name} (${item.size})${item.extraBorda ? ' com Molho Branco' : ''} - R$ ${(item.price * item.quantity).toFixed(2)} \n`;
             });
     
             let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
