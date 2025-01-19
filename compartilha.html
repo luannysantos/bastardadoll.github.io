@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <base href="https://wa.me/5512982572507">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Levi - Submissas</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #e2e2e2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .profile-container {
+        max-width: 1200px;
+        margin: 2rem;
+        padding: 2rem;
+        background: rgba(70, 130, 180, 0.05);
+        border: 2px solid #4682b4;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(70, 130, 180, 0.1);
+    }
+    
+    .profile-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        animation: fadeIn 1s ease;
+    }
+    
+    .profile-title {
+        font-size: 2.5rem;
+        color: #4682b4;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 10px rgba(70, 130, 180, 0.3);
+    }
+    
+    .profile-subtitle {
+        font-size: 1.2rem;
+        color: #e2e2e2;
+        opacity: 0.8;
+    }
+    
+    .emoji-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #4682b4;
+    }
+    
+    .profile-section {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(70, 130, 180, 0.3);
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.03);
+        animation: slideIn 1s ease;
+    }
+    
+    .rule-item {
+        margin: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    
+    .rule-item:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #4682b4;
+    }
+    
+    .sub-rule {
+        margin-left: 2rem;
+        opacity: 0.9;
+    }
+    
+    .warning {
+        color: #ff6b6b;
+        font-weight: bold;
+    }
+    
+    .emoji {
+        margin-right: 0.5rem;
+    }
+    
+    .contract-section {
+        margin-top: 2rem;
+        padding: 2rem;
+        border: 2px solid #4682b4;
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.1);
+    }
+    
+    .toggle-contract {
+        width: 100%;
+        padding: 1rem;
+        background: #4682b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .toggle-contract:hover {
+        background: #357ab7;
+    }
+    .programa {
+        width: 100%;
+        padding: 1rem;
+        background: #4682b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .programa:hover {
+        background: #357ab7;
+    }
+    .contract-form {
+        display: none;
+        padding: 1rem;
+    }
+    
+    .contract-form.show {
+        display: block;
+        animation: slideDown 0.5s ease;
+    }
+    
+    .form-group {
+        margin: 1rem 0;
+        padding: 1.2rem;
+        border: 1px solid rgba(70, 130, 180, 0.3);
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.03);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border: 2px solid rgba(70, 130, 180, 0.4);
+        border-radius: 8px;
+        background: rgba(22, 33, 62, 0.9);
+        color: #e2e2e2;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: #4682b4;
+        box-shadow: 0 0 5px rgba(70, 130, 180, 0.3);
+    }
+    
+    .form-control option {
+        background: #16213e;
+        color: #e2e2e2;
+    }
+    
+    select.form-control {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234682b4%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.7rem top 50%;
+        background-size: 0.65rem auto;
+        padding-right: 2rem;
+    }
+    
+    .submit-contract {
+        width: 100%;
+        padding: 1rem;
+        background: #4682b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+    
+    .submit-contract:hover {
+        background: #357ab7;
+    }
+    
+    .option-group {
+        margin: 1.2rem 0;
+        padding: 1.2rem;
+        border: 1px solid rgba(70, 130, 180, 0.3);
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.03);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .option-subgroup {
+        margin: 1rem 0;
+        padding: 1.2rem;
+        border: 1px solid rgba(70, 130, 180, 0.2);
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.02);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .option-subgroup label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #4682b4;
+    }
+    
+    .option-subgroup div {
+        margin: 0.8rem 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .option-subgroup input[type="checkbox"] {
+        margin-right: 0.8rem;
+    }
+    
+    .option-subgroup input[type="checkbox"] + label {
+        display: inline;
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+    
+    .section-header {
+        font-size: 1.4rem;
+        color: #4682b4;
+        margin: 1.5rem 0 1rem 0;
+        padding: 0.8rem 0;
+        border-bottom: 2px solid rgba(70, 130, 180, 0.3);
+        width: 100%;
+        text-align: left;
+    }
+    
+    .info-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #4682b4;
+        color: white;
+        font-size: 12px;
+        margin-left: 5px;
+        cursor: help;
+        position: relative;
+    }
+    
+    .info-tooltip {
+        display: none;
+        position: absolute;
+        background: rgba(70, 130, 180, 0.9);
+        color: white;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        width: max-content;
+        max-width: 200px;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.4;
+        z-index: 100;
+        left: 50%;
+        top: -5px;
+        margin-left: 0;
+        transform: translateX(-50%);
+    }
+    
+    .info-icon:hover .info-tooltip {
+        display: block;
+    }
+    
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @media (max-width: 768px) {
+        .profile-container {
+            margin: 0.5rem;
+            padding: 0.5rem;
+            max-width: 100%;
+        }
+
+        .profile-title {
+            font-size: 1.8rem;
+        }
+
+        .profile-subtitle {
+            font-size: 1rem;
+        }
+
+        .emoji-title {
+            font-size: 1.5rem;
+        }
+
+        .contract-section {
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+        }
+        
+        .form-group {
+            padding: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .option-group {
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .option-subgroup {
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+        }
+        
+        .form-control {
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .submit-contract, .toggle-contract {
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .info-tooltip {
+            width: 200px;
+            white-space: normal;
+            text-align: justify;
+            font-size: 0.8rem;
+            padding: 6px;
+        }
+
+        .rule-item, .sub-rule {
+            font-size: 0.9rem;
+            margin: 0.4rem 0;
+        }
+
+        .info-icon {
+            width: 14px;
+            height: 14px;
+            font-size: 10px;
+        }
+
+        .profile-section {
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .profile-container {
+            margin: 0.2rem;
+            padding: 0.2rem;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            padding: 0.3rem;
+        }
+        
+        .form-group {
+            padding: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        
+        .option-group {
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+        }
+        
+        .option-subgroup {
+            padding: 0.6rem;
+            margin: 0.6rem 0;
+        }
+        
+        .form-control {
+            padding: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .info-tooltip {
+            width: 180px;
+            font-size: 0.75rem;
+        }
+    }
+    .program-form {
+        display: none;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .program-form.show {
+        display: block;
+        animation: slideDown 0.5s ease;
+    }
+    .couple-section {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+        .couple-section {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+    .partner-section {
+        flex: 1;
+        padding: 1.5rem;
+        border: 2px solid rgba(70, 130, 180, 0.3);
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.05);
+    }
+    .partner-title {
+        font-size: 1.4rem;
+        color: #4682b4;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(70, 130, 180, 0.3);
+    }
+    .location-info {
+        padding: 1.5rem;
+        margin: 1rem 0;
+        background: rgba(70, 130, 180, 0.03);
+        border: 1px solid rgba(70, 130, 180, 0.3);
+        border-radius: 15px;
+        text-align: center;
+        line-height: 1.8;
+    }
+    
+    #age-verification {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.98);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: white;
+    }
+
+    #age-verification h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #4682b4;
+        text-align: center;
+    }
+
+    #age-verification p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    #age-verification button {
+        padding: 1rem 2rem;
+        margin: 0.5rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #age-verification .yes-btn {
+        background: #4682b4;
+        color: white;
+    }
+
+    #age-verification .no-btn {
+        background: #666;
+        color: white;
+    }
+
+    #age-verification button:hover {
+        opacity: 0.9;
+    }
+
+    @media (max-width: 480px) {
+        #age-verification h2 {
+            font-size: 1.5rem;
+        }
+        
+        #age-verification p {
+            font-size: 1rem;
+        }
+        
+        #age-verification button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+    #password-verification {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.98);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: white;
+        display: none;
+    }
+
+    #password-verification h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #4682b4;
+        text-align: center;
+    }
+
+    #password-verification p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    #password-verification input {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        border: 2px solid #4682b4;
+        border-radius: 8px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        width: 200px;
+    }
+
+    #password-verification button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #4682b4;
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    #password-verification button:hover {
+        background: #357ab7;
+    }
+
+    @media (max-width: 480px) {
+        #password-verification h2 {
+            font-size: 1.5rem;
+        }
+        
+        #password-verification p {
+            font-size: 1rem;
+        }
+        
+        #password-verification input,
+        #password-verification button {
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+    }
+    .submit-contract, .toggle-contract, .programa {
+        width: 100%;
+        padding: 1rem;
+        margin: 1rem 0;
+        background: #4682b4;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    input[type="checkbox"] + label {
+        margin-left: 0.5rem;
+        vertical-align: middle;
+    }
+    .profile-section {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(70, 130, 180, 0.3);
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.03);
+    }
+    .contract-form, .program-form {
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border: 1px solid rgba(70, 130, 180, 0.3);
+        border-radius: 15px;
+        background: rgba(70, 130, 180, 0.03);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    @media (max-width: 768px) {
+        .form-group,
+        .option-group,
+        .option-subgroup,
+        .profile-section,
+        .location-info {
+            padding: 1rem;
+            margin: 0.8rem 0;
+        }
+
+        .section-header {
+            font-size: 1.2rem;
+            margin: 1rem 0 0.8rem 0;
+        }
+
+        .form-control, 
+        .submit-contract, 
+        .toggle-contract, 
+        .programa {
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+    }
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #e2e2e2;
+    }
+    .subsection-title {
+        color: #4682b4;
+        font-size: 1.2rem;
+        margin: 1.5rem 0 0.8rem 0;
+        border-bottom: 1px solid rgba(70, 130, 180, 0.3);
+        padding-bottom: 0.5rem;
+    }
+
+    .rules-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 1rem 0;
+    }
+
+    .rules-list li {
+        margin: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .rules-list li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #4682b4;
+    }
+
+    .glossary-item {
+        margin: 1rem 0;
+        padding: 0.8rem;
+        background: rgba(70, 130, 180, 0.03);
+        border-radius: 8px;
+    }
+
+    .glossary-item strong {
+        color: #4682b4;
+    }
+
+    .section-content p {
+        margin: 1rem 0;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .subsection-title {
+            font-size: 1.1rem;
+            margin: 1.2rem 0 0.6rem 0;
+        }
+
+        .glossary-item {
+            padding: 0.6rem;
+        }
+    }
+    .couple-info {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .info-half {
+        flex: 1;
+    }
+
+    .info-half label {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .info-half input {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .couple-info {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+    .help-text {
+        display: block;
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.7);
+        margin-top: 0.5rem;
+        font-style: italic;
+    }
+    
+    .contract-form h3 {
+        color: #4682b4;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .contract-form h4 {
+        color: #4682b4;
+        font-size: 1.4rem;
+        margin: 1.5rem 0 1rem;
+        border-bottom: 1px solid rgba(70, 130, 180, 0.3);
+        padding-bottom: 0.5rem;
+    }
+
+    .contract-form h5 {
+        color: #e2e2e2;
+        font-size: 1.2rem;
+        margin: 1rem 0;
+    }
+
+    .contract-form textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+    .sub-card {
+        border: 2px solid #4682b4;
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        background: rgba(70, 130, 180, 0.03);
+    }
+    
+    .sub-name {
+        font-size: 1.8rem;
+        color: #4682b4;
+        margin-bottom: 1rem;
+    }
+    
+    .sub-details {
+        color: #e2e2e2;
+        margin-bottom: 1rem;
+    }
+    
+    .sub-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .stat-item {
+        background: rgba(70, 130, 180, 0.05);
+        padding: 0.8rem;
+        border-radius: 8px;
+    }
+    
+    .dom-header {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(70, 130, 180, 0.1);
+        border-radius: 15px;
+        margin-bottom: 2rem;
+    }
+    
+    .dom-title {
+        font-size: 2.5rem;
+        color: #4682b4;
+        margin-bottom: 0.5rem;
+    }
+    
+    .dom-subtitle {
+        font-size: 1.2rem;
+        color: #e2e2e2;
+    }
+
+    .group-banner {
+        background: linear-gradient(135deg, rgba(70, 130, 180, 0.1) 0%, rgba(70, 130, 180, 0.2) 100%);
+        border: 2px solid #4682b4;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem 0;
+        text-align: center;
+    }
+
+    .banner-title {
+        font-size: 2rem;
+        color: #4682b4;
+        margin-bottom: 1rem;
+    }
+
+    .banner-text {
+        font-size: 1.2rem;
+        color: #e2e2e2;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .target-audiences {
+        text-align: left;
+        background: rgba(70, 130, 180, 0.05);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+    }
+
+    .target-audiences h3 {
+        color: #4682b4;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .target-audiences ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .target-audiences li {
+        margin: 0.8rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .target-audiences li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #4682b4;
+    }
+
+    .audience-type {
+        color: #4682b4;
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+
+    .join-group {
+        background: #4682b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .join-group:hover {
+        background: #357ab7;
+    }
+
+    @media (max-width: 768px) {
+        .group-banner {
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .banner-title {
+            font-size: 1.5rem;
+        }
+        
+        .banner-text {
+            font-size: 1rem;
+        }
+        
+        .target-audiences {
+            padding: 1rem;
+        }
+    }
+    
+    .audience-desc {
+        font-size: 0.9rem;
+        color: #e2e2e2;
+        margin: 0.5rem 0 1rem 1.5rem;
+        line-height: 1.6;
+        opacity: 0.9;
+        background: rgba(70, 130, 180, 0.03);
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 2px solid #4682b4;
+    }
+
+    @media (max-width: 768px) {
+        .audience-desc {
+            font-size: 0.8rem;
+            margin: 0.5rem 0 1rem 0.5rem;
+            padding: 0.8rem;
+        }
+    }
+    .rules-section {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: rgba(70, 130, 180, 0.04);
+        border-left: 3px solid #4682b4;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .rules-section h4 {
+        color: #4682b4;
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .rules-section ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .rules-section ul li {
+        margin: 0.5rem 0;
+        padding-left: 1.2rem;
+        position: relative;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: #e2e2e2;
+    }
+
+    .rules-section ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #4682b4;
+    }
+
+    @media (max-width: 768px) {
+        .rules-section {
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+        }
+        
+        .rules-section ul li {
+            font-size: 0.85rem;
+        }
+    }
+    .group-banner.hidden {
+        display: none;
+        animation: slideUp 0.5s ease;
+    }
+
+    @keyframes slideUp {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-20px); }
+    }
+    
+    .banner-controls {
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .toggle-banner {
+        background: #4682b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .toggle-banner:hover {
+        background: #357ab7;
+    }
+
+    .toggle-banner .show-text,
+    .toggle-banner .hide-text {
+        display: inline-block;
+    }
+
+    .group-banner.hidden + .banner-controls .show-text {
+        display: inline-block;
+    }
+
+    .group-banner.hidden + .banner-controls .hide-text {
+        display: none;
+    }
+
+    .group-banner:not(.hidden) + .banner-controls .show-text {
+        display: none;
+    }
+
+    .group-banner:not(.hidden) + .banner-controls .hide-text {
+        display: inline-block;
+    }
+
+    .audience-item {
+        border: 1px solid rgba(70, 130, 180, 0.2);
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 0;
+        background: rgba(70, 130, 180, 0.02);
+        cursor: pointer;
+    }
+
+    .audience-desc,
+    .rules-section {
+        display: none;
+        margin-top: 1rem;
+    }
+
+    .audience-item.expanded .audience-desc,
+    .audience-item.expanded .rules-section {
+        display: block;
+        animation: slideDown 0.5s ease;
+    }
+
+    .audience-type::after {
+        content: "▼";
+        float: right;
+        transition: transform 0.3s ease;
+    }
+
+    .audience-item.expanded .audience-type::after {
+        transform: rotate(180deg);
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .modal-content {
+      background: rgba(70, 130, 180, 0.05);
+      border: 2px solid #4682b4;
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      color: #e2e2e2;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .submit-btn, .cancel-btn {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn {
+      background: #4682b4;
+      color: white;
+    }
+
+    .cancel-btn {
+      background: #666;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background: #357ab7;
+    }
+
+    .cancel-btn:hover {
+      background: #555;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        padding: 1rem;
+        width: 95%;
+      }
+      
+      .submit-btn, .cancel-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+      }
+    }
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .checkbox-group div {
+      display: flex;
+      align-items: center;
+    }
+    
+    .preferences-section {
+      background: rgba(70, 130, 180, 0.03);
+      border: 1px solid rgba(70, 130, 180, 0.2);
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .preferences-section h5 {
+      color: #4682b4;
+      margin: 1rem 0 0.5rem;
+    }
+    </style>
+</head>
+<body>
+    <div id="password-verification" style="display: none;">
+        <h2>&#xc1;rea Restrita - Dom Levi</h2>
+        <p>Por favor insira a senha para acessar:</p>
+        <form id="password-form" onsubmit="verifyPassword(event)">
+            <input type="password" id="password-input" placeholder="Senha">
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+    <div id="age-verification">
+        <h2>Conte&#xfa;do Adulto - Dom Levi</h2>
+        <p>Este site cont&#xe9;m material adulto expl&#xed;cito. Voc&#xea; confirma que tem mais de 18 anos e deseja continuar?</p>
+        <div>
+            <button class="yes-btn" onclick="verifyAge(true)">Sim, sou maior de 18</button>
+            <button class="no-btn" onclick="verifyAge(false)">N&#xe3;o, sair do site</button>
+        </div>
+    </div>
+    <div class="profile-container">
+        <div class="dom-header">
+            <h1 class="dom-title">Dom Levi</h1>
+            <div class="dom-subtitle">Dominador Experiente - 46 anos</div>
+        </div>
+
+        <div class="group-banner hidden">
+            <h2 class="banner-title">Grupo Privado Dom Levi</h2>
+            <p class="banner-text">Participe do nosso grupo exclusivo e tenha acesso a conte&#xfa;do premium, eventos especiais e networking com outros membros da comunidade BDSM.</p>
+            <div class="target-audiences">
+                <h3>P&#xfa;blico Alvo:</h3>
+                <ul>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Casais D/s:</span> Homem dominador e mulher submissa
+                        <p class="audience-desc">Casais que buscam aprofundar sua din&#xe2;mica D/s, onde o homem assume papel dominador e a mulher submissa. Ideal para casais que desejam explorar protocolos, rituais e pr&#xe1;ticas BDSM de forma segura e consensual. Oferecemos mentoria especializada para desenvolver a domina&#xe7;&#xe3;o masculina e submiss&#xe3;o feminina, incluindo treinamento em bondage, disciplina, e servid&#xe3;o dom&#xe9;stica. Experi&#xea;ncia pr&#xe9;via n&#xe3;o &#xe9; necess&#xe1;ria, mas comprometimento com o estilo de vida D/s &#xe9; fundamental.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Sigilo absoluto sobre todas as atividades e membros do grupo</li>
+                                <li>Participa&#xe7;&#xe3;o consistente em eventos e discuss&#xf5;es</li>
+                                <li>Respeito aos protocolos estabelecidos para casais D/s</li>
+                                <li>Disponibilidade para encontros mensais presenciais</li>
+                                <li>Avalia&#xe7;&#xe3;o individual do casal antes da aceita&#xe7;&#xe3;o</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Casais D/s:</span> Homem submisso e mulher dominadora
+                        <p class="audience-desc">Casais interessados em femdom, com homem submisso e mulher dominadora. Perfeito para casais explorando invers&#xe3;o de pap&#xe9;is e domina&#xe7;&#xe3;o feminina. Oferecemos orienta&#xe7;&#xe3;o em pr&#xe1;ticas como pegging, humilha&#xe7;&#xe3;o controlada, CBT e outros aspectos da domina&#xe7;&#xe3;o feminina. Focamos no desenvolvimento da confian&#xe7;a da Dominadora e no treinamento do submisso masculino. Ideal para casais iniciantes ou experientes que desejam aprofundar sua din&#xe2;mica femdom.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Compromisso com discri&#xe7;&#xe3;o total</li>
+                                <li>Experi&#xea;ncia pr&#xe9;via em din&#xe2;micas femdom</li>
+                                <li>Respeito aos protocolos de femdom do grupo</li>
+                                <li>Participa&#xe7;&#xe3;o regular em workshops</li>
+                                <li>Entrevista individual do casal requerida</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Casais D/D:</span> Homem dominador e mulher dominadora
+                        <p class="audience-desc">Casais onde ambos s&#xe3;o dominadores, interessados em compartilhar experi&#xea;ncias e t&#xe9;cnicas de domina&#xe7;&#xe3;o. Ideal para casais que desejam explorar o poder da dupla domina&#xe7;&#xe3;o sobre submissos/as. Oferecemos orienta&#xe7;&#xe3;o em pr&#xe1;ticas avan&#xe7;adas de BDSM, gest&#xe3;o de dungeon, e t&#xe9;cnicas de domina&#xe7;&#xe3;o psicol&#xf3;gica. Perfeito para casais experientes que buscam expandir seus horizontes na domina&#xe7;&#xe3;o conjunta.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Compromisso com discri&#xe7;&#xe3;o total</li>
+                                <li>Experi&#xea;ncia pr&#xe9;via em din&#xe2;micas D/D</li>
+                                <li>Respeito aos protocolos de domina&#xe7;&#xe3;o conjunta do grupo</li>
+                                <li>Participa&#xe7;&#xe3;o regular em workshops avan&#xe7;ados</li>
+                                <li>Entrevista individual do casal requerida</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Individuais:</span> Homens dominadores 35+
+                        <p class="audience-desc">Homens maduros com genu&#xed;no interesse em domina&#xe7;&#xe3;o e BDSM. Buscamos dominadores experientes ou iniciantes comprometidos com aprendizado s&#xe9;rio das pr&#xe1;ticas BDSM. Oferecemos mentoria em t&#xe9;cnicas de domina&#xe7;&#xe3;o, protocolos, bondage e disciplina. Ideal para homens que valorizam experi&#xea;ncia, maturidade e responsabilidade no BDSM. Foco em desenvolvimento de habilidades de domina&#xe7;&#xe3;o e lideran&#xe7;a em relacionamentos D/s.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Compromisso com discri&#xe7;&#xe3;o total</li>
+                                <li>Experi&#xea;ncia pr&#xe9;via em BDSM</li>
+                                <li>Respeito aos protocolos do grupo</li>
+                                <li>Participa&#xe7;&#xe3;o regular em workshops</li>
+                                <li>Entrevista individual requerida</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Individuais:</span> Mulheres submissas
+                        <p class="audience-desc">Mulheres que desejam explorar sua submiss&#xe3;o natural de forma segura e consensual. Oferecemos treinamento em protocolos de submiss&#xe3;o, postura, servid&#xe3;o pessoal e t&#xe9;cnicas de prazer. Ideal para iniciantes ou experientes que buscam aprofundar sua entrega e submiss&#xe3;o. Foco em desenvolvimento pessoal, limites saud&#xe1;veis e t&#xe9;cnicas de submiss&#xe3;o. Ambiente seguro e respeitoso para explora&#xe7;&#xe3;o da submiss&#xe3;o feminina.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Compromisso com discri&#xe7;&#xe3;o total</li>
+                                <li>Experi&#xea;ncia pr&#xe9;via em submiss&#xe3;o</li>
+                                <li>Respeito aos protocolos de submiss&#xe3;o do grupo</li>
+                                <li>Participa&#xe7;&#xe3;o regular em workshops</li>
+                                <li>Entrevista individual requerida</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Individuais:</span> Mulheres dominadoras
+                        <p class="audience-desc">Dominadoras iniciantes ou experientes interessadas em aperfei&#xe7;oar t&#xe9;cnicas de domina&#xe7;&#xe3;o feminina. Oferecemos mentoria em pr&#xe1;ticas de femdom, gest&#xe3;o de submissos, t&#xe9;cnicas de domina&#xe7;&#xe3;o psicol&#xf3;gica e f&#xed;sica. Ideal para mulheres que desejam desenvolver sua autoridade natural e presen&#xe7;a dominadora. Foco em empoderamento feminino atrav&#xe9;s da domina&#xe7;&#xe3;o consensual e t&#xe9;cnicas avan&#xe7;adas de BDSM.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Compromisso com discri&#xe7;&#xe3;o total</li>
+                                <li>Experi&#xea;ncia pr&#xe9;via em femdom</li>
+                                <li>Respeito aos protocolos de femdom do grupo</li>
+                                <li>Participa&#xe7;&#xe3;o regular em workshops avan&#xe7;ados</li>
+                                <li>Entrevista individual requerida</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Individuais:</span> Bonecas submissas
+                        <p class="audience-desc">Submissas trans que desejam desenvolver sua feminilidade e submiss&#xe3;o em ambiente seguro e respeitoso. Oferecemos treinamento espec&#xed;fico em protocolos de submiss&#xe3;o, feminiza&#xe7;&#xe3;o, servid&#xe3;o pessoal e t&#xe9;cnicas de prazer. Ideal para quem busca explorar sua natureza submissa com dominadores experientes. Foco em desenvolvimento pessoal, limites saud&#xe1;veis e t&#xe9;cnicas de submiss&#xe3;o adaptadas &#xe0;s necessidades espec&#xed;ficas.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Compromisso com discri&#xe7;&#xe3;o total</li>
+                                <li>Experi&#xea;ncia pr&#xe9;via em submiss&#xe3;o</li>
+                                <li>Respeito aos protocolos de submiss&#xe3;o do grupo</li>
+                                <li>Participa&#xe7;&#xe3;o regular em workshops</li>
+                                <li>Entrevista individual requerida</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="audience-item" onclick="toggleAudienceDetails(this)">
+                        <span class="audience-type">Casais D/s:</span> Homem submisso e mulher submissa
+                        <p class="audience-desc">Casais onde ambos s&#xe3;o submissos, buscando orienta&#xe7;&#xe3;o e treinamento em submiss&#xe3;o conjunta. Oferecemos treinamento especializado em protocolos de submiss&#xe3;o, servitude dom&#xe9;stica, e t&#xe9;cnicas de prazer focadas na submiss&#xe3;o total do casal. Ideal para casais que desejam explorar sua natureza submissa juntos, desenvolvendo uma din&#xe2;mica &#xfa;nica de submiss&#xe3;o dupla. O treinamento inclui disciplina, obedi&#xea;ncia, e servi&#xe7;o dedicado.</p>
+                        <div class="rules-section">
+                            <h4>Regras e Crit&#xe9;rios:</h4>
+                            <ul>
+                                <li>Compromisso com discri&#xe7;&#xe3;o total</li>
+                                <li>Avalia&#xe7;&#xe3;o individual do casal antes da aceita&#xe7;&#xe3;o</li>
+                                <li>Participa&#xe7;&#xe3;o regular em treinamentos</li>
+                                <li>Disponibilidade para encontros mensais</li>
+                                <li>Respeito aos protocolos do grupo</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button class="join-group" onclick="joinGroup()">Solicitar Entrada</button>
+        </div>
+
+        <div class="banner-controls">
+            <button class="toggle-banner" onclick="toggleGroupBanner()">
+                <span class="show-text">Mostrar Grupo Privado</span>
+                <span class="hide-text" style="display:none">Ocultar Grupo Privado</span>
+            </button>
+        </div>
+
+        <div class="sub-card">
+            <h2 class="sub-name">Camila</h2>
+            <div class="sub-details">Mulher cis - 32 anos</div>
+            <div class="sub-stats">
+                <div class="stat-item">
+                    <strong>Tipo:</strong> Submissa dedicada
+                </div>
+                <div class="stat-item">
+                    <strong>Disponibilidade:</strong> Segunda a Sexta
+                </div>
+                <div class="stat-item">
+                    <strong>Experi&#xea;ncia:</strong> 3 anos em submiss&#xe3;o
+                </div>
+                <div class="stat-item">
+                    <strong>N&#xed;veis:</strong> Soft a Hard
+                </div>
+                <div class="stat-item">
+                    <strong>Pr&#xe1;ticas:</strong> Bondage, Spanking, Roleplay
+                </div>
+                <div class="stat-item">
+                    <strong>Treinamento:</strong> Protocolos D/s
+                </div>
+                <div class="stat-item">
+                    <strong>Servi&#xe7;os:</strong> Dom&#xe9;stica, Pessoal
+                </div>
+                <div class="stat-item">
+                    <strong>Sess&#xf5;es:</strong> 2-4 horas
+                </div>
+            </div>
+            <p class="section-content">
+                Camila &#xe9; uma submissa exemplar, completamente dedicada ao seu Dom. Treinada pessoalmente por Dom Levi, ela desenvolveu profunda compreens&#xe3;o da din&#xe2;mica D/s e executa suas tarefas com perfei&#xe7;&#xe3;o e gra&#xe7;a. Sua docilidade natural combinada com seu treinamento rigoroso a tornam uma submissa excepcional para sess&#xf5;es elaboradas e protocolares.
+            </p>
+            <p class="section-content">
+                Especialmente treinada em pr&#xe1;ticas de bondage e disciplina, Camila tem experi&#xea;ncia em diversos n&#xed;veis de intensidade, podendo adaptar-se &#xe0;s prefer&#xea;ncias do Dominador. Sua dedica&#xe7;&#xe3;o ao servi&#xe7;o e capacidade de seguir protocolos rigorosos a tornam ideal para relacionamentos D/s estruturados. Seu treinamento inclui t&#xe9;cnicas avan&#xe7;adas de submiss&#xe3;o mental e f&#xed;sica, permitindo total entrega durante as sess&#xf5;es.
+            </p>
+            <p class="section-content">
+                Al&#xe9;m de suas habilidades em BDSM, Camila &#xe9; treinada em servi&#xe7;o dom&#xe9;stico e pessoal, oferecendo um servi&#xe7;o completo e dedicado. Sua postura impec&#xe1;vel e comportamento protocolar refletem anos de treinamento intensivo sob orienta&#xe7;&#xe3;o de Dom Levi. Dispon&#xed;vel para sess&#xf5;es prolongadas, ela mant&#xe9;m alto padr&#xe3;o de servi&#xe7;o e submiss&#xe3;o em todos os aspectos, desde tarefas dom&#xe9;sticas at&#xe9; rituais elaborados de submiss&#xe3;o.
+            </p>
+            <button class="toggle-contract" onclick="viewSubProfile(&apos;camila&apos;)">Ver Perfil Completo</button>
+        </div>
+
+        <div class="sub-card">
+            <h2 class="sub-name">L&#xed;via</h2>
+            <div class="sub-details">Trans passiva</div>
+            <div class="sub-stats">
+                <div class="stat-item">
+                    <strong>Tipo:</strong> Submissa passiva
+                </div>
+                <div class="stat-item">
+                    <strong>Disponibilidade:</strong> Noites e fins de semana
+                </div>
+                <div class="stat-item">
+                    <strong>Experi&#xea;ncia:</strong> 2 anos em submiss&#xe3;o
+                </div>
+                <div class="stat-item">
+                    <strong>Especialidade:</strong> Submiss&#xe3;o total
+                </div>
+                <div class="stat-item">
+                    <strong>P&#xfa;blico:</strong> Homens 35+
+                </div>
+                <div class="stat-item">
+                    <strong>Condicionamento:</strong> Total
+                </div>
+                <div class="stat-item">
+                    <strong>Servi&#xe7;os:</strong> Oral, Anal
+                </div>
+                <div class="stat-item">
+                    <strong>Sess&#xf5;es:</strong> M&#xed;nimo 2 horas
+                </div>
+            </div>
+            <p class="section-content">
+                L&#xed;via &#xe9; uma submissa trans completamente passiva, entregue &#xe0; sua natureza submissa. Sob orienta&#xe7;&#xe3;o de Dom Levi, ela se tornou uma serva dedicada e obediente, sempre pronta para servir conforme as necessidades de seu Dom. Seu comportamento d&#xf3;cil e submisso a torna perfeita para homens maduros que apreciam controle total. Seu condicionamento profundo permite uma experi&#xea;ncia &#xfa;nica de domina&#xe7;&#xe3;o e controle.
+            </p>
+            <p class="section-content">
+                Especializada em submiss&#xe3;o total e servi&#xe7;o pessoal, L&#xed;via oferece uma experi&#xea;ncia &#xfa;nica de entrega e obedi&#xea;ncia. Seu condicionamento inclui diversos protocolos de servi&#xe7;o e comportamento, garantindo uma experi&#xea;ncia aut&#xea;ntica de domina&#xe7;&#xe3;o para homens experientes acima de 35 anos. Treinada para manter sil&#xea;ncio absoluto exceto quando ordenada a falar, ela representa a ess&#xea;ncia da submiss&#xe3;o passiva.
+            </p>
+            <p class="section-content">
+                Com foco em homens maduros e experientes, L&#xed;via &#xe9; treinada para proporcionar servi&#xe7;o oral dedicado e receptividade anal completa. Seu condicionamento mental permite que ela se mantenha em estado constante de submiss&#xe3;o, aceitando uso e ordens sem questionamentos. Ideal para Dominadores que buscam uma experi&#xea;ncia de controle total. Seu treinamento inclui t&#xe9;cnicas avan&#xe7;adas de servi&#xe7;o pessoal e completa aceita&#xe7;&#xe3;o de humilha&#xe7;&#xe3;o e uso conforme desejado pelo Dominador.
+            </p>
+            <button class="toggle-contract" onclick="viewSubProfile(&apos;livia&apos;)">Ver Perfil Completo</button>
+        </div>
+    </div>
+    <div id="questionnaire-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <h2>Question&#xe1;rio de Apresenta&#xe7;&#xe3;o</h2>
+        <form id="entry-form">
+          <div class="form-group">
+            <label>Tipo de Perfil:</label>
+            <select id="profile-type" class="form-control" required>
+              <option value>Selecione...</option>
+              <option value="casal">Casal</option>
+              <option value="individual">Individual</option>
+            </select>
+          </div>
+
+          <div id="profile-details" class="form-group" style="display:none;">
+            <label>Perfil Espec&#xed;fico:</label>
+            <select id="profile" class="form-control" required>
+              <option value>Selecione...</option>
+            </select>
+          </div>
+
+          <div id="couple-names" class="form-group" style="display:none;">
+            <label for="dom-name">Nome do(a) Dominador(a):</label>
+            <input type="text" id="dom-name" class="form-control">
+            <label for="sub-name">Nome do(a) submisso(a):</label>
+            <input type="text" id="sub-name" class="form-control">
+          </div>
+
+          <div id="couple-ages" class="form-group" style="display:none;">
+            <label for="dom-age">Idade do(a) Dominador(a):</label>
+            <input type="number" id="dom-age" class="form-control" min="18" required title="Idade m&#xed;nima requerida">
+            <label for="sub-age">Idade do(a) submisso(a):</label>
+            <input type="number" id="sub-age" class="form-control" min="18" required title="Idade m&#xed;nima requerida">
+          </div>
+
+          <div id="individual-name" class="form-group" style="display:none;">
+            <label>Nome:</label>
+            <input type="text" id="name" class="form-control">
+          </div>
+
+          <div id="individual-age" class="form-group" style="display:none;">
+            <label>Idade:</label>
+            <input type="number" id="age" class="form-control" min="18" required title="Idade m&#xed;nima requerida">
+          </div>
+
+          <div class="form-group">
+            <label>Experi&#xea;ncia em BDSM:</label>
+            <select id="experience" class="form-control" required>
+              <option value>Selecione...</option>
+              <option value="iniciante">Iniciante</option>
+              <option value="intermedi&#xe1;rio">Intermedi&#xe1;rio</option>
+              <option value="experiente">Experiente</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Motivo do interesse:</label>
+            <textarea id="motivation" class="form-control" required rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Expectativas:</label>
+            <textarea id="expectations" class="form-control" required rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Local Dispon&#xed;vel:</label>
+            <div class="checkbox-group">
+              <div>
+                <input type="checkbox" id="local-carro" name="local" value="carro">
+                <label for="local-carro">Carro</label>
+              </div>
+              <div>
+                <input type="checkbox" id="local-sitio-piscina" name="local" value="sitio-piscina">
+                <label for="local-sitio-piscina">S&#xed;tio afastado com piscina</label>
+              </div>
+              <div>
+                <input type="checkbox" id="local-sitio" name="local" value="sitio">
+                <label for="local-sitio">S&#xed;tio afastado sem piscina</label>
+              </div>
+              <div>
+                <input type="checkbox" id="local-casa-piscina" name="local" value="casa-piscina">
+                <label for="local-casa-piscina">Casa com muro alto com piscina</label>
+              </div>
+              <div>
+                <input type="checkbox" id="local-casa" name="local" value="casa">
+                <label for="local-casa">Casa com muro alto sem piscina</label>
+              </div>
+            </div>
+          </div>
+
+          <div id="desires-limits" class="form-group" style="display:none;">
+            <div id="dom-preferences" style="display:none;">
+              <h4>Prefer&#xea;ncias do(a) Dominador(a)</h4>
+              <div class="preferences-section">
+                <h5>Desejos:</h5>
+                <div class="checkbox-group">
+                  <div>
+                    <input type="checkbox" id="dom-desire-bondage" name="dom-desires" value="bondage">
+                    <label for="dom-desire-bondage">Bondage</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="dom-desire-discipline" name="dom-desires" value="discipline">
+                    <label for="dom-desire-discipline">Disciplina</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="dom-desire-domination" name="dom-desires" value="domination">
+                    <label for="dom-desire-domination">Domina&#xe7;&#xe3;o Mental</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="dom-desire-humiliation" name="dom-desires" value="humiliation">
+                    <label for="dom-desire-humiliation">Humilha&#xe7;&#xe3;o</label>
+                  </div>
+                </div>
+                
+                <h5>Limites:</h5>
+                <div class="checkbox-group">
+                  <div>
+                    <input type="checkbox" id="dom-limit-blood" name="dom-limits" value="blood">
+                    <label for="dom-limit-blood">Sangue</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="dom-limit-marks" name="dom-limits" value="marks">
+                    <label for="dom-limit-marks">Marcas Permanentes</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="dom-limit-torture" name="dom-limits" value="torture">
+                    <label for="dom-limit-torture">Tortura Extrema</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div id="sub-preferences" style="display:none;">
+              <h4>Prefer&#xea;ncias do(a) submisso(a)</h4>
+              <div class="preferences-section">
+                <h5>Desejos:</h5>
+                <div class="checkbox-group">
+                  <div>
+                    <input type="checkbox" id="sub-desire-service" name="sub-desires" value="service">
+                    <label for="sub-desire-service">Servid&#xe3;o</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="sub-desire-pain" name="sub-desires" value="pain">
+                    <label for="sub-desire-pain">Dor</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="sub-desire-humiliation" name="sub-desires" value="humiliation">
+                    <label for="sub-desire-humiliation">Humilha&#xe7;&#xe3;o</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="sub-desire-restraint" name="sub-desires" value="restraint">
+                    <label for="sub-desire-restraint">Conten&#xe7;&#xe3;o</label>
+                  </div>
+                </div>
+                
+                <h5>Limites:</h5>
+                <div class="checkbox-group">
+                  <div>
+                    <input type="checkbox" id="sub-limit-blood" name="sub-limits" value="blood">
+                    <label for="sub-limit-blood">Sangue</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="sub-limit-marks" name="sub-limits" value="marks">
+                    <label for="sub-limit-marks">Marcas Permanentes</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="sub-limit-torture" name="sub-limits" value="torture">
+                    <label for="sub-limit-torture">Tortura Extrema</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="terms" required>
+              Aceito manter sigilo absoluto sobre todas as atividades e membros do grupo
+            </label>
+          </div>
+
+          <div class="modal-buttons">
+            <button type="button" onclick="handleEntrySubmission(event)" class="submit-btn">Enviar</button>
+            <button type="button" class="cancel-btn" onclick="closeQuestionnaire()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>const MIN_DOM_AGE = 35;
+const MIN_SUB_AGE = 18;
+const profileOptions = {
+  casal: [{
+    value: 'casal_ds',
+    label: 'Casal (Dom/sub)'
+  }, {
+    value: 'casal_sd',
+    label: 'Casal (sub/Dom)'
+  }, {
+    value: 'casal_dd',
+    label: 'Casal (Dom/Dom)'
+  }, {
+    value: 'casal_ss',
+    label: 'Casal (sub/sub)'
+  }],
+  individual: [{
+    value: 'homem_dom',
+    label: 'Homem Dominador 35+'
+  }, {
+    value: 'mulher_sub',
+    label: 'Mulher submissa'
+  }, {
+    value: 'mulher_dom',
+    label: 'Mulher Dominadora'
+  }, {
+    value: 'boneca_sub',
+    label: 'Boneca submissa'
+  }]
+};
+function toggleAudienceDetails(element) {
+  element.classList.toggle('expanded');
+}
+function viewSubProfile(subName) {
+  const messages = {
+    camila: `Perfil de Submissão - Camila\n
+Idade: 32 anos
+Tipo: Mulher cis
+Experiência: 3 anos
+
+Treinamento e Especialidades:
+- Servidão doméstica completa
+- Submissão protocolar avançada
+- Bondage avançado em todas posições
+- Disciplina rigorosa e castigos
+- Spanking e punições elaboradas
+- Roleplay detalhado e imersivo
+- Treinamento postural refinado
+- Serviço dedicado 24/7
+- Condicionamento mental profundo
+- Rituais de submissão elaborados
+- Serviço doméstico protocolado
+- Entrega total em sessões
+
+Níveis: Soft a Hard adaptável
+Disponibilidade: Segunda a Sexta
+Sessões: 2-4 horas ou mais
+Serviços: Doméstica e Pessoal completos
+
+Para mais informações, entre em contato com Dom Levi.`,
+    livia: `Perfil de Submissão - Lívia\n
+Tipo: Trans passiva
+Experiência: 2 anos
+Público: Homens maduros 35+
+
+Treinamento e Especialidades:
+- Submissão total e passiva
+- Servidão pessoal completa
+- Disponibilidade noturna extensa
+- Obediência absoluta programada
+- Condicionamento mental profundo
+- Serviço oral dedicado e técnico
+- Entrega completa sem limites
+- Protocolos rígidos de comportamento
+- Aceitação total de humilhação
+- Silêncio protocolar
+- Uso livre conforme desejo
+- Experiência em submissão extrema
+
+Disponibilidade: Noites e fins de semana
+Sessões: Mínimo 2 horas, sem limite máximo
+Serviços: Oral e Anal dedicado, completo
+
+Para mais informações, entre em contato com Dom Levi.`
+  };
+  const whatsappURL = `https://wa.me/5512982572507?text=${encodeURIComponent(messages[subName])}`;
+  window.open(whatsappURL, '_blank');
+}
+function verifyAge(isOver18) {
+  if (isOver18) {
+    document.getElementById('age-verification').style.display = 'none';
+    document.getElementById('password-verification').style.display = 'flex';
+  } else {
+    window.location.href = "https://www.google.com";
+  }
+}
+function verifyPassword(event) {
+  event.preventDefault();
+  const password = document.getElementById('password-input').value;
+  if (password === 'livia123') {
+    document.getElementById('password-verification').style.display = 'none';
+  } else {
+    alert('Senha incorreta!');
+  }
+}
+function joinGroup() {
+  document.getElementById('questionnaire-modal').style.display = 'flex';
+  document.getElementById('entry-form').reset();
+}
+function closeQuestionnaire() {
+  document.getElementById('questionnaire-modal').style.display = 'none';
+}
+document.getElementById('profile-type').addEventListener('change', function () {
+  const profileType = this.value;
+  const profileSelect = document.getElementById('profile');
+  const coupleNames = document.getElementById('couple-names');
+  const coupleAges = document.getElementById('couple-ages');
+  const individualName = document.getElementById('individual-name');
+  const individualAge = document.getElementById('individual-age');
+  const profileDetails = document.getElementById('profile-details');
+  profileSelect.innerHTML = '<option value="">Selecione...</option>';
+  if (profileType) {
+    profileOptions[profileType].forEach(option => {
+      const optElement = document.createElement('option');
+      optElement.value = option.value;
+      optElement.textContent = option.label;
+      profileSelect.appendChild(optElement);
+    });
+    coupleNames.style.display = profileType === 'casal' ? 'block' : 'none';
+    coupleAges.style.display = profileType === 'casal' ? 'block' : 'none';
+    individualName.style.display = profileType === 'individual' ? 'block' : 'none';
+    individualAge.style.display = profileType === 'individual' ? 'block' : 'none';
+    profileDetails.style.display = 'block';
+  } else {
+    profileDetails.style.display = 'none';
+    coupleNames.style.display = 'none';
+    coupleAges.style.display = 'none';
+    individualName.style.display = 'none';
+    individualAge.style.display = 'none';
+  }
+});
+document.getElementById('profile').addEventListener('change', function () {
+  const profileType = document.getElementById('profile-type').value;
+  const profile = this.value;
+  const domAge = document.getElementById('dom-age');
+  const subAge = document.getElementById('sub-age');
+  const individualAge = document.getElementById('age');
+  const domNameLabel = document.querySelector('label[for="dom-name"]');
+  const subNameLabel = document.querySelector('label[for="sub-name"]');
+  const domAgeLabel = document.querySelector('label[for="dom-age"]');
+  const subAgeLabel = document.querySelector('label[for="sub-age"]');
+  switch (profile) {
+    case 'casal_ds':
+      domNameLabel.textContent = 'Nome do Dominador:';
+      subNameLabel.textContent = 'Nome da submissa:';
+      domAgeLabel.textContent = 'Idade do Dominador:';
+      subAgeLabel.textContent = 'Idade da submissa:';
+      break;
+    case 'casal_sd':
+      domNameLabel.textContent = 'Nome do submisso:';
+      subNameLabel.textContent = 'Nome da Dominadora:';
+      domAgeLabel.textContent = 'Idade do submisso:';
+      subAgeLabel.textContent = 'Idade da Dominadora:';
+      break;
+    case 'casal_dd':
+      domNameLabel.textContent = 'Nome do primeiro Dominador:';
+      subNameLabel.textContent = 'Nome do segundo Dominador:';
+      domAgeLabel.textContent = 'Idade do primeiro Dominador:';
+      subAgeLabel.textContent = 'Idade do segundo Dominador:';
+      break;
+    case 'casal_ss':
+      domNameLabel.textContent = 'Nome do primeiro submisso:';
+      subNameLabel.textContent = 'Nome do segundo submisso:';
+      domAgeLabel.textContent = 'Idade do primeiro submisso:';
+      subAgeLabel.textContent = 'Idade do segundo submisso:';
+      break;
+    default:
+      domNameLabel.textContent = 'Nome do(a) Dominador(a):';
+      subNameLabel.textContent = 'Nome do(a) submisso(a):';
+      domAgeLabel.textContent = 'Idade do(a) Dominador(a):';
+      subAgeLabel.textContent = 'Idade do(a) submisso(a):';
+  }
+  document.getElementById('desires-limits').style.display = 'block';
+  if (profileType === 'individual') {
+    if (profile === 'homem_dom') {
+      document.getElementById('dom-preferences').style.display = 'block';
+      document.getElementById('sub-preferences').style.display = 'none';
+    } else {
+      document.getElementById('dom-preferences').style.display = 'none';
+      document.getElementById('sub-preferences').style.display = 'block';
+    }
+  } else if (profileType === 'casal') {
+    switch (profile) {
+      case 'casal_ds':
+        document.getElementById('dom-preferences').style.display = 'block';
+        document.getElementById('sub-preferences').style.display = 'block';
+        break;
+      case 'casal_sd':
+        document.getElementById('dom-preferences').style.display = 'block';
+        document.getElementById('sub-preferences').style.display = 'block';
+        break;
+      case 'casal_dd':
+        document.getElementById('dom-preferences').style.display = 'block';
+        document.getElementById('sub-preferences').style.display = 'none';
+        break;
+      case 'casal_ss':
+        document.getElementById('dom-preferences').style.display = 'none';
+        document.getElementById('sub-preferences').style.display = 'block';
+        break;
+    }
+  }
+  if (profileType === 'individual') {
+    individualAge.min = profile === 'homem_dom' ? MIN_DOM_AGE : MIN_SUB_AGE;
+  } else if (profileType === 'casal') {
+    if (profile === 'casal_ds' || profile === 'casal_dd') {
+      domAge.min = MIN_DOM_AGE;
+      subAge.min = MIN_SUB_AGE;
+    } else {
+      domAge.min = MIN_SUB_AGE;
+      subAge.min = MIN_SUB_AGE;
+    }
+  }
+});
+function handleEntrySubmission(event) {
+  event.preventDefault();
+  const profileType = document.getElementById('profile-type').value;
+  const profile = document.getElementById('profile').value;
+  if (!profileType || !profile) {
+    alert('Por favor selecione o tipo de perfil e perfil específico');
+    return;
+  }
+  if (profileType === 'individual') {
+    const age = parseInt(document.getElementById('age').value);
+    if (profile === 'homem_dom' && age < MIN_DOM_AGE) {
+      alert('Homens dominadores devem ter 35 anos ou mais');
+      return;
+    }
+  } else if (profileType === 'casal') {
+    const domAge = parseInt(document.getElementById('dom-age').value);
+    const subAge = parseInt(document.getElementById('sub-age').value);
+    if (profile === 'casal_ds' || profile === 'casal_dd') {
+      if (domAge < MIN_DOM_AGE) {
+        alert('Dominadores devem ter 35 anos ou mais');
+        return;
+      }
+    }
+  }
+  const formData = {
+    profileType,
+    profile,
+    experience: document.getElementById('experience').value,
+    motivation: document.getElementById('motivation').value,
+    expectations: document.getElementById('expectations').value
+  };
+  let profileInfo = '';
+  if (profileType === 'casal') {
+    formData.domName = document.getElementById('dom-name').value;
+    formData.domAge = document.getElementById('dom-age').value;
+    formData.subName = document.getElementById('sub-name').value;
+    formData.subAge = document.getElementById('sub-age').value;
+    profileInfo = `${profile === 'casal_dd' ? 'Dominadores' : profile === 'casal_ss' ? 'Submissos' : 'Casal'}: ${formData.domName} (${formData.domAge} anos) e ${formData.subName} (${formData.subAge} anos)`;
+  } else {
+    formData.name = document.getElementById('name').value;
+    formData.age = document.getElementById('age').value;
+    profileInfo = `Nome: ${formData.name} (${formData.age} anos)`;
+  }
+  const locais = Array.from(document.querySelectorAll('input[name="local"]:checked')).map(checkbox => checkbox.value);
+  let desiresLimitsInfo = '\nPreferências:';
+  if (profileType === 'individual') {
+    if (profile === 'homem_dom') {
+      const domDesires = Array.from(document.querySelectorAll('input[name="dom-desires"]:checked')).map(checkbox => checkbox.value);
+      const domLimits = Array.from(document.querySelectorAll('input[name="dom-limits"]:checked')).map(checkbox => checkbox.value);
+      desiresLimitsInfo += `\n\nDesejos:\n${domDesires.join('\n')}\n\nLimites:\n${domLimits.join('\n')}`;
+    } else {
+      const subDesires = Array.from(document.querySelectorAll('input[name="sub-desires"]:checked')).map(checkbox => checkbox.value);
+      const subLimits = Array.from(document.querySelectorAll('input[name="sub-limits"]:checked')).map(checkbox => checkbox.value);
+      desiresLimitsInfo += `\n\nDesejos:\n${subDesires.join('\n')}\n\nLimites:\n${subLimits.join('\n')}`;
+    }
+  } else if (profileType === 'casal') {
+    if (profile === 'casal_dd') {
+      const domDesires = Array.from(document.querySelectorAll('input[name="dom-desires"]:checked')).map(checkbox => checkbox.value);
+      const domLimits = Array.from(document.querySelectorAll('input[name="dom-limits"]:checked')).map(checkbox => checkbox.value);
+      desiresLimitsInfo += `\n\nDesejos dos Dominadores:\n${domDesires.join('\n')}\n\nLimites dos Dominadores:\n${domLimits.join('\n')}`;
+    } else if (profile === 'casal_ss') {
+      const subDesires = Array.from(document.querySelectorAll('input[name="sub-desires"]:checked')).map(checkbox => checkbox.value);
+      const subLimits = Array.from(document.querySelectorAll('input[name="sub-limits"]:checked')).map(checkbox => checkbox.value);
+      desiresLimitsInfo += `\n\nDesejos dos Submissos:\n${subDesires.join('\n')}\n\nLimites dos Submissos:\n${subLimits.join('\n')}`;
+    } else {
+      const domDesires = Array.from(document.querySelectorAll('input[name="dom-desires"]:checked')).map(checkbox => checkbox.value);
+      const domLimits = Array.from(document.querySelectorAll('input[name="dom-limits"]:checked')).map(checkbox => checkbox.value);
+      const subDesires = Array.from(document.querySelectorAll('input[name="sub-desires"]:checked')).map(checkbox => checkbox.value);
+      const subLimits = Array.from(document.querySelectorAll('input[name="sub-limits"]:checked')).map(checkbox => checkbox.value);
+      desiresLimitsInfo += `\n\nDesejos Dom:\n${domDesires.join('\n')}\n\nLimites Dom:\n${domLimits.join('\n')}\n\nDesejos sub:\n${subDesires.join('\n')}\n\nLimites sub:\n${subLimits.join('\n')}`;
+    }
+  }
+  const locationInfo = locais.length > 0 ? `\nLocais Disponíveis:\n${locais.join('\n')}` : '';
+  const message = `Solicitação de Entrada - Grupo Dom Levi\n\n${profileInfo}
+Perfil: ${formData.profile}
+Experiência: ${formData.experience}${locationInfo}${desiresLimitsInfo}
+
+Motivação:
+${formData.motivation}
+
+Expectativas:
+${formData.expectations}
+
+✓ Aceita os termos de sigilo e discrição`;
+  if (!document.getElementById('terms').checked) {
+    alert('Você precisa aceitar os termos de sigilo');
+    return;
+  }
+  const whatsappURL = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, '_blank');
+  closeQuestionnaire();
+}
+function toggleGroupBanner() {
+  const banner = document.querySelector('.group-banner');
+  const showText = document.querySelector('.show-text');
+  const hideText = document.querySelector('.hide-text');
+  banner.classList.toggle('hidden');
+  if (banner.classList.contains('hidden')) {
+    showText.style.display = 'inline-block';
+    hideText.style.display = 'none';
+  } else {
+    showText.style.display = 'none';
+    hideText.style.display = 'inline-block';
+  }
+}</script>
+</body>
+</html>
