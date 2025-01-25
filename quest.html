@@ -4,413 +4,469 @@
   <base href="https://https://wa.me/5512982572507" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Questionário de Serviços</title>
+  <meta name="description" content="Question&#xe1;rio de Servi&#xe7;os">
+  <meta name="keywords" content="servi&#xe7;os, question&#xe1;rio">
+  <meta name="author" content="Your Name">
+  <meta name="theme-color" content="#4CAF50">
+  <link rel="preload" href="https://bastardadoll.github.io/servico1.gif" as="image">
+  <link rel="preload" href="https://bastardadoll.github.io/servico2.gif" as="image">
+  <link rel="preload" href="https://bastardadoll.github.io/servico3.gif" as="image">
+  <link rel="preload" href="https://bastardadoll.github.io/luanny.gif" as="image">
+  <link rel="preload" href="https://example.com/namoradinha.gif" as="image">
+  <link rel="preload" href="https://example.com/completo.gif" as="image">
+  <title>Question&#xe1;rio de Servi&#xe7;os</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
+      background: linear-gradient(135deg, #ff69b4 0%, #ffe6f2 100%);
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 15px;
+      transition: background 0.5s ease;
+      perspective: 1000px;
+    }
 
-.container {
-  width: 100%;
-  max-width: 800px;
-}
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background-color: rgba(255,255,255,0.9);
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      overflow: hidden;
+      padding: 20px;
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
+    }
 
-#serviceForm {
-  background-color: white;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    #serviceForm {
+      padding: 20px;
+    }
 
-.form-group {
-  margin-bottom: 20px;
-}
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+      overflow: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
 
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-}
+    .service-item {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      width: 100%;
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.5s ease;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      margin-bottom: 15px;
+      position: relative;
+      transform: rotateY(10deg) scale(0.95);
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    }
 
-.form-group input[type="text"],
-.form-group input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
+    .service-item:hover {
+      transform: rotateY(0) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
 
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    .service-item input[type="checkbox"] {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+    }
 
-.service-item {
-  width: 100%;
-  position: relative;
-}
+    .box {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+    }
 
-.service-item input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
 
-.box {
-  background-color: white;
-  border: 2px solid #000;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
+    .gif-box {
+      width: 200px;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-.service-item input:checked + .box {
-  border-color: green;
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-}
+    .item-list {
+      width: 100%;
+      list-style-type: none;
+    }
 
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+    .price-section {
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      animation: pulse 2s infinite, shimmer 3s infinite;
+      position: relative;
+      overflow: hidden;
+    }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 20px;
-}
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
 
-@media (min-width: 600px) {
-  .content {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
+    @keyframes shimmer {
+      0%, 100% { background-position: -200% 0; }
+      50% { background-position: 200% 0; }
+    }
 
-.gif-box {
-  width: 100px;
-  height: 100px;
-  border: 3px solid purple;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
 
-.gif-box img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-}
+    .carousel-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-.item-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
+    .carousel-btn:hover {
+      background-color: #3e8e41;
+    }
 
-@media (min-width: 600px) {
-  .item-list {
-    text-align: left;
-  }
-}
+    .submit-btn {
+      margin-top: 15px;
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-.item {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
+    .submit-btn:hover {
+      background-color: #3e8e41;
+    }
 
-.item.no {
-  color: red;
-  font-weight: bold;
-}
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
 
-.item.yes {
-  color: green;
-  font-weight: bold;
-}
+    .form-group label {
+      font-weight: bold;
+      color: #333;
+    }
 
-.price-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1.5px solid #ff69b4;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.prices {
-  text-align: center;
-}
+    .form-group input:focus {
+      outline: none;
+      border-color: #ff1493;
+      box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+    }
 
-@media (min-width: 600px) {
-  .prices {
-    text-align: right;
-  }
-}
+    .gif-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.original-price {
-  font-size: 14px;
-  text-decoration: line-through;
-  color: #888;
-}
+    @media screen and (max-width: 480px) {
+      .container {
+        width: 95%;
+        margin: 0 auto;
+      }
 
-.discount-price {
-  font-size: 16px;
-  color: #333;
-}
+      .gif-box {
+        width: 150px;
+        height: 150px;
+      }
 
-.final-price {
-  font-size: 24px;
-  font-weight: bold;
-  color: black;
-}
+      .item-list {
+        font-size: 14px;
+      }
 
-.submit-btn {
-  width: 100%;
-  padding: 15px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #45a049;
-}
-
-/* Improved responsiveness */
-@media (max-width: 600px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .gif-box {
-    margin-bottom: 15px;
-  }
-  
-  .item-list {
-    text-align: left;
-    width: 100%;
-  }
-}
+      .box h1 {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <form id="serviceForm">
-      <h1>Serviços Disponíveis</h1>
+  <div class="container" aria-label="Servi&#xe7;os dispon&#xed;veis">
+    <form id="serviceForm" aria-label="Formul&#xe1;rio de servi&#xe7;os">
+      <h1>Servi&#xe7;os Dispon&#xed;veis</h1>
       
       <div class="form-group">
         <label for="nick">Nick:</label>
-        <input type="text" id="nick" name="nick" required>
+        <input type="text" id="nick" name="nick" required aria-label="Campo de nick">
       </div>
       
       <div class="form-group">
         <label for="birthdate">Data de Nascimento:</label>
-        <input type="date" id="birthdate" name="birthdate" required>
+        <input type="date" id="birthdate" name="birthdate" required aria-label="Campo de data de nascimento">
       </div>
       
-      <div class="form-group">
-        <label>Serviços de Interesse:</label>
-        <div class="checkbox-group">
-          <div class="service-item">
-            <input type="checkbox" id="servico1" name="services" value="servico1">
-            <div class="box">
-              <h1 class="title">Boquete (15 Min)</h1>
-              <div class="content">
-                <div class="gif-box">
-                  <img src="https://bastardadoll.github.io/servico1.gif" alt="Serviço 1 GIF">
-                </div>
-                <ul class="item-list">
-                  <li class="item no">❌ Me chupar</li>
-                  <li class="item no">❌ Me tocar</li>
-                  <li class="item no">❌ Não gozo</li>
-                  <li class="item yes">✅ Garganta profunda</li>
-                  <li class="item yes">✅ Sem camisinha</li>
-                  <li class="item yes">✅ Goza na boca</li>
-                </ul>
+      <div class="carousel-wrapper">
+        <div class="service-item">
+          <input type="checkbox" id="servico1" name="services" value="servico1" aria-label="Servi&#xe7;o 1">
+          <div class="box">
+            <h1 class="title">Boquete (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/servico1.gif" alt="Servi&#xe7;o 1 GIF" aria-label="Imagem do servi&#xe7;o 1">
               </div>
-              <div class="price-section">
-                <div class="prices">
-                  <p class="original-price">De: R$ 80,00</p>
-                  <p class="discount-price">Por Apenas:</p>
-                  <p class="final-price">R$ 50,00</p>
-                </div>
-              </div>
+              <ul class="item-list">
+                <li class="item no">&#x274c; Me chupar</li>
+                <li class="item no">&#x274c; Me tocar</li>
+                <li class="item no">&#x274c; N&#xc3;O gozo</li>
+                <li class="item yes">&#x2705; Garganta profunda</li>
+                <li class="item yes">&#x2705; Sem camisinha</li>
+                <li class="item yes">&#x2705; Goza na boca</li>
+              </ul>
             </div>
-          </div>
-
-          <div class="service-item">
-            <input type="checkbox" id="servico2" name="services" value="servico2">
-            <div class="box">
-              <h1 class="title">Boquete Duplo (15 Min)</h1>
-              <div class="content">
-                <div class="gif-box">
-                  <img src="https://bastardadoll.github.io/servico2.gif" alt="Serviço 2 GIF">
-                </div>
-                <ul class="item-list">
-                    <li class="item no">❌ Me chupar</li>
-                    <li class="item no">❌ Me tocar</li>
-                    <li class="item no">❌ Não gozo</li>
-                    <li class="item yes">✅ Garganta profunda</li>
-                    <li class="item yes">✅ Sem camisinha</li>
-                    <li class="item yes">✅ Goza na boca</li>
-                </ul>
-              </div>
-              <div class="price-section">
-                <div class="prices">
-                  <p class="original-price">De: R$ 150,00</p>
-                  <p class="discount-price">Por Apenas:</p>
-                  <p class="final-price">R$ 80,00</p>
-                </div>
-              </div>
+            <div class="price-section">
+              <p>De: R&#x24; 80,00</p>
+              <p>Por Apenas:</p>
+              <p>R&#x24; 50,00</p>
             </div>
-          </div>
-
-          <div class="service-item">
-            <input type="checkbox" id="servico3" name="services" value="servico3">
-            <div class="box">
-              <h1 class="title">Passiva (15 Min)</h1>
-              <div class="content">
-                <div class="gif-box">
-                  <img src="https://bastardadoll.github.io/servico3.gif" alt="Serviço 3 GIF">
-                </div>
-                <ul class="item-list">
-                    <li class="item no">❌ Não sou ativa</li>
-                    <li class="item no">❌ Sem beijos na boca</li>
-                    <li class="item no">❌ Não faço nada no seu ânus</li>
-                    <li class="item yes">✅ Sem camisinha</li>
-                    <li class="item yes">✅ Tapas e puxão de cabelo (de leve)</li>
-                    <li class="item yes">✅ Goza onde quiser</li>
-                </ul>
-              </div>
-              <div class="price-section">
-                <div class="prices">
-                  <p class="original-price">De: R$ 150,00</p>
-                  <p class="discount-price">Por Apenas:</p>
-                  <p class="final-price">R$ 100,00</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <input type="checkbox" id="servico4" name="services" value="servico4">
-              <div class="box">
-                <h1 class="title">Ativa (15 Min)</h1>
-                <div class="content">
-                  <div class="gif-box">
-                    <img src="https://bastardadoll.github.io/luanny.gif" alt="Serviço 4 GIF">
-                  </div>
-                  <ul class="item-list">
-                      <li class="item no">⚠ Agendamento apenas com sinal(R$ 50,00)</li>
-                      <li class="item no">❌ Sem beijos na boca</li>
-                      <li class="item no">❌ Não faço cunete</li>
-                      <li class="item yes">✅ Sem camisinha</li>
-                      <li class="item yes">✅ Com carrinho/com força</li>
-                      <li class="item yes">✅ Posso Goza onde você quiser</li>
-                  </ul>
-                </div>
-                <div class="price-section">
-                  <div class="prices">
-                    <p class="original-price">De: R$ 200,00</p>
-                    <p class="discount-price">Por Apenas:</p>
-                    <p class="final-price">R$ 150,00</p>
-                  </div>
-                </div>
-              </div>
           </div>
         </div>
+        <div class="service-item">
+          <input type="checkbox" id="servico2" name="services" value="servico2" aria-label="Servi&#xe7;o 2">
+          <div class="box">
+            <h1 class="title">Boquete Duplo (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/servico2.gif" alt="Servi&#xe7;o 2 GIF" aria-label="Imagem do servi&#xe7;o 2">
+              </div>
+              <ul class="item-list">
+                <li class="item no">&#x274c; Me chupar</li>
+                <li class="item no">&#x274c; Me tocar</li>
+                <li class="item no">&#x274c; N&#xc3;O gozo</li>
+                <li class="item yes">&#x2705; Garganta profunda</li>
+                <li class="item yes">&#x2705; Sem camisinha</li>
+                <li class="item yes">&#x2705; Goza na boca</li>
+              </ul>
+            </div>
+            <div class="price-section">
+              <p>De: R&#x24; 150,00</p>
+              <p>Por Apenas:</p>
+              <p>R&#x24; 80,00</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-item">
+          <input type="checkbox" id="servico3" name="services" value="servico3" aria-label="Servi&#xe7;o 3">
+          <div class="box">
+            <h1 class="title">Passiva (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/servico3.gif" alt="Servi&#xe7;o 3 GIF" aria-label="Imagem do servi&#xe7;o 3">
+              </div>
+              <ul class="item-list">
+                <li class="item no">&#x274c; N&#xc3;O sou ativa</li>
+                <li class="item no">&#x274c; Sem beijos na boca</li>
+                <li class="item no">&#x274c; N&#xc3;O fa&#xe7;o nada no seu &#xe2;nus</li>
+                <li class="item yes">&#x2705; Sem camisinha</li>
+                <li class="item yes">&#x2705; Tapas e pux&#xe3;o de cabelo (de leve)</li>
+                <li class="item yes">&#x2705; Goza onde quiser</li>
+              </ul>
+            </div>
+            <div class="price-section">
+              <p>De: R&#x24; 150,00</p>
+              <p>Por Apenas:</p>
+              <p>R&#x24; 100,00</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-item">
+          <input type="checkbox" id="servico4" name="services" value="servico4" aria-label="Servi&#xe7;o 4">
+          <div class="box">
+            <h1 class="title">Ativa (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/luanny.gif" alt="Servi&#xe7;o 4 GIF" aria-label="Imagem do servi&#xe7;o 4">
+              </div>
+              <ul class="item-list">
+                <li class="item no">&#x26a0; Agendamento apenas com sinal(R&#x24; 50,00)</li>
+                <li class="item no">&#x274c; Sem beijos na boca</li>
+                <li class="item no">&#x274c; N&#xc3;O fa&#xe7;o cunete</li>
+                <li class="item yes">&#x2705; Sem camisinha</li>
+                <li class="item yes">&#x2705; Com carrinho/com for&#xe7;a</li>
+                <li class="item yes">&#x2705; Posso Goza onde voc&#xea; quiser</li>
+              </ul>
+            </div>
+            <div class="price-section">
+              <p>De: R&#x24; 200,00</p>
+              <p>Por Apenas:</p>
+              <p>R&#x24; 150,00</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-item">
+          <input type="checkbox" id="servico5" name="services" value="servico5" aria-label="Servi&#xe7;o 5">
+          <div class="box">
+            <h1 class="title">Namoradinha (30 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://example.com/namoradinha.gif" alt="Servi&#xe7;o 5 GIF" aria-label="Imagem do servi&#xe7;o 5">
+              </div>
+              <ul class="item-list">
+                <li class="item yes">&#x2705; Carinho e aten&#xe7;&#xe3;o</li>
+                <li class="item yes">&#x2705; Beijos e abra&#xe7;os</li>
+                <li class="item yes">&#x2705; Conversa&#xe7;&#xe3;o</li>
+                <li class="item no">&#x274c; Sem compromisso</li>
+                <li class="item no">&#x274c; Sexo explicito</li>
+                <li class="item yes">&#x2705; Momento especial</li>
+              </ul>
+            </div>
+            <div class="price-section">
+              <p>De: R&#x24; 250,00</p>
+              <p>Por Apenas:</p>
+              <p>R&#x24; 180,00</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-item">
+          <input type="checkbox" id="servico6" name="services" value="servico6" aria-label="Servi&#xe7;o 6">
+          <div class="box">
+            <h1 class="title">Completo (1 Hora)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://example.com/completo.gif" alt="Servi&#xe7;o 6 GIF" aria-label="Imagem do servi&#xe7;o 6">
+              </div>
+              <ul class="item-list">
+                <li class="item yes">&#x2705; Todos servi&#xe7;os inclusos</li>
+                <li class="item yes">&#x2705; Sem limites</li>
+                <li class="item yes">&#x2705; Personalizado</li>
+                <li class="item no">&#x274c; Sem fantasias extremas</li>
+                <li class="item no">&#x274c; Limites pessoais</li>
+                <li class="item yes">&#x2705; Experi&#xea;ncia completa</li>
+              </ul>
+            </div>
+            <div class="price-section">
+              <p>De: R&#x24; 400,00</p>
+              <p>Por Apenas:</p>
+              <p>R&#x24; 300,00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel-controls">
+        <button class="carousel-btn carousel-btn-prev" type="button">Anterior</button>
+        <button class="carousel-btn carousel-btn-next" type="button">Pr&#xf3;ximo</button>
       </div>
       
       <button type="submit" class="submit-btn">Enviar</button>
     </form>
   </div>
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const serviceCheckboxes = document.querySelectorAll('input[name="services"]');
-  const serviceForm = document.getElementById('serviceForm');
-  const serviceBoxes = document.querySelectorAll('.box');
-
-  // Improved checkbox and box selection mechanism
-  serviceBoxes.forEach((box, index) => {
-    box.addEventListener('click', () => {
-      // Uncheck all checkboxes first
-      serviceCheckboxes.forEach(cb => {
-        cb.checked = false;
-        cb.closest('.service-item').querySelector('.box').style.borderColor = '#000';
-        cb.closest('.service-item').querySelector('.box').style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-      });
-
-      // Check the clicked checkbox
-      serviceCheckboxes[index].checked = true;
-      box.style.borderColor = 'green';
-      box.style.boxShadow = '0 0 10px rgba(0, 255, 0, 0.3)';
+  <script>document.addEventListener('DOMContentLoaded', () => {
+  let currentIndex = 0;
+  const carouselWrapper = document.querySelector('.carousel-wrapper');
+  const serviceItems = document.querySelectorAll('.service-item');
+  const prevBtn = document.querySelector('.carousel-btn-prev');
+  const nextBtn = document.querySelector('.carousel-btn-next');
+  function updateCarousel() {
+    carouselWrapper.scrollTo({
+      left: currentIndex * carouselWrapper.offsetWidth,
+      behavior: 'smooth'
     });
-  });
-
-  serviceForm.addEventListener('submit', function(e) {
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === serviceItems.length - 1;
+    serviceItems.forEach((item, index) => {
+      item.style.opacity = index === currentIndex ? '1' : '0.7';
+    });
+  }
+  prevBtn.addEventListener('click', e => {
     e.preventDefault();
-    
-    // Capture form data
-    const nick = document.getElementById('nick').value;
-    const birthdate = document.getElementById('birthdate').value;
-    const selectedService = document.querySelector('input[name="services"]:checked');
-    
-    // Validate service selection
-    if (!selectedService) {
-      alert('Por favor, selecione um serviço.');
-      return;
-    }
-    
-    const serviceTitle = selectedService.closest('.service-item').querySelector('.title').textContent;
-    
-    // Calculate age
-    const hoje = new Date();
-    const nascimento = new Date(birthdate);
-    const idade = hoje.getFullYear() - nascimento.getFullYear();
-    const m = hoje.getMonth() - nascimento.getMonth();
-    const idadeFormatada = m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate()) 
-      ? idade - 1 
-      : idade;
-    
-    // Format birth date to dd/mm/yyyy
-    const formatarData = (data) => {
-      const [ano, mes, dia] = data.split('-');
-      return `${dia}/${mes}/${ano}`;
-    };
-    
-    // Prepare WhatsApp message
-    const mensagem = `Nick: ${nick}
-Idade: ${formatarData(birthdate)} (${idadeFormatada} anos)
-Serviço de Interesse: ${serviceTitle}`;
-    
-    // WhatsApp number with DDD
-    const whatsappNumber = '5512982572507';
-    
-    // Build WhatsApp link with message
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(mensagem)}`;
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
+    currentIndex = Math.max(0, currentIndex - 1);
+    updateCarousel();
   });
+  nextBtn.addEventListener('click', e => {
+    e.preventDefault();
+    currentIndex = Math.min(serviceItems.length - 1, currentIndex + 1);
+    updateCarousel();
+  });
+  updateCarousel();
 });
-  </script>
+const form = document.getElementById('serviceForm');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const nick = document.getElementById('nick').value;
+  const birthdate = document.getElementById('birthdate').value;
+  const services = [];
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      services.push(checkbox.value);
+    }
+  });
+  if (nick === '' || birthdate === '') {
+    alert('Por favor, preencha todos os campos!');
+    return;
+  }
+  if (services.length === 0) {
+    alert('Por favor, selecione ao menos um serviço!');
+    return;
+  }
+  const totalPrice = services.reduce((acc, service) => {
+    const price = getServicePrice(service);
+    return acc + price;
+  }, 0);
+  const whatsappMessage = `Olá, meu nick é ${nick} e eu gostaria de agendar os seguintes serviços: ${services.join(', ')}. O total é R$ ${totalPrice}. Por favor, entre em contato para confirmar o agendamento.`;
+  const whatsappUrl = `https://wa.me/5512982572507?text=${encodeURIComponent(whatsappMessage)}`;
+  window.open(whatsappUrl, '_blank');
+});
+function getServicePrice(service) {
+  const prices = {
+    servico1: 50,
+    servico2: 80,
+    servico3: 100,
+    servico4: 150,
+    servico5: 180,
+    servico6: 300
+  };
+  return prices[service] || 0;
+}
+window.addEventListener('error', e => {
+  console.error('Erro:', e);
+});</script>
 </body>
 </html>
