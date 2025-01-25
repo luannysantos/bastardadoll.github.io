@@ -185,7 +185,7 @@
       color: #333;
     }
 
-    .form-group input {
+    .form-group input, .form-group select, .form-group textarea {
       width: 100%;
       padding: 10px;
       border: 1.5px solid #ff69b4;
@@ -194,7 +194,7 @@
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .form-group input:focus {
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       outline: none;
       border-color: #ff1493;
       box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
@@ -204,6 +204,30 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .form-group.schedule {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .form-group.schedule input[type="date"],
+    .form-group.schedule input[type="time"] {
+      width: 100%;
+      padding: 10px;
+      border: 1.5px solid #ff69b4;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-group.schedule input[type="date"]:focus,
+    .form-group.schedule input[type="time"]:focus {
+      outline: none;
+      border-color: #ff1493;
+      box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
     }
 
     @media screen and (max-width: 480px) {
@@ -240,6 +264,15 @@
       <div class="form-group">
         <label for="birthdate">Data de Nascimento:</label>
         <input type="date" id="birthdate" name="birthdate" required aria-label="Campo de data de nascimento">
+      </div>
+      
+      <div class="form-group schedule">
+        <label for="scheduleDate">Data do Agendamento:</label>
+        <input type="date" id="scheduleDate" name="scheduleDate" required aria-label="Data do agendamento">
+      </div>
+      <div class="form-group schedule">
+        <label for="scheduleTime">Hor&#xe1;rio do Agendamento:</label>
+        <input type="time" id="scheduleTime" name="scheduleTime" required aria-label="Hor&#xe1;rio do agendamento">
       </div>
       
       <div class="carousel-wrapper">
@@ -352,7 +385,7 @@
                 <li class="item yes">&#x2705; Beijos e abra&#xe7;os</li>
                 <li class="item yes">&#x2705; Conversa&#xe7;&#xe3;o</li>
                 <li class="item no">&#x274c; Sem compromisso</li>
-                <li class="item no">&#x274c; Sexo explicito</li>
+                <li class="item no">&#x274c; Sexo expl&#xed;cito</li>
                 <li class="item yes">&#x2705; Momento especial</li>
               </ul>
             </div>
@@ -431,6 +464,8 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   const nick = document.getElementById('nick').value;
   const birthdate = document.getElementById('birthdate').value;
+  const scheduleDate = document.getElementById('scheduleDate').value;
+  const scheduleTime = document.getElementById('scheduleTime').value;
   const services = [];
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   checkboxes.forEach(checkbox => {
@@ -446,11 +481,20 @@ form.addEventListener('submit', e => {
     alert('Por favor, selecione ao menos um serviço!');
     return;
   }
+  if (scheduleDate === '' || scheduleTime === '') {
+    alert('Por favor, preencha a data e o horário do agendamento!');
+    return;
+  }
   const totalPrice = services.reduce((acc, service) => {
     const price = getServicePrice(service);
     return acc + price;
   }, 0);
-  const whatsappMessage = `Olá, meu nick é ${nick} e eu gostaria de agendar os seguintes serviços: ${services.join(', ')}. O total é R$ ${totalPrice}. Por favor, entre em contato para confirmar o agendamento.`;
+  const whatsappMessage = `Olá, meu nick é ${nick} e eu gostaria de agendar os seguintes serviços: ${services.join(', ')}. 
+Detalhes do Agendamento:
+- Data: ${scheduleDate}
+- Horário: ${scheduleTime}
+O total é R$ ${totalPrice}. 
+Por favor, entre em contato para confirmar o agendamento.`;
   const whatsappUrl = `https://wa.me/5512982572507?text=${encodeURIComponent(whatsappMessage)}`;
   window.open(whatsappUrl, '_blank');
 });
