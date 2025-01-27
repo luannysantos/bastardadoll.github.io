@@ -125,6 +125,14 @@
       text-decoration: line-through;
       color: rgba(255,255,255,0.7);
       font-size: 0.8em;
+      margin-bottom: 5px;
+    }
+
+    .price-section p:nth-child(2) {
+      font-weight: bold;
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
 
     .price-section p:nth-child(3) {
@@ -277,7 +285,7 @@
 <body>
   <div class="container" aria-label="Servi&#xe7;os dispon&#xed;veis">
     <form id="serviceForm" aria-label="Formul&#xe1;rio de servi&#xe7;os">
-      <h1>Servi&#xe7;os Dispon&#xed;veis</h1>
+      <h1>Agendamento</h1>
       
       <div class="form-group">
         <label for="nick">Nick:</label>
@@ -318,9 +326,9 @@
             <input type="radio" id="servico1" name="services" value="servico1" aria-label="Servi&#xe7;o 1">
             <label for="servico1">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R&#x24; 80,00</p>
+              <p>De: R$ 80,00</p>
               <p>Por Apenas:</p>
-              <p>R&#x24; 50,00</p>
+              <p>R$ 50,00</p>
             </div>
           </div>
         </div>
@@ -343,9 +351,9 @@
             <input type="radio" id="servico2" name="services" value="servico2" aria-label="Servi&#xe7;o 2">
             <label for="servico2">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R&#x24; 150,00</p>
+              <p>De: R$ 150,00</p>
               <p>Por Apenas:</p>
-              <p>R&#x24; 80,00</p>
+              <p>R$ 80,00</p>
             </div>
           </div>
         </div>
@@ -368,9 +376,9 @@
             <input type="radio" id="servico3" name="services" value="servico3" aria-label="Servi&#xe7;o 3">
             <label for="servico3">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R&#x24; 150,00</p>
+              <p>De: R$ 150,00</p>
               <p>Por Apenas:</p>
-              <p>R&#x24; 100,00</p>
+              <p>R$ 100,00</p>
             </div>
           </div>
         </div>
@@ -393,9 +401,9 @@
             <input type="radio" id="servico4" name="services" value="servico4" aria-label="Servi&#xe7;o 4">
             <label for="servico4">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R&#x24; 200,00</p>
+              <p>De: R$ 200,00</p>
               <p>Por Apenas:</p>
-              <p>R&#x24; 150,00</p>
+              <p>R$ 150,00</p>
             </div>
           </div>
         </div>
@@ -460,15 +468,17 @@ form.addEventListener('submit', e => {
   }
   const serviceItem = selectedService.closest('.service-item');
   const title = serviceItem.querySelector('.title').textContent;
-  const serviceDetails = Array.from(serviceItem.querySelectorAll('.item-list .item')).map(item => item.textContent).join('\n');
+  const serviceDetails = Array.from(serviceItem.querySelectorAll('.item-list .item')).map(item => item.textContent).join('\n-');
   const price = serviceItem.querySelector('.price-section').innerText;
   const whatsappMessage = `Olá, meu nick é *${nick}* 
 Idade: *${age} anos*
 
-*Serviço Selecionado:*
+*Desejo Contratar:*
 *${title}*
-${serviceDetails}
-${price}
+- ${serviceDetails}
+__________________
+${price.replace('~De:~','~De:~').replace('*Por Apenas:*','*Por Apenas:*')}
+__________________
 
 *Detalhes do Agendamento:*
 *Data:* ${scheduleDate}
