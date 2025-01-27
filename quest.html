@@ -15,6 +15,7 @@
   <link rel="preload" href="https://example.com/namoradinha.gif" as="image">
   <link rel="preload" href="https://example.com/completo.gif" as="image">
   <title>Question&#xe1;rio de Servi&#xe7;os</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
@@ -280,6 +281,63 @@
         font-size: 18px;
       }
     }
+    
+    .location-info-container {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+
+    .location-icon {
+      background-color: #ff69b4;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .location-icon:hover {
+      background-color: #ff1493;
+      transform: scale(1.1);
+    }
+
+    .location-details {
+      display: none;
+      position: absolute;
+      right: 50%;
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      width: 700%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1001;
+    }
+
+    .location-details h3 {
+      color: #ff69b4;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ff69b4;
+      padding-bottom: 5px;
+    }
+
+    .location-details h4 {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .location-details ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -315,20 +373,20 @@
                 <img src="https://bastardadoll.github.io/servico1.gif" alt="Servi&#xe7;o 1 GIF" aria-label="Imagem do servi&#xe7;o 1">
               </div>
               <ul class="item-list">
-                <li class="item no">&#x274c; Me chupar</li>
-                <li class="item no">&#x274c; Me tocar</li>
-                <li class="item no">&#x274c; N&#xc3;O gozo</li>
-                <li class="item yes">&#x2705; Garganta profunda</li>
-                <li class="item yes">&#x2705; Sem camisinha</li>
-                <li class="item yes">&#x2705; Goza na boca</li>
+                <li class="item no"> Me chupar</li>
+                <li class="item no"> Me tocar</li>
+                <li class="item no"> N&#xc3;O gozo</li>
+                <li class="item yes"> Garganta profunda</li>
+                <li class="item yes"> Sem camisinha</li>
+                <li class="item yes"> Goza na boca</li>
               </ul>
             </div>
             <input type="radio" id="servico1" name="services" value="servico1" aria-label="Servi&#xe7;o 1">
             <label for="servico1">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R$ 80,00</p>
+              <p>De: R&#x24; 80,00</p>
               <p>Por Apenas:</p>
-              <p>R$ 50,00</p>
+              <p>R&#x24; 50,00</p>
             </div>
           </div>
         </div>
@@ -340,20 +398,20 @@
                 <img src="https://bastardadoll.github.io/servico2.gif" alt="Servi&#xe7;o 2 GIF" aria-label="Imagem do servi&#xe7;o 2">
               </div>
               <ul class="item-list">
-                <li class="item no">&#x274c; Me chupar</li>
-                <li class="item no">&#x274c; Me tocar</li>
-                <li class="item no">&#x274c; N&#xc3;O gozo</li>
-                <li class="item yes">&#x2705; Garganta profunda</li>
-                <li class="item yes">&#x2705; Sem camisinha</li>
-                <li class="item yes">&#x2705; Goza na boca</li>
+                <li class="item no"> Me chupar</li>
+                <li class="item no"> Me tocar</li>
+                <li class="item no"> N&#xc3;O gozo</li>
+                <li class="item yes"> Garganta profunda</li>
+                <li class="item yes"> Sem camisinha</li>
+                <li class="item yes"> Goza na boca</li>
               </ul>
             </div>
             <input type="radio" id="servico2" name="services" value="servico2" aria-label="Servi&#xe7;o 2">
             <label for="servico2">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R$ 150,00</p>
+              <p>De: R&#x24; 150,00</p>
               <p>Por Apenas:</p>
-              <p>R$ 80,00</p>
+              <p>R&#x24; 80,00</p>
             </div>
           </div>
         </div>
@@ -365,20 +423,20 @@
                 <img src="https://bastardadoll.github.io/servico3.gif" alt="Servi&#xe7;o 3 GIF" aria-label="Imagem do servi&#xe7;o 3">
               </div>
               <ul class="item-list">
-                <li class="item no">&#x274c; N&#xc3;O sou ativa</li>
-                <li class="item no">&#x274c; Sem beijos na boca</li>
-                <li class="item no">&#x274c; N&#xc3;O fa&#xe7;o nada no seu &#xe2;nus</li>
-                <li class="item yes">&#x2705; Sem camisinha</li>
-                <li class="item yes">&#x2705; Tapas e pux&#xe3;o de cabelo (de leve)</li>
-                <li class="item yes">&#x2705; Goza onde quiser</li>
+                <li class="item no"> N&#xc3;O sou ativa</li>
+                <li class="item no"> Sem beijos na boca</li>
+                <li class="item no"> N&#xc3;O fa&#xe7;o nada no seu &#xe2;nus</li>
+                <li class="item yes"> Sem camisinha</li>
+                <li class="item yes"> Tapas e pux&#xe3;o de cabelo (de leve)</li>
+                <li class="item yes"> Goza onde quiser</li>
               </ul>
             </div>
             <input type="radio" id="servico3" name="services" value="servico3" aria-label="Servi&#xe7;o 3">
             <label for="servico3">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R$ 150,00</p>
+              <p>De: R&#x24; 150,00</p>
               <p>Por Apenas:</p>
-              <p>R$ 100,00</p>
+              <p>R&#x24; 100,00</p>
             </div>
           </div>
         </div>
@@ -390,20 +448,20 @@
                 <img src="https://bastardadoll.github.io/luanny.gif" alt="Servi&#xe7;o 4 GIF" aria-label="Imagem do servi&#xe7;o 4">
               </div>
               <ul class="item-list">
-                <li class="item no">&#x26a0; Agendamento apenas com sinal(R&#x24; 50,00)</li>
-                <li class="item no">&#x274c; Sem beijos na boca</li>
-                <li class="item no">&#x274c; N&#xc3;O fa&#xe7;o cunete</li>
-                <li class="item yes">&#x2705; Sem camisinha</li>
-                <li class="item yes">&#x2705; Com carrinho/com for&#xe7;a</li>
-                <li class="item yes">&#x2705; Posso Goza onde voc&#xea; quiser</li>
+                <li class="item no"> Agendamento apenas com sinal(R&#x24; 50,00)</li>
+                <li class="item no"> Sem beijos na boca</li>
+                <li class="item no"> N&#xc3;O fa&#xe7;o cunete</li>
+                <li class="item yes"> Sem camisinha</li>
+                <li class="item yes"> Com carrinho/com for&#xe7;a</li>
+                <li class="item yes"> Posso Goza onde voc&#xea; quiser</li>
               </ul>
             </div>
             <input type="radio" id="servico4" name="services" value="servico4" aria-label="Servi&#xe7;o 4">
             <label for="servico4">Selecionar esse</label>
             <div class="price-section">
-              <p>De: R$ 200,00</p>
+              <p>De: R&#x24; 200,00</p>
               <p>Por Apenas:</p>
-              <p>R$ 150,00</p>
+              <p>R&#x24; 150,00</p>
             </div>
           </div>
         </div>
@@ -416,6 +474,30 @@
       
       <button type="submit" class="submit-btn">Enviar</button>
     </form>
+    <div class="location-info-container">
+      <div class="location-icon">
+        <i class="fas fa-house"></i>
+      </div>
+      <div class="location-details">
+        <h3>Informa&#xe7;&#xf5;es do Local</h3>
+        <p><strong>Localiza&#xe7;&#xe3;o:</strong> S&#xe3;o Jos&#xe9; dos Campos - SP</p>
+        <p><strong>Endere&#xe7;o:</strong> Rua: Rio Grande do Sul, Vila S&#xe3;o Pedro</p>
+        
+        <h4>Pr&#xf3;ximo a:</h4>
+        <ul>
+          <li>Batalh&#xe3;o de Pol&#xed;cia</li>
+          <li>Em frente a Dutra Km 146 sentido Rio de Janeiro</li>
+        </ul>
+        
+        <h4>Sobre o Local:</h4>
+        <ul>
+          <li>N&#xe3;o possui garagem</li>
+          <li>Rua tranquila, pode estacionar no posto Shell na esquina de casa e vir a p&#xe9;</li>
+          <li>Atendo sozinha em meu local de atendimento</li>
+          <li>Dispon&#xed;vel: filme, ducha, toalhas</li>
+        </ul>
+      </div>
+    </div>
   </div>
   <script>document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
@@ -477,7 +559,7 @@ Idade: *${age} anos*
 *${title}*
 - ${serviceDetails}
 __________________
-${price.replace('~De:~','~De:~').replace('*Por Apenas:*','*Por Apenas:*')}
+${price.replace('~De:~', '~De:~').replace('*Por Apenas:*', '*Por Apenas:*')}
 __________________
 *Detalhes do Agendamento:*
 *Data:* ${scheduleDate}
@@ -498,6 +580,12 @@ function getServicePrice(service) {
 }
 window.addEventListener('error', e => {
   console.error('Erro:', e);
+});
+document.querySelector('.location-icon').addEventListener('click', function () {
+  const details = this.nextElementSibling;
+  if (details) {
+    details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
+  }
 });</script>
 </body>
 </html>
