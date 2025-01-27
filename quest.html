@@ -428,20 +428,20 @@
       left: currentIndex * carouselWrapper.offsetWidth,
       behavior: 'smooth'
     });
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex === serviceItems.length - 1;
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
     serviceItems.forEach((item, index) => {
       item.style.opacity = index === currentIndex ? '1' : '0.7';
     });
   }
   prevBtn.addEventListener('click', e => {
     e.preventDefault();
-    currentIndex = Math.max(0, currentIndex - 1);
+    currentIndex = currentIndex === 0 ? serviceItems.length - 1 : currentIndex - 1;
     updateCarousel();
   });
   nextBtn.addEventListener('click', e => {
     e.preventDefault();
-    currentIndex = Math.min(serviceItems.length - 1, currentIndex + 1);
+    currentIndex = currentIndex === serviceItems.length - 1 ? 0 : currentIndex + 1;
     updateCarousel();
   });
   updateCarousel();
@@ -479,7 +479,6 @@ Idade: *${age} anos*
 __________________
 ${price.replace('~De:~','~De:~').replace('*Por Apenas:*','*Por Apenas:*')}
 __________________
-
 *Detalhes do Agendamento:*
 *Data:* ${scheduleDate}
 *Horário:* ${scheduleTime}
