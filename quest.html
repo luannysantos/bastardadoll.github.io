@@ -81,12 +81,6 @@
       box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     }
 
-    .service-item input[type="radio"] {
-      display: block;
-      margin: 10px auto;
-      transform: scale(1.5);
-    }
-
     .box {
       display: flex;
       flex-direction: column;
@@ -244,6 +238,21 @@
       box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
     }
 
+    .service-item label[for^="servico"] {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .service-item label[for^="servico"]:hover {
+      background-color: #3e8e41;
+    }
+
     @media screen and (max-width: 480px) {
       .container {
         width: 95%;
@@ -307,6 +316,7 @@
               </ul>
             </div>
             <input type="radio" id="servico1" name="services" value="servico1" aria-label="Servi&#xe7;o 1">
+            <label for="servico1">Selecionar esse</label>
             <div class="price-section">
               <p>De: R&#x24; 80,00</p>
               <p>Por Apenas:</p>
@@ -331,6 +341,7 @@
               </ul>
             </div>
             <input type="radio" id="servico2" name="services" value="servico2" aria-label="Servi&#xe7;o 2">
+            <label for="servico2">Selecionar esse</label>
             <div class="price-section">
               <p>De: R&#x24; 150,00</p>
               <p>Por Apenas:</p>
@@ -355,6 +366,7 @@
               </ul>
             </div>
             <input type="radio" id="servico3" name="services" value="servico3" aria-label="Servi&#xe7;o 3">
+            <label for="servico3">Selecionar esse</label>
             <div class="price-section">
               <p>De: R&#x24; 150,00</p>
               <p>Por Apenas:</p>
@@ -379,6 +391,7 @@
               </ul>
             </div>
             <input type="radio" id="servico4" name="services" value="servico4" aria-label="Servi&#xe7;o 4">
+            <label for="servico4">Selecionar esse</label>
             <div class="price-section">
               <p>De: R&#x24; 200,00</p>
               <p>Por Apenas:</p>
