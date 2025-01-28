@@ -75,6 +75,13 @@ h1 {
     border-radius: 15px;
 }
 
+.grid-item-description {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
 .contact-info {
     display: flex;
     justify-content: space-around;
@@ -174,7 +181,7 @@ footer {
 
 @media (max-width: 768px) {
     .grid-images {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .contact-info {
@@ -192,21 +199,25 @@ footer {
     <div class="container">
         <header>
             <h1>Luanny & Amanda</h1>
-            <p class="subtitle">Conecte-se conosco</p>
+            <p class="subtitle">Dupla safadinhas</p>
         </header>
         
         <div class="grid-images">
             <div class="grid-item">
                 <img src="luanny1.jpg" alt="Luanny" loading="lazy">
+                <p class="grid-item-description">Luanny sensual em pose provocante</p>
             </div>
             <div class="grid-item">
                 <img src="luanny2.jpg" alt="Luanny" loading="lazy">
+                <p class="grid-item-description">Luanny com look elegante e sedutor</p>
             </div>
             <div class="grid-item">
                 <img src="amanda1.jpg" alt="Amanda" loading="lazy">
+                <p class="grid-item-description">Amanda com sorriso irresistível</p>
             </div>
             <div class="grid-item">
                 <img src="amanda2.jpg" alt="Amanda" loading="lazy">
+                <p class="grid-item-description">Amanda em look casual e charmoso</p>
             </div>
         </div>
         
@@ -216,7 +227,7 @@ footer {
                     <h2>Luanny</h2>
                     <span class="profile-tag">Trans</span>
                 </div>
-                <a href="#" class="whatsapp-button" onclick="openBookingModal('Luanny')">
+                <a href="https://wa.me/5512982572507" class="whatsapp-button" onclick="openBookingModal('Luanny')">
                     <i class="ri-whatsapp-line"></i> Contate Luanny
                 </a>
             </div>
@@ -225,7 +236,7 @@ footer {
                     <h2>Amanda</h2>
                     <span class="profile-tag">Mulher</span>
                 </div>
-                <a href="#" class="whatsapp-button" onclick="openBookingModal('Amanda')">
+                <a href="https://wa.me/5511967074572" class="whatsapp-button" onclick="openBookingModal('Amanda')">
                     <i class="ri-whatsapp-line"></i> Contate Amanda
                 </a>
             </div>
@@ -242,10 +253,10 @@ footer {
                 <input type="time" name="time" placeholder="Horário do Agendamento:" required>
                 <select name="service" required>
                     <option value="">Selecione um Serviço</option>
-                    <option value="solo1">Serviço Solo 1, 15 min, R$ 50,00</option>
-                    <option value="solo2">Serviço Solo 2, 15 min, R$ 100,00</option>
-                    <option value="dupla1">Serviço Dupla 1, 15 min, R$ 200,00</option>
-                    <option value="dupla2">Serviço Dupla 2, 15 min, R$ 300,00</option>
+                    <option value="solo1">Boquete, 15 min, R$ 50,00</option>
+                    <option value="solo2">Completo, 15 min, R$ 100,00</option>
+                    <option value="dupla1">Dupla, sem interação, 15 min, R$ 200,00</option>
+                    <option value="dupla2">Dupla, com interaçã, 15 min, R$ 300,00</option>
                 </select>
                 <button type="submit">Enviar para WhatsApp</button>
             </form>
