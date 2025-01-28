@@ -259,7 +259,7 @@ footer {
                     <option value="solo1">Boquete, 15 min, R$ 50,00</option>
                     <option value="solo2">Completo, 15 min, R$ 100,00</option>
                     <option value="dupla1">Dupla, sem interação, 15 min, R$ 200,00</option>
-                    <option value="dupla2">Dupla, com interaçã, 15 min, R$ 300,00</option>
+                    <option value="dupla2">Dupla, com interação, 15 min, R$ 300,00</option>
                 </select>
                 <button type="submit">Enviar para WhatsApp</button>
             </form>
@@ -274,10 +274,30 @@ footer {
         function openBookingModal(name) {
             const modal = document.getElementById('booking-modal');
             const title = document.getElementById('booking-title');
+            const form = document.getElementById('booking-form');
+            const serviceSelect = form.querySelector('select[name="service"]');
+            
             title.textContent = `Agendamento - ${name}`;
             modal.style.display = 'flex';
 
-            const form = document.getElementById('booking-form');
+            // Different services for each person
+            if (name === 'Luanny') {
+                serviceSelect.innerHTML = `
+                    <option value="">Selecione um Serviço para Luanny</option>
+                    <option value="luanny-solo1">Oral, 15 min, R$ 50,00</option>
+                    <option value="luanny-solo2">Passiva, 15 min, R$ 100,00</option>
+                    <option value="luanny-completo">Completo (Ativa/Passiva), 15 min, R$ 200,00</option>
+                    <option value="luanny-dupla">Dupla, 30 min, R$ 400,00</option>
+                `;
+            } else {
+                serviceSelect.innerHTML = `
+                    <option value="">Selecione um Serviço para Amanda</option>
+                    <option value="amanda-solo1">Oral, 15 min, R$ 50,00</option>
+                    <option value="amanda-solo2">Vaginal, 15 min, R$ 100,00</option>
+                    <option value="amanda-dupla">Dupla, 30 min, R$ 400,00</option>
+                `;
+            }
+
             form.onsubmit = function(e) {
                 e.preventDefault();
                 const formData = new FormData(form);
