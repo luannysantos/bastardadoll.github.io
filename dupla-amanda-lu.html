@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <base href="https://https://wa.me/5512982572507" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luanny & Amanda</title>
@@ -76,11 +75,11 @@ h1 {
 }
 
 .grid-item-description {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: #666;
-        }
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
 
 .contact-info {
     display: flex;
@@ -125,6 +124,56 @@ h1 {
     width: 100%;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.close-modal {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+    color: #aaa;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form input, .modal-form select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .whatsapp-button:hover {
     background-color: var(--secondary-color);
     transform: translateY(-3px);
@@ -142,57 +191,14 @@ footer {
     font-size: 0.9rem;
 }
 
-#booking-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.booking-form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-}
-
-.booking-form input, .booking-form select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.booking-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 @media (max-width: 768px) {
+    .contact-info {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
     .grid-images {
         grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .grid-item img {
-        height: 250px;
     }
 }
     </style>
@@ -230,7 +236,7 @@ footer {
                     <h2>Luanny</h2>
                     <span class="profile-tag">Trans</span>
                 </div>
-                <a href="https://wa.me/5512982572507" class="whatsapp-button" onclick="openBookingModal('Luanny')">
+                <a href="#" class="whatsapp-button" data-person="luanny">
                     <i class="ri-whatsapp-line"></i> Contate Luanny
                 </a>
             </div>
@@ -239,29 +245,51 @@ footer {
                     <h2>Amanda</h2>
                     <span class="profile-tag">Mulher</span>
                 </div>
-                <a href="https://wa.me/5511967074572" class="whatsapp-button" onclick="openBookingModal('Amanda')">
+                <a href="#" class="whatsapp-button" data-person="amanda">
                     <i class="ri-whatsapp-line"></i> Contate Amanda
                 </a>
             </div>
         </div>
     </div>
 
-    <div id="booking-modal">
-        <div class="booking-form">
-            <h2 id="booking-title">Agendamento</h2>
-            <form id="booking-form">
-                <input type="text" name="nick" placeholder="Nick:" required>
-                <input type="number" name="age" placeholder="Idade:" required>
-                <input type="date" name="date" placeholder="Data do Agendamento:" required>
-                <input type="time" name="time" placeholder="Horário do Agendamento:" required>
-                <select name="service" required>
-                    <option value="">Selecione um Serviço</option>
-                    <option value="solo1">Boquete, 15 min, R$ 50,00</option>
-                    <option value="solo2">Completo, 15 min, R$ 100,00</option>
-                    <option value="dupla1">Dupla, sem interação, 15 min, R$ 200,00</option>
-                    <option value="dupla2">Dupla, com interação, 15 min, R$ 300,00</option>
+    <div id="luannyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Agendamento - Luanny</h2>
+            <form id="luannyForm" class="modal-form">
+                <input type="text" name="nick" placeholder="Nick" required>
+                <input type="number" name="idade" placeholder="Idade" required>
+                <input type="date" name="data" placeholder="Data do Agendamento" required>
+                <input type="time" name="horario" placeholder="Horário do Agendamento" required>
+                <select name="servico" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="1">Serviço solo Luanny 1, 15 min, R$ 50,00</option>
+                    <option value="2">Serviço solo Luanny 2, 15 min, R$ 100,00</option>
+                    <option value="3">Serviço dupla 1, 15 min, R$ 200,00</option>
+                    <option value="4">Serviço dupla 2, 15 min, R$ 300,00</option>
                 </select>
-                <button type="submit">Enviar para WhatsApp</button>
+                <button type="submit">Agendar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="amandaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Agendamento - Amanda</h2>
+            <form id="amandaForm" class="modal-form">
+                <input type="text" name="nick" placeholder="Nick" required>
+                <input type="number" name="idade" placeholder="Idade" required>
+                <input type="date" name="data" placeholder="Data do Agendamento" required>
+                <input type="time" name="horario" placeholder="Horário do Agendamento" required>
+                <select name="servico" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="1">Serviço solo Amanda 1, 15 min, R$ 50,00</option>
+                    <option value="2">Serviço solo Amanda 2, 15 min, R$ 100,00</option>
+                    <option value="3">Serviço dupla 1, 15 min, R$ 200,00</option>
+                    <option value="4">Serviço dupla 2, 15 min, R$ 300,00</option>
+                </select>
+                <button type="submit">Agendar</button>
             </form>
         </div>
     </div>
@@ -271,57 +299,62 @@ footer {
     </footer>
 
     <script>
-        function openBookingModal(name) {
-            const modal = document.getElementById('booking-modal');
-            const title = document.getElementById('booking-title');
-            const form = document.getElementById('booking-form');
-            const serviceSelect = form.querySelector('select[name="service"]');
-            
-            title.textContent = `Agendamento - ${name}`;
-            modal.style.display = 'flex';
+document.addEventListener('DOMContentLoaded', () => {
+  const whatsappButtons = document.querySelectorAll('.whatsapp-button');
+  const modals = {
+    luanny: document.getElementById('luannyModal'),
+    amanda: document.getElementById('amandaModal')
+  };
+  const closeModalButtons = document.querySelectorAll('.close-modal');
 
-            // Different services for each person
-            if (name === 'Luanny') {
-                serviceSelect.innerHTML = `
-                    <option value="">Selecione um Serviço para Luanny</option>
-                    <option value="luanny-solo1">Oral, 15 min, R$ 50,00</option>
-                    <option value="luanny-solo2">Passiva, 15 min, R$ 100,00</option>
-                    <option value="luanny-completo">Completo (Ativa/Passiva), 15 min, R$ 200,00</option>
-                    <option value="luanny-dupla">Dupla, 30 min, R$ 400,00</option>
-                `;
-            } else {
-                serviceSelect.innerHTML = `
-                    <option value="">Selecione um Serviço para Amanda</option>
-                    <option value="amanda-solo1">Oral, 15 min, R$ 50,00</option>
-                    <option value="amanda-solo2">Vaginal, 15 min, R$ 100,00</option>
-                    <option value="amanda-dupla">Dupla, 30 min, R$ 400,00</option>
-                `;
-            }
+  // WhatsApp Button Click Handlers
+  whatsappButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const person = button.dataset.person;
+      modals[person].style.display = 'flex';
+    });
+  });
 
-            form.onsubmit = function(e) {
-                e.preventDefault();
-                const formData = new FormData(form);
-                const message = `Agendamento - ${name}\n` +
-                    `Nick: ${formData.get('nick')}\n` +
-                    `Idade: ${formData.get('age')}\n` +
-                    `Data: ${formData.get('date')}\n` +
-                    `Horário: ${formData.get('time')}\n` +
-                    `Serviço: ${form.querySelector('select').options[form.querySelector('select').selectedIndex].text}`;
+  // Close Modal Buttons
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.modal');
+      modal.style.display = 'none';
+    });
+  });
 
-                const whatsappLink = name === 'Luanny' 
-                    ? 'https://wa.me/5512982572507' 
-                    : 'https://wa.me/5511967074572';
-                
-                window.open(`${whatsappLink}?text=${encodeURIComponent(message)}`, '_blank');
-                modal.style.display = 'none';
-            };
-        }
+  // Form Submission Handlers
+  document.getElementById('luannyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const nick = formData.get('nick');
+    const idade = formData.get('idade');
+    const data = formData.get('data');
+    const horario = formData.get('horario');
+    const servico = this.querySelector('select').options[this.querySelector('select').selectedIndex].text;
 
-        document.getElementById('booking-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-            }
-        });
+    const message = `Olá, meu nick é ${nick}, tenho ${idade} anos. Gostaria de agendar o serviço "${servico}" para ${data} às ${horario} com Luanny.`;
+    const whatsappUrl = `https://wa.me/5512982572507?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    this.closest('.modal').style.display = 'none';
+  });
+
+  document.getElementById('amandaForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const nick = formData.get('nick');
+    const idade = formData.get('idade');
+    const data = formData.get('data');
+    const horario = formData.get('horario');
+    const servico = this.querySelector('select').options[this.querySelector('select').selectedIndex].text;
+
+    const message = `Olá, meu nick é ${nick}, tenho ${idade} anos. Gostaria de agendar o serviço "${servico}" para ${data} às ${horario} com Amanda.`;
+    const whatsappUrl = `https://wa.me/5511967074572?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    this.closest('.modal').style.display = 'none';
+  });
+});
     </script>
 </body>
 </html>
