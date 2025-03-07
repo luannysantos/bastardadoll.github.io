@@ -1,0 +1,1055 @@
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-book Interativo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .book {
+            width: 80%;
+            max-width: 800px;
+            height: 600px;
+            position: relative;
+            perspective: 1500px;
+        }
+
+        @media (max-width: 600px) {
+            .book {
+                width: 95%;
+                height: auto;
+                max-width: none;
+                margin: 10px;
+            }
+        }
+
+        .page {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            transform-origin: 0% 50%;
+            transition: transform 0.8s;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                width: 100%;
+                position: relative;
+                height: auto;
+                margin-bottom: 20px;
+            }
+
+            .book {
+                perspective: none;
+            }
+
+            .flipped .front,
+            .flipped .back {
+                transform: rotateY(0deg);
+                z-index: auto;
+            }
+
+            .front {
+                left: 0;
+                z-index: 1;
+            }
+
+            .back {
+                right: 0;
+                z-index: 0;
+                transform: rotateY(180deg);
+            }
+
+            .flipped .front {
+                transform: rotateY(0deg);
+                z-index: 0;
+            }
+
+            .flipped .back {
+                transform: rotateY(0deg);
+                z-index: 1;
+            }
+        }
+
+        .front {
+            left: 0;
+            z-index: 1;
+        }
+
+        .back {
+            right: 0;
+            z-index: 0;
+            transform: rotateY(180deg);
+        }
+
+        .flipped .front {
+            transform: rotateY(-180deg);
+            z-index: 0;
+        }
+
+        .flipped .back {
+            transform: rotateY(0deg);
+            z-index: 1;
+        }
+
+        .page-content {
+            padding: 20px;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .indice {
+            list-style: none;
+            padding: 0;
+        }
+
+        .indice a {
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+
+        pre {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .parte {
+            margin-bottom: 30px;
+        }
+
+        .parte:last-child {
+            margin-bottom: 0;
+        }
+
+        .parte h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+        }
+
+        #flipButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            #flipButton {
+                display: block;
+            }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+
+        .progress {
+            height: 5px;
+            background-color: #007BFF;
+        }
+
+        .navigation-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ddd;
+        }
+
+        .navigation-buttons button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <meta name="description" content="Aprenda a criar uma rede social do zero com este guia prático para iniciantes">
+    <meta name="keywords" content="programação, rede social, tutorial, PHP, MySQL">
+    <meta property="og:title" content="E-book Interativo: Como Criar Uma Rede Social">
+    <meta property="og:image" content="thumbnail.jpg">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.book {
+    width: 80%;
+    max-width: 800px;
+    height: 600px;
+    position: relative;
+    perspective: 1500px;
+}
+
+@media (max-width: 600px) {
+    .book {
+        width: 100%;
+        height: auto;
+        max-width: none;
+        margin: 5px;
+    }
+}
+
+.page {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transform-origin: 0% 50%;
+    transition: transform 0.8s;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+@media (max-width: 600px) {
+    .page {
+        width: 100%;
+        position: relative;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .book {
+        perspective: none;
+    }
+
+    .flipped .front,
+    .flipped .back {
+        transform: rotateY(0deg);
+        z-index: auto;
+    }
+
+    .front {
+        left: 0;
+        z-index: 1;
+    }
+
+    .back {
+        right: 0;
+        z-index: 0;
+        transform: rotateY(180deg);
+    }
+
+    .flipped .front {
+        transform: rotateY(0deg);
+        z-index: 0;
+    }
+
+    .flipped .back {
+        transform: rotateY(0deg);
+        z-index: 1;
+    }
+}
+
+.front {
+    left: 0;
+    z-index: 1;
+}
+
+.back {
+    right: 0;
+    z-index: 0;
+    transform: rotateY(180deg);
+}
+
+.flipped .front {
+    transform: rotateY(-180deg);
+    z-index: 0;
+}
+
+.flipped .back {
+    transform: rotateY(0deg);
+    z-index: 1;
+}
+
+.page-content {
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+h1,
+h2,
+h3 {
+    color: #333;
+}
+
+.parte h2 {
+    color: #0056b3;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.indice {
+    list-style: none;
+    padding: 0;
+}
+
+.indice a {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+pre {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.parte {
+    margin-bottom: 30px;
+}
+
+.parte:last-child {
+    margin-bottom: 0;
+}
+
+.parte h2 {
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#flipButton,
+#prevButton,
+#nextButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+
+    #flipButton,
+    #prevButton,
+    #nextButton {
+        display: block;
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Tabelas responsivas */
+@media (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .page-content {
+        padding: 10px;
+    }
+}
+
+.progress-bar {
+    height: 5px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+.progress {
+    height: 100%;
+    background: #007BFF;
+    transition: width 0.3s;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="book">
+        <div class="progress-bar">
+            <div class="progress" style="width: 50%"></div>
+        </div>
+        <div class="page front">
+            <div class="page-content">
+                <h1>📘 E-book: Como Criar Uma Rede Social do Zero</h1>
+                <p>Para Leigos e Iniciantes em Programação</p>
+                <hr>
+                <nav aria-label="Índice do E-book">
+                    <h2 id="indice-visual">Índice Visual</h2>
+                    <ul class="indice">
+                        <li><a href="#parte1">1. O Que Você Vai Criar?</a></li>
+                        <li><a href="#parte2">2. Preparando o Computador</a></li>
+                        <li><a href="#parte3">3. Criando Pastas e Arquivos</a></li>
+                        <li><a href="#parte4">4. Banco de Dados Passo a Passo</a></li>
+                        <li><a href="#parte5">5. Cadastro de Usuários</a></li>
+                        <li><a href="#parte6">6. Login Seguro</a></li>
+                        <li><a href="#parte7">7. Perfil do Usuário</a></li>
+                        <li><a href="#parte8">8. Galeria de Fotos</a></li>
+                        <li><a href="#parte9">9. Status que Desaparecem</a></li>
+                        <li><a href="#parte10">10. Grupos e Discussões</a></li>
+                        <li><a href="#parte11">11. Colocando no Ar Gratuitamente</a></li>
+                        <li><a href="#conclusao">📌 Conclusão</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="page back">
+            <div class="page-content">
+                <div id="parte1" class="parte">
+                    <h2>🌟 Parte 1: O Que Você Vai Criar?</h2>
+                    <p>Imagine uma mistura de WhatsApp + Instagram onde você pode:</p>
+                    <ul>
+                        <li>✔ Cadastrar amigos com nome, e-mail e foto</li>
+                        <li>✔ Postar fotos e status que somem em 24h</li>
+                        <li>✔ Criar grupos para conversas</li>
+                    </ul>
+                    <p>Exemplo Prático:</p>
+                    <blockquote>
+                        "Maria, 35 anos, nunca programou. Seguiu este guia e em 2 semanas tinha uma rede social para seu
+                        grupo de artesanato!"
+                    </blockquote>
+                </div>
+
+                <div id="parte2" class="parte">
+                    <h2>🛠 Parte 2: Preparando o Computador</h2>
+                    <h3>Passo 1: Baixar o XAMPP</h3>
+                    <ol>
+                        <li>Acesse <a href="https://www.apachefriends.org">https://www.apachefriends.org</a></li>
+                        <li>Clique no botão grande "Download" (versão para Windows/Mac)</li>
+                        <li>Salve o arquivo na pasta Downloads</li>
+                    </ol>
+                    <p>Dica Visual:</p>
+                    <img src="https://www.apachefriends.org/images/xampp-windows-installer-4.png"
+                        alt="Instalação XAMPP">
+                    <p>Imagem: Tela de instalação do XAMPP – marque Apache e MySQL</p>
+
+                    <h3>Passo 2: Instalar o XAMPP</h3>
+                    <ol>
+                        <li>Clique 2 vezes no arquivo baixado</li>
+                        <li>Siga as telas clicando em "Next"</li>
+                        <li>Quando perguntar quais componentes instalar:
+                            <ul>
+                                <li>✅ Apache</li>
+                                <li>✅ MySQL</li>
+                                <li>❌ Os outros não são necessários</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>Problema Comum:</p>
+                    <blockquote>
+                        "Meu antivírus bloqueou a instalação!"<br>
+                        ➔ Desative o antivírus temporariamente durante a instalação.
+                    </blockquote>
+                </div>
+
+                <div id="parte3" class="parte">
+                    <h2>📂 Parte 3: Criando Pastas e Arquivos</h2>
+                    <h3>Passo 1: Criar a Pasta do Projeto</h3>
+                    <ol>
+                        <li>Vá para Documentos > Clique direito > Nova Pasta</li>
+                        <li>Nomeie a pasta como meu_projeto</li>
+                    </ol>
+
+                    <h3>Passo 2: Estrutura de Pastas</h3>
+                    <p>Dentro de meu_projeto, crie essas pastas:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pasta</th>
+                                <th>O Que Guarda</th>
+                                <th>Exemplo de Arquivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>css</td>
+                                <td>Estilos (cores, fontes)</td>
+                                <td>style.css</td>
+                            </tr>
+                            <tr>
+                                <td>js</td>
+                                <td>Efeitos interativos</td>
+                                <td>scripts.js</td>
+                            </tr>
+                            <tr>
+                                <td>img</td>
+                                <td>Fotos e ícones</td>
+                                <td>logo.png</td>
+                            </tr>
+                            <tr>
+                                <td>php</td>
+                                <td>Códigos de programação</td>
+                                <td>cadastro.php</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Exemplo Prático:</p>
+                    <blockquote>
+                        "João criou a pasta css e colocou um arquivo chamado style.css com este conteúdo:"
+                    </blockquote>
+                    <pre>
+                        <code>
+body {
+    background-color: lightblue;
+    font-family: Arial;
+}
+                        </code>
+                    </pre>
+                </div>
+
+                <div id="parte4" class="parte">
+                    <h2>🗃 Parte 4: Banco de Dados Passo a Passo</h2>
+                    <h3>Passo 1: Acessar o phpMyAdmin</h3>
+                    <ol>
+                        <li>Abra o XAMPP</li>
+                        <li>Clique em Start no Apache e MySQL</li>
+                        <li>Abra seu navegador e digite: <a href="http://localhost/phpmyadmin">http://localhost/phpmyadmin</a>
+                        </li>
+                    </ol>
+                    <p>Visual Guide:</p>
+                    <img src="https://www.phpmyadmin.net/static/images/screenshots/quick-create-database.png"
+                        alt="phpMyAdmin">
+                    <p>Imagem: Tela inicial do phpMyAdmin</p>
+
+                    <h3>Passo 2: Criar a Tabela de Usuários</h3>
+                    <ol>
+                        <li>Clique em Nova > Nome do banco: rede_social > Criar</li>
+                        <li>Na nova tela, vá para SQL e cole:</li>
+                    </ol>
+                    <pre>
+                        <code>
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    senha VARCHAR(255)
+);
+                        </code>
+                    </pre>
+
+                    <p>Explicação Leiga:</p>
+                    <ul>
+                        <li>id: Número único para cada usuário (como RG)</li>
+                        <li>nome: Guarda o nome completo</li>
+                        <li>email: E-mail cadastrado</li>
+                        <li>senha: Senha criptografada (não aparece texto puro)</li>
+                    </ul>
+                </div>
+
+                <div id="parte5" class="parte">
+                    <h2>📝 Parte 5: Cadastro de Usuários</h2>
+                    <h3>Passo 1: Criar o Formulário HTML</h3>
+                    <p>Crie um arquivo cadastro.php com:</p>
+                    <pre>
+                        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Cadastro&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Cadastre-se&lt;/h1&gt;
+    &lt;form action="salvar_cadastro.php" method="POST"&gt;
+        Nome: &lt;input type="text" name="nome" required&gt;&lt;br&gt;
+        Email: &lt;input type="email" name="email" required&gt;&lt;br&gt;
+        Senha: &lt;input type="password" name="senha" required&gt;&lt;br&gt;
+        &lt;button type="submit"&gt;Cadastrar&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>cadastro.php</code> dentro da pasta <code>php</code> que você criou.</p>
+
+                    <p>Dica Visual:</p>
+                    <img src="https://www.w3schools.com/html/html_form_elements.gif" alt="Formulário de Cadastro">
+                    <p>Imagem: Exemplo de formulário HTML</p>
+
+                    <h3>Passo 2: Processar o Cadastro (PHP)</h3>
+                    <p>Crie salvar_cadastro.php:</p>
+                    <pre>
+                        <code>
+&lt;?php
+// Conectar ao banco
+$conexao = new mysqli("localhost", "root", "", "rede_social");
+
+// Pegar dados do formulário
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografa!
+
+// Inserir no banco
+$sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
+$conexao->query($sql);
+
+echo "Cadastro feito!";
+?&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>salvar_cadastro.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <p>Explicação para Leigos:</p>
+                    <ul>
+                        <li>password_hash: Transforma "senha123" em algo como "a$5sDf9..."</li>
+                        <li>INSERT INTO: Adiciona uma nova linha na tabela usuarios</li>
+                    </ul>
+                </div>
+
+                <div id="parte6" class="parte">
+                    <h2>🔐 Parte 6: Login Seguro</h2>
+                    <h3>Passo 1: Formulário de Login</h3>
+                    <p>Crie login.php:</p>
+                    <pre>
+                        <code>
+&lt;form action="verificar_login.php" method="POST"&gt;
+    Email: &lt;input type="email" name="email"&gt;&lt;br&gt;
+    Senha: &lt;input type="password" name="senha"&gt;&lt;br&gt;
+    &lt;button&gt;Entrar&lt;/button&gt;
+&lt;/form&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>login.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <h3>Passo 2: Verificar Credenciais</h3>
+                    <p>Crie verificar_login.php:</p>
+                    <pre>
+                        <code>
+&lt;?php
+session_start();
+$email = $_POST['email'];
+$senha = $_POST['senha'];
+
+$sql = "SELECT * FROM usuarios WHERE email = '$email'";
+$resultado = $conexao->query($sql);
+
+if ($resultado->num_rows > 0) {
+    $usuario = $resultado->fetch_assoc();
+    if (password_verify($senha, $usuario['senha'])) {
+        $_SESSION['usuario_id'] = $usuario['id'];
+        header("Location: perfil.php");
+    } else {
+        echo "Senha errada!";
+    }
+} else {
+    echo "E-mail não cadastrado!";
+}
+?&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>verificar_login.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <p>Proteção Contra Hackers:</p>
+                    <ul>
+                        <li>password_verify: Compara a senha digitada com a criptografada</li>
+                        <li>session_start: Mantém o usuário logado enquanto navega</li>
+                    </ul>
+                </div>
+
+                <div id="parte7" class="parte">
+                    <h2>👤 Parte 7: Perfil do Usuário</h2>
+                    <h3>Passo 1: Exibir Informações</h3>
+                    <p>Crie perfil.php:</p>
+                    <pre>
+                        <code>
+&lt;?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+}
+
+$sql = "SELECT * FROM usuarios WHERE id = {$_SESSION['usuario_id']}";
+$usuario = $conexao->query($sql)->fetch_assoc();
+?&gt;
+
+&lt;h1&gt;Bem-vindo, &lt;?php echo $usuario['nome']; ?&gt;!&lt;/h1&gt;
+&lt;p&gt;Seu e-mail: &lt;?php echo $usuario['email']; ?&gt;&lt;/p&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>perfil.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <p>Resultado:</p>
+                    <img src="https://i.imgur.com/3G7T4Kl.png" alt="Perfil do Usuário">
+                    <p>Imagem: Exemplo de perfil com nome e e-mail</p>
+                </div>
+
+                <div id="parte8" class="parte">
+                    <h2>📸 Parte 8: Galeria de Fotos</h2>
+                    <h3>Passo 1: Formulário de Upload</h3>
+                    <p>Adicione em galeria.php:</p>
+                    <pre>
+                        <code>
+&lt;form action="upload.php" method="POST" enctype="multipart/form-data"&gt;
+    &lt;input type="file" name="foto" accept="image/*"&gt;
+    &lt;button&gt;Enviar Foto&lt;/button&gt;
+&lt;/form&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>galeria.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <h3>Passo 2: Processar o Upload</h3>
+                    <p>Crie upload.php:</p>
+                    <pre>
+                        <code>
+&lt;?php
+$pasta = "uploads/";
+$nomeArquivo = $pasta . basename($_FILES["foto"]["name"]);
+
+if (move_uploaded_file($_FILES["foto"]["tmp_name"], $nomeArquivo)) {
+    echo "Foto enviada!";
+} else {
+    echo "Erro no upload.";
+}
+?&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>upload.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <p>Dica de Segurança:</p>
+                    <ul>
+                        <li>accept="image/*": Só permite envio de imagens</li>
+                        <li>Renomeie arquivos para evitar scripts maliciosos:
+                            <pre>
+                                <code>
+&lt;?php
+$novoNome = uniqid() . ".jpg"; // Ex: 5f3d96e8c42a7.jpg
+                                ?&gt;
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="parte9" class="parte">
+                    <h2>⏳ Parte 9: Status 24 Horas</h2>
+                    <h3>Passo 1: Criar Tabela de Status</h3>
+                    <p>No phpMyAdmin, execute:</p>
+                    <pre>
+                        <code>
+CREATE TABLE status (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    texto TEXT,
+    data_postagem DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+                        </code>
+                    </pre>
+
+                    <h3>Passo 2: Postar Status</h3>
+                    <p>Crie postar_status.php:</p>
+                    <pre>
+                        <code>
+&lt;?php
+$texto = $_POST['texto'];
+$usuario_id = $_SESSION['usuario_id'];
+
+$sql = "INSERT INTO status (usuario_id, texto) VALUES ($usuario_id, '$texto')";
+$conexao->query($sql);
+header("Location: index.php");
+?&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>postar_status.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <p>Exemplo de Uso:</p>
+                    <img src="https://i.imgur.com/Vv6Rk9L.png" alt="Status">
+                    <p>Imagem: Feed com status e timer de 24h</p>
+                </div>
+
+                <div id="parte10" class="parte">
+                    <h2>👥 Parte 10: Grupos e Discussões</h2>
+                    <h3>Passo 1: Tabela de Grupos</h3>
+                    <p>Execute no phpMyAdmin:</p>
+                    <pre>
+                        <code>
+CREATE TABLE grupos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    descricao TEXT,
+    criador_id INT
+);
+                        </code>
+                    </pre>
+
+                    <h3>Passo 2: Página de Grupos</h3>
+                    <p>Em grupos.php:</p>
+                    <pre>
+                        <code>
+&lt;?php
+$sql = "SELECT * FROM grupos";
+$grupos = $conexao->query($sql);
+
+foreach ($grupos as $grupo) {
+    echo "&lt;div class='grupo'&gt;";
+    echo "&lt;h3&gt;{$grupo['nome']}&lt;/h3&gt;";
+    echo "&lt;p&gt;{$grupo['descricao']}&lt;/p&gt;";
+    echo "&lt;/div&gt;";
+}
+?&gt;
+                        </code>
+                    </pre>
+                    <p>Salve o código acima em um arquivo chamado <code>grupos.php</code> dentro da pasta <code>php</code>.</p>
+
+                    <p>Design Amigável:</p>
+                    <pre>
+                        <code>
+.grupo {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+                        </code>
+                    </pre>
+                </div>
+
+                <div id="parte11" class="parte">
+                    <h2>🚀 Parte 11: Hospedagem Gratuita</h2>
+                    <h3>Passo 1: Criar Conta no InfinityFree</h3>
+                    <ol>
+                        <li>Acesse <a href="https://infinityfree.net">https://infinityfree.net</a></li>
+                        <li>Clique em Sign Up e preencha com e-mail e senha</li>
+                    </ol>
+
+                    <h3>Passo 2: Fazer Upload dos Arquivos</h3>
+                    <ol>
+                        <li>No painel do InfinityFree, vá em File Manager</li>
+                        <li>Arraste todas as pastas (css, php, etc.) para a pasta htdocs</li>
+                    </ol>
+
+                    <p>Dica Crucial:</p>
+                    <ul>
+                        <li>Atualize as credenciais do banco em db.php para as do InfinityFree</li>
+                    </ul>
+                </div>
+
+                <div id="conclusao" class="parte">
+                    <h2>📌 Conclusão</h2>
+                    <p>Você acabou de construir uma rede social completa! Para continuar aprendendo:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Habilidade</th>
+                                <th>Recursos Recomendados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Design</td>
+                                <td>W3Schools (CSS)</td>
+                            </tr>
+                            <tr>
+                                <td>PHP Avançado</td>
+                                <td>PHP.net</td>
+                            </tr>
+                            <tr>
+                                <td>Banco de Dados</td>
+                                <td>Curso em Vídeo (YouTube)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Próximo Passo:</p>
+                    <blockquote>
+                        ➔ Adicione um sistema de mensagens privadas usando o que aprendeu!
+                    </blockquote>
+
+                    <p><a href="#indice-visual">⬆ Voltar ao Índice</a> | <a href="https://exemplo.com">📁 Baixar
+                            Código-Fonte</a></p>
+
+                    <p>Feito com ❤ por [Seu Nome] - Dúvidas? Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8abbdadbdb5b9b1b498a8aab7aebdbcb7aaf6bbb7b5">[email&#160;protected]</a></p>
+                </div>
+                <div class="navigation-buttons">
+                    <button id="prevButton" aria-label="Página anterior">← Anterior</button>
+                    <button id="nextButton" aria-label="Próxima página">Próximo →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer>
+        const book = document.querySelector('.book');
+const flipButton = document.getElementById('flipButton');
+const frontPage = document.querySelector('.front');
+const backPage = document.querySelector('.back');
+const links = document.querySelectorAll('.indice a');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+
+let currentPage = 1; // Página atual (1 = frente, 2 = costas)
+
+function togglePage() {
+    book.classList.toggle('flipped');
+    currentPage = currentPage === 1 ? 2 : 1;
+    if (flipButton) {
+        flipButton.textContent = currentPage === 1 ? 'Próxima Página' : 'Página Anterior';
+    }
+}
+
+if (flipButton && book) {
+    flipButton.addEventListener('click', togglePage);
+}
+
+if (prevButton) {
+    prevButton.addEventListener('click', () => {
+        book.classList.remove('flipped');
+        currentPage = 1;
+        if (flipButton) {
+            flipButton.textContent = 'Próxima Página';
+        }
+    });
+}
+
+if (nextButton) {
+    nextButton.addEventListener('click', () => {
+        book.classList.add('flipped');
+        currentPage = 2;
+        if (flipButton) {
+            flipButton.textContent = 'Página Anterior';
+        }
+    });
+}
+
+if (links) {
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute('href').substring(1); // Remove o '#'
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+
+            if (currentPage === 1) {
+                book.classList.toggle('flipped');
+                currentPage = 2;
+                if (flipButton) {
+                    flipButton.textContent = 'Página Anterior';
+                }
+
+            }
+        });
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') togglePage();
+    if (e.key === 'ArrowLeft') togglePage();
+});
+    </script>
+</body>
+
+</html>
