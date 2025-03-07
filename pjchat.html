@@ -1,5 +1,5 @@
-<html lang="pt-BR">
-
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -227,249 +227,6 @@
     <meta name="keywords" content="programação, rede social, tutorial, PHP, MySQL">
     <meta property="og:title" content="E-book Interativo: Como Criar Uma Rede Social">
     <meta property="og:image" content="thumbnail.jpg">
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #333;
-}
-
-.book {
-    width: 80%;
-    max-width: 800px;
-    height: 600px;
-    position: relative;
-    perspective: 1500px;
-}
-
-@media (max-width: 600px) {
-    .book {
-        width: 100%;
-        height: auto;
-        max-width: none;
-        margin: 5px;
-    }
-}
-
-.page {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    transform-origin: 0% 50%;
-    transition: transform 0.8s;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: auto;
-}
-
-@media (max-width: 600px) {
-    .page {
-        width: 100%;
-        position: relative;
-        height: auto;
-        margin-bottom: 20px;
-    }
-
-    .book {
-        perspective: none;
-    }
-
-    .flipped .front,
-    .flipped .back {
-        transform: rotateY(0deg);
-        z-index: auto;
-    }
-
-    .front {
-        left: 0;
-        z-index: 1;
-    }
-
-    .back {
-        right: 0;
-        z-index: 0;
-        transform: rotateY(180deg);
-    }
-
-    .flipped .front {
-        transform: rotateY(0deg);
-        z-index: 0;
-    }
-
-    .flipped .back {
-        transform: rotateY(0deg);
-        z-index: 1;
-    }
-}
-
-.front {
-    left: 0;
-    z-index: 1;
-}
-
-.back {
-    right: 0;
-    z-index: 0;
-    transform: rotateY(180deg);
-}
-
-.flipped .front {
-    transform: rotateY(-180deg);
-    z-index: 0;
-}
-
-.flipped .back {
-    transform: rotateY(0deg);
-    z-index: 1;
-}
-
-.page-content {
-    padding: 20px;
-    overflow-y: auto;
-    height: 100%;
-}
-
-h1,
-h2,
-h3 {
-    color: #333;
-}
-
-.parte h2 {
-    color: #0056b3;
-}
-
-a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.indice {
-    list-style: none;
-    padding: 0;
-}
-
-.indice a {
-    display: block;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-}
-
-pre {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 10px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-}
-
-.parte {
-    margin-bottom: 30px;
-}
-
-.parte:last-child {
-    margin-bottom: 0;
-}
-
-.parte h2 {
-    border-bottom: 2px solid #007BFF;
-    padding-bottom: 5px;
-}
-
-.navigation-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-#flipButton,
-#prevButton,
-#nextButton {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-@media (max-width: 600px) {
-
-    #flipButton,
-    #prevButton,
-    #nextButton {
-        display: block;
-        width: 100%;
-        padding: 15px;
-    }
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-/* Tabelas responsivas */
-@media (max-width: 600px) {
-    table {
-        display: block;
-        overflow-x: auto;
-    }
-
-    .page-content {
-        padding: 10px;
-    }
-}
-
-.progress-bar {
-    height: 5px;
-    background: #ddd;
-    margin: 20px 0;
-}
-
-.progress {
-    height: 100%;
-    background: #007BFF;
-    transition: width 0.3s;
-}
-
-
-    </style>
 </head>
 
 <body>
@@ -977,78 +734,109 @@ foreach ($grupos as $grupo) {
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script defer>
         const book = document.querySelector('.book');
-const flipButton = document.getElementById('flipButton');
-const frontPage = document.querySelector('.front');
-const backPage = document.querySelector('.back');
-const links = document.querySelectorAll('.indice a');
-const prevButton = document.getElementById('prevButton');
-const nextButton = document.getElementById('nextButton');
+        const frontPage = document.querySelector('.front');
+        const backPage = document.querySelector('.back');
+        const links = document.querySelectorAll('.indice a');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
 
-let currentPage = 1; // Página atual (1 = frente, 2 = costas)
+        let currentPage = 1; // Página atual (1 = frente, 2 = costas)
+        let currentSection = 0; // Índice da seção atual
 
-function togglePage() {
-    book.classList.toggle('flipped');
-    currentPage = currentPage === 1 ? 2 : 1;
-    if (flipButton) {
-        flipButton.textContent = currentPage === 1 ? 'Próxima Página' : 'Página Anterior';
-    }
-}
+        // Array de IDs das seções
+        const sections = [
+            "parte1", "parte2", "parte3", "parte4", "parte5",
+            "parte6", "parte7", "parte8", "parte9", "parte10",
+            "parte11", "conclusao"
+        ];
 
-if (flipButton && book) {
-    flipButton.addEventListener('click', togglePage);
-}
-
-if (prevButton) {
-    prevButton.addEventListener('click', () => {
-        book.classList.remove('flipped');
-        currentPage = 1;
-        if (flipButton) {
-            flipButton.textContent = 'Próxima Página';
-        }
-    });
-}
-
-if (nextButton) {
-    nextButton.addEventListener('click', () => {
-        book.classList.add('flipped');
-        currentPage = 2;
-        if (flipButton) {
-            flipButton.textContent = 'Página Anterior';
-        }
-    });
-}
-
-if (links) {
-    links.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetId = link.getAttribute('href').substring(1); // Remove o '#'
-            const targetElement = document.getElementById(targetId);
-
+        function scrollToSection(sectionId) {
+            const targetElement = document.getElementById(sectionId);
             if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
             }
+        }
 
-            if (currentPage === 1) {
-                book.classList.toggle('flipped');
-                currentPage = 2;
-                if (flipButton) {
-                    flipButton.textContent = 'Página Anterior';
-                }
-
+        function updateButtons() {
+            if (currentSection === 0) {
+                prevButton.disabled = true;
+            } else {
+                prevButton.disabled = false;
             }
-        });
-    });
-}
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') togglePage();
-    if (e.key === 'ArrowLeft') togglePage();
-});
+            if (currentSection === sections.length - 1) {
+                nextButton.disabled = true;
+            } else {
+                nextButton.disabled = false;
+            }
+        }
+
+        function goToPreviousSection() {
+            if (currentSection > 0) {
+                currentSection--;
+                scrollToSection(sections[currentSection]);
+                updateButtons();
+
+                // Se estiver na página de trás, volte para a página da frente
+                if (currentPage === 2) {
+                    togglePage();
+                }
+            }
+        }
+
+        function goToNextSection() {
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                scrollToSection(sections[currentSection]);
+                updateButtons();
+
+                // Se estiver na página da frente, avance para a página de trás
+                if (currentPage === 1) {
+                    togglePage();
+                }
+            }
+        }
+        function togglePage() {
+            book.classList.toggle('flipped');
+            currentPage = currentPage === 1 ? 2 : 1;
+        }
+        // Adiciona evento de clique para os botões de navegação
+        if (prevButton) {
+            prevButton.addEventListener('click', goToPreviousSection);
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', goToNextSection);
+        }
+
+        if (links) {
+            links.forEach((link, index) => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    currentSection = index; // Define a seção atual com base no link clicado
+                    scrollToSection(sections[currentSection]); // Rola para a seção correspondente
+                    updateButtons(); // Atualiza o estado dos botões
+
+                    if (currentPage === 1) {
+                        togglePage();
+                    }
+                });
+            });
+        }
+
+        // Inicialização
+        updateButtons(); // Define o estado inicial dos botões
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') goToNextSection();
+            if (e.key === 'ArrowLeft') goToPreviousSection();
+        });
     </script>
 </body>
 
