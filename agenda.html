@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <base href="https://wa.me/5512982572507" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Questionário de Serviços - Especial Natal">
+  <meta name="keywords" content="serviços, questionário, natal, ofertas especiais">
+  <meta name="author" content="Luanny">
+  <meta name="theme-color" content="#C62828">
+  <link rel="preload" href="https://bastardadoll.github.io/servico1.gif" as="image">
+  <link rel="preload" href="https://bastardadoll.github.io/servico2.gif" as="image">
+  <link rel="preload" href="https://bastardadoll.github.io/servico3.gif" as="image">
+  <link rel="preload" href="https://bastardadoll.github.io/luanny.gif" as="image">
+  <link rel="preload" href="https://i.giphy.com/media/3o7abAHdYvZdBNnGZq/giphy.gif" as="image">
+  <link rel="preload" href="https://i.giphy.com/media/xT8qBhrlNooHBYR9f6/giphy.gif" as="image">
+  <title>🎄 Presentes de Natal - Agendamento Especial 🎁</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --natal-red: #C62828;
+      --natal-green: #2E7D32;
+      --natal-gold: #FFD700;
+      --snow-white: #FFF;
+      --background-red: #8B0000;
+    }
+
+    .theme-ano-novo {
+      --natal-red: #0D47A1;
+      --natal-green: #004D40;
+      --natal-gold: #FF6F00;
+      --snow-white: #E3F2FD;
+      --background-red: #01579B;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, var(--natal-red) 0%, #1a1a2e 100%);
+      background-image: url('https://i.giphy.com/media/3o7abAHdYvZdBNnGZq/giphy.gif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 15px;
+      transition: all 0.8s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Flocos de neve */
+    .snowflakes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .snowflake {
+      position: absolute;
+      background-color: var(--snow-white);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .theme-ano-novo .snowflake {
+      background-color: #FFD700;
+    }
+
+    /* Confetes para Ano Novo */
+    .confetti {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .theme-ano-novo .confetti {
+      display: block;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      opacity: 0.7;
+      animation: confetti-fall 5s linear infinite;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      padding: 25px;
+      position: relative;
+      z-index: 2;
+      border: 5px solid var(--natal-gold);
+      transition: all 0.8s ease;
+    }
+
+    .theme-ano-novo .container {
+      border: 5px solid var(--natal-gold);
+      box-shadow: 0 20px 50px rgba(13, 71, 161, 0.5);
+    }
+
+    /* Header com contagem regressiva */
+    .header-container {
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 15px;
+      border-radius: 15px;
+      background: linear-gradient(45deg, var(--natal-red), var(--natal-green));
+      color: var(--snow-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-ano-novo .header-container {
+      background: linear-gradient(45deg, #0D47A1, #004D40);
+    }
+
+    .header-container h1 {
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-container h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px;
+      border-radius: 10px;
+      min-width: 70px;
+    }
+
+    .countdown-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--natal-gold);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .countdown-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .theme-message {
+      font-style: italic;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Estilos do formulário */
+    #serviceForm {
+      padding: 20px;
+    }
+
+    #serviceForm h1 {
+      text-align: center;
+      color: var(--natal-red);
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-ano-novo #serviceForm h1 {
+      color: #0D47A1;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+      overflow: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .service-item {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      width: 100%;
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.5s ease;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+      position: relative;
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      border: 3px solid var(--natal-green);
+      overflow: hidden;
+    }
+
+    .theme-ano-novo .service-item {
+      border: 3px solid var(--natal-green);
+    }
+
+    .service-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-item::before {
+      content: "🎁";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      z-index: 1;
+    }
+
+    .theme-ano-novo .service-item::before {
+      content: "🎆";
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gif-box {
+      width: 200px;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 3px solid var(--natal-gold);
+    }
+
+    .item-list {
+      width: 100%;
+      list-style-type: none;
+    }
+
+    .item {
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .item.no {
+      color: #d32f2f;
+    }
+
+    .item.yes {
+      color: var(--natal-green);
+      font-weight: 600;
+    }
+
+    .price-section {
+      background: linear-gradient(45deg, var(--natal-red), var(--natal-green));
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      animation: pulse 2s infinite, shimmer 3s infinite;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--natal-gold);
+    }
+
+    .theme-ano-novo .price-section {
+      background: linear-gradient(45deg, #0D47A1, #004D40);
+    }
+
+    .price-section p:first-child {
+      text-decoration: line-through;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8em;
+      margin-bottom: 5px;
+    }
+
+    .price-section p:nth-child(2) {
+      font-weight: bold;
+      color: var(--natal-gold);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .price-section p:nth-child(3) {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: var(--snow-white);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: -200% 0; }
+      50% { background-position: 200% 0; }
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 10px;
+    }
+
+    .carousel-btn {
+      background: linear-gradient(45deg, var(--natal-red), var(--natal-green));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-ano-novo .carousel-btn {
+      background: linear-gradient(45deg, #0D47A1, #004D40);
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 18px;
+      font-size: 1.1rem;
+      background: linear-gradient(45deg, var(--natal-red), var(--natal-green));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-ano-novo .submit-btn {
+      background: linear-gradient(45deg, #0D47A1, #004D40);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, var(--natal-green), var(--natal-red));
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: var(--natal-red);
+      font-size: 1rem;
+    }
+
+    .theme-ano-novo .form-group label {
+      color: #0D47A1;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid var(--natal-green);
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--natal-red);
+      box-shadow: 0 0 10px rgba(198, 40, 40, 0.3);
+    }
+
+    .gif-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .form-group.schedule {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .form-group.schedule input[type="date"],
+    .form-group.schedule input[type="time"] {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid var(--natal-green);
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .service-item label[for^="servico"] {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      background: linear-gradient(45deg, var(--natal-red), var(--natal-green));
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .service-item label[for^="servico"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Informações de localização */
+    .location-info-container {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+
+    .location-icon {
+      background: linear-gradient(45deg, var(--natal-red), var(--natal-green));
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      font-size: 1.5rem;
+    }
+
+    .theme-ano-novo .location-icon {
+      background: linear-gradient(45deg, #0D47A1, #004D40);
+    }
+
+    .location-icon:hover {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    .location-details {
+      display: none;
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: white;
+      border-radius: 15px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1001;
+      border: 3px solid var(--natal-gold);
+    }
+
+    .location-details h3 {
+      color: var(--natal-red);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--natal-red);
+      padding-bottom: 5px;
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 1.5rem;
+    }
+
+    .theme-ano-novo .location-details h3 {
+      color: #0D47A1;
+      border-bottom: 2px solid #0D47A1;
+    }
+
+    .location-details h4 {
+      margin-top: 10px;
+      color: var(--natal-green);
+      font-weight: 600;
+    }
+
+    .location-details ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 5px;
+    }
+
+    .location-details li {
+      padding: 5px 0;
+      border-bottom: 1px dashed #ddd;
+    }
+
+    .location-details li:last-child {
+      border-bottom: none;
+    }
+
+    /* Árvore de natal decorativa */
+    .christmas-tree {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      font-size: 3rem;
+      z-index: 1;
+      animation: swing 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(-10deg); }
+      100% { transform: rotate(10deg); }
+    }
+
+    .theme-ano-novo .christmas-tree {
+      display: none;
+    }
+
+    /* Fogos de artifício para Ano Novo */
+    .fireworks {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .theme-ano-novo .fireworks {
+      display: block;
+    }
+
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      animation: explode 2s infinite;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        width: 95%;
+        padding: 15px;
+      }
+      
+      .header-container h1 {
+        font-size: 1.8rem;
+      }
+      
+      .countdown-item {
+        min-width: 60px;
+      }
+      
+      .countdown-value {
+        font-size: 1.5rem;
+      }
+      
+      .gif-box {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .location-info-container {
+        right: 10px;
+      }
+      
+      .location-details {
+        width: 250px;
+        right: 80px;
+      }
+      
+      .christmas-tree {
+        font-size: 2rem;
+        left: 10px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .header-container h1 {
+        font-size: 1.5rem;
+      }
+      
+      .countdown-item {
+        min-width: 50px;
+        padding: 5px;
+      }
+      
+      #countdown {
+        gap: 5px;
+      }
+      
+      .carousel-controls {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .carousel-btn {
+        width: 100%;
+      }
+      
+      .location-details {
+        width: 200px;
+        right: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Flocos de neve -->
+  <div class="snowflakes" id="snowflakes"></div>
+  
+  <!-- Confetes -->
+  <div class="confetti" id="confetti"></div>
+  
+  <!-- Fogos de artifício -->
+  <div class="fireworks" id="fireworks"></div>
+  
+  <!-- Árvore de natal -->
+  <div class="christmas-tree" id="christmasTree">🎄</div>
+  
+  <div class="container" id="mainContainer" aria-label="Serviços disponíveis">
+    <!-- Cabeçalho com contagem regressiva -->
+    <div class="header-container">
+      <h1 id="themeTitle">🎁 Presentes Especiais de Natal 🎄</h1>
+      <h2 id="countdownTitle">Ofertas especiais por tempo limitado!</h2>
+      <div id="countdown">
+        <div class="countdown-item">
+          <div class="countdown-value" id="days">00</div>
+          <div class="countdown-label">Dias</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="hours">00</div>
+          <div class="countdown-label">Horas</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="minutes">00</div>
+          <div class="countdown-label">Minutos</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="seconds">00</div>
+          <div class="countdown-label">Segundos</div>
+        </div>
+      </div>
+      <div class="theme-message" id="themeMessage">Descontos especiais de Natal até 25/12!</div>
+    </div>
+    
+    <!-- Formulário principal -->
+    <form id="serviceForm" aria-label="Formulário de serviços">
+      <h1 id="formTitle">Agendamento Especial</h1>
+      
+      <div class="form-group">
+        <label for="nick">🎅 Seu Nome/Nick:</label>
+        <input type="text" id="nick" name="nick" required aria-label="Campo de nick" placeholder="Como devo chamar você?">
+      </div>
+      
+      <div class="form-group">
+        <label for="age">📅 Sua Idade:</label>
+        <input type="number" id="age" name="age" min="18" max="99" required aria-label="Campo de idade" placeholder="Sua idade">
+      </div>
+      
+      <div class="form-group schedule">
+        <label for="scheduleDate">📆 Data do Agendamento:</label>
+        <input type="date" id="scheduleDate" name="scheduleDate" required aria-label="Data do agendamento">
+      </div>
+      <div class="form-group schedule">
+        <label for="scheduleTime">🕒 Horário do Agendamento:</label>
+        <input type="time" id="scheduleTime" name="scheduleTime" required aria-label="Horário do agendamento">
+      </div>
+      
+      <!-- Carrossel de serviços -->
+      <div class="carousel-wrapper">
+        <!-- Serviço 1 -->
+        <div class="service-item">
+          <div class="box">
+            <h1 class="title">🎁 Boquete (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/servico1.gif" alt="Serviço 1 GIF" aria-label="Imagem do serviço 1">
+              </div>
+              <ul class="item-list">
+                <li class="item no">❌ Não pode me chupar</li>
+                <li class="item no">❌ Não pode me tocar</li>
+                <li class="item no">❌ NÃO GOZO</li>
+                <li class="item yes">✅ Garganta profunda</li>
+                <li class="item yes">✅ Sem camisinha</li>
+                <li class="item yes">✅ Goza na boca</li>
+              </ul>
+            </div>
+            <input type="radio" id="servico1" name="services" value="servico1" aria-label="Serviço 1">
+            <label for="servico1">🎄 Selecionar Presente</label>
+            <div class="price-section">
+              <p>De: R$ 80,00</p>
+              <p>Presente de Natal:</p>
+              <p>R$ 50,00</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Serviço 2 -->
+        <div class="service-item">
+          <div class="box">
+            <h1 class="title">🎁 Boquete Duplo (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/servico2.gif" alt="Serviço 2 GIF" aria-label="Imagem do serviço 2">
+              </div>
+              <ul class="item-list">
+                <li class="item no">❌ Não pode me chupar</li>
+                <li class="item no">❌ Não pode me tocar</li>
+                <li class="item no">❌ NÃO GOZO</li>
+                <li class="item yes">✅ Garganta profunda</li>
+                <li class="item yes">✅ Sem camisinha</li>
+                <li class="item yes">✅ Goza na boca</li>
+              </ul>
+            </div>
+            <input type="radio" id="servico2" name="services" value="servico2" aria-label="Serviço 2">
+            <label for="servico2">🎄 Selecionar Presente</label>
+            <div class="price-section">
+              <p>De: R$ 150,00</p>
+              <p>Presente de Natal:</p>
+              <p>R$ 80,00</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Serviço 3 -->
+        <div class="service-item">
+          <div class="box">
+            <h1 class="title">🎁 Passiva (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/servico3.gif" alt="Serviço 3 GIF" aria-label="Imagem do serviço 3">
+              </div>
+              <ul class="item-list">
+                <li class="item no">❌ Não sou ativa</li>
+                <li class="item no">❌ Sem beijos na boca</li>
+                <li class="item no">❌ Não faço nada no seu ânus</li>
+                <li class="item yes">✅ Sem camisinha</li>
+                <li class="item yes">✅ Tapas e puxão de cabelo (de leve)</li>
+                <li class="item yes">✅ Goza onde quiser</li>
+              </ul>
+            </div>
+            <input type="radio" id="servico3" name="services" value="servico3" aria-label="Serviço 3">
+            <label for="servico3">🎄 Selecionar Presente</label>
+            <div class="price-section">
+              <p>De: R$ 150,00</p>
+              <p>Presente de Natal:</p>
+              <p>R$ 100,00</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Serviço 4 -->
+        <div class="service-item">
+          <div class="box">
+            <h1 class="title">🎁 Ativa (15 Min)</h1>
+            <div class="content">
+              <div class="gif-box">
+                <img src="https://bastardadoll.github.io/luanny.gif" alt="Serviço 4 GIF" aria-label="Imagem do serviço 4">
+              </div>
+              <ul class="item-list">
+                <li class="item no">Agendamento apenas com sinal (R$ 50,00)</li>
+                <li class="item no">❌ Sem beijos na boca</li>
+                <li class="item no">❌ Não faço cunete</li>
+                <li class="item yes">✅ Sem camisinha</li>
+                <li class="item yes">✅ Com carrinho/com força</li>
+                <li class="item yes">✅ Posso Goza onde você quiser</li>
+              </ul>
+            </div>
+            <input type="radio" id="servico4" name="services" value="servico4" aria-label="Serviço 4">
+            <label for="servico4">🎄 Selecionar Presente</label>
+            <div class="price-section">
+              <p>De: R$ 200,00</p>
+              <p>Presente de Natal:</p>
+              <p>R$ 150,00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Controles do carrossel -->
+      <div class="carousel-controls">
+        <button class="carousel-btn carousel-btn-prev" type="button">⏪ Anterior</button>
+        <button class="carousel-btn carousel-btn-next" type="button">Próximo ⏩</button>
+      </div>
+      
+      <!-- Botão de envio -->
+      <button type="submit" class="submit-btn" id="submitBtn">🎅 Enviar Pedido de Presente</button>
+    </form>
+    
+    <!-- Informações de localização -->
+    <div class="location-info-container">
+      <div class="location-icon" id="locationIcon">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="location-details" id="locationDetails">
+        <h3>🏠 Informações do Local</h3>
+        <p><strong>📍 Localização:</strong> São José dos Campos - SP</p>
+        <p><strong>🏡 Endereço:</strong> Rua: Rio Grande do Sul, Vila São Pedro</p>
+        
+        <h4>📍 Próximo a:</h4>
+        <ul>
+          <li>👮 Batalhão de Polícia</li>
+          <li>🛣️ Em frente a Dutra Km 146 sentido Rio de Janeiro</li>
+        </ul>
+        
+        <h4>ℹ️ Sobre o Local:</h4>
+        <ul>
+          <li>🚫 Não possui garagem</li>
+          <li>🅿️ Rua tranquila, pode estacionar no posto Shell na esquina de casa e vir a pé</li>
+          <li>👩 Atendo sozinha em meu local de atendimento</li>
+          <li>🛁 Disponível: filme, ducha, toalhas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Sistema de contagem regressiva e troca de tema
+    document.addEventListener('DOMContentLoaded', () => {
+      // Elementos DOM
+      const countdownElements = {
+        days: document.getElementById('days'),
+        hours: document.getElementById('hours'),
+        minutes: document.getElementById('minutes'),
+        seconds: document.getElementById('seconds')
+      };
+      
+      const themeElements = {
+        body: document.body,
+        container: document.getElementById('mainContainer'),
+        themeTitle: document.getElementById('themeTitle'),
+        countdownTitle: document.getElementById('countdownTitle'),
+        formTitle: document.getElementById('formTitle'),
+        themeMessage: document.getElementById('themeMessage'),
+        submitBtn: document.getElementById('submitBtn'),
+        christmasTree: document.getElementById('christmasTree')
+      };
+      
+      // Datas importantes
+      const christmasDate = new Date('December 25, 2025 23:59:59').getTime();
+      const newYearDate = new Date('December 26, 2025 00:00:00').getTime();
+      const currentYear = new Date().getFullYear();
+      
+      // Verifica se já passou do Natal de 2025
+      function checkTheme() {
+        const now = new Date().getTime();
+        
+        if (now >= newYearDate) {
+          // Ativar tema de Ano Novo
+          themeElements.body.classList.add('theme-ano-novo');
+          themeElements.themeTitle.textContent = '🎆 Promoção de Ano Novo 🎇';
+          themeElements.countdownTitle.textContent = 'Novas ofertas para 2026!';
+          themeElements.formTitle.textContent = 'Agendamento para a Virada';
+          themeElements.themeMessage.textContent = 'Ofertas especiais para começar 2026 com tudo!';
+          themeElements.submitBtn.textContent = '🎇 Agendar para a Virada';
+          themeElements.christmasTree.style.display = 'none';
+          
+          // Criar fogos de artifício
+          createFireworks();
+          createConfetti();
+        } else {
+          // Manter tema de Natal
+          themeElements.themeMessage.textContent = 'Descontos especiais de Natal até 25/12!';
+          
+          // Criar flocos de neve
+          createSnowflakes();
+        }
+      }
+      
+      // Contagem regressiva
+      function updateCountdown() {
+        const now = new Date().getTime();
+        let targetDate;
+        
+        if (now >= newYearDate) {
+          // Contagem regressiva para o próximo Natal
+          targetDate = new Date(`December 25, ${currentYear + 1} 23:59:59`).getTime();
+        } else {
+          // Contagem regressiva para Natal 2025
+          targetDate = christmasDate;
+        }
+        
+        const timeRemaining = targetDate - now;
+        
+        if (timeRemaining <= 0) {
+          // Tempo esgotado
+          countdownElements.days.textContent = '00';
+          countdownElements.hours.textContent = '00';
+          countdownElements.minutes.textContent = '00';
+          countdownElements.seconds.textContent = '00';
+          return;
+        }
+        
+        // Cálculos de tempo
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        
+        // Atualizar display
+        countdownElements.days.textContent = days.toString().padStart(2, '0');
+        countdownElements.hours.textContent = hours.toString().padStart(2, '0');
+        countdownElements.minutes.textContent = minutes.toString().padStart(2, '0');
+        countdownElements.seconds.textContent = seconds.toString().padStart(2, '0');
+        
+        // Verificar mudança de tema (meia-noite do dia 26)
+        if (now >= newYearDate && !themeElements.body.classList.contains('theme-ano-novo')) {
+          checkTheme();
+        }
+      }
+      
+      // Criar flocos de neve
+      function createSnowflakes() {
+        const snowflakesContainer = document.getElementById('snowflakes');
+        snowflakesContainer.innerHTML = '';
+        
+        for (let i = 0; i < 50; i++) {
+          const snowflake = document.createElement('div');
+          snowflake.classList.add('snowflake');
+          
+          // Tamanho aleatório
+          const size = Math.random() * 5 + 2;
+          snowflake.style.width = `${size}px`;
+          snowflake.style.height = `${size}px`;
+          
+          // Posição inicial aleatória
+          snowflake.style.left = `${Math.random() * 100}%`;
+          
+          // Duração da animação aleatória
+          const duration = Math.random() * 5 + 5;
+          snowflake.style.animationDuration = `${duration}s`;
+          
+          // Atraso inicial aleatório
+          snowflake.style.animationDelay = `${Math.random() * 5}s`;
+          
+          snowflakesContainer.appendChild(snowflake);
+        }
+      }
+      
+      // Criar confetes
+      function createConfetti() {
+        const confettiContainer = document.getElementById('confetti');
+        confettiContainer.innerHTML = '';
+        
+        const colors = ['#FFD700', '#C62828', '#2E7D32', '#0D47A1', '#FF6F00', '#4A148C'];
+        
+        for (let i = 0; i < 100; i++) {
+          const piece = document.createElement('div');
+          piece.classList.add('confetti-piece');
+          
+          // Cor aleatória
+          piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          
+          // Posição inicial aleatória
+          piece.style.left = `${Math.random() * 100}%`;
+          
+          // Duração e atraso aleatórios
+          const duration = Math.random() * 3 + 2;
+          piece.style.animationDuration = `${duration}s`;
+          piece.style.animationDelay = `${Math.random() * 2}s`;
+          
+          confettiContainer.appendChild(piece);
+        }
+      }
+      
+      // Criar fogos de artifício
+      function createFireworks() {
+        const fireworksContainer = document.getElementById('fireworks');
+        fireworksContainer.innerHTML = '';
+        
+        // Criar vários fogos de artifício
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            
+            // Cor aleatória
+            const colors = ['#FFD700', '#FF6F00', '#C62828', '#0D47A1', '#2E7D32'];
+            firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Posição aleatória
+            firework.style.left = `${Math.random() * 100}%`;
+            firework.style.top = `${Math.random() * 100}%`;
+            
+            // Tamanho aleatório
+            const size = Math.random() * 10 + 5;
+            firework.style.width = `${size}px`;
+            firework.style.height = `${size}px`;
+            
+            fireworksContainer.appendChild(firework);
+            
+            // Remover após animação
+            setTimeout(() => {
+              firework.remove();
+            }, 2000);
+          }, i * 300);
+        }
+        
+        // Recriar fogos periodicamente
+        setInterval(createFireworks, 3000);
+      }
+      
+      // Sistema do carrossel
+      let currentIndex = 0;
+      const carouselWrapper = document.querySelector('.carousel-wrapper');
+      const serviceItems = document.querySelectorAll('.service-item');
+      const prevBtn = document.querySelector('.carousel-btn-prev');
+      const nextBtn = document.querySelector('.carousel-btn-next');
+      
+      function updateCarousel() {
+        carouselWrapper.scrollTo({
+          left: currentIndex * carouselWrapper.offsetWidth,
+          behavior: 'smooth'
+        });
+      }
+      
+      prevBtn.addEventListener('click', e => {
+        e.preventDefault();
+        currentIndex = currentIndex === 0 ? serviceItems.length - 1 : currentIndex - 1;
+        updateCarousel();
+      });
+      
+      nextBtn.addEventListener('click', e => {
+        e.preventDefault();
+        currentIndex = currentIndex === serviceItems.length - 1 ? 0 : currentIndex + 1;
+        updateCarousel();
+      });
+      
+      // Sistema do formulário
+      const form = document.getElementById('serviceForm');
+      
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        const nick = document.getElementById('nick').value;
+        const age = document.getElementById('age').value;
+        const scheduleDate = document.getElementById('scheduleDate').value;
+        const scheduleTime = document.getElementById('scheduleTime').value;
+        const selectedService = document.querySelector('input[type="radio"]:checked');
+        
+        if (nick === '' || age === '') {
+          alert('Por favor, preencha todos os campos!');
+          return;
+        }
+        
+        if (!selectedService) {
+          alert('Por favor, selecione um serviço!');
+          return;
+        }
+        
+        if (scheduleDate === '' || scheduleTime === '') {
+          alert('Por favor, preencha a data e o horário do agendamento!');
+          return;
+        }
+        
+        const serviceItem = selectedService.closest('.service-item');
+        const title = serviceItem.querySelector('.title').textContent;
+        const serviceDetails = Array.from(serviceItem.querySelectorAll('.item-list .item')).map(item => item.textContent).join('\n-');
+        const price = serviceItem.querySelector('.price-section').innerText;
+        
+        // Determinar a mensagem com base no tema
+        const isNewYearTheme = themeElements.body.classList.contains('theme-ano-novo');
+        const holidayTheme = isNewYearTheme ? 'Ano Novo' : 'Natal';
+        const holidayEmoji = isNewYearTheme ? '🎆' : '🎄';
+        
+        const whatsappMessage = `${holidayEmoji} *Oferta Especial de ${holidayTheme}* ${holidayEmoji}
+
+Olá, meu nome é *${nick}* 
+Idade: *${age} anos*
+
+*Desejo Contratar:*
+*${title}*
+- ${serviceDetails}
+__________________
+${price.replace('De:', '*De:*').replace('Presente de Natal:', `*Presente de ${holidayTheme}:*`)}
+__________________
+*Detalhes do Agendamento:*
+*Data:* ${scheduleDate}
+*Horário:* ${scheduleTime}
+
+> Por favor, entre em contato para confirmar o agendamento.`;
+        
+        const whatsappUrl = `https://wa.me/5512982572507?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappUrl, '_blank');
+      });
+      
+      // Informações de localização
+      document.getElementById('locationIcon').addEventListener('click', function () {
+        const details = document.getElementById('locationDetails');
+        details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
+      });
+      
+      // Fechar detalhes de localização ao clicar fora
+      document.addEventListener('click', function(event) {
+        const locationIcon = document.getElementById('locationIcon');
+        const locationDetails = document.getElementById('locationDetails');
+        
+        if (!locationIcon.contains(event.target) && !locationDetails.contains(event.target)) {
+          locationDetails.style.display = 'none';
+        }
+      });
+      
+      // Inicializar data mínima para agendamento (hoje)
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('scheduleDate').min = today;
+      
+      // Inicializar
+      checkTheme();
+      updateCountdown();
+      updateCarousel();
+      
+      // Atualizar contagem regressiva a cada segundo
+      setInterval(updateCountdown, 1000);
+      
+      // Recriar elementos visuais periodicamente
+      setInterval(() => {
+        if (themeElements.body.classList.contains('theme-ano-novo')) {
+          createConfetti();
+        } else {
+          createSnowflakes();
+        }
+      }, 10000);
+    });
+    
+    // Tratamento de erros
+    window.addEventListener('error', e => {
+      console.error('Erro:', e);
+    });
+  </script>
+</body>
+</html>
